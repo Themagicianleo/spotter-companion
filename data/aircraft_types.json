@@ -1,0 +1,1890 @@
+{
+  "_about": "Aircraft type and engine lookup table for Spotter's Companion. 'engineOptions' are the engine options offered for the TYPE. They never say which engine a particular aircraft has.",
+  "_verification": {
+    "verified-secondary": "Every engine option was confirmed by a search-result excerpt or summary of the cited source (type certificate data sheet, regulator notice or manufacturer). The PDFs themselves could not be opened from the build environment, so a human check against the current TCDS is still recommended.",
+    "partly-unverified": "Some engine options (verified: false) could not be confirmed and are listed for checking.",
+    "unverified": "No engine option could be confirmed. Listed for completeness; check before relying on it."
+  },
+  "_researched": "2026-10-21",
+  "types": [
+    {
+      "icao": "BCS1",
+      "model": "Airbus A220-100 (BD-500-1A10)",
+      "manufacturer": "Airbus Canada",
+      "family": "Airbus narrowbody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW1500G series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS IM.A.570 BD-500 (A220), Issue 24",
+          "url": "https://www.easa.europa.eu/en/downloads/20964/en"
+        },
+        {
+          "name": "EASA TCDS IM.A.570 BD-500, Issue 12 (UK CAA copy): 'two Pratt & Whitney PW1500G'",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/2870"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "BCS3",
+      "model": "Airbus A220-300 (BD-500-1A11)",
+      "manufacturer": "Airbus Canada",
+      "family": "Airbus narrowbody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW1500G series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS IM.A.570 BD-500 (A220), Issue 24",
+          "url": "https://www.easa.europa.eu/en/downloads/20964/en"
+        },
+        {
+          "name": "EASA TCDS IM.A.570 BD-500, Issue 12 (UK CAA copy): 'two Pratt & Whitney PW1500G'",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/2870"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A318",
+      "model": "Airbus A318",
+      "manufacturer": "Airbus",
+      "family": "Airbus narrowbody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "CFM56-5B",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW6000A (PW6122A, PW6124A)",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "US Federal Register 2005-09-27: A318-111/-112 (CFM56) and A318-121/-122 (PW6000)",
+          "url": "https://govinfo.gov/content/pkg/FR-2005-09-27/pdf/05-19206.pdf"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A319",
+      "model": "Airbus A319",
+      "manufacturer": "Airbus",
+      "family": "Airbus narrowbody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "CFM56-5A",
+          "verified": true
+        },
+        {
+          "maker": "CFM International",
+          "model": "CFM56-5B",
+          "verified": true
+        },
+        {
+          "maker": "International Aero Engines (IAE)",
+          "model": "V2500-A5",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FlightGlobal: 'Airbus A319 certificated by JAA' (CFM56-5B; CFM56-5A and V2500-A5 versions)",
+          "url": "https://flightglobal.com/airbus-a319-certificated-by-jaa/9769.article"
+        },
+        {
+          "name": "NZ CAA Type Acceptance Report, Airbus A318/A319/A320/A321",
+          "url": "https://www.aviation.govt.nz/assets/aircraft/type-acceptance-reports/Airbus-A318-A319-A320-A321.pdf"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A320",
+      "model": "Airbus A320",
+      "manufacturer": "Airbus",
+      "family": "Airbus narrowbody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "CFM56-5A",
+          "verified": true
+        },
+        {
+          "maker": "CFM International",
+          "model": "CFM56-5B",
+          "verified": true
+        },
+        {
+          "maker": "International Aero Engines (IAE)",
+          "model": "V2500 (V2500-A1 and later)",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS A.064 A318/A319/A320/A321, Issue 12 (2013): A320-211 CFM56-5A1, A320-231 V2500-A1",
+          "url": "https://www.easa.europa.eu/sites/default/files/dfu/EASA-TCDS-A.064_AIRBUS_A318,_A319,_A320,_A321_Single_Aisle-12-12092013.pdf"
+        },
+        {
+          "name": "NZ CAA Type Acceptance Report, Airbus A318/A319/A320/A321",
+          "url": "https://www.aviation.govt.nz/assets/aircraft/type-acceptance-reports/Airbus-A318-A319-A320-A321.pdf"
+        }
+      ],
+      "notes": "TCDS issue 12 lists A320-211 with CFM56-5A1 and A320-231 with V2500-A1; NZ TAR lists CFM56-5B variants.",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A321",
+      "model": "Airbus A321",
+      "manufacturer": "Airbus",
+      "family": "Airbus narrowbody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "CFM56-5 series",
+          "verified": true
+        },
+        {
+          "maker": "International Aero Engines (IAE)",
+          "model": "V2500 series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "NZ CAA Type Acceptance Report, Airbus A318/A319/A320/A321",
+          "url": "https://www.aviation.govt.nz/assets/aircraft/type-acceptance-reports/Airbus-A318-A319-A320-A321.pdf"
+        }
+      ],
+      "notes": "Confirmed only at series level (A320ceo family: CFM56-5 or V2500). Exact sub-variants for the A321 not confirmed.",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A19N",
+      "model": "Airbus A319neo",
+      "manufacturer": "Airbus",
+      "family": "Airbus narrowbody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "LEAP-1A",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW1100G-JM",
+          "verified": false
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "Airbus press release 2018-12: A319neo with CFM LEAP-1A certified",
+          "url": "https://www.airbus.com/en/newsroom/press-releases/2018-12-a319neo-with-cfm-leap-1a-engines-wins-joint-type-certification-from"
+        },
+        {
+          "name": "Airbus press release 2016-05: A320neo with LEAP-1A certified (family choice PW1100G-JM or LEAP-1A)",
+          "url": "https://airbus.com/en/newsroom/press-releases/2016-05-a320neo-with-cfm-leap-1a-engines-receives-joint-easa-and-faa"
+        }
+      ],
+      "notes": "LEAP-1A confirmed for A319neo. PW1100G-JM is offered for the neo family, but certification on the A319neo specifically was not confirmed.",
+      "verification": "partly-unverified"
+    },
+    {
+      "icao": "A20N",
+      "model": "Airbus A320neo",
+      "manufacturer": "Airbus",
+      "family": "Airbus narrowbody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "LEAP-1A",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW1100G-JM",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "Airbus press release 2016-05: A320neo with LEAP-1A certified (family choice PW1100G-JM or LEAP-1A)",
+          "url": "https://airbus.com/en/newsroom/press-releases/2016-05-a320neo-with-cfm-leap-1a-engines-receives-joint-easa-and-faa"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A21N",
+      "model": "Airbus A321neo (incl. A321LR/XLR)",
+      "manufacturer": "Airbus",
+      "family": "Airbus narrowbody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "LEAP-1A",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW1100G-JM",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "Airbus news 2016-12: A321neo certified with Pratt & Whitney engines",
+          "url": "https://airbus.com/en/newsroom/news/2016-12-bigger-and-ready-for-service-the-a321neo-is-certified-with-pratt-whitney"
+        },
+        {
+          "name": "Airbus press release 2017-03: A321neo with CFM LEAP-1A certified",
+          "url": "https://www.airbus.com/en/newsroom/press-releases/2017-03-a321neo-powered-by-cfm-leap-1a-engines-receives-type-certification"
+        }
+      ],
+      "notes": "That the A321LR/XLR also use the A21N code was not checked against Doc 8643.",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A30B",
+      "model": "Airbus A300B2 / A300B4",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "CF6-50 series",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "JT9D-59A",
+          "verified": false
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS A.172 A300/A310/A300-600, Issue 08 (Feb 2026)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en"
+        },
+        {
+          "name": "EASA TCDS A.172, Issue 04 (2019, UK CAA copy): A300 B4-102 'CF6-50C1'",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/2665"
+        }
+      ],
+      "notes": "CF6-50 confirmed (e.g. A300 B4-102 with CF6-50C1). The JT9D option was not found in the excerpts.",
+      "verification": "partly-unverified"
+    },
+    {
+      "icao": "A306",
+      "model": "Airbus A300-600",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "CF6-80C2 series",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW4158 (PW4000)",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "JT9D-7R4",
+          "verified": false
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS A.172 A300/A310/A300-600, Issue 08 (Feb 2026)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en"
+        }
+      ],
+      "notes": "TCDS excerpt lists CF6-80C2 (e.g. B4-601/-603/-605R) and PW4158 (B4-622/-622R). JT9D-7R4 appears in the TCDS but its A300-600 use was not confirmed.",
+      "verification": "partly-unverified"
+    },
+    {
+      "icao": "A310",
+      "model": "Airbus A310",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "CF6-80C2 series",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW4152 (PW4000)",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "JT9D-7R4",
+          "verified": false
+        },
+        {
+          "maker": "General Electric",
+          "model": "CF6-80A",
+          "verified": false
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS A.172 A300/A310/A300-600, Issue 08 (Feb 2026)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en"
+        }
+      ],
+      "notes": "CF6-80C2 (A310-304) and PW4152 (A310-324) confirmed. JT9D-7R4 and CF6-80A not confirmed for the A310 in the excerpts.",
+      "verification": "partly-unverified"
+    },
+    {
+      "icao": "A332",
+      "model": "Airbus A330-200",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "CF6-80E1",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW4000 series",
+          "verified": true
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent 700",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS A.004 Airbus A330, Issue 69 (engine/model correspondence table)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en"
+        },
+        {
+          "name": "Airbus A330 Facts & Figures, April 2025: 'CF6-80E1, PW4000 and RR Trent 700 / Trent 7000 on NEO'",
+          "url": "https://www.airbus.com/sites/g/files/jlcbta136/files/2025-04/Airbus-A330-Facts-and-Figures-April%202025.pdf"
+        }
+      ],
+      "notes": "Includes freighter and MRTT tanker variants (which share the code).",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A333",
+      "model": "Airbus A330-300",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "CF6-80E1",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW4000 series",
+          "verified": true
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent 700",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS A.004 Airbus A330, Issue 69 (engine/model correspondence table)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en"
+        },
+        {
+          "name": "Airbus A330 Facts & Figures, April 2025: 'CF6-80E1, PW4000 and RR Trent 700 / Trent 7000 on NEO'",
+          "url": "https://www.airbus.com/sites/g/files/jlcbta136/files/2025-04/Airbus-A330-Facts-and-Figures-April%202025.pdf"
+        }
+      ],
+      "notes": "Includes freighter and MRTT tanker variants (which share the code).",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A338",
+      "model": "Airbus A330-800 (A330neo)",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent 7000",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS A.004 Airbus A330, Issue 69 (engine/model correspondence table)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en"
+        },
+        {
+          "name": "Airbus A330 Facts & Figures, April 2025: 'CF6-80E1, PW4000 and RR Trent 700 / Trent 7000 on NEO'",
+          "url": "https://www.airbus.com/sites/g/files/jlcbta136/files/2025-04/Airbus-A330-Facts-and-Figures-April%202025.pdf"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A339",
+      "model": "Airbus A330-900 (A330neo)",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent 7000",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS A.004 Airbus A330, Issue 69 (engine/model correspondence table)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en"
+        },
+        {
+          "name": "Airbus A330 Facts & Figures, April 2025: 'CF6-80E1, PW4000 and RR Trent 700 / Trent 7000 on NEO'",
+          "url": "https://www.airbus.com/sites/g/files/jlcbta136/files/2025-04/Airbus-A330-Facts-and-Figures-April%202025.pdf"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A342",
+      "model": "Airbus A340-200",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 4,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "CFM56-5C series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDSN A.015 Airbus A340, Issue 13",
+          "url": "https://www.easa.europa.eu/en/downloads/8367/en"
+        },
+        {
+          "name": "UK CAA TCDS UK.TC.A.00156 (A340): A340-313 'four CFM56-5C4'",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3887"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A343",
+      "model": "Airbus A340-300",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 4,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "CFM56-5C series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDSN A.015 Airbus A340, Issue 13",
+          "url": "https://www.easa.europa.eu/en/downloads/8367/en"
+        },
+        {
+          "name": "UK CAA TCDS UK.TC.A.00156 (A340): A340-313 'four CFM56-5C4'",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3887"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A345",
+      "model": "Airbus A340-500",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 4,
+      "engineOptions": [
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent 500 series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDSN A.015 Airbus A340, Issue 13",
+          "url": "https://www.easa.europa.eu/en/downloads/8367/en"
+        },
+        {
+          "name": "Wikipedia: Rolls-Royce Trent 500 (Trent 553 on A340-500, Trent 556 on A340-600)",
+          "url": "https://en.wikipedia.org/wiki/Rolls-Royce_Trent_500"
+        }
+      ],
+      "notes": "Trent 500 source is Wikipedia (secondary).",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A346",
+      "model": "Airbus A340-600",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 4,
+      "engineOptions": [
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent 500 series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDSN A.015 Airbus A340, Issue 13",
+          "url": "https://www.easa.europa.eu/en/downloads/8367/en"
+        },
+        {
+          "name": "Wikipedia: Rolls-Royce Trent 500 (Trent 553 on A340-500, Trent 556 on A340-600)",
+          "url": "https://en.wikipedia.org/wiki/Rolls-Royce_Trent_500"
+        }
+      ],
+      "notes": "Trent 500 source is Wikipedia (secondary).",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A359",
+      "model": "Airbus A350-900",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent XWB-84",
+          "verified": true
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent XWB-75",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS A.151 Airbus A350, Issue 33 (A350-941: Trent XWB-84 or XWB-75; A350-1041: Trent XWB-97)",
+          "url": "https://www.easa.europa.eu/en/downloads/17736/en"
+        }
+      ],
+      "notes": "Trent XWB-75 per EASA TCDS (modification 113768).",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A35K",
+      "model": "Airbus A350-1000",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent XWB-97",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS A.151 Airbus A350, Issue 33 (A350-941: Trent XWB-84 or XWB-75; A350-1041: Trent XWB-97)",
+          "url": "https://www.easa.europa.eu/en/downloads/17736/en"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "A388",
+      "model": "Airbus A380-800",
+      "manufacturer": "Airbus",
+      "family": "Airbus widebody",
+      "engineCount": 4,
+      "engineOptions": [
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent 900",
+          "verified": true
+        },
+        {
+          "maker": "Engine Alliance (GE/P&W)",
+          "model": "GP7200",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA AD 2021-0001 (A380, TCDS EASA.A.110)",
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2021_0001_superseded.pdf/AD_2021-0001_1"
+        },
+        {
+          "name": "UK CAA Part 21 engine approvals (EASA.IM.E.026 GP7200; Trent 900)",
+          "url": "https://www.caa.co.uk/commercial-industry/aircraft/airworthiness/type-certificate-and-type-approval-data-sheets/part-21/approval-of-part-21-engines/"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B732",
+      "model": "Boeing 737-200 (737 Original)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 737",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "Pratt & Whitney",
+          "model": "JT8D series (JT8D-7 to -17A)",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A16WE, older revision (copy): JT8D-7...-17A; CFM56-3B-1/-3B-2/-3C-1",
+          "url": "http://www.b737.org.uk/a16we.pdf"
+        },
+        {
+          "name": "FAA TCDS A16WE Boeing 737, Rev 77 (Jan 2025)",
+          "url": "https://drs.faa.gov/browse/excelExternalWindow/DRSDOCID198878707920250129005139.0001"
+        }
+      ],
+      "notes": "Added: not in the original list.",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B733",
+      "model": "Boeing 737-300 (737 Classic)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 737",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "CFM56-3 series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A16WE, older revision (copy): JT8D-7...-17A; CFM56-3B-1/-3B-2/-3C-1",
+          "url": "http://www.b737.org.uk/a16we.pdf"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B734",
+      "model": "Boeing 737-400 (737 Classic)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 737",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "CFM56-3 series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A16WE, older revision (copy): JT8D-7...-17A; CFM56-3B-1/-3B-2/-3C-1",
+          "url": "http://www.b737.org.uk/a16we.pdf"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B735",
+      "model": "Boeing 737-500 (737 Classic)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 737",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "CFM56-3 series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A16WE, older revision (copy): JT8D-7...-17A; CFM56-3B-1/-3B-2/-3C-1",
+          "url": "http://www.b737.org.uk/a16we.pdf"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B736",
+      "model": "Boeing 737-600 (737 NG)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 737",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "CFM56-7B series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A16WE Boeing 737, Rev 77 (Jan 2025)",
+          "url": "https://drs.faa.gov/browse/excelExternalWindow/DRSDOCID198878707920250129005139.0001"
+        },
+        {
+          "name": "EASA TCDS IM.A.120 Boeing 737, Issue 29",
+          "url": "https://www.easa.europa.eu/en/downloads/7297/en"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B737",
+      "model": "Boeing 737-700 (737 NG)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 737",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "CFM56-7B series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A16WE Boeing 737, Rev 77 (Jan 2025)",
+          "url": "https://drs.faa.gov/browse/excelExternalWindow/DRSDOCID198878707920250129005139.0001"
+        },
+        {
+          "name": "EASA TCDS IM.A.120 Boeing 737, Issue 29",
+          "url": "https://www.easa.europa.eu/en/downloads/7297/en"
+        }
+      ],
+      "notes": "B737 includes military C-40 variants.",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B738",
+      "model": "Boeing 737-800 (737 NG)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 737",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "CFM56-7B series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A16WE Boeing 737, Rev 77 (Jan 2025)",
+          "url": "https://drs.faa.gov/browse/excelExternalWindow/DRSDOCID198878707920250129005139.0001"
+        },
+        {
+          "name": "EASA TCDS IM.A.120 Boeing 737, Issue 29",
+          "url": "https://www.easa.europa.eu/en/downloads/7297/en"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B739",
+      "model": "Boeing 737-900 / -900ER (737 NG)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 737",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "CFM56-7B series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A16WE Boeing 737, Rev 77 (Jan 2025)",
+          "url": "https://drs.faa.gov/browse/excelExternalWindow/DRSDOCID198878707920250129005139.0001"
+        },
+        {
+          "name": "EASA TCDS IM.A.120 Boeing 737, Issue 29",
+          "url": "https://www.easa.europa.eu/en/downloads/7297/en"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B37M",
+      "model": "Boeing 737-7 (737 MAX 7)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 737",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "LEAP-1B",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA news: EASA certifies CFM LEAP-1B",
+          "url": "https://www.easa.europa.eu/en/newsroom-and-events/news/easa-certifies-cfm-leap-1b"
+        },
+        {
+          "name": "Leeham News 2026-08-03: FAA type certificate for 737-7 (same LEAP-1B engines as rest of MAX family)",
+          "url": "https://leehamnews.com/2026/08/03/boeing-finally-secures-faa-type-certificate-for-737-max-7/"
+        }
+      ],
+      "notes": "FAA type certificate issued 3 Aug 2026.",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B38M",
+      "model": "Boeing 737-8 (737 MAX 8)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 737",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "LEAP-1B",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA news: EASA certifies CFM LEAP-1B",
+          "url": "https://www.easa.europa.eu/en/newsroom-and-events/news/easa-certifies-cfm-leap-1b"
+        },
+        {
+          "name": "Aviation Week: Boeing 737 MAX 8 earns FAA certification",
+          "url": "https://aviationweek.com/air-transport/boeing-737-max-8-earns-faa-certification"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B39M",
+      "model": "Boeing 737-9 (737 MAX 9)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 737",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "LEAP-1B",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA news: EASA certifies CFM LEAP-1B",
+          "url": "https://www.easa.europa.eu/en/newsroom-and-events/news/easa-certifies-cfm-leap-1b"
+        },
+        {
+          "name": "Leeham News 2026-08-03: FAA type certificate for 737-7 (same LEAP-1B engines as rest of MAX family)",
+          "url": "https://leehamnews.com/2026/08/03/boeing-finally-secures-faa-type-certificate-for-737-max-7/"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B3XM",
+      "model": "Boeing 737-10 (737 MAX 10)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 737",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "CFM International",
+          "model": "LEAP-1B",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA news: EASA certifies CFM LEAP-1B",
+          "url": "https://www.easa.europa.eu/en/newsroom-and-events/news/easa-certifies-cfm-leap-1b"
+        },
+        {
+          "name": "Leeham News 2026-08-03: FAA type certificate for 737-7 (same LEAP-1B engines as rest of MAX family)",
+          "url": "https://leehamnews.com/2026/08/03/boeing-finally-secures-faa-type-certificate-for-737-max-7/"
+        }
+      ],
+      "notes": "Not yet certified as of the Aug 2026 reports. B3XM itself was confirmed only via tar1090-db, not Doc 8643 text.",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B741",
+      "model": "Boeing 747-100",
+      "manufacturer": "Boeing",
+      "family": "Boeing 747/757/767",
+      "engineCount": 4,
+      "engineOptions": [
+        {
+          "maker": "Pratt & Whitney",
+          "model": "JT9D series",
+          "verified": true
+        },
+        {
+          "maker": "General Electric",
+          "model": "CF6-50 series",
+          "verified": true
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "RB211-524 series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A20WE Boeing 747 (Boeing-hosted copy, 2016)",
+          "url": "https://www.boeing.com/content/dam/boeing/v2/airports/7478-airport-comp/A20WE.pdf"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B742",
+      "model": "Boeing 747-200",
+      "manufacturer": "Boeing",
+      "family": "Boeing 747/757/767",
+      "engineCount": 4,
+      "engineOptions": [
+        {
+          "maker": "Pratt & Whitney",
+          "model": "JT9D-7 series",
+          "verified": true
+        },
+        {
+          "maker": "General Electric",
+          "model": "CF6-50E2",
+          "verified": true
+        },
+        {
+          "maker": "General Electric",
+          "model": "CF6-80C2B1",
+          "verified": true
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "RB211-524 series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A20WE Boeing 747 (Boeing-hosted copy, 2016)",
+          "url": "https://www.boeing.com/content/dam/boeing/v2/airports/7478-airport-comp/A20WE.pdf"
+        }
+      ],
+      "notes": "From secondary summaries of A20WE. Includes the military E-4B, which shares the code.",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B743",
+      "model": "Boeing 747-300",
+      "manufacturer": "Boeing",
+      "family": "Boeing 747/757/767",
+      "engineCount": 4,
+      "engineOptions": [
+        {
+          "maker": "Pratt & Whitney",
+          "model": "JT9D-7R4G2",
+          "verified": true
+        },
+        {
+          "maker": "General Electric",
+          "model": "CF6-50E2",
+          "verified": true
+        },
+        {
+          "maker": "General Electric",
+          "model": "CF6-80C2B1",
+          "verified": true
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "RB211-524 series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A20WE Boeing 747 (Boeing-hosted copy, 2016)",
+          "url": "https://www.boeing.com/content/dam/boeing/v2/airports/7478-airport-comp/A20WE.pdf"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B744",
+      "model": "Boeing 747-400",
+      "manufacturer": "Boeing",
+      "family": "Boeing 747/757/767",
+      "engineCount": 4,
+      "engineOptions": [
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW4000 series",
+          "verified": true
+        },
+        {
+          "maker": "General Electric",
+          "model": "CF6-80C2B1F / B5F",
+          "verified": true
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "RB211-524G/H series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A20WE Boeing 747 (Boeing-hosted copy, 2016)",
+          "url": "https://www.boeing.com/content/dam/boeing/v2/airports/7478-airport-comp/A20WE.pdf"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B74S",
+      "model": "Boeing 747SP",
+      "manufacturer": "Boeing",
+      "family": "Boeing 747/757/767",
+      "engineCount": 4,
+      "engineOptions": [
+        {
+          "maker": "Pratt & Whitney",
+          "model": "JT9D series",
+          "verified": false
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "RB211-524 series",
+          "verified": false
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A20WE Boeing 747 (Boeing-hosted copy, 2016)",
+          "url": "https://www.boeing.com/content/dam/boeing/v2/airports/7478-airport-comp/A20WE.pdf"
+        }
+      ],
+      "notes": "Added: not in the original list. UNVERIFIED: no source found for 747SP engines.",
+      "verification": "unverified"
+    },
+    {
+      "icao": "B748",
+      "model": "Boeing 747-8 (747-8I and 747-8F)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 747/757/767",
+      "engineCount": 4,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "GEnx-2B67",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA TCDS A20WE Boeing 747 (Boeing-hosted copy, 2016)",
+          "url": "https://www.boeing.com/content/dam/boeing/v2/airports/7478-airport-comp/A20WE.pdf"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B752",
+      "model": "Boeing 757-200",
+      "manufacturer": "Boeing",
+      "family": "Boeing 747/757/767",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "Rolls-Royce",
+          "model": "RB211-535C / -535E4 series",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW2037 / PW2040 / PW2043 (PW2000)",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS IM.A.205 Boeing 757 (UK CAA copy): RB211-535C-37/-535E4-37/-535E4-B-37 or PW2040/PW2037",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/2735"
+        },
+        {
+          "name": "US Federal Register 2010-07-02: 757-200 with PW2037, PW2040, PW2043 or RB211 (TC A2NM)",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2010-07-02/pdf/2010-16166.pdf"
+        }
+      ],
+      "notes": "Includes military C-32 variants.",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B753",
+      "model": "Boeing 757-300",
+      "manufacturer": "Boeing",
+      "family": "Boeing 747/757/767",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "Rolls-Royce",
+          "model": "RB211-535E4 series",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW2037 / PW2040 / PW2043 (PW2000)",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS IM.A.205 Boeing 757 (UK CAA copy): RB211-535C-37/-535E4-37/-535E4-B-37 or PW2040/PW2037",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/2735"
+        },
+        {
+          "name": "flugzeuginfo.net Boeing 757-300 (secondary; cites FAA TCDS A2NM)",
+          "url": "https://www.flugzeuginfo.net/acdata_php/acdata_7573_en.php"
+        }
+      ],
+      "notes": "757-300 split comes from a secondary specs site.",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B762",
+      "model": "Boeing 767-200 / -200ER",
+      "manufacturer": "Boeing",
+      "family": "Boeing 747/757/767",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "CF6-80A / CF6-80C2",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW4056 / PW4060A (PW4000)",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "JT9D-7R4",
+          "verified": false
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS IM.A.035 Boeing 767, Issue 11 (copy)",
+          "url": "https://www.scribd.com/document/986783272/B767-TCDS-EASA-IM-A-035-issue-11"
+        }
+      ],
+      "notes": "Includes the KC-46 tanker, which shares the code. JT9D on the 767-200 was not confirmed.",
+      "verification": "partly-unverified"
+    },
+    {
+      "icao": "B763",
+      "model": "Boeing 767-300 / -300ER / -300F",
+      "manufacturer": "Boeing",
+      "family": "Boeing 747/757/767",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "Pratt & Whitney",
+          "model": "JT9D-7R4D/E series",
+          "verified": true
+        },
+        {
+          "maker": "General Electric",
+          "model": "CF6-80A2 / CF6-80C2",
+          "verified": true
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "RB211-524H",
+          "verified": true
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW4000 series",
+          "verified": false
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS IM.A.035 Boeing 767, Issue 11 (copy)",
+          "url": "https://www.scribd.com/document/986783272/B767-TCDS-EASA-IM-A-035-issue-11"
+        }
+      ],
+      "notes": "PW4000 on the 767-300 was not confirmed in the excerpts.",
+      "verification": "partly-unverified"
+    },
+    {
+      "icao": "B764",
+      "model": "Boeing 767-400ER",
+      "manufacturer": "Boeing",
+      "family": "Boeing 747/757/767",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "CF6-80C2",
+          "verified": false
+        },
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW4000 series",
+          "verified": false
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "UK CAA TCDS UK.TC.A.00086 Boeing 767 (refers to FAA A1NM)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3625"
+        }
+      ],
+      "notes": "UNVERIFIED: no engine list found for the 767-400ER.",
+      "verification": "unverified"
+    },
+    {
+      "icao": "B772",
+      "model": "Boeing 777-200 / -200ER",
+      "manufacturer": "Boeing",
+      "family": "Boeing 777/787",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW4000 series",
+          "verified": true
+        },
+        {
+          "maker": "General Electric",
+          "model": "GE90 (-76B/-85B/-90B/-94B)",
+          "verified": true
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent 800",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS IM.A.003 Boeing 777, Issue 20 (May 2026): PW4000; GE90-76B/-85B/-90B/-94B",
+          "url": "https://www.easa.europa.eu/en/downloads/7521/en"
+        },
+        {
+          "name": "Wikipedia: Rolls-Royce Trent 800",
+          "url": "https://en.wikipedia.org/wiki/Rolls-Royce_Trent_800"
+        },
+        {
+          "name": "Wikipedia: Pratt & Whitney PW4000 (777-200, -200ER, -300)",
+          "url": "https://en.wikipedia.org/wiki/Pratt_%26_Whitney_PW4000"
+        }
+      ],
+      "notes": "EASA notes some PW4000 configurations are not validated for EU-registered aircraft.",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B77L",
+      "model": "Boeing 777-200LR / 777F",
+      "manufacturer": "Boeing",
+      "family": "Boeing 777/787",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "GE90-110B",
+          "verified": true
+        },
+        {
+          "maker": "General Electric",
+          "model": "GE90-115B",
+          "verified": false
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "US Federal Register 2003-06-13: T00001SE amended for 777-200LR (110,100 lb GE90) and 777-300ER (115,300 lb GE90)",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2003-06-13/pdf/03-14992.pdf"
+        }
+      ],
+      "notes": "Federal Register gives 110,100 lb GE90 for the 777-200LR. The exact engine model on the 777F was not confirmed.",
+      "verification": "partly-unverified"
+    },
+    {
+      "icao": "B773",
+      "model": "Boeing 777-300",
+      "manufacturer": "Boeing",
+      "family": "Boeing 777/787",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "Pratt & Whitney",
+          "model": "PW4090 / PW4098 (PW4000)",
+          "verified": true
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent 892 (Trent 800)",
+          "verified": true
+        },
+        {
+          "maker": "General Electric",
+          "model": "GE90",
+          "verified": false
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "flugzeuginfo.net Boeing 777-300 (secondary): PW4090/PW4098, Trent 892",
+          "url": "http://www.flugzeuginfo.net/acdata_php/acdata_7773_en.php"
+        },
+        {
+          "name": "Wikipedia: Pratt & Whitney PW4000 (777-200, -200ER, -300)",
+          "url": "https://en.wikipedia.org/wiki/Pratt_%26_Whitney_PW4000"
+        }
+      ],
+      "notes": "Secondary sources. A GE90 option on the (non-ER) 777-300 was not confirmed.",
+      "verification": "partly-unverified"
+    },
+    {
+      "icao": "B77W",
+      "model": "Boeing 777-300ER",
+      "manufacturer": "Boeing",
+      "family": "Boeing 777/787",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "GE90-115B",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "US Federal Register 2003-06-13: T00001SE amended for 777-200LR (110,100 lb GE90) and 777-300ER (115,300 lb GE90)",
+          "url": "https://www.govinfo.gov/content/pkg/FR-2003-06-13/pdf/03-14992.pdf"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B778",
+      "model": "Boeing 777-8 (777X)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 777/787",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "GE9X",
+          "verified": false
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA Order JO 7360.1B Aircraft Type Designators (2017, reproduces Doc 8643)",
+          "url": "https://www.faa.gov/documentLibrary/media/Order/2017-03-07_FAA_Order_JO_7360.1B_Aircraft_Type_Designators.pdf"
+        }
+      ],
+      "notes": "Added. UNVERIFIED engine. Not certified/in service at time of writing.",
+      "verification": "unverified"
+    },
+    {
+      "icao": "B779",
+      "model": "Boeing 777-9 (777X)",
+      "manufacturer": "Boeing",
+      "family": "Boeing 777/787",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "GE9X",
+          "verified": false
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "FAA Order JO 7360.1B Aircraft Type Designators (2017, reproduces Doc 8643)",
+          "url": "https://www.faa.gov/documentLibrary/media/Order/2017-03-07_FAA_Order_JO_7360.1B_Aircraft_Type_Designators.pdf"
+        }
+      ],
+      "notes": "Added. UNVERIFIED engine. In flight testing (a few test aircraft in tar1090-db).",
+      "verification": "unverified"
+    },
+    {
+      "icao": "B788",
+      "model": "Boeing 787-8",
+      "manufacturer": "Boeing",
+      "family": "Boeing 777/787",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "GEnx-1B series",
+          "verified": false
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent 1000 series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDSN Boeing 787 (787-10: GEnx-1B76/P2G01)",
+          "url": "https://www.easa.europa.eu/en/downloads/7302/en"
+        },
+        {
+          "name": "AeroCorner 2026-08: FAA proposed AD for 787-8/-9/-10 with Trent 1000",
+          "url": "https://aerocorner.com/news/faa-787-trent-1000-fan-cowl-proposed-ad/"
+        },
+        {
+          "name": "UK CAA TCDS Boeing 787 (refers to FAA T00021SE)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3650"
+        }
+      ],
+      "notes": "Trent 1000 confirmed on 787-8/-9/-10 (FAA proposed AD). GEnx-1B confirmed only for the 787-10 (EASA TCDSN).",
+      "verification": "partly-unverified"
+    },
+    {
+      "icao": "B789",
+      "model": "Boeing 787-9",
+      "manufacturer": "Boeing",
+      "family": "Boeing 777/787",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "GEnx-1B series",
+          "verified": false
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent 1000 series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDSN Boeing 787 (787-10: GEnx-1B76/P2G01)",
+          "url": "https://www.easa.europa.eu/en/downloads/7302/en"
+        },
+        {
+          "name": "AeroCorner 2026-08: FAA proposed AD for 787-8/-9/-10 with Trent 1000",
+          "url": "https://aerocorner.com/news/faa-787-trent-1000-fan-cowl-proposed-ad/"
+        },
+        {
+          "name": "UK CAA TCDS Boeing 787 (refers to FAA T00021SE)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3650"
+        }
+      ],
+      "notes": "Trent 1000 confirmed on 787-8/-9/-10 (FAA proposed AD). GEnx-1B confirmed only for the 787-10 (EASA TCDSN).",
+      "verification": "partly-unverified"
+    },
+    {
+      "icao": "B78X",
+      "model": "Boeing 787-10",
+      "manufacturer": "Boeing",
+      "family": "Boeing 777/787",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "General Electric",
+          "model": "GEnx-1B series",
+          "verified": true
+        },
+        {
+          "maker": "Rolls-Royce",
+          "model": "Trent 1000 series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDSN Boeing 787 (787-10: GEnx-1B76/P2G01)",
+          "url": "https://www.easa.europa.eu/en/downloads/7302/en"
+        },
+        {
+          "name": "AeroCorner 2026-08: FAA proposed AD for 787-8/-9/-10 with Trent 1000",
+          "url": "https://aerocorner.com/news/faa-787-trent-1000-fan-cowl-proposed-ad/"
+        },
+        {
+          "name": "UK CAA TCDS Boeing 787 (refers to FAA T00021SE)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3650"
+        }
+      ],
+      "notes": "Trent 1000 confirmed on 787-8/-9/-10 (FAA proposed AD). GEnx-1B confirmed only for the 787-10 (EASA TCDSN).",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B712",
+      "model": "Boeing 717-200 (ex-McDonnell Douglas MD-95)",
+      "manufacturer": "Boeing",
+      "family": "Older types",
+      "engineCount": 2,
+      "engineOptions": [
+        {
+          "maker": "Rolls-Royce",
+          "model": "BR715 (BR700-715)",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "EASA TCDS BR700-715 engine series",
+          "url": "https://www.easa.europa.eu/de/downloads/7757/en"
+        },
+        {
+          "name": "FlightGlobal: BMW Rolls-Royce BR715 selected for MD-95 (Boeing 717)",
+          "url": "https://flightglobal.com/bmw-rolls-royce/3983.article"
+        }
+      ],
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B721",
+      "model": "Boeing 727-100",
+      "manufacturer": "Boeing",
+      "family": "Older types",
+      "engineCount": 3,
+      "engineOptions": [
+        {
+          "maker": "Pratt & Whitney",
+          "model": "JT8D series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "Wikipedia: Boeing 727 (three JT8D; FAA TC A3WE)",
+          "url": "https://en.wikipedia.org/wiki/Boeing_727"
+        },
+        {
+          "name": "flugzeuginfo.net Boeing 727 (secondary)",
+          "url": "https://www.flugzeuginfo.net/acdata_php/acdata_727_en.php"
+        }
+      ],
+      "notes": "Secondary sources (FAA TCDS A3WE not reached).",
+      "verification": "verified-secondary"
+    },
+    {
+      "icao": "B722",
+      "model": "Boeing 727-200",
+      "manufacturer": "Boeing",
+      "family": "Older types",
+      "engineCount": 3,
+      "engineOptions": [
+        {
+          "maker": "Pratt & Whitney",
+          "model": "JT8D series",
+          "verified": true
+        }
+      ],
+      "source": [
+        {
+          "name": "ICAO Doc 8643 Aircraft Type Designators (54th ed., Apr 2026); codes cross-checked against tar1090-db (Oct 2026)",
+          "url": "https://www.icao.int/operational-safety/doc-8643-aircraft-type-designators"
+        },
+        {
+          "name": "Wikipedia: Boeing 727 (three JT8D; FAA TC A3WE)",
+          "url": "https://en.wikipedia.org/wiki/Boeing_727"
+        },
+        {
+          "name": "flugzeuginfo.net Boeing 727 (secondary)",
+          "url": "https://www.flugzeuginfo.net/acdata_php/acdata_727_en.php"
+        }
+      ],
+      "notes": "Secondary sources (FAA TCDS A3WE not reached).",
+      "verification": "verified-secondary"
+    }
+  ]
+}
