@@ -240,6 +240,13 @@ async function tracks(browser) {
   check('[track] legend appears', await page.isVisible('.track-legend'));
   if (process.env.SHOT) await page.screenshot({ path: process.env.SHOT });
 
+  // Same again, but by clicking the plane ON THE MAP (how people actually use it).
+  await page.click('#map', { position: { x: 30, y: 400 } });
+  await page.locator('.leaflet-marker-icon', { has: page.locator('.plane') }).nth(0).click();
+  await page.waitForTimeout(300);
+  const viaMarker = await page.locator('.leaflet-overlay-pane path').count();
+  check('[track] clicking the plane on the map also draws its track', viaMarker > 1, `${viaMarker - 1} segments`);
+
   await page.click('#map', { position: { x: 30, y: 400 } }); // empty map
   const after = await page.locator('.leaflet-overlay-pane path').count();
   check('[track] clicking empty map hides the track and legend', after === 1 && !(await page.isVisible('.track-legend')));
