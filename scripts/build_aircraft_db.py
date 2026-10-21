@@ -39,7 +39,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = ROOT / "data" / "aircraft_db"
 
 # OpenSky columns we use. All must exist in the header, or we stop.
-OPENSKY_COLUMNS = ["icao24", "model", "typecode", "serialnumber", "built", "engines"]
+OPENSKY_COLUMNS = ["icao24", "model", "typecode", "serialNumber", "built", "engines"]  # names from the real header (2025-08 snapshot)
 
 # Field order in the output files. The page reads these names from each file.
 FIELDS = [
@@ -114,7 +114,7 @@ def load_opensky(wanted_types, tar_rows):
         for c, v in values.items():
             if v:
                 filled[c] += 1
-        rows[hex_code] = [values["model"], values["serialnumber"], values["built"], values["engines"], typecode or None]
+        rows[hex_code] = [values["model"], values["serialNumber"], values["built"], values["engines"], typecode or None]
     info = {"url": url, "lastModified": last_modified, "rowsInSource": total, "columns": header,
             "filledCountsForKeptRows": filled, "quoteChar": quote}
     return rows, info
