@@ -135,11 +135,13 @@ export function showTrack(points) {
     trackLegend.remove();
     return;
   }
-  // One short line per pair of points, so each piece can have its own altitude colour.
+  // A dark outline under the whole track, so it stands out on the satellite view too.
+  L.polyline(points.map((p) => [p.lat, p.lon]), { color: '#111827', weight: 6, opacity: 0.6, interactive: false }).addTo(trackLayer);
+  // Then one short line per pair of points, so each piece can have its own altitude colour.
   for (let i = 1; i < points.length; i++) {
     const a = points[i - 1];
     const b = points[i];
-    L.polyline([[a.lat, a.lon], [b.lat, b.lon]], { color: altColor(b.alt), weight: 3, opacity: 0.9, interactive: false }).addTo(trackLayer);
+    L.polyline([[a.lat, a.lon], [b.lat, b.lon]], { color: altColor(b.alt), weight: 3.5, opacity: 1, interactive: false }).addTo(trackLayer);
   }
   trackLegend.addTo(map);
 }

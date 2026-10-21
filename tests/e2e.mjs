@@ -240,11 +240,16 @@ async function tracks(browser) {
 
   await page.locator('#aircraft-list tbody tr', { hasText: 'TST101' }).click();
   const segments = await page.locator('.leaflet-overlay-pane path.leaflet-interactive, .leaflet-overlay-pane path').count();
-  // 1 path is the dashed search circle; the rest are track segments.
-  check('[track] selecting a plane draws its track (one segment per move)', segments - 1 === update - 1, `${segments - 1} segments`);
+  // 1 path is the dashed search circle, 1 is the track's dark outline; the rest are coloured segments.
+  check('[track] selecting a plane draws its track (one segment per move)', segments - 2 === update - 1, `${segments - 2} segments`);
   const colors = await page.locator('.leaflet-overlay-pane path[stroke="#2563eb"]').count();
   check('[track] segments above 25,000 ft are blue', colors >= 1);
   check('[track] legend appears', await page.isVisible('.track-legend'));
+  await page.locator('.leaflet-popup', { hasText: 'TST101' }).locator('.popup__more').click();
+  await page.waitForSelector('#info-panel:not([hidden])');
+  const recorded = await page.locator('#info-panel tr', { hasText: 'Track on map' }).textContent();
+  check('[track] info panel says how much track is recorded', recorded.includes('recorded since you opened the page'), recorded);
+  await page.click('.info__close');
   if (process.env.SHOT) await page.screenshot({ path: process.env.SHOT });
 
   // Same again, but by clicking the plane ON THE MAP (how people actually use it).
@@ -252,7 +257,7 @@ async function tracks(browser) {
   await page.locator('.leaflet-marker-icon', { has: page.locator('.plane') }).nth(0).click();
   await page.waitForTimeout(300);
   const viaMarker = await page.locator('.leaflet-overlay-pane path').count();
-  check('[track] clicking the plane on the map also draws its track', viaMarker > 1, `${viaMarker - 1} segments`);
+  check('[track] clicking the plane on the map also draws its track', viaMarker > 2, `${viaMarker - 2} segments`);
 
   await page.click('#map', { position: { x: 30, y: 400 } }); // empty map
   const after = await page.locator('.leaflet-overlay-pane path').count();

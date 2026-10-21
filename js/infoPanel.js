@@ -9,6 +9,7 @@
 import * as fmt from './format.js';
 import { lookupAircraft, lookupType, getDbMeta, ageFromYear, lookupVariant } from './aircraftDb.js';
 import { getPhoto } from './photos.js';
+import { getTrack } from './track.js';
 
 let panel;
 let liveSection;
@@ -260,5 +261,15 @@ export function updateLive(ac) {
   row(table, 'Track', ac.trackDeg === null ? null : `${Math.round(ac.trackDeg)}°`, LIVE());
   row(table, 'Squawk', ac.squawk, LIVE());
   row(table, 'Distance from center', ac.distanceNm === null ? null : fmt.distance(ac.distanceNm), LIVE());
+  // How much track we have so far (it only starts when the page is opened).
+  const track = getTrack(ac.hex);
+  const minutes = track.length > 1 ? Math.round((track.at(-1).time - track[0].time) / 60000) : 0;
+  const trackText = track.length < 2
+    ? 'Starting… (needs two updates, about 20 s)'
+    : `${minutes < 1 ? 'under 1' : minutes} min recorded since you opened the page`;
+  const tr = table.insertRow();
+  tr.insertCell().textContent = 'Track on map';
+  tr.insertCell().textContent = trackText;
+  tr.insertCell().textContent = '';
   liveSection.replaceChildren(h('h3', null, 'Live'), table);
 }
