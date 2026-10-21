@@ -1,1 +1,1 @@
-{"fields":["registration","typeCode","typeDescription","yearBuilt","operator","osModel","osSerialNumber","osBuilt","osEngines","osTypeCode"],"aircraft":{}}
+{"fields":["registration","typeCode","typeDescription","yearBuilt","operator","osModel","osSerialNumber","osBuilt","osEngines","osTypeCode"],"aircraft":{"b18651":[null,null,null,null,null,"Boeing 737-8Q8",null,null,null,"B738"],"b50003":[null,null,null,null,null,"Airbus A320-232",null,null,null,"A320"]}}
