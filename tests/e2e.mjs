@@ -190,7 +190,7 @@ async function phase4(browser) {
   check('[panel] operator from database', (await rowText('Operator')).includes('UNITED AIRLINES INC'));
   check('[panel] type name from type table, tagged TYPE', (await page.locator('#info-panel tr', { hasText: /^Type/ }).first().textContent()) === 'TypeBoeing 737-800 (737 NG)TYPE');
   check('[panel] exact model and serial number from OpenSky, tagged OSN',
-    (await rowText('Exact model')) === 'Exact model (as recorded)737-824OSN' && (await rowText('Serial number')) === 'Serial number (MSN)30578OSN');
+    (await rowText('Exact model')) === 'Exact model737-824OSN' && (await rowText('Serial number')) === 'Serial number (MSN)30578OSN');
   check('[panel] single-engine type: engine applies to this aircraft', (await rowText('Engine')).includes('2 × CFM International CFM56-7B series') && text.includes('only engine offered for this aircraft type'));
   check('[panel] engine as recorded by OpenSky shown verbatim', (await rowText('Recorded for this aircraft')).includes('CFM INTL. CFM56 SERIES'));
   const squawkTile = await page.locator('#info-panel .tile', { hasText: 'Squawk' }).textContent();
@@ -217,6 +217,8 @@ async function phase4(browser) {
   check('[route] info panel shows full airport names',
     (await rowText('From')).includes('Fuzhou Changle International Airport (FOC / ZSFZ)') && (await rowText('To')).includes('Singapore Changi International Airport (SIN / WSSS)'));
   check('[route] no "outdated" warning when the plane is on its route', !text.includes('may be outdated'));
+  check('[panel] missing fields are listed on one line, not as rows of Unknown',
+    text.includes('Unknown (not in our databases): registration') && (await page.locator('#info-panel tr', { hasText: 'Serial number' }).count()) === 0);
   check('[panel] aircraft not in database says so, falls back to live type', text.includes('Not in our database') && (await rowText('ICAO type code')) === 'ICAO type codeB77WLIVE');
   check('[panel] database shard downloaded once (cached)', new Set(shardRequests).size === shardRequests.length, shardRequests.join(' '));
   check('[panel] unconfirmed badge only where verified=false', !text.includes('unconfirmed'));

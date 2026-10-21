@@ -98,7 +98,11 @@ export async function openInfoPanel(ac) {
   const [dbResult, metaResult] = await Promise.allSettled([lookupAircraft(ac.hex), getDbMeta()]);
   const db = dbResult.status === 'fulfilled' ? dbResult.value : null;
   const typeCode = db?.typeCode ?? ac.typeCode;
-  const [typeResult, variantResult] = await Promise.allSettled([lookupType(typeCode), lookupVariant(db?.osModel)]);
+  // The exact model can come from OpenSky or from the VRS standing data; try both.
+  const [typeResult, variantResult] = await Promise.allSettled([
+    lookupType(typeCode),
+    lookupVariant(db?.osModel).then((v) => v ?? lookupVariant(db?.vrsModel)),
+  ]);
   const type = typeResult.status === 'fulfilled' ? typeResult.value : null;
   const variant = variantResult.status === 'fulfilled' ? variantResult.value : null;
 
@@ -121,6 +125,7 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
   const LIVE = () => sourceTag('LIVE', `Live feed (${liveSourceName})`);
   const DB = () => sourceTag('DB', `tar1090-db (Mictronics aircraft database)${builtOn}`);
   const OSN = () => sourceTag('OSN', `OpenSky Network aircraft database${builtOn}`);
+  const VRS = () => sourceTag('VRS', `Virtual Radar Server standing data (crowd-sourced, CC0)${builtOn}`);
   const TCDS = () => sourceTag('TCDS', 'Official type certificate data sheet (see sources below)');
   const TYPE = () => sourceTag('TYPE', 'Type table (data/aircraft_types.json)');
   const CALC = () => sourceTag('CALC', 'Calculated from year built');
@@ -137,21 +142,37 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
   const [reg, regTag] = pick([db?.registration, DB()], [ac.registration, LIVE()]);
   const [code, codeTag] = pick([db?.typeCode, DB()], [db?.osTypeCode, OSN()], [ac.typeCode, LIVE()]);
   const [model, modelTag] = pick([type?.model, TYPE()], [db?.typeDescription, DB()], [ac.typeDescription, LIVE()]);
+  const [exact, exactTag] = pick([db?.osModel, OSN()], [db?.vrsModel, VRS()]);
+  const [serial, serialTag] = pick([db?.osSerialNumber, OSN()], [db?.vrsSerialNumber, VRS()]);
   // OpenSky's "built" is a date like "2018-01-01"; only the year is meaningful.
   const osYear = db?.osBuilt ? db.osBuilt.slice(0, 4) : null;
-  const [year, yearTag] = pick([db?.yearBuilt, DB()], [osYear, OSN()], [ac.yearBuilt, LIVE()]);
-  const [operator, opTag] = pick([db?.operator, DB()], [ac.operator, LIVE()]);
+  const [year, yearTag] = pick([db?.yearBuilt, DB()], [osYear, OSN()], [db?.vrsYearBuilt, VRS()], [ac.yearBuilt, LIVE()]);
+  const [operator, opTag] = pick([db?.operator, DB()], [db?.vrsOperator, VRS()], [ac.operator, LIVE()]);
   const age = ageFromYear(year);
-  row(t1, 'Registration', reg, regTag);
-  row(t1, 'ICAO type code', code, codeTag);
-  row(t1, 'Type', model, modelTag);
-  row(t1, 'Exact model (as recorded)', db?.osModel, OSN());
-  row(t1, 'Manufacturer', type?.manufacturer, TYPE());
-  row(t1, 'Serial number (MSN)', db?.osSerialNumber, OSN());
-  row(t1, 'Year built', year, yearTag);
-  row(t1, 'Age', age === null ? null : `about ${age} year${age === 1 ? '' : 's'}`, CALC());
-  row(t1, 'Operator / owner', operator, opTag);
+
+  // Show the rows we know; list the missing ones on one line instead of a stack of "Unknown"s.
+  const missing = [];
+  const known = (label, value, tag, missingName = label.toLowerCase()) => {
+    if (value === null || value === undefined || value === '') missing.push(missingName);
+    else row(t1, label, value, tag);
+  };
+  known('Registration', reg, regTag);
+  known('ICAO type code', code, codeTag, 'type code');
+  known('Type', model, modelTag);
+  known('Exact model', exact, exactTag);
+  known('Manufacturer', type?.manufacturer, TYPE());
+  known('Serial number (MSN)', serial, serialTag, 'serial number');
+  known('Year built', year, yearTag, 'year built (so no age)');
+  if (age !== null) row(t1, 'Age', `about ${age} year${age === 1 ? '' : 's'}`, CALC());
+  known('Operator / owner', operator, opTag, 'operator');
   parts.push(t1);
+  if (missing.length) parts.push(h('p', 'info__note', `Unknown (not in our databases): ${missing.join(', ')}.`));
+  // Crowd-sourced databases sometimes disagree; say so rather than silently picking one.
+  const disagree = [];
+  const differs = (a, b) => a && b && a.replace(/[\s-]/g, '').toUpperCase() !== b.replace(/[\s-]/g, '').toUpperCase();
+  if (differs(db?.osModel, db?.vrsModel)) disagree.push(`model: OpenSky says ${db.osModel}, VRS says ${db.vrsModel}`);
+  if (differs(db?.osSerialNumber, db?.vrsSerialNumber)) disagree.push(`serial: OpenSky says ${db.osSerialNumber}, VRS says ${db.vrsSerialNumber}`);
+  if (disagree.length) parts.push(h('p', 'info__warn', `The databases disagree on the ${disagree.join('; ')}.`));
 
   // ---- Engines ----
   parts.push(h('h3', null, 'Engines'));
@@ -162,7 +183,7 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
     row(engineTable, `Certified for ${v.model}`, `${v.engineCount ?? '?'} × ${v.engines.join(' or ')}`, TCDS());
     if (db?.osEngines) row(engineTable, 'Recorded for this aircraft', db.osEngines, OSN());
     parts.push(engineTable);
-    if (variant.matchedFrom) parts.push(h('p', 'info__note', `OpenSky records the model as ${variant.matchedFrom}; matched to the certified model ${v.model}.`));
+    if (variant.matchedFrom) parts.push(h('p', 'info__note', `The database records the model as ${variant.matchedFrom}; matched to the certified model ${v.model}.`));
     if (v.engines.length > 1) {
       parts.push(h('p', 'info__note', `The certificate lists ${v.engines.length} versions for this model (thrust ratings or modifications). The database doesn't say which one this aircraft has.`));
     }
@@ -187,7 +208,7 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
       row(engineTable, 'Recorded for this aircraft', db.osEngines, OSN());
       parts.push(engineTable);
     }
-    const why = db?.osModel ? `The exact model "${db.osModel}" isn't in our certificate table` : 'The exact model of this aircraft is unknown';
+    const why = exact ? `The exact model "${exact}" isn't in our certificate table` : 'The exact model of this aircraft is unknown';
     parts.push(h('p', 'info__note', `${why}, so only the engine options for the type are shown below.`));
   }
 
@@ -223,7 +244,7 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
   // ---- Where the data comes from ----
   const legend = h('p', 'info__legend');
   legend.append(LIVE(), ` live feed (${liveSourceName}) · `, DB(), ' tar1090-db · ', OSN(), ' OpenSky aircraft database · ',
-    TCDS(), ' official type certificate · ', sourceTag('ROUTE', 'Route database'), ' route database · ', TYPE(), ' type table · ', CALC(), ' calculated');
+    TCDS(), ' official type certificate · ', VRS(), ' VRS standing data · ', sourceTag('ROUTE', 'Route database'), ' route database · ', TYPE(), ' type table · ', CALC(), ' calculated');
   parts.push(legend);
   parts.push(h('p', 'info__note',
     'Database entries are community-maintained and can be outdated or wrong (for example after an aircraft changes operator).'));

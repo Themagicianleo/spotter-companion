@@ -140,6 +140,7 @@ before you publish.**
 | [Planespotters.net](https://www.planespotters.net) photo API `api.planespotters.net/pub/photos/hex/{hex}` | Aircraft photo in the info panel | No | Not published. One lookup per aircraft per visit, cached in memory | [Terms of use](https://www.planespotters.net/legal/termsofuse): photos belong to the photographers; must show "© photographer" and link to the photo page; hotlink only, never re-host | "© name · via Planespotters.net" under each photo, and the photo links to its page |
 | [OpenSky Network aircraft database](https://opensky-network.org/data/aircraft) (monthly snapshot, merged by the build) | Exact model (e.g. A320-251N), serial number, build year, engine as recorded | No | Static file | OpenSky says the aircraft database is not covered by its terms of use (search summary; page not reachable from the build environment) | "OSN" tag on each value |
 | Official type certificate data sheets (EASA, UK CAA), as text on the `tcds-text` branch | `data/aircraft_variants.json`: engines certified for each exact Airbus/A220 model | No | – | Public regulatory documents | "TCDS" tag; document name and text line number shown in the panel |
+| [Virtual Radar Server standing data](https://github.com/vradarserver/standing-data), aircraft files | Operator, serial number, year built, exact model (aircraft corrected by VRS users since 2022) | No | Static file (merged into `data/aircraft_db/` monthly) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | "VRS" tag on each value |
 | [Virtual Radar Server standing data](https://github.com/vradarserver/standing-data) (routes + airports; also used by adsb.lol) | Flight routes: callsign → origin, stops, destination | No | Static file (`data/routes.json`, rebuilt monthly) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/): no restrictions | "ROUTE" tag in the panel (credited even though CC0 doesn't require it) |
 | `data/aircraft_types.json` (my own table) | Model names, engine options | – | – | Built from EASA/FAA type certificate data sheets, regulator notices and manufacturer pages, each cited per row | Sources listed in the panel |
 
@@ -167,6 +168,13 @@ Remember that a static site can't keep any key secret.
   direct browser requests (CORS). Whether direct calls would work was never tested.
 - **airplanes.live may now be feeders-only**, and its response format wasn't verified. The app shows
   an error rather than guessing if the format differs.
+- **Many details are still missing.** The database merges three free sources (tar1090-db, OpenSky, VRS),
+  but for the 299 Singapore-registered aircraft only 66 have a build year and operator, and 193 a serial
+  number (Oct 2026). Missing fields are listed on one line in the card. When sources disagree (e.g. one
+  says E195-E2, another E190-E2), the card shows both. The official CAAS register would fill the gaps
+  for 9V- aircraft, but its website terms don't allow redistributing it without written permission.
+- **Every Singapore-registered (9V-) aircraft is in the database**, whatever its type; other countries'
+  aircraft only if they're one of the Boeing/Airbus types in the type table.
 - **Age will often be "Unknown".** In tar1090-db, none of the 299 Singapore-registered (9V-)
   aircraft have a year or operator, and only about 20% of airliners overall have a year.
 - **Exact model, serial number and certified engine are often missing.** These come from OpenSky's
