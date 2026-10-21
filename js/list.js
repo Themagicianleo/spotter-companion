@@ -10,6 +10,7 @@ const COLUMNS = [
   ['Callsign', 'callsign', (a) => fmt.text(a.callsign)],
   ['Reg', 'registration', (a) => fmt.text(a.registration)],
   ['Type', 'typeCode', (a) => fmt.text(a.typeCode)],
+  ['Route', 'routeLabel', (a) => fmt.text(a.routeLabel)],
   ['Alt', 'altitudeFt', (a) => fmt.altitude(a)],
   ['Speed', 'groundSpeedKt', (a) => fmt.speed(a.groundSpeedKt)],
   ['V/S', 'verticalRateFpm', (a) => fmt.verticalRate(a.verticalRateFpm)],

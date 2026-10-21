@@ -8,6 +8,7 @@ export const CSV_COLUMNS = [
   ['registration', (a) => a.registration],
   ['type', (a) => a.typeCode],
   ['type_description', (a) => a.typeDescription],
+  ['route', (a) => a.routeLabel], // "(?)" = doesn't match where the plane is
   ['altitude_ft', (a) => a.altitudeFt],
   ['on_ground', (a) => a.onGround],
   ['ground_speed_kt', (a) => a.groundSpeedKt],

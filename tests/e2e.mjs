@@ -125,7 +125,7 @@ async function phase2(browser) {
 
   await page.click('th button[data-key="altitudeFt"]');
   await page.click('th button[data-key="altitudeFt"]');
-  const topAlt = await rows().first().locator('td').nth(3).textContent();
+  const topAlt = await rows().first().locator('td').nth(4).textContent(); // columns: Callsign, Reg, Type, Route, Alt
   check('[sort] clicking Alt twice sorts highest first', topAlt === '36,000 ft', topAlt);
 
   await rows().first().click();
@@ -148,6 +148,8 @@ async function phase4(browser) {
   Object.assign(data.ac[1], { hex: 'a03618', t: 'B738', r: undefined, desc: undefined, ownOp: undefined, year: undefined });
   // 010207 = SU-GFM, recorded by OpenSky as an A320-251N (the certificate says LEAP-1A26).
   Object.assign(data.ac[0], { hex: '010207', t: 'A20N', r: undefined, desc: undefined });
+  // A real callsign with a route on record: CXA865 = Fuzhou (FOC) -> Singapore (SIN). The fixture puts it at Changi.
+  data.ac[2].flight = 'CXA865  ';
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   page.on('pageerror', (e) => check('[panel] no JavaScript errors', false, e.message));
   await page.route('https://tile.openstreetmap.org/**', (r) => r.fulfill({ status: 204 }));
@@ -204,7 +206,12 @@ async function phase4(browser) {
   check('[photo] aircraft without a photo says so', true);
   await page.click('.info__close');
 
-  text = await openPanelFor('XYZ9'); // hex not in database
+  const routeCell = await page.locator('#aircraft-list tbody tr', { hasText: 'CXA865' }).locator('td').nth(3).textContent();
+  check('[route] list shows the route', routeCell === 'FOC → SIN', routeCell);
+  text = await openPanelFor('CXA865'); // hex not in database
+  check('[route] info panel shows full airport names',
+    (await rowText('From')).includes('Fuzhou Changle International Airport (FOC / ZSFZ)') && (await rowText('To')).includes('Singapore Changi International Airport (SIN / WSSS)'));
+  check('[route] no "outdated" warning when the plane is on its route', !text.includes('may be outdated'));
   check('[panel] aircraft not in database says so, falls back to live type', text.includes('Not in our database') && (await rowText('ICAO type code')) === 'ICAO type codeB77WLIVE');
   check('[panel] database shard downloaded once (cached)', new Set(shardRequests).size === shardRequests.length, shardRequests.join(' '));
   check('[panel] unconfirmed badge only where verified=false', !text.includes('unconfirmed'));

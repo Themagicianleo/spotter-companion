@@ -10,11 +10,13 @@ import * as fmt from './format.js';
 import { lookupAircraft, lookupType, getDbMeta, ageFromYear, lookupVariant } from './aircraftDb.js';
 import { getPhoto } from './photos.js';
 import { getTrack } from './track.js';
+import { lookupRoute } from './routes.js';
 
 let panel;
 let liveSection;
 let detailsSection;
 let photoSection;
+let routeSection;
 let currentHex = null;
 let liveSourceName = 'live feed';
 
@@ -62,7 +64,8 @@ export function initInfoPanel(element, providerName) {
   liveSection = h('section', 'info__section');
   detailsSection = h('section', 'info__section');
   photoSection = h('section', 'info__photo');
-  panel.append(header, photoSection, detailsSection, liveSection);
+  routeSection = h('section', 'info__section');
+  panel.append(header, photoSection, routeSection, detailsSection, liveSection);
 }
 
 export function closeInfoPanel() {
@@ -82,6 +85,7 @@ export async function openInfoPanel(ac) {
   updateLive(ac);
   detailsSection.replaceChildren(h('p', 'info__loading', 'Looking up aircraft and type data…'));
   showPhoto(ac.hex); // runs alongside the lookups below; no need to wait for it
+  showRoute(ac);
 
   // Load the database entry and the type info at the same time.
   const [dbResult, metaResult] = await Promise.allSettled([lookupAircraft(ac.hex), getDbMeta()]);
@@ -209,12 +213,43 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
   // ---- Where the data comes from ----
   const legend = h('p', 'info__legend');
   legend.append(LIVE(), ` live feed (${liveSourceName}) · `, DB(), ' tar1090-db · ', OSN(), ' OpenSky aircraft database · ',
-    TCDS(), ' official type certificate · ', TYPE(), ' type table · ', CALC(), ' calculated');
+    TCDS(), ' official type certificate · ', sourceTag('ROUTE', 'Route database'), ' route database · ', TYPE(), ' type table · ', CALC(), ' calculated');
   parts.push(legend);
   parts.push(h('p', 'info__note',
     'Database entries are community-maintained and can be outdated or wrong (for example after an aircraft changes operator).'));
 
   detailsSection.replaceChildren(...parts);
+}
+
+// Flight route from data/routes.json (Virtual Radar Server standing data, crowd-sourced).
+async function showRoute(ac) {
+  routeSection.replaceChildren();
+  if (!ac.callsign) return;
+  let route;
+  try {
+    route = await lookupRoute(ac.callsign, ac.lat === null ? null : ac);
+  } catch {
+    return; // routes file unavailable: leave the section empty
+  }
+  if (currentHex !== ac.hex) return;
+  const ROUTE = () => sourceTag('ROUTE', 'Virtual Radar Server standing data (crowd-sourced, CC0)');
+  const parts = [h('h3', null, 'Flight')];
+  if (!route) {
+    parts.push(h('p', 'info__note', `No route on record for ${ac.callsign} (only routes passing near Singapore are included).`));
+    routeSection.replaceChildren(...parts);
+    return;
+  }
+  const table = h('table', 'info__table');
+  const label = (a) => `${a.name ?? a.code} (${[a.iata, a.icao].filter(Boolean).join(' / ') || a.code})`;
+  const names = ['From', ...route.airports.slice(1, -1).map(() => 'Via'), 'To'];
+  route.airports.forEach((a, i) => row(table, names[i], label(a), ROUTE()));
+  parts.push(table);
+  if (route.plausible === false) {
+    parts.push(h('p', 'info__warn', `This is the route on record for ${route.callsign}, but the aircraft isn't near it. The record may be outdated.`));
+  } else {
+    parts.push(h('p', 'info__note', 'Route by callsign from a crowd-sourced database; it can be outdated.'));
+  }
+  routeSection.replaceChildren(...parts);
 }
 
 // Photo from Planespotters.net. The terms require the photographer credit and a link to the

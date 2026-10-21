@@ -10,6 +10,35 @@ import { initList, renderList, highlightRow, getShownInOrder } from './list.js';
 import { downloadCsv } from './csv.js';
 import { initInfoPanel, openInfoPanel, updateLive, isOpenFor, closeInfoPanel } from './infoPanel.js';
 import { getTrack, loadRecordedTrack } from './track.js';
+import { lookupRoute, isPlausible, shortRoute } from './routes.js';
+
+// ---- Routes: callsign -> airports (data/routes.json) ----
+const routeCache = new Map(); // callsign -> route object, or null if none on record
+const pendingRoutes = new Set();
+
+// Give each aircraft a short route label ("FOC → SIN"), looking up new callsigns in the
+// background and re-drawing once they're known. "(?)" = the plane isn't near that route.
+function attachRoutes(aircraft) {
+  for (const ac of aircraft) {
+    ac.routeLabel = null;
+    if (!ac.callsign) continue;
+    if (routeCache.has(ac.callsign)) {
+      const route = routeCache.get(ac.callsign);
+      if (!route) continue;
+      const plausible = ac.lat === null ? null : isPlausible(ac, route.airports);
+      ac.routeLabel = shortRoute(route) + (plausible === false ? ' (?)' : '');
+    } else if (!pendingRoutes.has(ac.callsign)) {
+      pendingRoutes.add(ac.callsign);
+      lookupRoute(ac.callsign, null)
+        .then((route) => routeCache.set(ac.callsign, route))
+        .catch(() => {}) // routes file unavailable: just no route labels
+        .finally(() => {
+          pendingRoutes.delete(ac.callsign);
+          if (!pendingRoutes.size) render(); // redraw once the current batch is known
+        });
+    }
+  }
+}
 
 let selectedHex = null; // the aircraft whose track is drawn (null = none)
 
@@ -43,6 +72,7 @@ function updateTypeSuggestions() {
 
 // Runs after every data refresh and every filter change.
 function render() {
+  attachRoutes(state.aircraft);
   const visible = applyFilters(state.aircraft, currentFilters());
   mapView.updateAircraft(visible);
   mapView.showTrack(selectedHex ? getTrack(selectedHex) : []);

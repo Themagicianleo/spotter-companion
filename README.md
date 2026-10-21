@@ -6,6 +6,8 @@ free, open data. It gives you some features that paid flight trackers charge for
 - **Live map** (Phase 1): aircraft around a point (default: Singapore, 1.35, 103.82), with plane icons
   rotated to their direction of travel. Click a plane for callsign, registration, type, altitude,
   speed, vertical speed and squawk.
+- **Flight routes:** origin, stops and destination for each callsign (e.g. CXA865 FOC → SIN) in the
+  list, popup, info panel and CSV. A "(?)" warns when the plane isn't near the route on record.
 - **Satellite view:** switch between the street map and Sentinel-2 satellite imagery (top-right of the map).
 - **Flight tracks:** select a plane (on the map or in the list) to see where it has flown, coloured
   by altitude. Click empty map to hide it. A small recorder on Cloudflare keeps 24 hours of positions
@@ -93,10 +95,12 @@ js/aircraftDb.js   cached lookups in data/aircraft_db/ and data/aircraft_types.j
 js/infoPanel.js    the aircraft info panel
 js/photos.js       aircraft photos from Planespotters.net
 js/track.js        remembers positions so the map can draw tracks
+js/routes.js       flight routes by callsign, with a plausibility check
 js/format.js       turns values into text, with "Unknown" for anything missing
 js/main.js         wires everything together
 data/aircraft_types.json   type + engine table (Phase 3)
 data/aircraft_variants.json exact model -> certified engines, parsed from official TCDS
+data/routes.json           routes near Singapore (scripts/build_routes.py)
 data/aircraft_db/          airliner-only extract of tar1090-db (Phase 4)
 scripts/dev_server.py      local server + relay
 scripts/build_aircraft_db.py
@@ -125,6 +129,7 @@ before you publish.**
 | [Planespotters.net](https://www.planespotters.net) photo API `api.planespotters.net/pub/photos/hex/{hex}` | Aircraft photo in the info panel | No | Not published. One lookup per aircraft per visit, cached in memory | [Terms of use](https://www.planespotters.net/legal/termsofuse): photos belong to the photographers; must show "© photographer" and link to the photo page; hotlink only, never re-host | "© name · via Planespotters.net" under each photo, and the photo links to its page |
 | [OpenSky Network aircraft database](https://opensky-network.org/data/aircraft) (monthly snapshot, merged by the build) | Exact model (e.g. A320-251N), serial number, build year, engine as recorded | No | Static file | OpenSky says the aircraft database is not covered by its terms of use (search summary; page not reachable from the build environment) | "OSN" tag on each value |
 | Official type certificate data sheets (EASA, UK CAA), as text on the `tcds-text` branch | `data/aircraft_variants.json`: engines certified for each exact Airbus/A220 model | No | – | Public regulatory documents | "TCDS" tag; document name and text line number shown in the panel |
+| [Virtual Radar Server standing data](https://github.com/vradarserver/standing-data) (routes + airports; also used by adsb.lol) | Flight routes: callsign → origin, stops, destination | No | Static file (`data/routes.json`, rebuilt monthly) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/): no restrictions | "ROUTE" tag in the panel (credited even though CC0 doesn't require it) |
 | `data/aircraft_types.json` (my own table) | Model names, engine options | – | – | Built from EASA/FAA type certificate data sheets, regulator notices and manufacturer pages, each cited per row | Sources listed in the panel |
 
 **Not used:**
@@ -188,6 +193,11 @@ Remember that a static site can't keep any key secret.
   individual aircraft. Sharper imagery (Esri, Google, Mapbox) needs an account or key, or doesn't
   allow this use. The EOX tile URL comes from third-party listings, so check that the Satellite
   view loads.
+- **Routes are looked up by callsign** in a crowd-sourced database, which can be outdated or missing
+  (airlines reuse flight numbers). Like adsb.lol, the app checks the route is plausible: the plane must be
+  within 50 nm, or 20% of the leg length, of the straight line between airports. Otherwise it shows "(?)"
+  and a warning. Only routes passing within 300 nm of Singapore are included (8,739 of ~620,000), and
+  callsigns using IATA airline codes aren't converted to ICAO.
 - **Engine options are per type, never per aircraft.** The app never claims which engine a specific airframe has.
 - **Simplifications:** positions refresh every 10 s, so markers jump instead of gliding.
   Aircraft without a position are listed but not drawn. Polling pauses while the tab is hidden.

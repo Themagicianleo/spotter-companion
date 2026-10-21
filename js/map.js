@@ -46,6 +46,7 @@ function popupContent(ac) {
     ['Callsign', fmt.text(ac.callsign)],
     ['Registration', fmt.text(ac.registration)],
     ['Type', fmt.text(ac.typeCode)],
+    ['Route', fmt.text(ac.routeLabel)], // added by main.js from data/routes.json
     ['Altitude', fmt.altitude(ac)],
     ['Ground speed', fmt.speed(ac.groundSpeedKt)],
     ['Vertical speed', fmt.verticalRate(ac.verticalRateFpm)],

@@ -210,3 +210,4 @@ button:hover { border-color: var(--accent); }
 .src--tcds { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
 .info__options { margin-top: 8px; font-size: 13px; }
 .info__options summary { cursor: pointer; color: var(--muted); }
+.src--route { background: #ffe4e6; color: #9f1239; }
