@@ -18,8 +18,10 @@ free, open data. It gives you some features that paid flight trackers charge for
   open licence. Badges can be switched off in Filters.
 - **Icons sized by aircraft class:** from the ADS-B emitter category each aircraft broadcasts (light,
   small, large, 757-class, heavy, helicopter); the A380 is biggest. No category = medium size.
-- **Map styles:** a darkened street map (default), the normal street map, or Sentinel-2 satellite imagery
-  (layers button on the map).
+- **Map styles (layers button):** **Dark** (default) and **Streets** are sharp vector maps from
+  OpenFreeMap, drawn by MapLibre, so text and roads stay crisp at every zoom and on Retina screens.
+  **Satellite** is Sentinel-2 imagery, and **Classic** is the plain OpenStreetMap image map. If a browser
+  can't run MapLibre (no WebGL), the app falls back to Classic.
 - **Flight tracks:** select a plane (on the map or in the list) to see where it has flown, coloured
   by altitude. Click empty map to hide it. A small recorder on Cloudflare keeps 24 hours of positions
   around Singapore, so tracks include where the plane was before you opened the page (see `proxy/README.md`).
@@ -129,8 +131,11 @@ vendor/leaflet/            Leaflet 1.9.4 (copied in so the site needs no CDN)
 tests/                     unit + browser tests (the fixture is synthetic, and labelled so)
 ```
 
-**Dependencies:** just **Leaflet 1.9.4** (BSD-2-Clause), the map library, vendored in
-`vendor/leaflet/`. Python 3 (standard library only) is used for the dev server and the database
+**Dependencies** (all vendored in `vendor/`, so the site needs no CDN):
+- **Leaflet 1.9.4** (BSD-2-Clause): the map library.
+- **MapLibre GL 5.24.0** (BSD-3-Clause, about 280 KB compressed): draws the sharp vector maps.
+- **@maplibre/maplibre-gl-leaflet 0.1.4** (ISC): lets Leaflet show a MapLibre map as a layer.
+ Python 3 (standard library only) is used for the dev server and the database
 build script. Playwright is only needed if you want to run the browser tests.
 
 ## Data sources, terms and attribution
@@ -143,6 +148,7 @@ before you publish.**
 |---|---|---|---|---|---|
 | [adsb.lol](https://adsb.lol) `api.adsb.lol/v2/point` (default) | Live positions | No (a feeder-earned key is "planned") | "Dynamic based on load". The app polls every 10 s, never faster than 1/s, and backs off on 429 | Data under [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). The docs mark the open API "deprecated" in favour of a feeders-only API; the public endpoint still worked in Oct 2026 reports | Shown on the map, in the footer and in CSV exports |
 | [airplanes.live](https://airplanes.live) (optional, in `api.js`) | Live positions | No | 1 request/s | Non-commercial. ⚠ An Oct 2026 report says feeders-only since Aug 2026 | Shown when selected |
+| [OpenFreeMap](https://openfreemap.org) vector maps ("dark", "liberty" styles) | Dark and Streets map backgrounds | No | No limits on the public instance | Free; map data © OpenStreetMap (ODbL), OpenMapTiles (BSD/CC BY 4.0), styles MIT/BSD/CC BY | "OpenFreeMap © OpenMapTiles Data from OpenStreetMap" on the map |
 | [OpenStreetMap](https://www.openstreetmap.org/copyright) tiles | Map background | No | [Tile usage policy](https://operations.osmfoundation.org/policies/tiles/) | ODbL | "© OpenStreetMap contributors" |
 | [EOX Sentinel-2 cloudless 2024](https://s2maps.eu) tiles | Satellite background (Map/Satellite switch) | No | Not published | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/): free for non-commercial use with attribution; commercial use needs an EOX licence | "Sentinel-2 cloudless by EOX IT Services GmbH (contains modified Copernicus Sentinel data 2024)" shown on the map |
 | [tar1090-db](https://github.com/wiedehopf/tar1090-db) (from the [Mictronics](https://www.mictronics.de/aircraft-database/) database) | Registration, type, year, operator | No | Static file | ⚠ **No license file found**; terms unclear (see Limitations) | Shown in the info panel |
