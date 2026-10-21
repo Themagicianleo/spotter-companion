@@ -51,6 +51,7 @@ const inputs = {
   maxAlt: document.getElementById('filter-max-alt'),
   ground: document.getElementById('filter-ground'),
 };
+const searchBox = document.getElementById('search');
 const listCount = document.getElementById('list-count');
 const seenTypes = document.getElementById('seen-types');
 
@@ -61,6 +62,7 @@ function currentFilters() {
     minAlt: inputs.minAlt.value,
     maxAlt: inputs.maxAlt.value,
     includeGround: inputs.ground.checked,
+    search: searchBox.value,
   });
 }
 
@@ -86,21 +88,67 @@ function render() {
 }
 
 // Selecting a plane (from the map or the list) highlights it in both places.
-// openPanel is true when the popup's "Aircraft info" button was clicked.
-// hex === null means "clear the selection" (clicking empty map).
+// Clicking a plane or a list row opens its flight card; clicking empty map clears the selection.
 function select(hex, { openPanel = false, fromList = false } = {}) {
   selectedHex = hex;
   mapView.showTrack(hex ? getTrack(hex) : []);
   // Fetch the recorder's earlier positions, then redraw if this plane is still selected.
-  if (hex) loadRecordedTrack(hex).then((found) => found && selectedHex === hex && mapView.showTrack(getTrack(hex)));
-  mapView.selectAircraft(hex, { pan: fromList, openPopup: fromList });
+  if (hex) {
+    loadRecordedTrack(hex).then((found) => {
+      if (!found || selectedHex !== hex) return;
+      mapView.showTrack(getTrack(hex));
+      const current = state.aircraft.find((a) => a.hex === hex);
+      if (current && isOpenFor(hex)) updateLive(current); // card's "Track on map" now includes them
+    });
+  }
+  mapView.selectAircraft(hex, { pan: fromList });
   highlightRow(hex);
   if (hex === null) closeInfoPanel();
   const ac = state.aircraft.find((a) => a.hex === hex);
-  if (ac && openPanel) openInfoPanel(ac);
+  if (ac && (openPanel || fromList)) openInfoPanel(ac);
 }
 
 filterForm.addEventListener('input', render);
+searchBox.addEventListener('input', render);
+
+// ---- Top-bar buttons: open/close the Filters, List and Area drawers (one at a time) ----
+const PANEL_KEY = 'spotters-companion:open-panel';
+const toggles = [...document.querySelectorAll('[data-toggle]')];
+function showPanel(id) {
+  for (const button of toggles) {
+    const open = button.dataset.toggle === id;
+    button.setAttribute('aria-expanded', String(open));
+    document.getElementById(button.dataset.toggle).hidden = !open;
+  }
+  // Tells the CSS how far to move the map's right-hand controls out of the drawer's way.
+  document.body.dataset.drawer = !id ? '' : id === 'list-panel' ? 'wide' : 'small';
+  try {
+    localStorage.setItem(PANEL_KEY, id ?? '');
+  } catch {
+    // remembering is optional
+  }
+}
+for (const button of toggles) {
+  button.addEventListener('click', () => showPanel(button.getAttribute('aria-expanded') === 'true' ? null : button.dataset.toggle));
+}
+// "Filters" opens the List drawer with its filter section expanded.
+const filtersBox = document.getElementById('filters-box');
+const filtersButton = document.getElementById('filters-btn');
+const syncFiltersButton = () => filtersButton.setAttribute('aria-expanded', String(filtersBox.open && !document.getElementById('list-panel').hidden));
+filtersButton.addEventListener('click', () => {
+  const opening = filtersButton.getAttribute('aria-expanded') !== 'true';
+  if (opening) showPanel('list-panel');
+  filtersBox.open = opening;
+  syncFiltersButton();
+});
+filtersBox.addEventListener('toggle', syncFiltersButton);
+for (const button of toggles) button.addEventListener('click', syncFiltersButton);
+try {
+  const saved = localStorage.getItem(PANEL_KEY);
+  if (saved && document.getElementById(saved)) showPanel(saved);
+} catch {
+  // storage blocked: start with everything closed
+}
 // "reset" fires before the boxes are cleared, so wait one tick before re-rendering.
 filterForm.addEventListener('reset', () => setTimeout(render));
 filterForm.addEventListener('submit', (e) => e.preventDefault());

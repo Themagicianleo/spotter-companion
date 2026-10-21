@@ -6,7 +6,7 @@
 //   types:  "a359, b77w"  -> ['A359', 'B77W']
 //   minAlt / maxAlt: "" -> null (meaning "no limit")
 //   prefix: " sia " -> 'SIA'
-export function parseFilterInputs({ types = '', minAlt = '', maxAlt = '', prefix = '', includeGround = true }) {
+export function parseFilterInputs({ types = '', minAlt = '', maxAlt = '', prefix = '', includeGround = true, search = '' }) {
   const toNumberOrNull = (s) => (String(s).trim() === '' || !Number.isFinite(Number(s)) ? null : Number(s));
   return {
     types: types.split(',').map((t) => t.trim().toUpperCase()).filter(Boolean),
@@ -14,6 +14,7 @@ export function parseFilterInputs({ types = '', minAlt = '', maxAlt = '', prefix
     maxAlt: toNumberOrNull(maxAlt),
     prefix: prefix.trim().toUpperCase(),
     includeGround,
+    search: search.trim().toUpperCase(),
   };
 }
 
@@ -33,6 +34,12 @@ export function applyFilters(aircraft, f) {
 
     // Callsign or airline prefix: "SIA" matches SIA321; "SIA3" matches SIA321 and SIA38.
     if (f.prefix && !(ac.callsign ?? '').toUpperCase().startsWith(f.prefix)) return false;
+
+    // Search box: text anywhere in the callsign, registration, type code or route ("SIN", "A359").
+    if (f.search) {
+      const haystack = [ac.callsign, ac.registration, ac.typeCode, ac.routeLabel].filter(Boolean).join(' ').toUpperCase();
+      if (!haystack.includes(f.search)) return false;
+    }
 
     return true;
   });

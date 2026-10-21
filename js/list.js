@@ -66,7 +66,11 @@ export function renderList(aircraft) {
     const row = body.insertRow();
     row.dataset.hex = ac.hex;
     if (ac.hex === selectedHex) row.classList.add('selected');
-    for (const [, , show] of COLUMNS) row.insertCell().textContent = show(ac); // textContent: safe from HTML in data
+    for (const [, , show] of COLUMNS) {
+      const cell = row.insertCell();
+      cell.textContent = show(ac); // textContent: safe from HTML in data
+      if (cell.textContent === fmt.UNKNOWN) cell.className = 'unknown'; // shown dimmer
+    }
     row.addEventListener('click', () => onRowClick(ac.hex));
   }
   table.tBodies[0].replaceWith(body);

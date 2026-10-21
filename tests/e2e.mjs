@@ -48,7 +48,10 @@ async function newPage(browser, scenario) {
   if (scenario === 'fixture') await page.route('**/relay?**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: fixture }));
   if (scenario === 'ratelimit') await page.route('**/relay?**', (r) => r.fulfill({ status: 429, body: '' }));
   if (scenario === 'empty') await page.route('**/relay?**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: '{"ac":[],"msg":"No error","now":0,"total":0,"ctime":0,"ptime":0}' }));
-  await page.addInitScript(() => localStorage.clear());
+  await page.addInitScript(() => {
+    localStorage.clear();
+    localStorage.setItem('spotters-companion:open-panel', 'list-panel'); // start with the list open
+  });
   await page.goto(BASE);
   return page;
 }
@@ -72,10 +75,10 @@ export const scenarios = {
     check('[fixture] markers are rotated to the track', rotation.includes('rotate(45.5deg)'), rotation);
     check('[fixture] no error banner', await page.isHidden('#banner'));
     await page.locator('.leaflet-marker-icon').first().click();
-    await page.waitForSelector('.popup');
-    const popup = await page.textContent('.popup');
-    check('[fixture] popup shows callsign, registration, type, altitude, speed, VS, squawk',
-      ['TST101', 'TEST-A', 'A359', '12,000 ft', '310 kt', '-1,280 ft/min', '2301'].every((s) => popup.includes(s)), popup.slice(0, 120));
+    await page.waitForSelector('#info-panel:not([hidden]) .tiles');
+    const card = await page.textContent('#info-panel');
+    check('[fixture] clicking a plane opens its card: callsign, registration, type, altitude, speed, VS, squawk',
+      ['TST101', 'TEST-A', 'A359', '12,000 ft', '310 kt', '-1,280 ft/min', '2301'].every((s) => card.includes(s)), card.slice(0, 160));
     const status = await page.textContent('#status');
     check('[fixture] status counts aircraft on map separately', status.includes('4 aircraft on map (+1 without position)'), status);
     mkdirSync('docs/screenshots', { recursive: true });
@@ -110,6 +113,8 @@ async function phase2(browser) {
   const firstCallsign = await rows().first().locator('td').first().textContent();
   check('[list] default sort is closest first', firstCallsign === 'Unknown', `first row: ${firstCallsign} (3.1 nm, no callsign)`);
 
+  await page.click('#filters-btn'); // filters live in a collapsible section of the List drawer
+  check('[filter] Filters button opens the filter section, list still visible', (await page.isVisible('#filter-types')) && (await page.isVisible('#aircraft-list')));
   await page.fill('#filter-types', 'B38M');
   check('[filter] type filter narrows list and map', (await rows().count()) === 1 && (await page.locator('.plane').count()) === 1);
   await page.click('button[type=reset]');
@@ -129,8 +134,8 @@ async function phase2(browser) {
   check('[sort] clicking Alt twice sorts highest first', topAlt === '36,000 ft', topAlt);
 
   await rows().first().click();
-  check('[select] clicking a row highlights it and opens the map popup',
-    (await page.locator('tr.selected').count()) === 1 && (await page.locator('.plane--selected').count()) === 1 && (await page.isVisible('.popup')));
+  check('[select] clicking a row highlights it and opens its flight card',
+    (await page.locator('tr.selected').count()) === 1 && (await page.locator('.plane--selected').count()) === 1 && (await page.isVisible('#info-panel .tiles')));
 
   const [download] = await Promise.all([page.waitForEvent('download'), page.click('#export-csv')]);
   const csv = readFileSync(await download.path(), 'utf8').trim().split('\r\n');
@@ -165,13 +170,12 @@ async function phase4(browser) {
     body: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64') }));
   const shardRequests = [];
   page.on('request', (req) => req.url().includes('/data/aircraft_db/') && shardRequests.push(req.url()));
+  await page.addInitScript(() => localStorage.setItem('spotters-companion:open-panel', 'list-panel'));
   await page.goto(BASE);
   await page.waitForSelector('#aircraft-list tbody tr');
 
   const openPanelFor = async (callsign) => {
     await page.locator('#aircraft-list tbody tr', { hasText: callsign }).click();
-    // Click the button in THIS aircraft's popup (an old popup may still be fading out).
-    await page.locator('.leaflet-popup', { hasText: callsign }).locator('.popup__more').click();
     await page.waitForFunction((cs) => {
       const panel = document.getElementById('info-panel');
       return !panel.hidden && panel.querySelector('.info__title').textContent === cs && panel.querySelector('.info__legend');
@@ -189,7 +193,8 @@ async function phase4(browser) {
     (await rowText('Exact model')) === 'Exact model (as recorded)737-824OSN' && (await rowText('Serial number')) === 'Serial number (MSN)30578OSN');
   check('[panel] single-engine type: engine applies to this aircraft', (await rowText('Engine')).includes('2 × CFM International CFM56-7B series') && text.includes('only engine offered for this aircraft type'));
   check('[panel] engine as recorded by OpenSky shown verbatim', (await rowText('Recorded for this aircraft')).includes('CFM INTL. CFM56 SERIES'));
-  check('[panel] live section with live tags', (await rowText('Squawk')) === 'Squawk4512LIVE');
+  const squawkTile = await page.locator('#info-panel .tile', { hasText: 'Squawk' }).textContent();
+  check('[panel] live tiles, tagged LIVE', squawkTile === 'Squawk4512' && (await page.locator('#info-panel h3 .src--live').count()) === 1, squawkTile);
   await page.waitForSelector('.info__photo img');
   const photoLink = page.locator('.info__photo > a');
   check('[photo] image links to its Planespotters page', (await photoLink.getAttribute('href')) === 'https://www.planespotters.net/photo/1/test');
@@ -243,8 +248,10 @@ async function tracks(browser) {
     const hex = new URL(r.request().url()).searchParams.get('hex');
     const now = Math.floor(Date.now() / 1000); // the page's fake clock starts at the real time
     const points = hex === '7fff01' ? [1, 2, 3].map((i) => ({ t: now - (4 - i) * 60, lat: 1.40 - (4 - i) * 0.03, lon: 103.95 - (4 - i) * 0.03, alt: 3000 * i })) : [];
-    r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ hex, minutes: 180, points }) });
+    // Answer after 500 ms, so the test can count the track before and after the recorder's points arrive.
+    setTimeout(() => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ hex, minutes: 180, points }) }), 500);
   });
+  await page.addInitScript(() => localStorage.setItem('spotters-companion:open-panel', 'list-panel'));
   await page.goto(BASE);
   await page.waitForSelector('.plane');
   for (let i = 0; i < 3; i++) {
@@ -255,30 +262,29 @@ async function tracks(browser) {
   check('[track] several updates were fetched', update >= 4, `${update} updates`);
 
   await page.locator('#aircraft-list tbody tr', { hasText: 'TST101' }).click();
-  const segments = await page.locator('.leaflet-overlay-pane path.leaflet-interactive, .leaflet-overlay-pane path').count();
+  const segments = await page.locator('.leaflet-overlay-pane path').count();
   // 1 path is the dashed search circle, 1 is the track's dark outline; the rest are coloured segments.
   check('[track] selecting a plane draws its track (one segment per move)', segments - 2 >= update - 1, `${segments - 2} segments`);
-  await page.waitForTimeout(300); // recorder answer arrives
-  const withRecorded = (await page.locator('.leaflet-overlay-pane path').count()) - 2;
-  check('[recorder] earlier recorded positions are added before the live ones', recorderCalls === 1 && withRecorded === (update - 1) + 3, `${withRecorded} segments, ${recorderCalls} recorder call(s)`);
+  await page.waitForTimeout(900); // the recorder's answer arrives
+  const added = (await page.locator('.leaflet-overlay-pane path').count()) - segments;
+  check('[recorder] earlier recorded positions are added before the live ones', recorderCalls === 1 && added === 3, `${added} segments added, ${recorderCalls} recorder call(s)`);
   const colors = await page.locator('.leaflet-overlay-pane path[stroke="#2563eb"]').count();
   check('[track] segments above 25,000 ft are blue', colors >= 1);
   check('[track] legend appears', await page.isVisible('.track-legend'));
-  await page.locator('.leaflet-popup', { hasText: 'TST101' }).locator('.popup__more').click();
-  await page.waitForSelector('#info-panel:not([hidden])');
-  const recorded = await page.locator('#info-panel tr', { hasText: 'Track on map' }).textContent();
+  await page.waitForSelector('#info-panel:not([hidden])'); // the row click above opened the card
+  const recorded = await page.locator('#info-panel .facts').textContent();
   check('[track] info panel says how much track is recorded, incl. recorder', recorded.includes('min of track') && recorded.includes('from your recorder'), recorded);
   await page.click('.info__close');
   if (process.env.SHOT) await page.screenshot({ path: process.env.SHOT });
 
   // Same again, but by clicking the plane ON THE MAP (how people actually use it).
-  await page.click('#map', { position: { x: 30, y: 400 } });
+  await page.click('#map', { position: { x: 520, y: 700 } }); // empty map between the card and the list
   await page.locator('.leaflet-marker-icon', { has: page.locator('.plane') }).nth(0).click();
   await page.waitForTimeout(300);
   const viaMarker = await page.locator('.leaflet-overlay-pane path').count();
   check('[track] clicking the plane on the map also draws its track', viaMarker > 2, `${viaMarker - 2} segments`);
 
-  await page.click('#map', { position: { x: 30, y: 400 } }); // empty map
+  await page.click('#map', { position: { x: 520, y: 700 } }); // empty map between the card and the list // empty map
   const after = await page.locator('.leaflet-overlay-pane path').count();
   check('[track] clicking empty map hides the track and legend', after === 1 && !(await page.isVisible('.track-legend')));
   await page.close();
@@ -291,9 +297,10 @@ async function satellite(browser) {
   const tileHosts = new Set();
   await page.route(/tile\.openstreetmap\.org|tiles\.maps\.eox\.at/, (r) => { tileHosts.add(new URL(r.request().url()).hostname); r.fulfill({ status: 204 }); });
   await page.route('**/relay?**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: fixture }));
+  await page.addInitScript(() => localStorage.setItem('spotters-companion:open-panel', 'list-panel'));
   await page.goto(BASE);
   await page.waitForSelector('.plane');
-  check('[satellite] starts on the street map', tileHosts.has('tile.openstreetmap.org') && !tileHosts.has('tiles.maps.eox.at'));
+  check('[satellite] starts on the dark street map', tileHosts.has('tile.openstreetmap.org') && !tileHosts.has('tiles.maps.eox.at') && (await page.locator('.tiles-dark').count()) === 1);
   await page.hover('.leaflet-control-layers');
   await page.getByLabel('Satellite').check();
   await page.waitForTimeout(300);

@@ -34,3 +34,12 @@ test('plausibility: near the route yes, far away no', () => {
   assert.equal(isPlausible({ lat: -8.7, lon: 115.2 }, [ZSFZ, WSSS]), false); // over Bali
   assert.equal(isPlausible({ lat: 1.4, lon: 103.9 }, [EGLL, WSSS]), true);
 });
+
+test('route progress: 0 at origin, about halfway at the midpoint, 1 at destination', async () => {
+  const { routeProgress } = await import('../js/routes.js');
+  assert.ok(routeProgress(ZSFZ, [ZSFZ, WSSS]) < 0.01);
+  const half = routeProgress({ lat: 13.76596720503663, lon: 111.41156788991924 }, [ZSFZ, WSSS]);
+  assert.ok(Math.abs(half - 0.5) < 0.01, String(half));
+  assert.ok(routeProgress(WSSS, [ZSFZ, WSSS]) > 0.99);
+  assert.equal(routeProgress(null, [ZSFZ, WSSS]), null);
+});

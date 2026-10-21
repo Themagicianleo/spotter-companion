@@ -1,5 +1,5 @@
 // infoPanel.js
-// The aircraft info panel. Every value is labelled with where it came from:
+// The flight card (aircraft info panel), shown when you click a plane. Every value is labelled with where it came from:
 //   LIVE  - the live ADS-B feed (adsb.lol etc.), right now
 //   DB    - our aircraft database (tar1090-db), matched by hex code
 //   TYPE  - our type table (data/aircraft_types.json), matched by ICAO type code
@@ -10,7 +10,7 @@ import * as fmt from './format.js';
 import { lookupAircraft, lookupType, getDbMeta, ageFromYear, lookupVariant } from './aircraftDb.js';
 import { getPhoto } from './photos.js';
 import { getTrack } from './track.js';
-import { lookupRoute } from './routes.js';
+import { lookupRoute, routeProgress } from './routes.js';
 
 let panel;
 let liveSection;
@@ -55,7 +55,9 @@ export function initInfoPanel(element, providerName) {
   panel = element;
   liveSourceName = providerName;
   const header = h('div', 'info__header');
-  header.append(h('h2', 'info__title', 'Aircraft info'));
+  const titles = h('div');
+  titles.append(h('h2', 'info__title', 'Aircraft info'), h('div', 'info__subtitle', ''));
+  header.append(titles);
   const close = h('button', 'info__close', '✕');
   close.type = 'button';
   close.setAttribute('aria-label', 'Close aircraft info');
@@ -65,12 +67,14 @@ export function initInfoPanel(element, providerName) {
   detailsSection = h('section', 'info__section');
   photoSection = h('section', 'info__photo');
   routeSection = h('section', 'info__section');
-  panel.append(header, photoSection, routeSection, detailsSection, liveSection);
+  // Card order: header, photo, route, live tiles, aircraft + engine details.
+  panel.append(header, photoSection, routeSection, liveSection, detailsSection);
 }
 
 export function closeInfoPanel() {
   panel.hidden = true;
   currentHex = null;
+  document.body.classList.remove('card-open'); // lets the CSS move map controls back
 }
 
 export function isOpenFor(hex) {
@@ -81,7 +85,10 @@ export function isOpenFor(hex) {
 export async function openInfoPanel(ac) {
   currentHex = ac.hex;
   panel.hidden = false;
+  panel.scrollTop = 0;
+  document.body.classList.add('card-open');
   panel.querySelector('.info__title').textContent = ac.callsign ?? ac.registration ?? ac.hex;
+  panel.querySelector('.info__subtitle').textContent = [ac.registration, ac.typeCode].filter(Boolean).join(' · ');
   updateLive(ac);
   detailsSection.replaceChildren(h('p', 'info__loading', 'Looking up aircraft and type data…'));
   showPhoto(ac.hex); // runs alongside the lookups below; no need to wait for it
@@ -96,6 +103,9 @@ export async function openInfoPanel(ac) {
   const variant = variantResult.status === 'fulfilled' ? variantResult.value : null;
 
   if (currentHex !== ac.hex) return; // user clicked another plane while we were loading
+  // Fill in the subtitle from the database if the live feed didn't have it.
+  const subtitle = [db?.registration ?? ac.registration, type?.model ?? db?.typeCode ?? ac.typeCode].filter(Boolean).join(' · ');
+  if (subtitle) panel.querySelector('.info__subtitle').textContent = subtitle;
   renderDetails(ac, db, dbResult.status === 'rejected', metaResult.value, type, typeResult.status === 'rejected', variant);
 }
 
@@ -233,17 +243,50 @@ async function showRoute(ac) {
   }
   if (currentHex !== ac.hex) return;
   const ROUTE = () => sourceTag('ROUTE', 'Virtual Radar Server standing data (crowd-sourced, CC0)');
-  const parts = [h('h3', null, 'Flight')];
+  const parts = [h('h3', null, 'Route')];
   if (!route) {
     parts.push(h('p', 'info__note', `No route on record for ${ac.callsign} (only routes passing near Singapore are included).`));
     routeSection.replaceChildren(...parts);
     return;
   }
+  // Big airport codes ("FOC ✈ SIN") with city names, any stops, and a progress bar.
+  const from = route.airports[0];
+  const to = route.airports.at(-1);
+  const code = (a) => a.iata ?? a.icao ?? a.code;
+  const end = (a, cls, labelText) => {
+    const box = h('div', `route__end ${cls}`);
+    const c = h('div', 'route__code', code(a));
+    c.title = `${labelText}: ${a.name ?? a.code} (${[a.iata, a.icao].filter(Boolean).join(' / ') || a.code})`;
+    box.append(c, h('div', 'route__city', a.city ?? a.name ?? ''));
+    return box;
+  };
+  const block = h('div', 'route');
+  const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  icon.setAttribute('viewBox', '0 0 24 24');
+  icon.setAttribute('width', '26');
+  icon.setAttribute('height', '26');
+  icon.classList.add('route__icon');
+  icon.innerHTML = '<path d="M12 2c.8 0 1.3.9 1.3 2v5.2l7.7 4.6v2l-7.7-2.3v4.6l2.2 1.7v1.6L12 20.4l-3.5 1.2V20l2.2-1.7v-4.6L3 16v-2l7.7-4.6V4c0-1.1.5-2 1.3-2z"/>'; // fixed icon, no data
+  block.append(end(from, 'route__end--from', 'From'), icon, end(to, 'route__end--to', 'To'));
+  parts.push(block);
+  if (route.airports.length > 2) parts.push(h('div', 'route__via', `via ${route.airports.slice(1, -1).map(code).join(', ')}`));
+  const progress = route.plausible === false ? null : routeProgress(ac.lat === null ? null : ac, route.airports);
+  if (progress !== null) {
+    const bar = h('div', 'progress');
+    const fill = h('div', 'progress__bar');
+    fill.style.width = `${Math.round(progress * 100)}%`;
+    bar.append(fill);
+    bar.title = `About ${Math.round(progress * 100)}% of the way (straight-line estimate)`;
+    parts.push(bar);
+  }
+  // Full names in a table too, with their source tag.
   const table = h('table', 'info__table');
   const label = (a) => `${a.name ?? a.code} (${[a.iata, a.icao].filter(Boolean).join(' / ') || a.code})`;
   const names = ['From', ...route.airports.slice(1, -1).map(() => 'Via'), 'To'];
   route.airports.forEach((a, i) => row(table, names[i], label(a), ROUTE()));
-  parts.push(table);
+  const details = h('details', 'info__sources');
+  details.append(h('summary', null, 'Airport details'), table);
+  parts.push(details);
   if (route.plausible === false) {
     parts.push(h('p', 'info__warn', `This is the route on record for ${route.callsign}, but the aircraft isn't near it. The record may be outdated.`));
   } else {
@@ -286,26 +329,31 @@ async function showPhoto(hex) {
 // The live section is refreshed on every poll while the panel is open.
 export function updateLive(ac) {
   if (!ac || ac.hex !== currentHex) return;
-  const LIVE = () => sourceTag('LIVE', `Live feed (${liveSourceName})`);
-  const table = h('table', 'info__table');
-  row(table, 'Callsign', ac.callsign, LIVE());
-  row(table, 'Hex (ICAO address)', ac.hex, LIVE());
-  row(table, 'Altitude', ac.onGround || ac.altitudeFt !== null ? fmt.altitude(ac) : null, LIVE());
-  row(table, 'Ground speed', ac.groundSpeedKt === null ? null : fmt.speed(ac.groundSpeedKt), LIVE());
-  row(table, 'Vertical speed', ac.verticalRateFpm === null ? null : fmt.verticalRate(ac.verticalRateFpm), LIVE());
-  row(table, 'Track', ac.trackDeg === null ? null : `${Math.round(ac.trackDeg)}°`, LIVE());
-  row(table, 'Squawk', ac.squawk, LIVE());
-  row(table, 'Distance from center', ac.distanceNm === null ? null : fmt.distance(ac.distanceNm), LIVE());
-  // How much track we have so far (it only starts when the page is opened).
+  const tiles = h('div', 'tiles');
+  const tile = (label, value) => {
+    const t = h('div', 'tile');
+    t.append(h('span', 'tile__label', label), h('span', 'tile__value', value));
+    tiles.append(t);
+  };
+  tile('Altitude', fmt.altitude(ac));
+  tile('Speed', fmt.speed(ac.groundSpeedKt));
+  tile('Vertical', fmt.verticalRate(ac.verticalRateFpm));
+  tile('Heading', ac.trackDeg === null ? fmt.UNKNOWN : `${Math.round(ac.trackDeg)}°`);
+  tile('Squawk', fmt.text(ac.squawk));
+  tile('Distance', fmt.distance(ac.distanceNm));
+
+  const heading = h('h3');
+  heading.append('Live ', sourceTag('LIVE', `Live feed (${liveSourceName})`));
+  // How much track we have so far, and the hex code (useful for looking the plane up elsewhere).
   const track = getTrack(ac.hex);
   const minutes = track.length > 1 ? Math.round((track.at(-1).time - track[0].time) / 60000) : 0;
   const fromRecorder = track.some((p) => p.recorded);
   const trackText = track.length < 2
     ? 'Starting… (needs two updates, about 20 s)'
     : `${minutes < 1 ? 'under 1' : minutes} min of track` + (fromRecorder ? ' (includes earlier positions from your recorder)' : ' (since you opened the page)');
-  const tr = table.insertRow();
-  tr.insertCell().textContent = 'Track on map';
-  tr.insertCell().textContent = trackText;
-  tr.insertCell().textContent = '';
-  liveSection.replaceChildren(h('h3', null, 'Live'), table);
+  const facts = h('dl', 'facts');
+  for (const [label, value] of [['Track on map', trackText], ['Hex (ICAO address)', ac.hex]]) {
+    facts.append(h('dt', null, label), h('dd', null, value));
+  }
+  liveSection.replaceChildren(heading, tiles, facts);
 }

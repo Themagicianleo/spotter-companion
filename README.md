@@ -7,13 +7,17 @@ free, open data. It gives you some features that paid flight trackers charge for
   rotated to their direction of travel. Click a plane for callsign, registration, type, altitude,
   speed, vertical speed and squawk.
 - **Flight routes:** origin, stops and destination for each callsign (e.g. CXA865 FOC → SIN) in the
-  list, popup, info panel and CSV. A "(?)" warns when the plane isn't near the route on record.
-- **Satellite view:** switch between the street map and Sentinel-2 satellite imagery (top-right of the map).
+  list, hover label, flight card and CSV. A "(?)" warns when the plane isn't near the route on record.
+- **Dark, map-first interface** (inspired by flight-tracker apps like Plane Finder): full-screen map,
+  yellow planes, a search box, and a flight card with a big route display, progress bar and live tiles.
+  Works on phones too: the card becomes a bottom sheet.
+- **Map styles:** a darkened street map (default), the normal street map, or Sentinel-2 satellite imagery
+  (layers button on the map).
 - **Flight tracks:** select a plane (on the map or in the list) to see where it has flown, coloured
   by altitude. Click empty map to hide it. A small recorder on Cloudflare keeps 24 hours of positions
   around Singapore, so tracks include where the plane was before you opened the page (see `proxy/README.md`).
 - **Filters, list and CSV** (Phase 2): filter by type codes, altitude range, or callsign/airline prefix.
-  A sortable list sits next to the map, and you can export the current view as CSV.
+  A sortable list opens from the **List** button, filters from **Filters**, and you can export the current view as CSV.
 - **Type and engine table** (Phase 3): 58 Boeing and Airbus airliner types in `data/aircraft_types.json`,
   each with its engine options and sources.
 - **Aircraft info panel** (Phase 4): a photo from Planespotters.net (credited to its photographer), registration, model, manufacturer, year built, age, operator and
@@ -29,6 +33,13 @@ free, open data. It gives you some features that paid flight trackers charge for
 | Map, list and filters | Aircraft info panel |
 |---|---|
 | ![Map and list (synthetic data)](docs/screenshots/synthetic-test-data.png) | ![Info panel (synthetic data)](docs/screenshots/info-panel-synthetic.png) |
+
+## How to use it
+
+- **Click a plane** (or a row in the list) to open its flight card; click empty map to close it and hide its track.
+- **Hover** over a plane for a quick label: callsign, type, route, altitude.
+- **Search** (top bar) matches callsign, registration, type code or airport code, e.g. `SIA`, `9V-`, `A359` or `SIN`.
+- **List**, **Filters** and **Area** (top right) open the aircraft list, the filters and the search-area settings.
 
 ## How to run it
 

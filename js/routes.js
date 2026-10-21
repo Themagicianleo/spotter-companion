@@ -84,3 +84,25 @@ export async function lookupRoute(rawCallsign, position) {
 export function shortRoute(route) {
   return route.airports.map((a) => a.iata ?? a.icao ?? a.code).join(' → ');
 }
+
+// Great-circle distance in nm between two {lat, lon} points.
+export function distanceNm(a, b) {
+  return angle(toXyz(a.lat, a.lon), toXyz(b.lat, b.lon)) * EARTH_NM;
+}
+
+// How far along the route the aircraft is, from 0 (origin) to 1 (destination), using the leg it
+// is closest to. Returns null without a position.
+export function routeProgress(position, airports) {
+  if (!position || position.lat === null || airports.length < 2) return null;
+  const legs = airports.slice(1).map((b, i) => ({ a: airports[i], b, length: distanceNm(airports[i], b) }));
+  const total = legs.reduce((sum, leg) => sum + leg.length, 0);
+  if (total === 0) return null;
+  let best = 0;
+  legs.forEach((leg, i) => {
+    if (distanceToSegmentNm(position, leg.a, leg.b) < distanceToSegmentNm(position, legs[best].a, legs[best].b)) best = i;
+  });
+  const before = legs.slice(0, best).reduce((sum, leg) => sum + leg.length, 0);
+  const leg = legs[best];
+  const along = Math.min(distanceNm(leg.a, position), leg.length);
+  return Math.max(0, Math.min(1, (before + along) / total));
+}

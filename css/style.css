@@ -1,213 +1,282 @@
 /* style.css
-   Colours are defined once as variables, then redefined for dark mode. */
+   A dark, map-first layout: slim top bar, full-screen map, floating cards.
+   All colours are defined once here as variables. */
 
 :root {
-  --bg: #f7f8fa;
-  --panel: #ffffff;
-  --text: #1c2430;
-  --muted: #5d6b7e;
-  --border: #d8dee6;
-  --accent: #2563eb;
-  --plane: #1d4ed8;
-  --plane-ground: #6b7280;
-  --plane-selected: #dc2626;
-  --error-bg: #fde8e8;
-  --error-text: #8a1c1c;
-  --info-bg: #e6f0ff;
-  --info-text: #1e3a8a;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f141a;
-    --panel: #171e27;
-    --text: #e4e9f0;
-    --muted: #9aa7b8;
-    --border: #2b3542;
-    --accent: #60a5fa;
-    --plane: #93c5fd;
-    --plane-ground: #9ca3af;
-    --plane-selected: #f87171;
-    --error-bg: #3b1515;
-    --error-text: #fecaca;
-    --info-bg: #13233f;
-    --info-text: #bfdbfe;
-  }
+  color-scheme: dark;
+  --bar: #172231;          /* top bar */
+  --panel: #1d2836;        /* cards and drawers */
+  --panel-2: #243243;      /* tiles, inputs, hover */
+  --border: #2f3f52;
+  --text: #e9eef4;
+  --muted: #94a3b6;
+  --accent: #ffc400;       /* plane yellow */
+  --accent-text: #1a1300;
+  --selected: #ff6a1a;     /* selected plane / highlights */
+  --ground: #8b97a6;
+  --link: #7cc4ff;
+  --warn-bg: #4a2420;
+  --warn-text: #ffc9c0;
+  --info-bg: #1f3a55;
+  --info-text: #cfe6ff;
+  --shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --radius: 12px;
 }
 
 * { box-sizing: border-box; }
-
 html, body { height: 100%; margin: 0; }
 
 body {
   display: flex;
   flex-direction: column;
-  background: var(--bg);
+  background: var(--bar);
   color: var(--text);
-  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
-a { color: var(--accent); }
-
-/* ---- Top bar ---- */
-.topbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 16px;
-  padding: 8px 16px;
-  background: var(--panel);
-  border-bottom: 1px solid var(--border);
-}
-.topbar h1 { font-size: 18px; margin: 0; }
-
-.center-form { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
-.center-form input { width: 8em; }
-.center-form #radius { width: 5em; }
+a { color: var(--link); }
+h2 { font-size: 15px; margin: 0 0 10px; }
 
 input, select, button {
   font: inherit;
   color: var(--text);
-  background: var(--bg);
+  background: var(--panel-2);
   border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 4px 8px;
+  border-radius: 8px;
+  padding: 6px 10px;
 }
+input::placeholder { color: var(--muted); }
 button { cursor: pointer; }
 button:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); font-weight: 600; }
 
-/* ---- Message banner ---- */
-.banner { padding: 8px 16px; }
-.banner--error { background: var(--error-bg); color: var(--error-text); }
+/* ---- Top bar ---- */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  background: var(--bar);
+  border-bottom: 1px solid #0d151f;
+  z-index: 1000;
+}
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 16px; white-space: nowrap; }
+.brand svg { fill: var(--accent); transform: rotate(45deg); }
+.search { flex: 1; max-width: 460px; min-width: 120px; border-radius: 999px; padding: 7px 14px; }
+.status { color: var(--muted); font-size: 12px; white-space: nowrap; margin-left: auto; }
+.topbar__buttons { display: flex; gap: 6px; }
+.tb-btn { background: transparent; border-color: var(--border); }
+.tb-btn[aria-expanded="true"] { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+
+/* ---- Map area and floating pieces ---- */
+.stage { position: relative; flex: 1; min-height: 0; }
+.map { position: absolute; inset: 0; background: #0f1823; }
+
+.banner {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 900;
+  max-width: min(680px, calc(100% - 32px));
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+.banner[hidden] { display: none; }
+.banner--error { background: var(--warn-bg); color: var(--warn-text); }
 .banner--info { background: var(--info-bg); color: var(--info-text); }
 
-/* ---- Main layout ---- */
-.layout { flex: 1; display: flex; min-height: 0; }
-.map { flex: 1; min-height: 300px; }
+.card {
+  position: absolute;
+  z-index: 800;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.card[hidden] { display: none; }
+
+/* Right-hand drawers (list, filters, area) */
+.drawer {
+  top: 12px;
+  right: 12px;
+  bottom: 12px;
+  width: min(620px, calc(100% - 24px));
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+}
+.drawer--small { bottom: auto; width: min(360px, calc(100% - 24px)); }
+.row { display: flex; gap: 8px; align-items: end; flex-wrap: wrap; }
+.row > label { flex: 1; }
+
+.filters, .center-form { display: grid; gap: 10px; }
+.filters label, .center-form label { display: grid; gap: 3px; color: var(--muted); font-size: 12px; }
+.filters input, .center-form input { width: 100%; }
+.filters .check { display: flex; align-items: center; gap: 8px; color: var(--text); font-size: 13px; }
+.filters .check input { width: auto; }
+
+.list-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.list-toolbar h2 { margin: 0; }
+.filters-box { border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; margin-bottom: 8px; }
+.filters-box summary { cursor: pointer; color: var(--muted); font-weight: 600; }
+.filters-box[open] summary { margin-bottom: 8px; }
+.list-wrap { flex: 1; overflow: auto; min-height: 0; border-radius: 8px; }
+.aircraft-list { width: 100%; border-collapse: collapse; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.aircraft-list th { position: sticky; top: 0; background: var(--panel); border-bottom: 1px solid var(--border); text-align: left; }
+.aircraft-list th button { border: none; background: none; padding: 6px; font-weight: 600; width: 100%; text-align: left; color: var(--muted); }
+.aircraft-list th[aria-sort="ascending"] button, .aircraft-list th[aria-sort="descending"] button { color: var(--text); }
+.aircraft-list th[aria-sort="ascending"] button::after { content: " ▲"; }
+.aircraft-list th[aria-sort="descending"] button::after { content: " ▼"; }
+.aircraft-list td { padding: 6px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.aircraft-list td:first-child { font-weight: 600; }
+.aircraft-list tbody tr { cursor: pointer; }
+.aircraft-list tbody tr:hover { background: var(--panel-2); }
+.aircraft-list tbody tr.selected { background: #3a2a14; box-shadow: inset 3px 0 0 var(--selected); }
+.aircraft-list td.unknown { color: #5f6e80; }
+.credits { color: var(--muted); font-size: 11px; margin: 10px 0 0; }
 
 /* ---- Plane markers ---- */
 .plane-icon { background: none; border: none; }
-.plane { width: 26px; height: 26px; transition: transform 0.5s linear; }
-.plane svg { fill: var(--plane); stroke: #fff; stroke-width: 0.8; display: block; }
-.plane--ground svg { fill: var(--plane-ground); }
+.plane { width: 28px; height: 28px; transition: transform 0.5s linear; }
+.plane svg { fill: var(--accent); stroke: #2b2100; stroke-width: 0.9; display: block; filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.6)); }
+.plane--ground svg { fill: var(--ground); stroke: #222; }
 .plane--no-track { opacity: 0.6; }
-.plane--selected svg { fill: var(--plane-selected); }
+.plane--selected svg { fill: var(--selected); stroke: #fff; stroke-width: 1.2; }
 
-/* ---- Popup ---- */
-.popup table { border-collapse: collapse; margin-top: 4px; }
-.popup td { padding: 1px 8px 1px 0; }
-.popup td:first-child { color: #5d6b7e; }
-.popup__more { margin-top: 6px; }
+/* "Dark map": OpenStreetMap tiles darkened in the browser */
+.tiles-dark { filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9) saturate(0.6); }
 
-/* ---- Footer ---- */
-.footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 4px 16px;
-  padding: 6px 16px;
-  background: var(--panel);
-  border-top: 1px solid var(--border);
-  color: var(--muted);
+/* Hover label (Leaflet tooltip) */
+.leaflet-tooltip.plane-label {
+  background: var(--bar);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 8px;
   font-size: 12px;
+  box-shadow: var(--shadow);
 }
+.leaflet-tooltip.plane-label::before { display: none; }
+.plane-label b { color: var(--accent); }
 
-/* ---- Sidebar: filters + list (Phase 2) ---- */
-.sidebar {
-  width: 600px;
-  display: flex;
-  flex-direction: column;
-  background: var(--panel);
-  border-left: 1px solid var(--border);
-  min-height: 0;
+/* Leaflet controls in the dark style */
+.leaflet-bar a, .leaflet-control-layers { background: var(--panel); color: var(--text); border-color: var(--border); }
+.leaflet-bar a:hover { background: var(--panel-2); }
+.leaflet-control-layers-expanded { padding: 8px 12px; }
+.leaflet-control-attribution { background: rgba(23, 34, 49, 0.8) !important; color: var(--muted); }
+.leaflet-control-attribution a { color: var(--link); }
+
+/* ---- Flight card (info panel) ---- */
+.info {
+  top: 12px;
+  left: 12px;
+  bottom: 12px;
+  width: 380px;
+  overflow: auto;
 }
-.filters { display: grid; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
-.filters label { display: grid; gap: 2px; color: var(--muted); font-size: 12px; }
-.filters input { width: 100%; }
-.filters__row { display: flex; gap: 8px; align-items: end; }
-.filters__row > * { flex: 1; }
-.filters .check { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text); }
-.filters .check input { width: auto; }
-
-.list-toolbar {
+.info__header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 16px;
-  color: var(--muted);
+  gap: 8px;
+  padding: 12px 14px;
+  background: var(--bar);
+  border-bottom: 3px solid var(--accent);
 }
-.list-wrap { flex: 1; overflow: auto; min-height: 0; }
+.info__title { margin: 0; font-size: 20px; letter-spacing: 0.02em; }
+.info__subtitle { color: var(--muted); font-size: 12px; }
+.info__close { background: transparent; border: none; font-size: 18px; padding: 2px 8px; }
+.info__section { padding: 4px 14px 8px; }
+.info h3 { margin: 14px 0 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 
-.aircraft-list { width: 100%; border-collapse: collapse; font-size: 12.5px; font-variant-numeric: tabular-nums; }
-.aircraft-list th { position: sticky; top: 0; background: var(--panel); border-bottom: 1px solid var(--border); text-align: left; }
-.aircraft-list th button { border: none; background: none; padding: 6px 6px; font-weight: 600; width: 100%; text-align: left; }
-.aircraft-list th[aria-sort="ascending"] button::after { content: " ▲"; }
-.aircraft-list th[aria-sort="descending"] button::after { content: " ▼"; }
-.aircraft-list td { padding: 4px 6px; border-bottom: 1px solid var(--border); white-space: nowrap; }
-.aircraft-list tbody tr { cursor: pointer; }
-.aircraft-list tbody tr:hover { background: var(--bg); }
-.aircraft-list tbody tr.selected { background: var(--info-bg); }
+.info__photo img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: var(--panel-2); }
+.info__photo .info__credit { padding: 4px 14px 0; }
+.info__photo .info__note { padding: 0 14px; }
+.info__credit { font-size: 11px; color: var(--muted); margin: 4px 0 0; }
 
-/* Phones and narrow windows: map on top, list underneath. */
-@media (max-width: 900px) {
-  .layout { flex-direction: column; }
-  .map { flex: none; height: 55vh; }
-  .sidebar { width: 100%; border-left: none; border-top: 1px solid var(--border); }
-  .list-wrap { max-height: 60vh; }
-}
+/* Route block: big airport codes with a progress bar */
+.route { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 6px; margin-top: 10px; }
+.route__end { text-align: left; }
+.route__end--to { text-align: right; }
+.route__code { font-size: 30px; font-weight: 800; line-height: 1; letter-spacing: 0.02em; }
+.route__city { color: var(--muted); font-size: 12px; margin-top: 2px; }
+.route__icon { fill: var(--accent); transform: rotate(90deg); }
+.route__via { color: var(--muted); font-size: 12px; text-align: center; margin-top: 4px; }
+.progress { position: relative; height: 4px; margin: 10px 0 4px; background: var(--panel-2); border-radius: 999px; }
+.progress__bar { position: absolute; inset: 0 auto 0 0; background: var(--accent); border-radius: 999px; }
 
-/* ---- Aircraft info panel (Phase 4) ---- */
-.sidebar { position: relative; }
-.info {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  overflow: auto;
-  background: var(--panel);
-  padding: 12px 16px 24px;
-}
-.info[hidden] { display: none; }
-.info__header { display: flex; justify-content: space-between; align-items: center; }
-.info__title { margin: 0; font-size: 18px; }
-.info h3 { margin: 16px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
-.info__table { width: 100%; border-collapse: collapse; }
-.info__table td { padding: 4px 6px 4px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
-.info__table td:first-child { color: var(--muted); width: 40%; }
-.info__table td:last-child { text-align: right; width: 3.5em; }
+/* Small label/value lines under the live tiles */
+.facts { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; margin: 10px 0 0; font-size: 12px; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; }
+
+/* Live data tiles */
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.tile { background: var(--panel-2); border-radius: 8px; padding: 7px 9px; }
+.tile__label { display: block; color: var(--muted); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; }
+.tile__value { display: block; font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.info__table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.info__table td { padding: 5px 6px 5px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+.info__table td:first-child { color: var(--muted); width: 42%; }
+.info__table td:last-child { text-align: right; width: 3.6em; }
 .info__engines { margin: 6px 0; padding-left: 20px; }
-.info__note, .info__legend { color: var(--muted); font-size: 12px; margin: 6px 0; }
-.info__warn { color: var(--error-text); background: var(--error-bg); padding: 6px 8px; border-radius: 6px; }
-.info__sources { font-size: 12px; margin-top: 6px; }
+.info__note, .info__legend { color: var(--muted); font-size: 11.5px; margin: 6px 0; }
+.info__legend .src { margin: 1px 0; }
+.info__warn { color: var(--warn-text); background: var(--warn-bg); padding: 6px 8px; border-radius: 6px; font-size: 12.5px; }
+.info__sources, .info__options { font-size: 12px; margin-top: 6px; }
+.info__options summary, .info__sources summary { cursor: pointer; color: var(--muted); }
 .info__sources li { margin: 4px 0; }
 
 /* Source tags: small coloured labels saying where a value came from */
-.src { display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 4px; cursor: help; }
-.src--live { background: #dcfce7; color: #166534; }
-.src--db { background: #e0e7ff; color: #3730a3; }
-.src--type { background: #fef3c7; color: #92400e; }
-.src--calc { background: #f3e8ff; color: #6b21a8; }
+.src { display: inline-block; font-size: 9.5px; font-weight: 800; padding: 1px 5px; border-radius: 4px; cursor: help; letter-spacing: 0.03em; }
+.src--live { background: #14532d; color: #bbf7d0; }
+.src--db { background: #312e81; color: #c7d2fe; }
+.src--osn { background: #164e63; color: #a5f3fc; }
+.src--tcds { background: #166534; color: #dcfce7; border: 1px solid #4ade80; }
+.src--type { background: #78350f; color: #fde68a; }
+.src--calc { background: #581c87; color: #e9d5ff; }
+.src--route { background: #881337; color: #fecdd3; }
 .badge { font-size: 11px; padding: 1px 6px; border-radius: 4px; }
-.badge--warn { background: var(--error-bg); color: var(--error-text); }
-
-/* ---- Aircraft photo (Planespotters.net) ---- */
-.info__photo { margin-top: 10px; }
-.info__photo img { display: block; width: 100%; max-width: 420px; height: auto; border-radius: 8px; background: var(--bg); }
-.info__credit { font-size: 12px; margin: 4px 0 0; }
+.badge--warn { background: var(--warn-bg); color: var(--warn-text); }
 
 /* ---- Track legend (bottom-left of the map) ---- */
 .track-legend {
   background: var(--panel);
   color: var(--text);
-  padding: 6px 8px;
-  border-radius: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
   font-size: 11px;
   line-height: 1.6;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow);
 }
 .track-legend strong, .track-legend span { display: block; }
 .track-legend i { display: inline-block; width: 14px; height: 4px; margin-right: 6px; vertical-align: middle; border-radius: 2px; }
-.src--osn { background: #cffafe; color: #155e75; }
-.src--tcds { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
-.info__options { margin-top: 8px; font-size: 13px; }
-.info__options summary { cursor: pointer; color: var(--muted); }
-.src--route { background: #ffe4e6; color: #9f1239; }
+
+/* On wide screens, move the map's controls out of the way of an open card or drawer */
+@media (min-width: 761px) {
+  body.card-open .leaflet-left { left: 400px; }
+  body[data-drawer="wide"] .leaflet-right { right: min(644px, calc(100% - 24px)); }
+  body[data-drawer="small"] .leaflet-right { right: 384px; }
+}
+
+/* ---- Phones and narrow windows ---- */
+@media (max-width: 760px) {
+  .topbar { flex-wrap: wrap; gap: 8px; }
+  .brand span { display: none; }
+  .search { order: 3; max-width: none; flex-basis: 100%; }
+  .status { display: none; }
+  /* Flight card becomes a bottom sheet */
+  .info { top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 62%; border-radius: var(--radius) var(--radius) 0 0; }
+  .info__photo img { aspect-ratio: auto; height: 150px; }
+  /* Keep the zoom buttons and credits above the bottom sheet */
+  body.card-open .leaflet-bottom { bottom: 62%; }
+  .drawer, .drawer--small { left: 8px; right: 8px; top: 8px; bottom: 8px; width: auto; }
+  .drawer--small { bottom: auto; }
+}

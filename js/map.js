@@ -2,8 +2,6 @@
 // Everything to do with the Leaflet map: tiles, the search-radius circle, and one rotating
 // plane marker per aircraft. `L` is the global object created by vendor/leaflet/leaflet.js.
 
-import * as fmt from './format.js';
-
 let map;
 let radiusCircle;
 let trackLayer; // the selected aircraft's track (a group of coloured line segments)
@@ -14,7 +12,7 @@ let selectedHex = null;
 
 // A simple top-down airplane drawn pointing north (up). We rotate it to the aircraft's track.
 const PLANE_SVG =
-  '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">' +
+  '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">' +
   '<path d="M12 2c.8 0 1.3.9 1.3 2v5.2l7.7 4.6v2l-7.7-2.3v4.6l2.2 1.7v1.6L12 20.4l-3.5 1.2V20l2.2-1.7v-4.6L3 16v-2l7.7-4.6V4c0-1.1.5-2 1.3-2z"/>' +
   '</svg>';
 
@@ -28,54 +26,40 @@ function planeIcon(ac) {
   return L.divIcon({
     className: 'plane-icon', // Leaflet's wrapper; the rotation goes on the inner div
     html: `<div class="${classes.join(' ')}" style="transform: rotate(${rotation}deg)">${PLANE_SVG}</div>`,
-    iconSize: [26, 26],
-    iconAnchor: [13, 13], // center of the icon sits on the aircraft position
+    iconSize: [28, 28],
+    iconAnchor: [14, 14], // center of the icon sits on the aircraft position
   });
 }
 
-// Build the popup with DOM methods, not innerHTML: callsigns come from the internet, and
-// textContent guarantees they are shown as text and never run as code.
-function popupContent(ac) {
-  const box = document.createElement('div');
-  box.className = 'popup';
-  const title = document.createElement('strong');
-  title.textContent = ac.callsign ?? ac.registration ?? ac.hex;
-  box.append(title);
-
-  const rows = [
-    ['Callsign', fmt.text(ac.callsign)],
-    ['Registration', fmt.text(ac.registration)],
-    ['Type', fmt.text(ac.typeCode)],
-    ['Route', fmt.text(ac.routeLabel)], // added by main.js from data/routes.json
-    ['Altitude', fmt.altitude(ac)],
-    ['Ground speed', fmt.speed(ac.groundSpeedKt)],
-    ['Vertical speed', fmt.verticalRate(ac.verticalRateFpm)],
-    ['Squawk', fmt.text(ac.squawk)],
-  ];
-  const table = document.createElement('table');
-  for (const [label, value] of rows) {
-    const tr = table.insertRow();
-    tr.insertCell().textContent = label;
-    tr.insertCell().textContent = value;
-  }
-  box.append(table);
-
-  const more = document.createElement('button');
-  more.type = 'button';
-  more.className = 'popup__more';
-  more.textContent = 'Aircraft info →';
-  more.addEventListener('click', () => onSelect(ac.hex, { openPanel: true }));
-  box.append(more);
+// Small label shown when you hover over a plane: "SIA321 · A359 · LHR → SIN".
+// Built with DOM methods, not innerHTML: callsigns come from the internet, and textContent
+// guarantees they are shown as text and never run as code.
+function labelContent(ac) {
+  const box = document.createElement('span');
+  const name = document.createElement('b');
+  name.textContent = ac.callsign ?? ac.registration ?? ac.hex;
+  box.append(name);
+  const extra = [ac.typeCode, ac.routeLabel, ac.onGround ? 'on ground' : ac.altitudeFt === null ? null : `${ac.altitudeFt.toLocaleString('en')} ft`];
+  box.append(extra.filter(Boolean).map((x) => ` · ${x}`).join(''));
   return box;
 }
 
 export function initMap(elementId, center, radiusNm, attributionHtml, selectHandler) {
   onSelect = selectHandler;
-  map = L.map(elementId).setView([center.lat, center.lon], 9);
+  map = L.map(elementId, { zoomControl: false }).setView([center.lat, center.lon], 9);
+  L.control.zoom({ position: 'bottomright' }).addTo(map);
 
   // Two backgrounds. Each carries the attribution its licence requires; Leaflet shows the
   // attribution of whichever layer is currently on the map.
+  const osmAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
   const baseLayers = {
+    // The same OpenStreetMap tiles, darkened in the browser with a CSS filter (.tiles-dark)
+    // so the map matches the dark interface. The tiles themselves are unchanged.
+    'Dark map': L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      className: 'tiles-dark',
+      attribution: osmAttribution,
+    }),
     // OpenStreetMap's standard tiles. Their tile policy requires this attribution.
     Map: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
@@ -99,8 +83,9 @@ export function initMap(elementId, center, radiusNm, attributionHtml, selectHand
 
   radiusCircle = L.circle([center.lat, center.lon], {
     radius: radiusNm * 1852, // Leaflet wants metres
-    color: '#3b82f6',
+    color: '#ffc400',
     weight: 1,
+    opacity: 0.6,
     fill: false,
     dashArray: '4 6',
   }).addTo(map);
@@ -151,9 +136,10 @@ export function showTrack(points) {
 const BASE_LAYER_KEY = 'spotters-companion:base-layer';
 function loadBaseLayerName() {
   try {
-    return localStorage.getItem(BASE_LAYER_KEY) === 'Satellite' ? 'Satellite' : 'Map';
+    const saved = localStorage.getItem(BASE_LAYER_KEY);
+    return ['Map', 'Satellite', 'Dark map'].includes(saved) ? saved : 'Dark map';
   } catch {
-    return 'Map';
+    return 'Dark map';
   }
 }
 function saveBaseLayerName(name) {
@@ -182,17 +168,18 @@ export function updateAircraft(aircraftList) {
     seen.add(ac.hex);
     let marker = markers.get(ac.hex);
     if (!marker) {
-      marker = L.marker([ac.lat, ac.lon], { icon: planeIcon(ac), title: ac.callsign ?? ac.hex });
-      marker.on('click', () => onSelect(ac.hex, { openPanel: false }));
-      marker.bindPopup('');
+      marker = L.marker([ac.lat, ac.lon], { icon: planeIcon(ac), keyboard: true });
+      // Clicking a plane selects it and opens its flight card.
+      marker.on('click', () => onSelect(ac.hex, { openPanel: true }));
+      marker.bindTooltip('', { className: 'plane-label', direction: 'top', offset: [0, -14] });
       marker.addTo(map);
       markers.set(ac.hex, marker);
     } else {
       marker.setLatLng([ac.lat, ac.lon]);
       marker.setIcon(planeIcon(ac));
     }
-    // Keep the popup's numbers fresh if it's open.
-    marker.setPopupContent(popupContent(ac));
+    // Keep the hover label up to date.
+    marker.setTooltipContent(labelContent(ac));
   }
   for (const [hex, marker] of markers) {
     if (!seen.has(hex)) {
@@ -202,11 +189,10 @@ export function updateAircraft(aircraftList) {
   }
 }
 
-// Highlight one aircraft and (optionally) open its popup and pan to it.
-export function selectAircraft(hex, { pan = false, openPopup = false } = {}) {
+// Highlight one aircraft and (optionally) pan the map to it.
+export function selectAircraft(hex, { pan = false } = {}) {
   const previous = selectedHex;
   selectedHex = hex;
-  if (hex === null) map.closePopup();
   // Re-draw the old and new selection so the highlight moves.
   for (const h of [previous, hex]) {
     const m = markers.get(h);
@@ -215,5 +201,4 @@ export function selectAircraft(hex, { pan = false, openPopup = false } = {}) {
   const marker = markers.get(hex);
   if (!marker) return;
   if (pan) map.panTo(marker.getLatLng());
-  if (openPopup) marker.openPopup();
 }
