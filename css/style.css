@@ -296,3 +296,11 @@ button.primary { background: var(--accent); color: var(--accent-text); border-co
   .drawer, .drawer--small { left: 8px; right: 8px; top: 8px; bottom: 8px; width: auto; }
   .drawer--small { bottom: auto; }
 }
+
+/* "More about … on airfleets.net" link under the aircraft details */
+.info__more { margin: 6px 0 2px; }
+.info__more-link {
+  display: inline-block; padding: 5px 10px; border-radius: 6px; font-size: 12px; text-decoration: none;
+  border: 1px solid var(--accent); color: var(--accent);
+}
+.info__more-link:hover { background: var(--accent); color: #111; }

@@ -189,6 +189,8 @@ async function phase4(browser) {
 
   let text = await openPanelFor('TST202');
   check('[panel] registration from database, tagged DB', (await rowText('Registration')) === 'RegistrationN11206DB');
+  check('[panel] airfleets.net search link for the registration',
+    (await page.getAttribute('#info-panel .info__more-link', 'href')) === 'https://www.airfleets.net/recherche/?key=N11206');
   check('[panel] serial number, year built, age and operator are not shown',
     ['Serial number', 'Year built', 'Age', 'Operator'].every((label) => !text.includes(label)));
   check('[panel] type name from type table, tagged TYPE', (await page.locator('#info-panel tr', { hasText: /^Type/ }).first().textContent()) === 'TypeBoeing 737-800 (737 NG)TYPE');

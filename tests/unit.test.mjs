@@ -72,3 +72,12 @@ test('airline from callsign; registrations used as callsigns are not airlines', 
   const { airlineFor } = await import('../js/airlines.js');
   assert.equal(airlineFor('SIA321'), null); // not loaded yet -> null, never a guess
 });
+
+test('airfleets.net link: search URL for the registration, nothing when unknown', async () => {
+  const { airfleetsUrl } = await import('../js/infoPanel.js');
+  assert.equal(airfleetsUrl('9V-SCP'), 'https://www.airfleets.net/recherche/?key=9V-SCP');
+  assert.equal(airfleetsUrl(' 9v-scp '), 'https://www.airfleets.net/recherche/?key=9V-SCP');
+  assert.equal(airfleetsUrl('9V"><x'), 'https://www.airfleets.net/recherche/?key=9VX');
+  assert.equal(airfleetsUrl(null), null);
+  assert.equal(airfleetsUrl(''), null);
+});

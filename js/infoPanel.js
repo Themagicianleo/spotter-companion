@@ -53,6 +53,13 @@ function safeLink(url, text) {
   return a;
 }
 
+// Search link on airfleets.net (history, previous operators, delivery date…). Only letters, digits and '-'
+// are kept, so nothing odd can end up in the URL.
+export function airfleetsUrl(registration) {
+  const reg = String(registration ?? '').trim().toUpperCase().replace(/[^A-Z0-9-]/g, '');
+  return reg ? `https://www.airfleets.net/recherche/?key=${encodeURIComponent(reg)}` : null;
+}
+
 export function initInfoPanel(element, providerName) {
   panel = element;
   liveSourceName = providerName;
@@ -157,6 +164,15 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
   known('Exact model', exact, exactTag);
   known('Manufacturer', type?.manufacturer, TYPE());
   parts.push(t1);
+  // airfleets.net has no open data, so we only link to its own search page for this registration.
+  const regUrl = airfleetsUrl(reg);
+  if (regUrl) {
+    const more = h('p', 'info__more');
+    const a = safeLink(regUrl, `More about ${reg} on airfleets.net ↗`);
+    a.className = 'info__more-link';
+    more.append(a);
+    parts.push(more);
+  }
   if (missing.length) parts.push(h('p', 'info__note', `Unknown (not in our databases): ${missing.join(', ')}.`));
   // Crowd-sourced databases sometimes disagree; say so rather than silently picking one.
   const disagree = [];

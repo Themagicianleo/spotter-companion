@@ -164,6 +164,7 @@ before you publish.**
 | [Virtual Radar Server standing data](https://github.com/vradarserver/standing-data) (routes + airports; also used by adsb.lol) | Flight routes: callsign → origin, stops, destination | No | Static file (`data/routes.json`, rebuilt monthly) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/): no restrictions | "ROUTE" tag in the panel (credited even though CC0 doesn't require it) |
 | [Virtual Radar Server standing data](https://github.com/vradarserver/standing-data), airlines file | Airline name and IATA code from the callsign (`data/airlines.json`) | No | Static file (rebuilt monthly) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Credited with the routes |
 | `data/aircraft_types.json` (my own table) | Model names, engine options | – | – | Built from EASA/FAA type certificate data sheets, regulator notices and manufacturer pages, each cited per row | Sources listed in the panel |
+| [airfleets.net](https://www.airfleets.net) | **Link only**: "More about … on airfleets.net" opens its search for the registration in a new tab | – | Nothing is fetched or copied; it's an ordinary link | No open licence or API, so its data is not used in the app | – |
 
 **Not used:**
 - **OpenSky Network** for live data. Its terms require a written agreement for "operational" use
