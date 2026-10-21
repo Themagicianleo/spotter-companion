@@ -95,7 +95,8 @@ def load_opensky(wanted_types, tar_rows):
     print(f"OpenSky header ({len(header)} columns): {header}")
     missing = [c for c in OPENSKY_COLUMNS if c not in header]
     if missing:
-        raise RuntimeError(f"OpenSky file is missing expected columns {missing}; not guessing.")
+        raise RuntimeError(f"OpenSky file ({key}) is missing expected columns {missing}; not guessing. "
+                           f"Its header is: {header}; first data line: {text.splitlines()[1][:400]!r}")
 
     rows = {}
     total = 0
