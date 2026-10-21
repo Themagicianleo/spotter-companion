@@ -150,6 +150,15 @@ async function phase4(browser) {
   page.on('pageerror', (e) => check('[panel] no JavaScript errors', false, e.message));
   await page.route('https://tile.openstreetmap.org/**', (r) => r.fulfill({ status: 204 }));
   await page.route('**/relay?**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(data) }));
+  // Planespotters: a made-up photo for a03618, none for anything else. The image is a 1x1 PNG.
+  await page.route('https://api.planespotters.net/**', (r) => r.fulfill({
+    status: 200, contentType: 'application/json',
+    body: JSON.stringify(r.request().url().endsWith('/a03618')
+      ? { photos: [{ thumbnail_large: { src: 'https://t.plnspttrs.net/1/test_280.jpg' }, link: 'https://www.planespotters.net/photo/1/test', photographer: 'Test Photographer' }] }
+      : { photos: [] }),
+  }));
+  await page.route('https://t.plnspttrs.net/**', (r) => r.fulfill({ status: 200, contentType: 'image/png',
+    body: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64') }));
   const shardRequests = [];
   page.on('request', (req) => req.url().includes('/data/aircraft_db/') && shardRequests.push(req.url()));
   await page.goto(BASE);
@@ -175,11 +184,17 @@ async function phase4(browser) {
   check('[panel] serial number is Unknown (not guessed)', (await rowText('Serial number')).includes('Unknown'));
   check('[panel] engine options labelled as type options', text.includes('CFM International CFM56-7B series') && text.includes('do not tell you which engine this particular aircraft has'));
   check('[panel] live section with live tags', (await rowText('Squawk')) === 'Squawk4512LIVE');
+  await page.waitForSelector('.info__photo img');
+  const photoLink = page.locator('.info__photo > a');
+  check('[photo] image links to its Planespotters page', (await photoLink.getAttribute('href')) === 'https://www.planespotters.net/photo/1/test');
+  check('[photo] photographer credit shown', (await page.textContent('.info__credit')).includes('© Test Photographer'));
   await page.screenshot({ path: 'docs/screenshots/info-panel-synthetic.png' });
   await page.click('.info__close');
 
   text = await openPanelFor('TST101');
   check('[panel] aircraft not in database says so, falls back to live registration', text.includes('Not in our database') && (await rowText('Registration')) === 'RegistrationTEST-ALIVE');
+  await page.waitForFunction(() => document.querySelector('.info__photo')?.textContent.includes('No photo'));
+  check('[photo] aircraft without a photo says so', true);
   check('[panel] A359 shows both engine options', text.includes('Trent XWB-84') && text.includes('Trent XWB-75'));
   check('[panel] database shard downloaded once (cached)', new Set(shardRequests).size === shardRequests.length, shardRequests.join(' '));
   await page.click('.info__close');

@@ -23,9 +23,9 @@ import urllib.request
 from pathlib import Path
 
 PORT = 8000
-ALLOWED_HOSTS = {"api.adsb.lol", "api.airplanes.live"}
+ALLOWED_HOSTS = {"api.adsb.lol", "api.airplanes.live", "api.planespotters.net"}
 MIN_GAP_SECONDS = 1.1  # providers ask for at most 1 request per second
-USER_AGENT = "SpottersCompanion/1.0 (personal non-commercial project)"
+USER_AGENT = "SpottersCompanion/1.0 (personal non-commercial project; +https://github.com/Themagicianleo/spotter-companion)"
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 _last_upstream = 0.0

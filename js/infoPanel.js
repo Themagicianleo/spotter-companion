@@ -8,10 +8,12 @@
 
 import * as fmt from './format.js';
 import { lookupAircraft, lookupType, getDbMeta, ageFromYear } from './aircraftDb.js';
+import { getPhoto } from './photos.js';
 
 let panel;
 let liveSection;
 let detailsSection;
+let photoSection;
 let currentHex = null;
 let liveSourceName = 'live feed';
 
@@ -58,7 +60,8 @@ export function initInfoPanel(element, providerName) {
   header.append(close);
   liveSection = h('section', 'info__section');
   detailsSection = h('section', 'info__section');
-  panel.append(header, detailsSection, liveSection);
+  photoSection = h('section', 'info__photo');
+  panel.append(header, photoSection, detailsSection, liveSection);
 }
 
 export function closeInfoPanel() {
@@ -77,6 +80,7 @@ export async function openInfoPanel(ac) {
   panel.querySelector('.info__title').textContent = ac.callsign ?? ac.registration ?? ac.hex;
   updateLive(ac);
   detailsSection.replaceChildren(h('p', 'info__loading', 'Looking up aircraft and type data…'));
+  showPhoto(ac.hex); // runs alongside the lookups below; no need to wait for it
 
   // Load the database entry and the type info at the same time.
   const [dbResult, metaResult] = await Promise.allSettled([lookupAircraft(ac.hex), getDbMeta()]);
@@ -170,6 +174,37 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed) {
     'Database entries are community-maintained and can be outdated or wrong (for example after an aircraft changes operator).'));
 
   detailsSection.replaceChildren(...parts);
+}
+
+// Photo from Planespotters.net. The terms require the photographer credit and a link to the
+// photo's page, so the image itself is that link.
+async function showPhoto(hex) {
+  photoSection.replaceChildren(h('p', 'info__note', 'Looking for a photo…'));
+  let photo;
+  try {
+    photo = await getPhoto(hex);
+  } catch {
+    if (currentHex === hex) photoSection.replaceChildren(h('p', 'info__note', 'Photo service could not be reached.'));
+    return;
+  }
+  if (currentHex !== hex) return; // another plane was clicked meanwhile
+  if (!photo) {
+    photoSection.replaceChildren(h('p', 'info__note', 'No photo of this aircraft on Planespotters.net.'));
+    return;
+  }
+  const link = safeLink(photo.pageUrl, '');
+  link.rel = 'noopener noreferrer';
+  const img = h('img');
+  img.src = photo.src;
+  img.alt = 'Photo of this aircraft';
+  img.loading = 'lazy';
+  img.addEventListener('error', () => photoSection.replaceChildren(h('p', 'info__note', 'Photo could not be loaded.')));
+  link.append(img);
+  const credit = h('p', 'info__credit');
+  credit.append(`© ${photo.photographer ?? 'Unknown photographer'} · `, safeLink(photo.pageUrl, 'via Planespotters.net'));
+  credit.querySelector('a').rel = 'noopener noreferrer';
+  const caveat = h('p', 'info__note', 'Matched by hex code. It may show the aircraft in an older livery.');
+  photoSection.replaceChildren(link, credit, caveat);
 }
 
 // The live section is refreshed on every poll while the panel is open.

@@ -188,3 +188,8 @@ button:hover { border-color: var(--accent); }
 .src--calc { background: #f3e8ff; color: #6b21a8; }
 .badge { font-size: 11px; padding: 1px 6px; border-radius: 4px; }
 .badge--warn { background: var(--error-bg); color: var(--error-text); }
+
+/* ---- Aircraft photo (Planespotters.net) ---- */
+.info__photo { margin-top: 10px; }
+.info__photo img { display: block; width: 100%; max-width: 420px; height: auto; border-radius: 8px; background: var(--bg); }
+.info__credit { font-size: 12px; margin: 4px 0 0; }

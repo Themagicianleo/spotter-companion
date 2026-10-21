@@ -10,7 +10,7 @@ free, open data. It gives you some features that paid flight trackers charge for
   A sortable list sits next to the map, and you can export the current view as CSV.
 - **Type and engine table** (Phase 3): 58 Boeing and Airbus airliner types in `data/aircraft_types.json`,
   each with its engine options and sources.
-- **Aircraft info panel** (Phase 4): registration, model, manufacturer, year built, age, operator and
+- **Aircraft info panel** (Phase 4): a photo from Planespotters.net (credited to its photographer), registration, model, manufacturer, year built, age, operator and
   engine options. Every value is tagged with where it came from (LIVE / DB / TYPE / CALC), and
   missing values show "Unknown".
 
@@ -108,6 +108,7 @@ before you publish.**
 | [airplanes.live](https://airplanes.live) (optional, in `api.js`) | Live positions | No | 1 request/s | Non-commercial. ⚠ An Oct 2026 report says feeders-only since Aug 2026 | Shown when selected |
 | [OpenStreetMap](https://www.openstreetmap.org/copyright) tiles | Map background | No | [Tile usage policy](https://operations.osmfoundation.org/policies/tiles/) | ODbL | "© OpenStreetMap contributors" |
 | [tar1090-db](https://github.com/wiedehopf/tar1090-db) (from the [Mictronics](https://www.mictronics.de/aircraft-database/) database) | Registration, type, year, operator | No | Static file | ⚠ **No license file found**; terms unclear (see Limitations) | Shown in the info panel |
+| [Planespotters.net](https://www.planespotters.net) photo API `api.planespotters.net/pub/photos/hex/{hex}` | Aircraft photo in the info panel | No | Not published. One lookup per aircraft per visit, cached in memory | [Terms of use](https://www.planespotters.net/legal/termsofuse): photos belong to the photographers; must show "© photographer" and link to the photo page; hotlink only, never re-host | "© name · via Planespotters.net" under each photo, and the photo links to its page |
 | `data/aircraft_types.json` (my own table) | Model names, engine options | – | – | Built from EASA/FAA type certificate data sheets, regulator notices and manufacturer pages, each cited per row | Sources listed in the panel |
 
 **Not used:**
@@ -149,6 +150,10 @@ Remember that a static site can't keep any key secret.
 - **ICAO codes:** all 53 codes in the original list exist in tar1090-db with the expected names.
   Added: B732, A30B, B74S, B778, B779. I couldn't open ICAO Doc 8643 itself, so I checked against an
   FAA order that reproduces it, plus search results.
+- **Photos:** I couldn't open Planespotters' API page from the build environment, so the response
+  fields come from two open-source projects' parsers. Photos are matched by hex code and may show an
+  older livery. The app asks Planespotters directly first and falls back to the relay, which sends a
+  User-Agent with this repo's URL as contact information.
 - **Engine options are per type, never per aircraft.** The app never claims which engine a specific airframe has.
 - **Simplifications:** positions refresh every 10 s, so markers jump instead of gliding.
   Aircraft without a position are listed but not drawn. Polling pauses while the tab is hidden.

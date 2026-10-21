@@ -4,7 +4,7 @@
 // answers). It fetches the provider URL and passes the answer back with a CORS header.
 // It only relays to ALLOWED_HOSTS, so nobody can use it as a general-purpose proxy.
 
-const ALLOWED_HOSTS = ['api.adsb.lol', 'api.airplanes.live'];
+const ALLOWED_HOSTS = ['api.adsb.lol', 'api.airplanes.live', 'api.planespotters.net'];
 
 // Set this to your GitHub Pages address so only your site can use the relay.
 const ALLOWED_ORIGIN = 'https://themagicianleo.github.io';
@@ -23,7 +23,7 @@ export default {
     }
 
     const upstream = await fetch(target, {
-      headers: { 'User-Agent': 'SpottersCompanion/1.0 (personal non-commercial project)' },
+      headers: { 'User-Agent': 'SpottersCompanion/1.0 (personal non-commercial project; +https://github.com/Themagicianleo/spotter-companion)' },
       // Ask Cloudflare to cache answers for 5 s, so many viewers = few provider requests.
       cf: { cacheTtl: 5, cacheEverything: true },
     });
