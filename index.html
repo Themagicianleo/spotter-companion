@@ -24,6 +24,9 @@
     <nav class="topbar__buttons">
       <button type="button" class="tb-btn" id="filters-btn" aria-expanded="false">Filters</button>
       <button type="button" class="tb-btn" data-toggle="list-panel" aria-expanded="false">List</button>
+      <button type="button" class="tb-btn" data-toggle="spotting-panel" aria-expanded="false">Spotting</button>
+      <button type="button" class="tb-btn" data-toggle="stats-panel" aria-expanded="false">Stats</button>
+      <button type="button" class="tb-btn" id="weather-btn" data-toggle="weather-panel" aria-expanded="false">Weather</button>
       <button type="button" class="tb-btn" data-toggle="area-panel" aria-expanded="false">Area</button>
     </nav>
   </header>
@@ -33,6 +36,9 @@
 
     <!-- Error / info messages float over the map instead of leaving it silently blank -->
     <div id="banner" class="banner" role="status" aria-live="polite" hidden></div>
+
+    <!-- Alert pop-ups (watchlist, rare types, military, emergencies); click one to find the plane -->
+    <div id="alerts" class="alerts" aria-live="polite"></div>
 
     <!-- Flight card: opens when you click a plane (filled in by js/infoPanel.js) -->
     <section id="info-panel" class="card info" hidden aria-label="Aircraft info"></section>
@@ -51,6 +57,54 @@
         </div>
       </form>
     </section>
+
+    <!-- Spotting: alerts, watchlist, rare types and your log (saved in this browser only; js/spottingUI.js) -->
+    <section id="spotting-panel" class="card drawer drawer--scroll" hidden aria-label="Spotting">
+      <h2>Spotting</h2>
+      <h3>Alerts</h3>
+      <div class="checks">
+        <label class="check"><input id="alert-watch" type="checkbox"> Watchlist</label>
+        <label class="check"><input id="alert-rare" type="checkbox"> Rare types</label>
+        <label class="check"><input id="alert-military" type="checkbox"> Military <small>(database flag)</small></label>
+        <label class="check"><input id="alert-interesting" type="checkbox"> "Interesting" <small>(database flag)</small></label>
+        <label class="check"><input id="alert-emergency" type="checkbox"> Emergency squawks <small>(7500 / 7600 / 7700)</small></label>
+        <label class="check"><input id="alert-notify" type="checkbox"> Also notify me when this tab is in the background</label>
+      </div>
+      <h4>Matching right now</h4>
+      <ul id="alert-now" class="alert-now"></ul>
+
+      <h3>Watchlist</h3>
+      <form id="watch-form" class="watch-form" autocomplete="off">
+        <select name="watch-kind" aria-label="What to watch for">
+          <option value="reg">Registration</option>
+          <option value="type">Type code</option>
+          <option value="callsign">Callsign / airline prefix</option>
+          <option value="hex">Hex code</option>
+        </select>
+        <input name="watch-value" placeholder="e.g. 9V-SMA, A388, QFA" aria-label="Value to watch for">
+        <button type="submit" class="primary">Add</button>
+      </form>
+      <ul id="watch-list" class="chips"></ul>
+
+      <h3>Rare types</h3>
+      <p class="muted">ICAO type codes, separated by commas. A starter list of big, old and unusual types; make it yours.</p>
+      <textarea id="rare-types" rows="3" aria-label="Rare type codes"></textarea>
+      <div class="row"><button type="button" id="rare-reset">Reset to starter list</button></div>
+
+      <h3>My log</h3>
+      <p id="log-summary" class="muted"></p>
+      <div class="list-wrap"><table id="log-table" class="aircraft-list log-table"></table></div>
+      <div class="row"><button type="button" id="log-export">Export log (CSV)</button></div>
+      <p id="spot-note" class="info__warn" aria-live="polite"></p>
+      <p class="credits">Saved in this browser only; nothing is uploaded. Military and "interesting" flags come
+        from the community tar1090-db and miss many aircraft.</p>
+    </section>
+
+    <!-- Stats (js/statsUI.js) -->
+    <section id="stats-panel" class="card drawer drawer--scroll" hidden aria-label="Stats"></section>
+
+    <!-- Airport weather (js/weatherUI.js) -->
+    <section id="weather-panel" class="card drawer drawer--small drawer--scroll" hidden aria-label="Weather"></section>
 
     <!-- Sortable list of aircraft -->
     <section id="list-panel" class="card drawer" hidden aria-label="Aircraft list">

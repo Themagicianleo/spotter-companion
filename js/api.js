@@ -80,6 +80,9 @@ export function normalizeAircraft(ac) {
     // Barometric rate is what pilots see; fall back to the GPS-based rate.
     verticalRateFpm: ac.baro_rate ?? ac.geom_rate ?? null,
     squawk: ac.squawk ?? null,
+    // Emergency state the aircraft reports ("none" in the real Oct 2026 response; readsb's README
+    // lists general, lifeguard, minfuel, nordo, unlawful, downed). null when not sent.
+    emergency: typeof ac.emergency === 'string' ? ac.emergency : null,
     // ADS-B emitter category (DO-260B), sent by the aircraft: A1 light ... A5 heavy, A7 rotorcraft.
     category: typeof ac.category === 'string' ? ac.category : null,
     distanceNm: ac.dst ?? null, // only present on radius queries

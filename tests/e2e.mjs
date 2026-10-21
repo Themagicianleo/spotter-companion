@@ -253,6 +253,7 @@ async function tracks(browser) {
   await page.route('https://tile.openstreetmap.org/**', (r) => r.fulfill({ status: 204 }));
   let update = 0;
   await page.route('**/relay?**', (r) => {
+    if (!r.request().url().includes('api.adsb.lol')) return r.fulfill({ status: 404, body: '' }); // e.g. weather
     const data = JSON.parse(fixture);
     data.ac[0].lat += update * 0.02; // TST101 climbs north-east, 12,000 ft -> 27,000 ft
     data.ac[0].lon += update * 0.02;
@@ -351,7 +352,120 @@ async function noVectorFallback(browser) {
   await page.close();
 }
 
-export const extraScenarios = [phase2, phase4, tracks, satellite, noVectorFallback];
+// Spotting (watchlist, alerts, log), Stats and Weather, with the weather API and recorder answered
+// by the real responses captured on 21 Oct 2026 (METAR/TAF) and a small /stats answer.
+async function spotting(browser, { width = 1280, height = 860 } = {}) {
+  const page = await browser.newPage({ viewport: { width, height } });
+  page.on('pageerror', (e) => check('[spotting] no JavaScript errors', false, e.message));
+  page.on('dialog', (d) => d.accept());
+  const data = JSON.parse(fixture);
+  data.ac[1].squawk = '7700'; // TST202 declares an emergency
+  await page.route(/tile\.openstreetmap\.org|tiles\.maps\.eox\.at|tiles\.openfreemap\.org/, (r) => r.fulfill({ status: 204 }));
+  const METAR = '[{"icaoId":"WSSS","receiptTime":"2026-10-21T13:30:57.930Z","obsTime":1792589400,"reportTime":"2026-10-21T13:30:00.000Z","temp":28,"dewp":25,"wdir":360,"wspd":4,"visib":5.59,"altim":1012,"qcField":16,"metarType":"METAR","rawOb":"METAR WSSS 211330Z 36004KT 9000 FEW018 BKN280 28/25 Q1012 NOSIG","lat":1.368,"lon":103.982,"elev":17,"name":"Singapore/Changi Intl, 4, SG","cover":"BKN","clouds":[{"cover":"FEW","base":1800},{"cover":"BKN","base":28000}],"fltCat":"VFR"}]';
+  const weatherCalls = [];
+  await page.route('**/relay?**', (r) => {
+    const target = decodeURIComponent(new URL(r.request().url()).searchParams.get('url'));
+    if (target.startsWith('https://aviationweather.gov/api/data/metar?')) { weatherCalls.push(target); return r.fulfill({ status: 200, contentType: 'application/json', body: METAR }); }
+    if (target.startsWith('https://aviationweather.gov/api/data/taf?')) { weatherCalls.push(target); return r.fulfill({ status: 200, contentType: 'text/plain', body: 'TAF WSSS 211100Z 2112/2218 07007KT 7000 FEW015 SCT020\n' }); }
+    return r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(data) });
+  });
+  await page.route('**/data/aircraft_flags.json', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: '{"military":["7fff03"],"interesting":[]}' }));
+  const hour = Math.floor(Date.now() / 3600000) * 3600;
+  await page.route('https://spotters-relay.maotianze.workers.dev/stats?**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+    hours: 24, area: { lat: 1.35, lon: 103.82, radiusNm: 80 }, uniqueAircraft: 812, oldest: hour - 5 * 3600, detailsSince: hour - 5 * 3600,
+    perHour: [{ hour: hour - 5 * 3600, aircraft: 120 }, { hour: hour - 3 * 3600, aircraft: 210 }, { hour, aircraft: 95 }],
+    types: [{ type: 'A359', aircraft: 80 }, { type: 'B77W', aircraft: 60 }], airlines: [{ airline: 'SIA', aircraft: 150 }, { airline: 'TST', aircraft: 4 }],
+  }) }));
+  await page.route('https://spotters-relay.maotianze.workers.dev/track?**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: '{"points":[]}' }));
+  await page.addInitScript(() => {
+    if (sessionStorage.getItem('started')) return; // keep the log across the reload below
+    sessionStorage.setItem('started', '1');
+    localStorage.clear();
+  });
+  await page.goto(BASE);
+  await page.waitForSelector('.plane');
+  const tag = width < 700 ? '[spotting phone]' : '[spotting]';
+
+  if (width < 700) {
+    const overflow = await page.evaluate(() => document.querySelector('.topbar').scrollWidth - document.querySelector('.topbar').clientWidth);
+    check(`${tag} top-bar buttons fit the phone screen`, overflow <= 0, `${overflow}px too wide`);
+  }
+
+  // Emergency and military alerts pop up on their own.
+  await page.waitForSelector('.alert-toast', { timeout: 5000 });
+  const toasts = await page.locator('.alert-toast').allTextContents();
+  check(`${tag} squawk 7700 pops up as an emergency`, toasts.some((t) => t.includes('TST202') && t.includes('7700 (emergency)')) && (await page.locator('.alert-toast--emergency').count()) === 1, toasts.join(' | '));
+  check(`${tag} military database flag pops up`, toasts.some((t) => t.includes('XYZ9') && t.includes('Military')));
+  check(`${tag} red pulsing ring on the emergency plane`, (await page.locator('.plane-ring--emergency').count()) === 1);
+
+  // Add a registration to the watchlist.
+  await page.click('[data-toggle="spotting-panel"]');
+  await page.selectOption('select[name="watch-kind"]', 'reg');
+  await page.fill('input[name="watch-value"]', 'test-a');
+  await page.click('#watch-form button[type="submit"]');
+  check(`${tag} watchlist entry tidied and shown`, (await page.locator('#watch-list').textContent()).includes('TEST-A'));
+  await page.waitForFunction(() => [...document.querySelectorAll('.alert-toast')].some((t) => t.textContent.includes('Watchlist: TEST-A')), null, { timeout: 15000 });
+  check(`${tag} watchlist match pops up`, true);
+  check(`${tag} "Matching right now" lists three aircraft`, (await page.locator('#alert-now li').count()) === 3);
+  const toastsBefore = await page.locator('.alert-toast').count();
+  await page.waitForTimeout(11000); // next update: the same alerts must not pop up again
+  check(`${tag} alerts pop up only once`, (await page.locator('.alert-toast').count()) === toastsBefore);
+
+  // Click the watchlist pop-up: the card opens with its chip; log it.
+  if (width < 700) {
+    // On a phone the pop-ups hide while a drawer is open; use the drawer's own list instead.
+    check(`${tag} pop-ups hidden while a drawer covers the map`, await page.locator('.alerts').isHidden());
+    await page.locator('#alert-now button', { hasText: 'TST101' }).click();
+  } else {
+    await page.locator('.alert-toast', { hasText: 'Watchlist: TEST-A' }).click();
+  }
+  await page.waitForSelector('#info-panel:not([hidden]) .log-btn');
+  check(`${tag} card shows the alert reason`, (await page.locator('#info-panel .alert-chip').allTextContents()).includes('Watchlist: TEST-A'));
+  await page.click('#info-panel .log-btn');
+  check(`${tag} logged: button changes and says since when`, (await page.textContent('#info-panel .log-btn')) === 'Log again' && (await page.textContent('#info-panel .log-note')).startsWith('In your log since'));
+  await page.click('#info-panel .log-btn');
+  check(`${tag} logging again counts sightings`, (await page.textContent('#info-panel .log-note')).includes('seen 2×'));
+  if (width < 700) check(`${tag} jumping to a plane closes the drawer so the card is visible`, await page.locator('#spotting-panel').isHidden());
+  if (await page.locator('#spotting-panel').isHidden()) await page.click('[data-toggle="spotting-panel"]');
+  check(`${tag} log table in the Spotting panel`, (await page.textContent('#log-table')).includes('TEST-A') && (await page.textContent('#log-summary')).startsWith('1 aircraft'));
+  const [download] = await Promise.all([page.waitForEvent('download'), page.click('#log-export')]);
+  const csv = readFileSync(await download.path(), 'utf8');
+  check(`${tag} log exports as CSV`, csv.startsWith('date,time,registration') && csv.trim().split('\n').length === 3 && csv.includes('TEST-A,A359'));
+
+  // Reload: watchlist and log are remembered.
+  await page.reload();
+  await page.waitForSelector('.plane');
+  check(`${tag} watchlist and log survive a reload`, (await page.textContent('#watch-list')).includes('TEST-A') && (await page.textContent('#log-summary')).startsWith('1 aircraft'));
+
+  // Stats
+  await page.click('[data-toggle="stats-panel"]');
+  await page.waitForSelector('#stats-panel .cols');
+  const stats = await page.textContent('#stats-panel');
+  check(`${tag} stats: right now`, stats.includes('In the air') && /In the air\s*4/.test(await page.locator('#stats-panel .stat-tiles').first().textContent()));
+  check(`${tag} stats: 24 h from the recorder, hours filled in`, stats.includes('812 different aircraft') && (await page.locator('#stats-panel .cols__col').count()) === 6);
+  check(`${tag} stats: airline names from codes`, (await page.locator('#stats-panel .bars__row', { hasText: 'SIA' }).first().getAttribute('title')).includes('Singapore Airlines'));
+  check(`${tag} stats: your log`, stats.includes('Your spotting log') && stats.includes('Sightings'));
+
+  // Weather
+  await page.waitForFunction(() => document.getElementById('weather-btn').textContent !== 'Weather');
+  check(`${tag} weather button shows a summary`, (await page.textContent('#weather-btn')) === 'WSSS 28° 4 kt');
+  await page.click('#weather-btn');
+  const wx = await page.textContent('#weather-panel');
+  check(`${tag} weather decoded`, wx.includes('360° at 4 kt') && wx.includes('9 km') && wx.includes('Few 1,800 ft') && wx.includes('1012 hPa'));
+  check(`${tag} runway hint for Changi`, wx.includes('Wind favours runway 02'));
+  check(`${tag} raw METAR and TAF shown, NOAA credited`, wx.includes('METAR WSSS 211330Z') && wx.includes('TAF WSSS') && wx.includes('NOAA Aviation Weather Center'));
+  check(`${tag} weather asked via the relay, at most once per page load`, weatherCalls.filter((u) => u.includes('/metar?')).length <= 2, weatherCalls.join(', '));
+  if (width >= 700) {
+    mkdirSync('docs/screenshots', { recursive: true });
+    await page.screenshot({ path: 'docs/screenshots/weather-synthetic.png' });
+    await page.click('[data-toggle="stats-panel"]');
+    await page.screenshot({ path: 'docs/screenshots/stats-synthetic.png' });
+  }
+  await page.close();
+}
+const spottingPhone = (browser) => spotting(browser, { width: 390, height: 844 });
+
+export const extraScenarios = [phase2, phase4, tracks, satellite, noVectorFallback, spotting, spottingPhone];
 
 const server = await startServer();
 const browser = await chromium.launch();

@@ -57,12 +57,16 @@ function planeIcon(ac) {
   if (ac.trackDeg === null) classes.push('plane--no-track');
   if (ac.onGround) classes.push('plane--ground');
   if (ac.hex === selectedHex) classes.push('plane--selected');
+  // A pulsing ring around aircraft that match an alert (red for emergencies). See spotting.js.
+  const alerts = ac.alerts ?? [];
+  const ring = !alerts.length ? '' : alerts.some((r) => r.kind === 'emergency') ? 'plane-ring plane-ring--emergency' : 'plane-ring';
   const size = iconSize(ac);
   const badge = showBadges ? safeCode(ac.airline?.iata ?? ac.airline?.icao) : '';
   return L.divIcon({
     className: 'plane-icon', // Leaflet's wrapper; the rotation goes on the inner div
     // The plane rotates; the airline badge (if any) stays upright next to it.
-    html: `<div class="${classes.join(' ')}" style="width:${size}px;height:${size}px;transform:rotate(${rotation}deg)">` +
+    html: (ring ? `<span class="${ring}" style="width:${size + 16}px;height:${size + 16}px"></span>` : '') +
+      `<div class="${classes.join(' ')}" style="width:${size}px;height:${size}px;transform:rotate(${rotation}deg)">` +
       `<svg viewBox="0 0 64 64" aria-hidden="true">${SHAPES[shapeFor(ac)]}</svg></div>` +
       (badge ? `<span class="plane-badge">${badge}</span>` : ''),
     iconSize: [size, size],

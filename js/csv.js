@@ -21,7 +21,7 @@ export const CSV_COLUMNS = [
 ];
 
 // Make one value safe for a CSV cell.
-function cell(value) {
+export function cell(value) {
   if (value === null || value === undefined) return ''; // empty cell = unknown
   let s = String(value);
   // Spreadsheet apps run cells starting with = + - @ as formulas. Text from the internet

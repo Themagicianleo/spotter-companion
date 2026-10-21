@@ -12,6 +12,11 @@ import { initInfoPanel, openInfoPanel, updateLive, isOpenFor, closeInfoPanel } f
 import { getTrack, loadRecordedTrack } from './track.js';
 import { lookupRoute, isPlausible, shortRoute } from './routes.js';
 import { loadAirlines, airlineFor } from './airlines.js';
+import { loadFlags } from './flags.js';
+import { initSpotting, checkAlerts, renderCardBar, getSpotting } from './spottingUI.js';
+import { initStats, updateStats, showStats } from './statsUI.js';
+import { initWeather, showWeather } from './weatherUI.js';
+import { setCardBar } from './infoPanel.js';
 
 // ---- Routes: callsign -> airports (data/routes.json) ----
 const routeCache = new Map(); // callsign -> route object, or null if none on record
@@ -77,6 +82,8 @@ function updateTypeSuggestions() {
 // Runs after every data refresh and every filter change.
 function render() {
   attachRoutes(state.aircraft);
+  checkAlerts(state.aircraft); // marks ac.alerts (map rings) and pops up new matches
+  updateStats(state.aircraft);
   const visible = applyFilters(state.aircraft, currentFilters());
   mapView.updateAircraft(visible);
   mapView.showTrack(selectedHex ? getTrack(selectedHex) : []);
@@ -108,6 +115,8 @@ function select(hex, { openPanel = false, fromList = false } = {}) {
   if (hex === null) closeInfoPanel();
   const ac = state.aircraft.find((a) => a.hex === hex);
   if (ac && (openPanel || fromList)) openInfoPanel(ac);
+  // On a phone the drawers cover the whole map, so close them to show the plane and its card.
+  if (ac && fromList && window.matchMedia('(max-width: 760px)').matches) showPanel(null);
 }
 
 filterForm.addEventListener('input', render);
@@ -123,7 +132,9 @@ function showPanel(id) {
     document.getElementById(button.dataset.toggle).hidden = !open;
   }
   // Tells the CSS how far to move the map's right-hand controls out of the drawer's way.
-  document.body.dataset.drawer = !id ? '' : id === 'list-panel' ? 'wide' : 'small';
+  document.body.dataset.drawer = !id ? '' : document.getElementById(id).classList.contains('drawer--small') ? 'small' : 'wide';
+  if (id === 'stats-panel') showStats();
+  if (id === 'weather-panel') showWeather();
   try {
     localStorage.setItem(PANEL_KEY, id ?? '');
   } catch {
@@ -166,8 +177,13 @@ badgeBox.addEventListener('change', () => {
   render();
 });
 loadAirlines().then(render); // once the airline list arrives, redraw with names and badges
+loadFlags().then(render); // military / "interesting" flags for alerts
 
 initInfoPanel(document.getElementById('info-panel'), PROVIDERS[CONFIG.provider].name);
+setCardBar(renderCardBar);
+initSpotting({ select, changed: render });
+initStats(document.getElementById('stats-panel'), { aircraft: () => state.aircraft, log: () => getSpotting().log });
+initWeather(document.getElementById('weather-panel'), document.getElementById('weather-btn'));
 initList(document.getElementById('aircraft-list'), (hex) => select(hex, { fromList: true }));
 setRenderer(render);
 setSelectHandler(select);

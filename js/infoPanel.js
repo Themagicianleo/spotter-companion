@@ -21,6 +21,13 @@ let currentRoute = null; // the route shown on the card (for the live times), or
 let routeTimesEl = null; // where the departure / arrival lines go
 let currentHex = null;
 let liveSourceName = 'live feed';
+let spotBar; // alert chips + "Log as seen" (filled in by spottingUI.js)
+let cardBarRenderer = null;
+
+// spottingUI.js hands us a function that fills the bar under the card's title.
+export function setCardBar(fn) {
+  cardBarRenderer = fn;
+}
 
 // --- tiny DOM helpers to keep the code below readable ---
 function h(tag, className, text) {
@@ -72,12 +79,13 @@ export function initInfoPanel(element, providerName) {
   close.setAttribute('aria-label', 'Close aircraft info');
   close.addEventListener('click', closeInfoPanel);
   header.append(close);
+  spotBar = h('div', 'info__spotbar');
   liveSection = h('section', 'info__section');
   detailsSection = h('section', 'info__section');
   photoSection = h('section', 'info__photo');
   routeSection = h('section', 'info__section');
-  // Card order: header, photo, route, live tiles, aircraft + engine details.
-  panel.append(header, photoSection, routeSection, liveSection, detailsSection);
+  // Card order: header, spotting bar, photo, route, live tiles, aircraft + engine details.
+  panel.append(header, spotBar, photoSection, routeSection, liveSection, detailsSection);
 }
 
 export function closeInfoPanel() {
@@ -431,5 +439,6 @@ export function updateLive(ac) {
     facts.append(h('dt', null, label), h('dd', null, value));
   }
   liveSection.replaceChildren(heading, tiles, facts);
+  cardBarRenderer?.(ac, spotBar); // alerts can change (e.g. a new squawk)
   renderRouteTimes(ac); // the arrival estimate changes as the plane flies
 }
