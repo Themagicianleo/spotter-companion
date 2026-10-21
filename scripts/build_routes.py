@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Build data/routes.json: flight routes (callsign -> airports) that pass near Singapore.
+"""Build data/routes.json (flight routes that pass near Singapore) and data/airlines.json
+(airline ICAO code -> name and IATA code, used for the airline badges on the map).
 
 Source: Virtual Radar Server "standing data" (github.com/vradarserver/standing-data), CC0,
 the same route data adsb.lol uses. Formats confirmed from the real files:
     routes/schema-01/<letter>/<code>-all.csv   Callsign,Code,Number,AirlineCode,AirportCodes
     airports/schema-01/<letter>/<2 chars>.csv  Code,Name,ICAO,IATA,Location,CountryISO2,Latitude,Longitude,AltitudeFeet
+    airlines/schema-01/airlines.csv            Code,Name,ICAO,IATA,PositioningFlightPattern,CharterFlightPattern
 AirportCodes looks like "ZSFZ-WSSS" (can have stops: "EGLL-OMDB-WSSS").
 
 The full data has ~620,000 routes (23 MB), far too much for a web page, so only routes whose
@@ -31,13 +33,14 @@ RADIUS_NM = 300
 EARTH_NM = 3440.065
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "routes.json"
+AIRLINES_OUT = ROOT / "data" / "airlines.json"
 
 
 def read_files():
     """Yield (path, text) for every routes/airports CSV, from a local folder or the downloaded zip."""
     if len(sys.argv) > 1:
         base = Path(sys.argv[1])
-        for path in base.glob("*/schema-01/*/*.csv"):
+        for path in [*base.glob("*/schema-01/*/*.csv"), *base.glob("airlines/schema-01/*.csv")]:
             yield str(path.relative_to(base)), path.read_text(encoding="utf-8-sig")
         return
     print(f"Downloading {ZIP_URL}")
@@ -78,7 +81,7 @@ def distance_to_segment_nm(p, a, b):
 
 
 def main():
-    airports, route_rows = {}, []
+    airports, route_rows, airlines = {}, [], {}
     for path, text in read_files():
         rows = csv.DictReader(io.StringIO(text))
         if path.startswith("airports/"):
@@ -89,6 +92,11 @@ def main():
                                            "lat": float(r["Latitude"]), "lon": float(r["Longitude"])}
                 except (KeyError, ValueError):
                     pass
+        elif path.startswith("airlines/"):
+            for r in rows:
+                icao = (r.get("ICAO") or "").strip().upper()
+                if len(icao) == 3 and r.get("Name"):  # callsigns use the 3-letter ICAO code
+                    airlines[icao] = [r["Name"].strip(), (r.get("IATA") or "").strip() or None]
         elif path.startswith("routes/"):
             route_rows.extend((r["Callsign"], r["AirportCodes"]) for r in rows)
 
@@ -112,6 +120,12 @@ def main():
         "routes": dict(sorted(routes.items())),
     }
     OUT.write_text(json.dumps(doc, separators=(",", ":"), ensure_ascii=False))
+    AIRLINES_OUT.write_text(json.dumps({
+        "source": "Virtual Radar Server standing data (CC0), https://github.com/vradarserver/standing-data",
+        "fields": ["name", "iata"],
+        "airlines": dict(sorted(airlines.items())),
+    }, separators=(",", ":"), ensure_ascii=False))
+    print(f"{len(airlines):,} airlines -> {AIRLINES_OUT} ({AIRLINES_OUT.stat().st_size // 1024} KB)")
     print(f"Kept {len(routes):,} of {len(route_rows):,} routes, {len(used):,} airports -> {OUT} "
           f"({OUT.stat().st_size // 1024} KB)")
 

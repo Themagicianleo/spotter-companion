@@ -11,6 +11,7 @@ import { downloadCsv } from './csv.js';
 import { initInfoPanel, openInfoPanel, updateLive, isOpenFor, closeInfoPanel } from './infoPanel.js';
 import { getTrack, loadRecordedTrack } from './track.js';
 import { lookupRoute, isPlausible, shortRoute } from './routes.js';
+import { loadAirlines, airlineFor } from './airlines.js';
 
 // ---- Routes: callsign -> airports (data/routes.json) ----
 const routeCache = new Map(); // callsign -> route object, or null if none on record
@@ -20,6 +21,7 @@ const pendingRoutes = new Set();
 // background and re-drawing once they're known. "(?)" = the plane isn't near that route.
 function attachRoutes(aircraft) {
   for (const ac of aircraft) {
+    ac.airline = airlineFor(ac.callsign); // { name, iata, icao } or null, from data/airlines.json
     ac.routeLabel = null;
     if (!ac.callsign) continue;
     if (routeCache.has(ac.callsign)) {
@@ -156,6 +158,14 @@ filterForm.addEventListener('submit', (e) => e.preventDefault());
 document.getElementById('export-csv').addEventListener('click', () => {
   downloadCsv(getShownInOrder(), PROVIDERS[CONFIG.provider].csvCredit);
 });
+
+// Airline code badges on the map (switch in the Filters section).
+const badgeBox = document.getElementById('show-badges');
+badgeBox.addEventListener('change', () => {
+  mapView.setShowBadges(badgeBox.checked);
+  render();
+});
+loadAirlines().then(render); // once the airline list arrives, redraw with names and badges
 
 initInfoPanel(document.getElementById('info-panel'), PROVIDERS[CONFIG.provider].name);
 initList(document.getElementById('aircraft-list'), (hex) => select(hex, { fromList: true }));

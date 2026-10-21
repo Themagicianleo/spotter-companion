@@ -88,7 +88,7 @@ export async function openInfoPanel(ac) {
   panel.scrollTop = 0;
   document.body.classList.add('card-open');
   panel.querySelector('.info__title').textContent = ac.callsign ?? ac.registration ?? ac.hex;
-  panel.querySelector('.info__subtitle').textContent = [ac.registration, ac.typeCode].filter(Boolean).join(' · ');
+  panel.querySelector('.info__subtitle').textContent = [ac.airline?.name, ac.registration, ac.typeCode].filter(Boolean).join(' · ');
   updateLive(ac);
   detailsSection.replaceChildren(h('p', 'info__loading', 'Looking up aircraft and type data…'));
   showPhoto(ac.hex); // runs alongside the lookups below; no need to wait for it
@@ -108,7 +108,7 @@ export async function openInfoPanel(ac) {
 
   if (currentHex !== ac.hex) return; // user clicked another plane while we were loading
   // Fill in the subtitle from the database if the live feed didn't have it.
-  const subtitle = [db?.registration ?? ac.registration, type?.model ?? db?.typeCode ?? ac.typeCode].filter(Boolean).join(' · ');
+  const subtitle = [ac.airline?.name, db?.registration ?? ac.registration, type?.model ?? db?.typeCode ?? ac.typeCode].filter(Boolean).join(' · ');
   if (subtitle) panel.querySelector('.info__subtitle').textContent = subtitle;
   renderDetails(ac, db, dbResult.status === 'rejected', metaResult.value, type, typeResult.status === 'rejected', variant);
 }

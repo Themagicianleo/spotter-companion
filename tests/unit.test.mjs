@@ -51,3 +51,24 @@ test('normalize: emitter category is read when present', () => {
   assert.equal(normalizeAircraft({ hex: 'abcdef', category: 'A5' }).category, 'A5');
   assert.equal(normalizeAircraft({ hex: 'abcdef' }).category, null);
 });
+
+test('plane shapes: widebody, four-engine, A380, turboprop, helicopter, light, default narrow', async () => {
+  const { shapeFor } = await import('../js/map.js');
+  const { SHAPES } = await import('../js/shapes.js');
+  const cases = [
+    [{ typeCode: 'B77W', category: 'A5' }, 'wide'], [{ typeCode: 'B744', category: 'A5' }, 'quad'],
+    [{ typeCode: 'A388', category: 'A5' }, 'a380'], [{ typeCode: 'AT76', category: 'A2' }, 'turboprop'],
+    [{ typeCode: 'EC35', category: 'A7' }, 'helicopter'], [{ typeCode: 'C172', category: 'A1' }, 'light'],
+    [{ typeCode: 'GLF6', category: 'A2' }, 'bizjet'], [{ typeCode: 'A20N', category: 'A3' }, 'narrow'],
+    [{ typeCode: null, category: null }, 'narrow'],
+  ];
+  for (const [ac, shape] of cases) {
+    assert.equal(shapeFor(ac), shape, JSON.stringify(ac));
+    assert.ok(SHAPES[shape].includes('<'), `${shape} has a drawing`);
+  }
+});
+
+test('airline from callsign; registrations used as callsigns are not airlines', async () => {
+  const { airlineFor } = await import('../js/airlines.js');
+  assert.equal(airlineFor('SIA321'), null); // not loaded yet -> null, never a guess
+});

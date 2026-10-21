@@ -11,6 +11,11 @@ free, open data. It gives you some features that paid flight trackers charge for
 - **Dark, map-first interface** (inspired by flight-tracker apps like Plane Finder): full-screen map,
   yellow planes, a search box, and a flight card with a big route display, progress bar and live tiles.
   Works on phones too: the card becomes a bottom sheet.
+- **Aircraft silhouettes and airline badges:** each plane is drawn as its kind of aircraft (narrowbody,
+  widebody, four-engine, A380, trijet, turboprop, business jet, light plane, helicopter; original drawings in
+  `js/shapes.js`), with its airline's code (e.g. SQ, TR, EK) in a small badge. The airline name also appears in
+  the hover label and the flight card. Real airline logos aren't used: they're copyrighted trademarks with no
+  open licence. Badges can be switched off in Filters.
 - **Icons sized by aircraft class:** from the ADS-B emitter category each aircraft broadcasts (light,
   small, large, 757-class, heavy, helicopter); the A380 is biggest. No category = medium size.
 - **Map styles:** a darkened street map (default), the normal street map, or Sentinel-2 satellite imagery
@@ -109,6 +114,8 @@ js/infoPanel.js    the aircraft info panel
 js/photos.js       aircraft photos from Planespotters.net
 js/track.js        remembers positions so the map can draw tracks
 js/routes.js       flight routes by callsign, with a plausibility check
+js/airlines.js     airline name and code from the callsign
+js/shapes.js       aircraft silhouettes for the map icons
 js/format.js       turns values into text, with "Unknown" for anything missing
 js/main.js         wires everything together
 data/aircraft_types.json   type + engine table (Phase 3)
@@ -144,6 +151,7 @@ before you publish.**
 | Official type certificate data sheets (EASA, UK CAA), as text on the `tcds-text` branch | `data/aircraft_variants.json`: engines certified for each exact Airbus/A220 model | No | – | Public regulatory documents | "TCDS" tag; document name and text line number shown in the panel |
 | [Virtual Radar Server standing data](https://github.com/vradarserver/standing-data), aircraft files | Operator, serial number, year built, exact model (aircraft corrected by VRS users since 2022) | No | Static file (merged into `data/aircraft_db/` monthly) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | "VRS" tag on each value |
 | [Virtual Radar Server standing data](https://github.com/vradarserver/standing-data) (routes + airports; also used by adsb.lol) | Flight routes: callsign → origin, stops, destination | No | Static file (`data/routes.json`, rebuilt monthly) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/): no restrictions | "ROUTE" tag in the panel (credited even though CC0 doesn't require it) |
+| [Virtual Radar Server standing data](https://github.com/vradarserver/standing-data), airlines file | Airline name and IATA code from the callsign (`data/airlines.json`) | No | Static file (rebuilt monthly) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Credited with the routes |
 | `data/aircraft_types.json` (my own table) | Model names, engine options | – | – | Built from EASA/FAA type certificate data sheets, regulator notices and manufacturer pages, each cited per row | Sources listed in the panel |
 
 **Not used:**

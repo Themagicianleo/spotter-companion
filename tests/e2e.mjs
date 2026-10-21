@@ -215,7 +215,12 @@ async function phase4(browser) {
 
   const routeCell = await page.locator('#aircraft-list tbody tr', { hasText: 'CXA865' }).locator('td').nth(3).textContent();
   check('[route] list shows the route', routeCell === 'FOC → SIN', routeCell);
+  await page.waitForSelector('.plane-badge');
+  check('[airline] CXA865 gets an "MF" (Xiamen Airlines) badge on the map', (await page.locator('.plane-badge', { hasText: 'MF' }).count()) === 1);
+  const shapes = await page.locator('.plane svg').evaluateAll((els) => new Set(els.map((e) => e.innerHTML)).size);
+  check('[shape] different aircraft get different silhouettes', shapes >= 2, `${shapes} different shapes`);
   text = await openPanelFor('CXA865'); // hex not in database
+  check('[airline] card subtitle starts with the airline name', (await page.textContent('#info-panel .info__subtitle')).startsWith('Xiamen Airlines'));
   check('[route] info panel shows full airport names',
     (await rowText('From')).includes('Fuzhou Changle International Airport (FOC / ZSFZ)') && (await rowText('To')).includes('Singapore Changi International Airport (SIN / WSSS)'));
   check('[route] no "outdated" warning when the plane is on its route', !text.includes('may be outdated'));
@@ -225,6 +230,10 @@ async function phase4(browser) {
   check('[panel] database shard downloaded once (cached)', new Set(shardRequests).size === shardRequests.length, shardRequests.join(' '));
   check('[panel] unconfirmed badge only where verified=false', !text.includes('unconfirmed'));
   await page.click('.info__close');
+  await page.click('#filters-btn');
+  await page.uncheck('#show-badges');
+  check('[airline] badges can be switched off', (await page.locator('.plane-badge').count()) === 0);
+  await page.check('#show-badges');
   await page.locator('#aircraft-list tbody tr', { hasText: 'NOPOS1' }).click(); // no position: no popup
   check('[panel] closing panel shows the list again', await page.isVisible('#aircraft-list'));
   await page.close();

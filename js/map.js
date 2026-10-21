@@ -10,11 +10,34 @@ const markers = new Map(); // hex -> Leaflet marker, so we move markers instead 
 let onSelect = () => {}; // set by app.js: what to do when a plane is clicked
 let selectedHex = null;
 
-// A simple top-down airplane drawn pointing north (up). We rotate it to the aircraft's track.
-const PLANE_SVG =
-  '<svg viewBox="0 0 24 24" aria-hidden="true">' +
-  '<path d="M12 2c.8 0 1.3.9 1.3 2v5.2l7.7 4.6v2l-7.7-2.3v4.6l2.2 1.7v1.6L12 20.4l-3.5 1.2V20l2.2-1.7v-4.6L3 16v-2l7.7-4.6V4c0-1.1.5-2 1.3-2z"/>' +
-  '</svg>';
+import { SHAPES } from './shapes.js';
+
+// Which silhouette to draw (js/shapes.js). Chosen from the ICAO type code the live feed sends,
+// then from the ADS-B emitter category. These are only drawing choices for the icon.
+const WIDEBODY = new Set(['A30B', 'A306', 'A310', 'A332', 'A333', 'A338', 'A339', 'A359', 'A35K', 'B762', 'B763', 'B764',
+  'B772', 'B77L', 'B773', 'B77W', 'B778', 'B779', 'B788', 'B789', 'B78X']);
+const FOUR_ENGINE = new Set(['A342', 'A343', 'A345', 'A346', 'B741', 'B742', 'B743', 'B744', 'B74S', 'B748']);
+const TRIJET = new Set(['B721', 'B722']);
+const TURBOPROP = /^(AT[4-7]\d|DH8[A-D])$/; // ATR 42/72 and Dash 8 families
+export function shapeFor(ac) {
+  if (ac.category === 'A7') return 'helicopter';
+  if (ac.typeCode === 'A388') return 'a380';
+  if (FOUR_ENGINE.has(ac.typeCode)) return 'quad';
+  if (WIDEBODY.has(ac.typeCode)) return 'wide';
+  if (TRIJET.has(ac.typeCode)) return 'trijet';
+  if (TURBOPROP.test(ac.typeCode ?? '')) return 'turboprop';
+  if (ac.category === 'A1') return 'light';
+  if (ac.category === 'A2') return 'bizjet';
+  return 'narrow';
+}
+
+let showBadges = true; // airline code badges next to planes (can be switched off in Filters)
+export function setShowBadges(on) {
+  showBadges = on;
+}
+
+// Only letters/digits from the data go into the badge, so nothing can inject HTML.
+const safeCode = (s) => (s ?? '').replace(/[^A-Z0-9]/gi, '').slice(0, 3);
 
 // Icon size in pixels, from the ADS-B emitter category the aircraft broadcasts (DO-260B):
 //   A1 light (< 15,500 lb), A2 small (< 75,000 lb), A3 large (< 300,000 lb, e.g. A320/737),
@@ -35,9 +58,13 @@ function planeIcon(ac) {
   if (ac.onGround) classes.push('plane--ground');
   if (ac.hex === selectedHex) classes.push('plane--selected');
   const size = iconSize(ac);
+  const badge = showBadges ? safeCode(ac.airline?.iata ?? ac.airline?.icao) : '';
   return L.divIcon({
     className: 'plane-icon', // Leaflet's wrapper; the rotation goes on the inner div
-    html: `<div class="${classes.join(' ')}" style="width:${size}px;height:${size}px;transform:rotate(${rotation}deg)">${PLANE_SVG}</div>`,
+    // The plane rotates; the airline badge (if any) stays upright next to it.
+    html: `<div class="${classes.join(' ')}" style="width:${size}px;height:${size}px;transform:rotate(${rotation}deg)">` +
+      `<svg viewBox="0 0 64 64" aria-hidden="true">${SHAPES[shapeFor(ac)]}</svg></div>` +
+      (badge ? `<span class="plane-badge">${badge}</span>` : ''),
     iconSize: [size, size],
     iconAnchor: [size / 2, size / 2], // center of the icon sits on the aircraft position
   });
@@ -51,7 +78,7 @@ function labelContent(ac) {
   const name = document.createElement('b');
   name.textContent = ac.callsign ?? ac.registration ?? ac.hex;
   box.append(name);
-  const extra = [ac.typeCode, ac.routeLabel, ac.onGround ? 'on ground' : ac.altitudeFt === null ? null : `${ac.altitudeFt.toLocaleString('en')} ft`];
+  const extra = [ac.airline?.name, ac.typeCode, ac.routeLabel, ac.onGround ? 'on ground' : ac.altitudeFt === null ? null : `${ac.altitudeFt.toLocaleString('en')} ft`];
   box.append(extra.filter(Boolean).map((x) => ` · ${x}`).join(''));
   return box;
 }
