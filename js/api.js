@@ -80,6 +80,8 @@ export function normalizeAircraft(ac) {
     // Barometric rate is what pilots see; fall back to the GPS-based rate.
     verticalRateFpm: ac.baro_rate ?? ac.geom_rate ?? null,
     squawk: ac.squawk ?? null,
+    // ADS-B emitter category (DO-260B), sent by the aircraft: A1 light ... A5 heavy, A7 rotorcraft.
+    category: typeof ac.category === 'string' ? ac.category : null,
     distanceNm: ac.dst ?? null, // only present on radius queries
     secondsSinceSeen: ac.seen ?? null,
   };

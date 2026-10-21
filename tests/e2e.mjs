@@ -74,11 +74,14 @@ export const scenarios = {
     const rotation = await page.locator('.plane').first().getAttribute('style');
     check('[fixture] markers are rotated to the track', rotation.includes('rotate(45.5deg)'), rotation);
     check('[fixture] no error banner', await page.isHidden('#banner'));
-    await page.locator('.leaflet-marker-icon').first().click();
+    // Click the first plane's icon directly (big icons can overlap each other or the list drawer).
+    await page.locator('.leaflet-marker-icon').first().dispatchEvent('click');
     await page.waitForSelector('#info-panel:not([hidden]) .tiles');
     const card = await page.textContent('#info-panel');
     check('[fixture] clicking a plane opens its card: callsign, registration, type, altitude, speed, VS, squawk',
       ['TST101', 'TEST-A', 'A359', '12,000 ft', '310 kt', '-1,280 ft/min', '2301'].every((s) => card.includes(s)), card.slice(0, 160));
+    const widths = await page.locator('.plane').evaluateAll((els) => els.map((e) => e.offsetWidth)); // offsetWidth ignores the rotation
+    check('[fixture] icon sizes follow the aircraft category (heavy > large > light)', new Set(widths.map(Math.round)).size === 3 && Math.max(...widths) > Math.min(...widths) * 1.5, widths.map(Math.round).join(', '));
     const status = await page.textContent('#status');
     check('[fixture] status counts aircraft on map separately', status.includes('4 aircraft on map (+1 without position)'), status);
     mkdirSync('docs/screenshots', { recursive: true });

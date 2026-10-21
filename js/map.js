@@ -12,9 +12,20 @@ let selectedHex = null;
 
 // A simple top-down airplane drawn pointing north (up). We rotate it to the aircraft's track.
 const PLANE_SVG =
-  '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">' +
+  '<svg viewBox="0 0 24 24" aria-hidden="true">' +
   '<path d="M12 2c.8 0 1.3.9 1.3 2v5.2l7.7 4.6v2l-7.7-2.3v4.6l2.2 1.7v1.6L12 20.4l-3.5 1.2V20l2.2-1.7v-4.6L3 16v-2l7.7-4.6V4c0-1.1.5-2 1.3-2z"/>' +
   '</svg>';
+
+// Icon size in pixels, from the ADS-B emitter category the aircraft broadcasts (DO-260B):
+//   A1 light (< 15,500 lb), A2 small (< 75,000 lb), A3 large (< 300,000 lb, e.g. A320/737),
+//   A4 high-vortex large (B757), A5 heavy (> 300,000 lb, e.g. 777/A350), A7 rotorcraft.
+// The A380 (ICAO wake category "Super", above Heavy) gets the biggest icon.
+// No category (A0 or missing) gets a middle size, so it's never mistaken for a small plane.
+const SIZE_BY_CATEGORY = { A1: 16, A2: 20, A3: 26, A4: 28, A5: 34, A7: 20 };
+export function iconSize(ac) {
+  if (ac.typeCode === 'A388') return 40;
+  return SIZE_BY_CATEGORY[ac.category] ?? 26;
+}
 
 function planeIcon(ac) {
   // No track known? Draw it pointing north but faded, so you can tell it's not a real heading.
@@ -23,11 +34,12 @@ function planeIcon(ac) {
   if (ac.trackDeg === null) classes.push('plane--no-track');
   if (ac.onGround) classes.push('plane--ground');
   if (ac.hex === selectedHex) classes.push('plane--selected');
+  const size = iconSize(ac);
   return L.divIcon({
     className: 'plane-icon', // Leaflet's wrapper; the rotation goes on the inner div
-    html: `<div class="${classes.join(' ')}" style="transform: rotate(${rotation}deg)">${PLANE_SVG}</div>`,
-    iconSize: [28, 28],
-    iconAnchor: [14, 14], // center of the icon sits on the aircraft position
+    html: `<div class="${classes.join(' ')}" style="width:${size}px;height:${size}px;transform:rotate(${rotation}deg)">${PLANE_SVG}</div>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2], // center of the icon sits on the aircraft position
   });
 }
 

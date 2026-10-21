@@ -36,3 +36,18 @@ test('normalize: aircraft without position keep lat/lon null', () => {
   assert.equal(list[4].lat, null);
   assert.equal(list[4].lon, null);
 });
+
+test('icon size follows the ADS-B emitter category; A380 biggest; unknown is medium', async () => {
+  const { iconSize } = await import('../js/map.js');
+  assert.ok(iconSize({ category: 'A1' }) < iconSize({ category: 'A2' }));
+  assert.ok(iconSize({ category: 'A2' }) < iconSize({ category: 'A3' }));
+  assert.ok(iconSize({ category: 'A3' }) < iconSize({ category: 'A5' }));
+  assert.ok(iconSize({ category: 'A5', typeCode: 'A388' }) > iconSize({ category: 'A5' }));
+  assert.equal(iconSize({ category: null }), iconSize({ category: 'A3' }));
+  assert.equal(iconSize({ category: 'A0' }), iconSize({ category: 'A3' }));
+});
+
+test('normalize: emitter category is read when present', () => {
+  assert.equal(normalizeAircraft({ hex: 'abcdef', category: 'A5' }).category, 'A5');
+  assert.equal(normalizeAircraft({ hex: 'abcdef' }).category, null);
+});

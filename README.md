@@ -11,6 +11,8 @@ free, open data. It gives you some features that paid flight trackers charge for
 - **Dark, map-first interface** (inspired by flight-tracker apps like Plane Finder): full-screen map,
   yellow planes, a search box, and a flight card with a big route display, progress bar and live tiles.
   Works on phones too: the card becomes a bottom sheet.
+- **Icons sized by aircraft class:** from the ADS-B emitter category each aircraft broadcasts (light,
+  small, large, 757-class, heavy, helicopter); the A380 is biggest. No category = medium size.
 - **Map styles:** a darkened street map (default), the normal street map, or Sentinel-2 satellite imagery
   (layers button on the map).
 - **Flight tracks:** select a plane (on the map or in the list) to see where it has flown, coloured
