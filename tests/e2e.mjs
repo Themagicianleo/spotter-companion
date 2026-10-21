@@ -146,6 +146,8 @@ async function phase2(browser) {
 async function phase4(browser) {
   const data = JSON.parse(fixture);
   Object.assign(data.ac[1], { hex: 'a03618', t: 'B738', r: undefined, desc: undefined, ownOp: undefined, year: undefined });
+  // 010207 = SU-GFM, recorded by OpenSky as an A320-251N (the certificate says LEAP-1A26).
+  Object.assign(data.ac[0], { hex: '010207', t: 'A20N', r: undefined, desc: undefined });
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   page.on('pageerror', (e) => check('[panel] no JavaScript errors', false, e.message));
   await page.route('https://tile.openstreetmap.org/**', (r) => r.fulfill({ status: 204 }));
@@ -180,9 +182,11 @@ async function phase4(browser) {
   check('[panel] registration from database, tagged DB', (await rowText('Registration')) === 'RegistrationN11206DB');
   check('[panel] year built and calculated age', (await rowText('Year built')).includes('2000') && (await rowText('Age')).includes(`about ${new Date().getFullYear() - 2000} years`));
   check('[panel] operator from database', (await rowText('Operator')).includes('UNITED AIRLINES INC'));
-  check('[panel] full model from type table, tagged TYPE', (await rowText('Model')) === 'ModelBoeing 737-800 (737 NG)TYPE');
-  check('[panel] serial number is Unknown (not guessed)', (await rowText('Serial number')).includes('Unknown'));
-  check('[panel] engine options labelled as type options', text.includes('CFM International CFM56-7B series') && text.includes('do not tell you which engine this particular aircraft has'));
+  check('[panel] type name from type table, tagged TYPE', (await page.locator('#info-panel tr', { hasText: /^Type/ }).first().textContent()) === 'TypeBoeing 737-800 (737 NG)TYPE');
+  check('[panel] exact model and serial number from OpenSky, tagged OSN',
+    (await rowText('Exact model')) === 'Exact model (as recorded)737-824OSN' && (await rowText('Serial number')) === 'Serial number (MSN)30578OSN');
+  check('[panel] single-engine type: engine applies to this aircraft', (await rowText('Engine')).includes('2 × CFM International CFM56-7B series') && text.includes('only engine offered for this aircraft type'));
+  check('[panel] engine as recorded by OpenSky shown verbatim', (await rowText('Recorded for this aircraft')).includes('CFM INTL. CFM56 SERIES'));
   check('[panel] live section with live tags', (await rowText('Squawk')) === 'Squawk4512LIVE');
   await page.waitForSelector('.info__photo img');
   const photoLink = page.locator('.info__photo > a');
@@ -192,17 +196,20 @@ async function phase4(browser) {
   await page.click('.info__close');
 
   text = await openPanelFor('TST101');
-  check('[panel] aircraft not in database says so, falls back to live registration', text.includes('Not in our database') && (await rowText('Registration')) === 'RegistrationTEST-ALIVE');
+  check('[panel] A320-251N gets its certified engine LEAP-1A26 from the TCDS',
+    (await rowText('Certified for')) === 'Certified for A320-251N2 × LEAP-1A26TCDS', await rowText('Certified for'));
+  if (process.env.SHOT2) await page.screenshot({ path: process.env.SHOT2 });
+  check('[panel] certificate source cited with line number', text.includes('UK CAA TCDS UK.TC.A.00010') && /text line \d+/.test(text));
   await page.waitForFunction(() => document.querySelector('.info__photo')?.textContent.includes('No photo'));
   check('[photo] aircraft without a photo says so', true);
-  check('[panel] A359 shows both engine options', text.includes('Trent XWB-84') && text.includes('Trent XWB-75'));
-  check('[panel] database shard downloaded once (cached)', new Set(shardRequests).size === shardRequests.length, shardRequests.join(' '));
   await page.click('.info__close');
 
-  text = await openPanelFor('XYZ9'); // B77W, hex not in DB
+  text = await openPanelFor('XYZ9'); // hex not in database
+  check('[panel] aircraft not in database says so, falls back to live type', text.includes('Not in our database') && (await rowText('ICAO type code')) === 'ICAO type codeB77WLIVE');
+  check('[panel] database shard downloaded once (cached)', new Set(shardRequests).size === shardRequests.length, shardRequests.join(' '));
   check('[panel] unconfirmed badge only where verified=false', !text.includes('unconfirmed'));
   await page.click('.info__close');
-  await page.locator('#aircraft-list tbody tr', { hasText: 'A20N' }).click(); // no position: no popup
+  await page.locator('#aircraft-list tbody tr', { hasText: 'NOPOS1' }).click(); // no position: no popup
   check('[panel] closing panel shows the list again', await page.isVisible('#aircraft-list'));
   await page.close();
 }

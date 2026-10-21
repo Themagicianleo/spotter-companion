@@ -1,0 +1,1526 @@
+{
+  "_about": "Exact aircraft model designation -> engines certified for that model, copied from official type certificate data sheets (TCDS). Built by scripts/parse_tcds.py. 'line' is the line in the text version of the TCDS (tcds-text branch). A model can list several engines (e.g. thrust variants or modifications); the database cannot say which one a specific airframe has.",
+  "variants": [
+    {
+      "model": "A300 B4-102",
+      "engineCount": 2,
+      "engines": [
+        "GENERAL ELECTRIC CF6 - 50C1"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 755
+        }
+      ]
+    },
+    {
+      "model": "A300 B4-103",
+      "engineCount": 2,
+      "engines": [
+        "GENERAL ELECTRIC CF6 - 50C2"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 756
+        }
+      ]
+    },
+    {
+      "model": "A300 B4-120",
+      "engineCount": 2,
+      "engines": [
+        "PRATT & WHITNEY JT9D-59A"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 758
+        }
+      ]
+    },
+    {
+      "model": "A300 B4-203",
+      "engineCount": 2,
+      "engines": [
+        "General Electric CF6 50C2",
+        "CF6 - 50C2D (see Note 3)"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 917
+        }
+      ]
+    },
+    {
+      "model": "A300 B4-220",
+      "engineCount": 2,
+      "engines": [
+        "Pratt & Whitney JT9D-59A"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 918
+        }
+      ]
+    },
+    {
+      "model": "A300 B4-601",
+      "engineCount": 2,
+      "engines": [
+        "GENERAL ELECTRIC CF6-80C2A1"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 2302
+        }
+      ]
+    },
+    {
+      "model": "A300 B4-603",
+      "engineCount": 2,
+      "engines": [
+        "GENERAL ELECTRIC CF6-80C2A3"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 2303
+        }
+      ]
+    },
+    {
+      "model": "A300 B4-620",
+      "engineCount": 2,
+      "engines": [
+        "PRATT & WHITNEY JT9D-7R4H1"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 2301
+        }
+      ]
+    },
+    {
+      "model": "A300 B4-622",
+      "engineCount": 2,
+      "engines": [
+        "PRATT & WHITNEY PW 4158"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 2304
+        }
+      ]
+    },
+    {
+      "model": "A310-203",
+      "engineCount": 2,
+      "engines": [
+        "GENERAL ELECTRIC CF6-80A3"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 1646
+        }
+      ]
+    },
+    {
+      "model": "A310-203C",
+      "engineCount": 2,
+      "engines": [
+        "GENERAL ELECTRIC CF6-80A3"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 1769
+        }
+      ]
+    },
+    {
+      "model": "A310-204",
+      "engineCount": 2,
+      "engines": [
+        "GENERAL ELECTRIC CF6-80C2A2"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 1649
+        }
+      ]
+    },
+    {
+      "model": "A310-221",
+      "engineCount": 2,
+      "engines": [
+        "PRATT & WHITNEY JT9D-7R4D1"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 1647
+        }
+      ]
+    },
+    {
+      "model": "A310-222",
+      "engineCount": 2,
+      "engines": [
+        "PRATT & WHITNEY JT9D-7R4E1"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 1648
+        }
+      ]
+    },
+    {
+      "model": "A310-304",
+      "engineCount": 2,
+      "engines": [
+        "GENERAL ELECTRIC CF6-80C2A2"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 1864
+        }
+      ]
+    },
+    {
+      "model": "A310-308",
+      "engineCount": 2,
+      "engines": [
+        "GENERAL ELECTRIC CF6-80C2A8",
+        "CF6-80C2A2"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 1866
+        }
+      ]
+    },
+    {
+      "model": "A310-322",
+      "engineCount": 2,
+      "engines": [
+        "PRATT & WHITNEY JT9D-7R4E1"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 1863
+        }
+      ]
+    },
+    {
+      "model": "A310-324",
+      "engineCount": 2,
+      "engines": [
+        "PRATT & WHITNEY PW 4152"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 1865
+        }
+      ]
+    },
+    {
+      "model": "A310-325",
+      "engineCount": 2,
+      "engines": [
+        "PRATT & WHITNEY 4156A"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.172 (A300/A310/A300-600)",
+          "url": "https://www.easa.europa.eu/en/downloads/17110/en",
+          "line": 1868
+        }
+      ]
+    },
+    {
+      "model": "A318-111",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5B8/P"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 10546
+        }
+      ]
+    },
+    {
+      "model": "A318-112",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5B9/P"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 10550
+        }
+      ]
+    },
+    {
+      "model": "A318-121",
+      "engineCount": 2,
+      "engines": [
+        "PW 6122A"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 10554
+        }
+      ]
+    },
+    {
+      "model": "A318-122",
+      "engineCount": 2,
+      "engines": [
+        "PW 6124A"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 10558
+        }
+      ]
+    },
+    {
+      "model": "A319-111",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5B5"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 8718
+        }
+      ]
+    },
+    {
+      "model": "A319-112",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5B6",
+        "CFM 56-5B6/2"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 8722
+        }
+      ]
+    },
+    {
+      "model": "A319-113",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5A4",
+        "CFM 56-5A4/F"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 8727
+        }
+      ]
+    },
+    {
+      "model": "A319-114",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5A5",
+        "CFM 56-5A5/F"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 8732
+        }
+      ]
+    },
+    {
+      "model": "A319-115",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5B7"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 8737
+        }
+      ]
+    },
+    {
+      "model": "A319-131",
+      "engineCount": 2,
+      "engines": [
+        "V2522-A5"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 8741
+        }
+      ]
+    },
+    {
+      "model": "A319-132",
+      "engineCount": 2,
+      "engines": [
+        "V2524-A5"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 8753
+        }
+      ]
+    },
+    {
+      "model": "A319-133",
+      "engineCount": 2,
+      "engines": [
+        "V2527M-A5"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 8757
+        }
+      ]
+    },
+    {
+      "model": "A319-151N",
+      "engineCount": 2,
+      "engines": [
+        "LEAP-1A24"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 8761
+        }
+      ]
+    },
+    {
+      "model": "A319-153N",
+      "engineCount": 2,
+      "engines": [
+        "LEAP-1A26",
+        "LEAP-1A26E1"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 8765
+        }
+      ]
+    },
+    {
+      "model": "A319-171N",
+      "engineCount": 2,
+      "engines": [
+        "PW1124G-JM"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 8774
+        }
+      ]
+    },
+    {
+      "model": "A320-211",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5A1",
+        "CFM 56-5A1/F"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1909
+        }
+      ]
+    },
+    {
+      "model": "A320-212",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5A3"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1914
+        }
+      ]
+    },
+    {
+      "model": "A320-214",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5B4",
+        "CFM 56-5B4/2"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1918
+        }
+      ]
+    },
+    {
+      "model": "A320-215",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5B5/P"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1923
+        }
+      ]
+    },
+    {
+      "model": "A320-216",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5B6/P"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1927
+        }
+      ]
+    },
+    {
+      "model": "A320-231",
+      "engineCount": 2,
+      "engines": [
+        "V2500-A1"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1931
+        }
+      ]
+    },
+    {
+      "model": "A320-232",
+      "engineCount": 2,
+      "engines": [
+        "V2527-A5"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1935
+        }
+      ]
+    },
+    {
+      "model": "A320-233",
+      "engineCount": 2,
+      "engines": [
+        "V2527E-A5"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1939
+        }
+      ]
+    },
+    {
+      "model": "A320-251N",
+      "engineCount": 2,
+      "engines": [
+        "LEAP-1A26"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1947
+        }
+      ]
+    },
+    {
+      "model": "A320-252N",
+      "engineCount": 2,
+      "engines": [
+        "LEAP-1A24"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1951
+        }
+      ]
+    },
+    {
+      "model": "A320-253N",
+      "engineCount": 2,
+      "engines": [
+        "LEAP-1A29"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1971
+        }
+      ]
+    },
+    {
+      "model": "A320-271N",
+      "engineCount": 2,
+      "engines": [
+        "PW1127G-JM"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1943
+        }
+      ]
+    },
+    {
+      "model": "A320-272N",
+      "engineCount": 2,
+      "engines": [
+        "PW1124G1-JM"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1967
+        }
+      ]
+    },
+    {
+      "model": "A320-273N",
+      "engineCount": 2,
+      "engines": [
+        "PW1129G-JM"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 1975
+        }
+      ]
+    },
+    {
+      "model": "A321-111",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5B1",
+        "CFM 56-5B1/2"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5693
+        }
+      ]
+    },
+    {
+      "model": "A321-112",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5B2"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5698
+        }
+      ]
+    },
+    {
+      "model": "A321-131",
+      "engineCount": 2,
+      "engines": [
+        "V2530 - A5"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5702
+        }
+      ]
+    },
+    {
+      "model": "A321-211",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5B3/P",
+        "CFM 56-5B3/2P"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5706
+        }
+      ]
+    },
+    {
+      "model": "A321-212",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5B1",
+        "CFM 56-5B1/2"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5711
+        }
+      ]
+    },
+    {
+      "model": "A321-213",
+      "engineCount": 2,
+      "engines": [
+        "CFM 56-5B2"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5716
+        }
+      ]
+    },
+    {
+      "model": "A321-231",
+      "engineCount": 2,
+      "engines": [
+        "V2533-A5"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5720
+        }
+      ]
+    },
+    {
+      "model": "A321-232",
+      "engineCount": 2,
+      "engines": [
+        "V2530 - A5"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5724
+        }
+      ]
+    },
+    {
+      "model": "A321-251N",
+      "engineCount": 2,
+      "engines": [
+        "LEAP-1A32"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5743
+        }
+      ]
+    },
+    {
+      "model": "A321-251NX",
+      "engineCount": 2,
+      "engines": [
+        "LEAP-1A32"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5743
+        }
+      ]
+    },
+    {
+      "model": "A321-252N",
+      "engineCount": 2,
+      "engines": [
+        "LEAP-1A30"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5753
+        }
+      ]
+    },
+    {
+      "model": "A321-252NX",
+      "engineCount": 2,
+      "engines": [
+        "LEAP-1A30"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5753
+        }
+      ]
+    },
+    {
+      "model": "A321-253N",
+      "engineCount": 2,
+      "engines": [
+        "LEAP-1A33"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5747
+        }
+      ]
+    },
+    {
+      "model": "A321-253NX",
+      "engineCount": 2,
+      "engines": [
+        "LEAP-1A33"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5747
+        }
+      ]
+    },
+    {
+      "model": "A321-253NY",
+      "engineCount": 2,
+      "engines": [
+        "LEAP-1A33X",
+        "LEAP-1A33B2X"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5757
+        }
+      ]
+    },
+    {
+      "model": "A321-271N",
+      "engineCount": 2,
+      "engines": [
+        "PW1133G-JM",
+        "PW1133GA-JM"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5728
+        }
+      ]
+    },
+    {
+      "model": "A321-271NX",
+      "engineCount": 2,
+      "engines": [
+        "PW1133G-JM",
+        "PW1133GA-JM"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5728
+        }
+      ]
+    },
+    {
+      "model": "A321-271NY",
+      "engineCount": 2,
+      "engines": [
+        "PW1133GR-JM",
+        "PW1133GAR-JM"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5762
+        }
+      ]
+    },
+    {
+      "model": "A321-272N",
+      "engineCount": 2,
+      "engines": [
+        "PW1130G-JM"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5751
+        }
+      ]
+    },
+    {
+      "model": "A321-272NX",
+      "engineCount": 2,
+      "engines": [
+        "PW1130G-JM"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00010 (A318/A319/A320/A321)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873",
+          "line": 5751
+        }
+      ]
+    },
+    {
+      "model": "A330-201",
+      "engineCount": 2,
+      "engines": [
+        "General Electric CF6-80E1A2"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 774
+        }
+      ]
+    },
+    {
+      "model": "A330-202",
+      "engineCount": 2,
+      "engines": [
+        "General Electric CF6-80E1A4",
+        "CF6-80E1A4/B"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 775
+        }
+      ]
+    },
+    {
+      "model": "A330-203",
+      "engineCount": 2,
+      "engines": [
+        "General Electric CF6-80E1A3"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 776
+        }
+      ]
+    },
+    {
+      "model": "A330-223",
+      "engineCount": 2,
+      "engines": [
+        "Pratt & Whitney 4170",
+        "Pratt & Whitney 4168A",
+        "Pratt & Whitney 4168A-1D"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 779
+        }
+      ]
+    },
+    {
+      "model": "A330-223F",
+      "engineCount": 2,
+      "engines": [
+        "Pratt & Whitney 4170",
+        "Pratt & Whitney 4168A-1D"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 785
+        }
+      ]
+    },
+    {
+      "model": "A330-243",
+      "engineCount": 2,
+      "engines": [
+        "Rolls Royce Trent 772B-60",
+        "Rolls Royce Trent 772C-60"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 790
+        }
+      ]
+    },
+    {
+      "model": "A330-243F",
+      "engineCount": 2,
+      "engines": [
+        "Rolls Royce Trent 772B-60"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 792
+        }
+      ]
+    },
+    {
+      "model": "A330-301",
+      "engineCount": 2,
+      "engines": [
+        "General Electric CF6-80E1A2"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 1751
+        }
+      ]
+    },
+    {
+      "model": "A330-302",
+      "engineCount": 2,
+      "engines": [
+        "General Electric CF6-80E1A2",
+        "General Electric CF6-80E1A4",
+        "CF6-80E1A4/B"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 1752
+        }
+      ]
+    },
+    {
+      "model": "A330-303",
+      "engineCount": 2,
+      "engines": [
+        "General Electric CF6-80E1A3"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 1754
+        }
+      ]
+    },
+    {
+      "model": "A330-321",
+      "engineCount": 2,
+      "engines": [
+        "Pratt & Whitney 4164",
+        "Pratt & Whitney 4164-1D"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 1756
+        }
+      ]
+    },
+    {
+      "model": "A330-322",
+      "engineCount": 2,
+      "engines": [
+        "Pratt & Whitney 4168",
+        "Pratt & Whitney 4168-1D"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 1758
+        }
+      ]
+    },
+    {
+      "model": "A330-323",
+      "engineCount": 2,
+      "engines": [
+        "Pratt & Whitney 4168A",
+        "Pratt & Whitney 4168A-1D",
+        "Pratt & Whitney 4170"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 1761
+        }
+      ]
+    },
+    {
+      "model": "A330-341",
+      "engineCount": 2,
+      "engines": [
+        "Rolls Royce Trent 768-60"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 1767
+        }
+      ]
+    },
+    {
+      "model": "A330-342",
+      "engineCount": 2,
+      "engines": [
+        "Rolls Royce Trent 772-60"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 1768
+        }
+      ]
+    },
+    {
+      "model": "A330-343",
+      "engineCount": 2,
+      "engines": [
+        "Rolls Royce Trent 768-60",
+        "Rolls Royce Trent 772B-60",
+        "Rolls Royce Trent 772C-60"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 1769
+        }
+      ]
+    },
+    {
+      "model": "A330-743L",
+      "engineCount": 2,
+      "engines": [
+        "Rolls Royce Trent 772B-60"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 2680
+        }
+      ]
+    },
+    {
+      "model": "A330-841",
+      "engineCount": 2,
+      "engines": [
+        "Rolls Royce Trent 7000-72"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 3513
+        }
+      ]
+    },
+    {
+      "model": "A330-941",
+      "engineCount": 2,
+      "engines": [
+        "Rolls Royce Trent 7000-72"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.004 (A330)",
+          "url": "https://www.easa.europa.eu/en/downloads/7518/en",
+          "line": 4375
+        }
+      ]
+    },
+    {
+      "model": "A340-211",
+      "engineCount": 4,
+      "engines": [
+        "CFM56-5C2",
+        "CFM56-5C2/4",
+        "CFM56-5C2/F",
+        "CFM56-5C2/F4",
+        "CFM56-5C2/G",
+        "CFM56-5C2/G4",
+        "CFM56-5C2/P"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00156 (A340)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3887",
+          "line": 434
+        }
+      ]
+    },
+    {
+      "model": "A340-212",
+      "engineCount": 4,
+      "engines": [
+        "CFM56-5C3/F",
+        "CFM56-5C3/F4",
+        "CFM56-5C3/G",
+        "CFM56-C3/G4",
+        "CFM56- 5C3/P"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00156 (A340)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3887",
+          "line": 436
+        }
+      ]
+    },
+    {
+      "model": "A340-213",
+      "engineCount": 4,
+      "engines": [
+        "CFM56-5C4",
+        "CFM56-5C4/1",
+        "CFM56-5C4/P",
+        "CFM56-5C4/1P"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00156 (A340)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3887",
+          "line": 438
+        }
+      ]
+    },
+    {
+      "model": "A340-311",
+      "engineCount": 4,
+      "engines": [
+        "CFM56-5C2",
+        "CFM56-5C2/4",
+        "CFM56-5C2/F",
+        "CFM56-5C2/F4",
+        "CFM56-5C2/G",
+        "CFM56-5C2/G4",
+        "CFM56-5C2/P"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00156 (A340)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3887",
+          "line": 1096
+        }
+      ]
+    },
+    {
+      "model": "A340-312",
+      "engineCount": 4,
+      "engines": [
+        "CFM56-5C3/F",
+        "CFM56-5C3/F4",
+        "CFM56-5C3/G",
+        "CFM56-C3/G4",
+        "CFM56- 5C3/P"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00156 (A340)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3887",
+          "line": 1098
+        }
+      ]
+    },
+    {
+      "model": "A340-313",
+      "engineCount": 4,
+      "engines": [
+        "CFM56-5C4",
+        "CFM56-5C4/1",
+        "CFM56-5C4/P",
+        "CFM56-5C4/1P"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00156 (A340)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3887",
+          "line": 1100
+        }
+      ]
+    },
+    {
+      "model": "A340-541",
+      "engineCount": 4,
+      "engines": [
+        "Rolls Royce RB211 Trent 553-61",
+        "RB211 Trent 553A2-61"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00156 (A340)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3887",
+          "line": 2516
+        }
+      ]
+    },
+    {
+      "model": "A340-542",
+      "engineCount": 4,
+      "engines": [
+        "Rolls Royce RB211 Trent 556A2-61"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00156 (A340)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3887",
+          "line": 2517
+        }
+      ]
+    },
+    {
+      "model": "A340-642",
+      "engineCount": 4,
+      "engines": [
+        "Rolls Royce RB211 Trent 556-61",
+        "RB211 Trent 556A2-61"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00156 (A340)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3887",
+          "line": 1839
+        }
+      ]
+    },
+    {
+      "model": "A340-643",
+      "engineCount": 4,
+      "engines": [
+        "Rolls Royce RB211 Trent 560A2-61"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00156 (A340)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3887",
+          "line": 1840
+        }
+      ]
+    },
+    {
+      "model": "A350-1041",
+      "engineCount": 2,
+      "engines": [
+        "Rolls Royce Trent XWB-97"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.151 (A350)",
+          "url": "https://www.easa.europa.eu/en/downloads/17736/en",
+          "line": 1095
+        }
+      ]
+    },
+    {
+      "model": "A350-941",
+      "engineCount": 2,
+      "engines": [
+        "Rolls Royce Trent XWB-84",
+        "XWB-75",
+        "XWB-84EP"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.A.151 (A350)",
+          "url": "https://www.easa.europa.eu/en/downloads/17736/en",
+          "line": 425
+        }
+      ]
+    },
+    {
+      "model": "A380-841",
+      "engineCount": 4,
+      "engines": [
+        "RB211 Trent 970-84",
+        "RB211 Trent 970B-84"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00158 (A380)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3889",
+          "line": 500
+        }
+      ]
+    },
+    {
+      "model": "A380-842",
+      "engineCount": 4,
+      "engines": [
+        "RB211 Trent 972-84",
+        "RB211 Trent 972B-84",
+        "RB211 Trent 972E-84"
+      ],
+      "source": [
+        {
+          "name": "UK CAA TCDS UK.TC.A.00158 (A380)",
+          "url": "https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3889",
+          "line": 501
+        }
+      ]
+    },
+    {
+      "model": "A380-861",
+      "engineCount": 4,
+      "engines": [
+        "Engine Alliance GP7270"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDSN EASA.A.110 (A380) - from a search-result excerpt, not parsed",
+          "url": "https://www.easa.europa.eu/en/downloads/8223/en",
+          "line": null
+        }
+      ],
+      "note": "The UK CAA A380 TCDS does not list the A380-861."
+    },
+    {
+      "model": "BD-500-1A10",
+      "engineCount": 2,
+      "engines": [
+        "Pratt & Whitney PW1524G",
+        "Pratt & Whitney PW1521G",
+        "Pratt & Whitney PW1519G"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.IM.A.570 (A220 / BD-500)",
+          "url": "https://www.easa.europa.eu/en/downloads/20964/en",
+          "line": 480
+        }
+      ]
+    },
+    {
+      "model": "BD-500-1A11",
+      "engineCount": 2,
+      "engines": [
+        "Pratt & Whitney PW1521G-3",
+        "Pratt & Whitney PW1524G-3"
+      ],
+      "source": [
+        {
+          "name": "EASA TCDS EASA.IM.A.570 (A220 / BD-500)",
+          "url": "https://www.easa.europa.eu/en/downloads/20964/en",
+          "line": 1102
+        }
+      ]
+    }
+  ]
+}

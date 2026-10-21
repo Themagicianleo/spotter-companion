@@ -67,9 +67,15 @@ Everything adjustable is in [`js/config.js`](js/config.js): default center, radi
 ### Update the aircraft database
 
 ```bash
-python3 scripts/build_aircraft_db.py
+python3 scripts/build_aircraft_db.py   merges tar1090-db + OpenSky into data/aircraft_db/ (run monthly by GitHub Actions)
+scripts/parse_tcds.py          builds data/aircraft_variants.json from the TCDS text
+scripts/tcds_sources.txt       which TCDS documents to fetch
+.github/workflows/             build-aircraft-db.yml (monthly DB rebuild), fetch-tcds.yml (TCDS PDFs -> text)
 ```
-This downloads the latest tar1090-db and rebuilds `data/aircraft_db/` with only the types in the type table.
+This downloads the latest tar1090-db and OpenSky aircraft database and rebuilds `data/aircraft_db/`
+with only the types in the type table. GitHub Actions also does this automatically on the 2nd of
+every month (`.github/workflows/build-aircraft-db.yml`). To rebuild the certified-engine table, see the
+comment at the top of `scripts/parse_tcds.py`.
 
 ## How it's organised
 
@@ -89,6 +95,7 @@ js/track.js        remembers positions so the map can draw tracks
 js/format.js       turns values into text, with "Unknown" for anything missing
 js/main.js         wires everything together
 data/aircraft_types.json   type + engine table (Phase 3)
+data/aircraft_variants.json exact model -> certified engines, parsed from official TCDS
 data/aircraft_db/          airliner-only extract of tar1090-db (Phase 4)
 scripts/dev_server.py      local server + relay
 scripts/build_aircraft_db.py
@@ -115,6 +122,8 @@ before you publish.**
 | [EOX Sentinel-2 cloudless 2024](https://s2maps.eu) tiles | Satellite background (Map/Satellite switch) | No | Not published | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/): free for non-commercial use with attribution; commercial use needs an EOX licence | "Sentinel-2 cloudless by EOX IT Services GmbH (contains modified Copernicus Sentinel data 2024)" shown on the map |
 | [tar1090-db](https://github.com/wiedehopf/tar1090-db) (from the [Mictronics](https://www.mictronics.de/aircraft-database/) database) | Registration, type, year, operator | No | Static file | ⚠ **No license file found**; terms unclear (see Limitations) | Shown in the info panel |
 | [Planespotters.net](https://www.planespotters.net) photo API `api.planespotters.net/pub/photos/hex/{hex}` | Aircraft photo in the info panel | No | Not published. One lookup per aircraft per visit, cached in memory | [Terms of use](https://www.planespotters.net/legal/termsofuse): photos belong to the photographers; must show "© photographer" and link to the photo page; hotlink only, never re-host | "© name · via Planespotters.net" under each photo, and the photo links to its page |
+| [OpenSky Network aircraft database](https://opensky-network.org/data/aircraft) (monthly snapshot, merged by the build) | Exact model (e.g. A320-251N), serial number, build year, engine as recorded | No | Static file | OpenSky says the aircraft database is not covered by its terms of use (search summary; page not reachable from the build environment) | "OSN" tag on each value |
+| Official type certificate data sheets (EASA, UK CAA), as text on the `tcds-text` branch | `data/aircraft_variants.json`: engines certified for each exact Airbus/A220 model | No | – | Public regulatory documents | "TCDS" tag; document name and text line number shown in the panel |
 | `data/aircraft_types.json` (my own table) | Model names, engine options | – | – | Built from EASA/FAA type certificate data sheets, regulator notices and manufacturer pages, each cited per row | Sources listed in the panel |
 
 **Not used:**
@@ -143,7 +152,16 @@ Remember that a static site can't keep any key secret.
   an error rather than guessing if the format differs.
 - **Age will often be "Unknown".** In tar1090-db, none of the 299 Singapore-registered (9V-)
   aircraft have a year or operator, and only about 20% of airliners overall have a year.
-- **No serial numbers.** tar1090-db has no serial-number field.
+- **Exact model, serial number and certified engine are often missing.** These come from OpenSky's
+  community database (August 2025 snapshot). For Airbus types, about 63% of aircraft get an exact
+  certified engine. The table covers Airbus and A220 models (104 models from the official type
+  certificates); Boeing model numbers are customer codes that don't identify the engine. When a model
+  lists several engine versions (thrust ratings or modifications), the panel shows them all, because the
+  database doesn't say which one an airframe has. For types with only one engine (e.g. 737 MAX 8, 777-300ER),
+  the panel says that engine applies.
+- **OpenSky model strings are tidied before matching.** Text in brackets and an "SL" suffix are removed,
+  and one trailing E/X/F is dropped if needed (e.g. "A330-343E" is matched to the certified "A330-343").
+  The panel always shows the original text.
 - **Database licence is unclear.** tar1090-db has no licence file, and I couldn't find the Mictronics
   database terms. The repo includes an airliner-only extract (36,306 aircraft). If you're unsure,
   delete `data/aircraft_db/` and the panel will still work using the live feed's own

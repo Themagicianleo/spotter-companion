@@ -206,3 +206,7 @@ button:hover { border-color: var(--accent); }
 }
 .track-legend strong, .track-legend span { display: block; }
 .track-legend i { display: inline-block; width: 14px; height: 4px; margin-right: 6px; vertical-align: middle; border-radius: 2px; }
+.src--osn { background: #cffafe; color: #155e75; }
+.src--tcds { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+.info__options { margin-top: 8px; font-size: 13px; }
+.info__options summary { cursor: pointer; color: var(--muted); }

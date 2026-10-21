@@ -62,3 +62,38 @@ export function ageFromYear(yearBuilt, now = new Date()) {
   if (!Number.isInteger(year) || year < 1900 || year > now.getFullYear()) return null;
   return now.getFullYear() - year;
 }
+
+// ---- Exact model -> certified engines (data/aircraft_variants.json, built from official TCDS) ----
+
+let variantsPromise = null;
+
+// OpenSky writes the same model many ways: "Airbus A320-251N", "A320 251NSL", "AIRBUS A320-214".
+// Turn it into the certificate's form ("A320-251N"). Returns null if it doesn't look like an
+// Airbus model designation (Boeing customer codes such as "737-824" don't identify the engine).
+export function normalizeModel(raw) {
+  if (!raw) return null;
+  let s = raw.toUpperCase().replace(/\(.*?\)/g, '').replace(/AIRBUS/g, '').trim(); // drop notes like "(P2F)"
+  s = s.replace(/\s+/g, '-').replace(/-+/g, '-');
+  s = s.replace(/SL$/, ''); // OpenSky's "SL" suffix (not part of the certified model name)
+  if (/^BD-500-1A1\d$/.test(s)) return s; // A220
+  return /^A3\d\d-\d{3,4}[A-Z]{0,2}$/.test(s) ? s : null;
+}
+
+// Returns { variant, matchedFrom } or null.
+// Tries the exact model first, then without one trailing E/X/F letter (e.g. OpenSky's
+// "A330-343E" -> certified model "A330-343"), and says when it did that.
+export async function lookupVariant(rawModel) {
+  const model = normalizeModel(rawModel);
+  if (!model) return null;
+  variantsPromise ??= getJson('data/aircraft_variants.json')
+    .then((doc) => new Map(doc.variants.map((v) => [v.model, v])))
+    .catch((err) => {
+      variantsPromise = null;
+      throw err;
+    });
+  const table = await variantsPromise;
+  if (table.has(model)) return { variant: table.get(model), matchedFrom: null };
+  const base = model.replace(/(\d)[EXF]$/, '$1');
+  if (base !== model && table.has(base)) return { variant: table.get(base), matchedFrom: model };
+  return null;
+}

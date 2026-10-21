@@ -39,3 +39,17 @@ test('rejects unexpected shapes and URLs outside planespotters', () => {
   badLink.photos[0].link = 'https://evil.example/';
   assert.equal(parsePhotos(badLink), null);
 });
+
+test('normalizeModel handles the real OpenSky spellings', async () => {
+  const { normalizeModel } = await import('../js/aircraftDb.js');
+  assert.equal(normalizeModel('Airbus A320-251N'), 'A320-251N');
+  assert.equal(normalizeModel('A320 251NSL'), 'A320-251N');
+  assert.equal(normalizeModel('AIRBUS A320-214'), 'A320-214');
+  assert.equal(normalizeModel('A321-271NX'), 'A321-271NX');
+  assert.equal(normalizeModel('A350-1041'), 'A350-1041');
+  assert.equal(normalizeModel('Airbus A330-343(P2F)'), 'A330-343');
+  assert.equal(normalizeModel('A320-211 (Airbus)'), 'A320-211');
+  assert.equal(normalizeModel('737-824'), null); // Boeing customer code: no engine info
+  assert.equal(normalizeModel('Airbus (various models)'), null);
+  assert.equal(normalizeModel(null), null);
+});

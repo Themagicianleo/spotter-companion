@@ -7,7 +7,7 @@
 // so nothing from the internet can inject HTML into the page.
 
 import * as fmt from './format.js';
-import { lookupAircraft, lookupType, getDbMeta, ageFromYear } from './aircraftDb.js';
+import { lookupAircraft, lookupType, getDbMeta, ageFromYear, lookupVariant } from './aircraftDb.js';
 import { getPhoto } from './photos.js';
 
 let panel;
@@ -86,11 +86,12 @@ export async function openInfoPanel(ac) {
   const [dbResult, metaResult] = await Promise.allSettled([lookupAircraft(ac.hex), getDbMeta()]);
   const db = dbResult.status === 'fulfilled' ? dbResult.value : null;
   const typeCode = db?.typeCode ?? ac.typeCode;
-  const typeResult = await Promise.allSettled([lookupType(typeCode)]);
-  const type = typeResult[0].status === 'fulfilled' ? typeResult[0].value : null;
+  const [typeResult, variantResult] = await Promise.allSettled([lookupType(typeCode), lookupVariant(db?.osModel)]);
+  const type = typeResult.status === 'fulfilled' ? typeResult.value : null;
+  const variant = variantResult.status === 'fulfilled' ? variantResult.value : null;
 
   if (currentHex !== ac.hex) return; // user clicked another plane while we were loading
-  renderDetails(ac, db, dbResult.status === 'rejected', metaResult.value, type, typeResult[0].status === 'rejected');
+  renderDetails(ac, db, dbResult.status === 'rejected', metaResult.value, type, typeResult.status === 'rejected', variant);
 }
 
 // Pick the first known value and remember which source it came from.
@@ -99,10 +100,13 @@ function pick(...candidates) {
   return [null, null];
 }
 
-function renderDetails(ac, db, dbFailed, meta, type, typeFailed) {
-  const dbLabel = `Aircraft database: ${meta?.source ?? 'tar1090-db'}${meta?.builtAt ? `, copied ${meta.builtAt.slice(0, 10)}` : ''}`;
+// variant = { variant: <row of data/aircraft_variants.json>, matchedFrom } or null
+function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
+  const builtOn = meta?.builtAt ? `, copied ${meta.builtAt.slice(0, 10)}` : '';
   const LIVE = () => sourceTag('LIVE', `Live feed (${liveSourceName})`);
-  const DB = () => sourceTag('DB', dbLabel);
+  const DB = () => sourceTag('DB', `tar1090-db (Mictronics aircraft database)${builtOn}`);
+  const OSN = () => sourceTag('OSN', `OpenSky Network aircraft database${builtOn}`);
+  const TCDS = () => sourceTag('TCDS', 'Official type certificate data sheet (see sources below)');
   const TYPE = () => sourceTag('TYPE', 'Type table (data/aircraft_types.json)');
   const CALC = () => sourceTag('CALC', 'Calculated from year built');
 
@@ -116,59 +120,95 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed) {
   const t1 = h('table', 'info__table');
   // The live feed's registration/type/year/operator also come from the provider's own database.
   const [reg, regTag] = pick([db?.registration, DB()], [ac.registration, LIVE()]);
-  const [code, codeTag] = pick([db?.typeCode, DB()], [ac.typeCode, LIVE()]);
+  const [code, codeTag] = pick([db?.typeCode, DB()], [db?.osTypeCode, OSN()], [ac.typeCode, LIVE()]);
   const [model, modelTag] = pick([type?.model, TYPE()], [db?.typeDescription, DB()], [ac.typeDescription, LIVE()]);
-  const [year, yearTag] = pick([db?.yearBuilt, DB()], [ac.yearBuilt, LIVE()]);
+  // OpenSky's "built" is a date like "2018-01-01"; only the year is meaningful.
+  const osYear = db?.osBuilt ? db.osBuilt.slice(0, 4) : null;
+  const [year, yearTag] = pick([db?.yearBuilt, DB()], [osYear, OSN()], [ac.yearBuilt, LIVE()]);
   const [operator, opTag] = pick([db?.operator, DB()], [ac.operator, LIVE()]);
   const age = ageFromYear(year);
   row(t1, 'Registration', reg, regTag);
   row(t1, 'ICAO type code', code, codeTag);
-  row(t1, 'Model', model, modelTag);
+  row(t1, 'Type', model, modelTag);
+  row(t1, 'Exact model (as recorded)', db?.osModel, OSN());
   row(t1, 'Manufacturer', type?.manufacturer, TYPE());
+  row(t1, 'Serial number (MSN)', db?.osSerialNumber, OSN());
   row(t1, 'Year built', year, yearTag);
   row(t1, 'Age', age === null ? null : `about ${age} year${age === 1 ? '' : 's'}`, CALC());
   row(t1, 'Operator / owner', operator, opTag);
-  row(t1, 'Serial number (MSN)', null, null);
   parts.push(t1);
-  parts.push(h('p', 'info__note', 'Serial numbers are not in our database (tar1090-db has no serial-number field).'));
 
-  // ---- Type information ----
-  parts.push(h('h3', null, 'Engine options for this type'));
+  // ---- Engines ----
+  parts.push(h('h3', null, 'Engines'));
+  const engineTable = h('table', 'info__table');
+  const single = type && type.engineOptions.length === 1 && type.engineOptions[0].verified ? type.engineOptions[0] : null;
+  if (variant) {
+    const v = variant.variant;
+    row(engineTable, `Certified for ${v.model}`, `${v.engineCount ?? '?'} × ${v.engines.join(' or ')}`, TCDS());
+    if (db?.osEngines) row(engineTable, 'Recorded for this aircraft', db.osEngines, OSN());
+    parts.push(engineTable);
+    if (variant.matchedFrom) parts.push(h('p', 'info__note', `OpenSky records the model as ${variant.matchedFrom}; matched to the certified model ${v.model}.`));
+    if (v.engines.length > 1) {
+      parts.push(h('p', 'info__note', `The certificate lists ${v.engines.length} versions for this model (thrust ratings or modifications). The database doesn't say which one this aircraft has.`));
+    }
+    if (v.note) parts.push(h('p', 'info__note', v.note));
+    const src = h('details', 'info__sources');
+    src.append(h('summary', null, 'Certificate source'));
+    const ul = h('ul');
+    for (const s of v.source) {
+      const li = h('li');
+      li.append(safeLink(s.url, s.name), s.line ? ` (text line ${s.line})` : '');
+      ul.append(li);
+    }
+    src.append(ul);
+    parts.push(src);
+  } else if (single) {
+    row(engineTable, 'Engine', `${type.engineCount} × ${single.maker} ${single.model}`, TYPE());
+    if (db?.osEngines) row(engineTable, 'Recorded for this aircraft', db.osEngines, OSN());
+    parts.push(engineTable);
+    parts.push(h('p', 'info__note', 'This is the only engine offered for this aircraft type, so it applies to this aircraft.'));
+  } else {
+    if (db?.osEngines) {
+      row(engineTable, 'Recorded for this aircraft', db.osEngines, OSN());
+      parts.push(engineTable);
+    }
+    const why = db?.osModel ? `The exact model "${db.osModel}" isn't in our certificate table` : 'The exact model of this aircraft is unknown';
+    parts.push(h('p', 'info__note', `${why}, so only the engine options for the type are shown below.`));
+  }
+
+  // All options for the type: open by default only when we couldn't narrow it down.
   if (typeFailed) {
     parts.push(h('p', 'info__warn', 'The type table could not be loaded.'));
   } else if (!type) {
     parts.push(h('p', 'info__note', code ? `Type ${code} is not in our type table (it covers common Boeing and Airbus airliners).` : 'Type unknown.'));
   } else {
-    const t2 = h('table', 'info__table');
-    row(t2, 'Number of engines', type.engineCount, TYPE());
-    parts.push(t2);
+    const box = h('details', 'info__options');
+    box.open = !variant && !single;
+    box.append(h('summary', null, `Engine options for the ${type.icao} type (${type.engineOptions.length})`));
     const list = h('ul', 'info__engines');
     for (const e of type.engineOptions) {
       const li = h('li', null, `${e.maker} ${e.model}`);
       if (!e.verified) li.append(' ', h('span', 'badge badge--warn', 'unconfirmed'));
       list.append(li);
     }
-    parts.push(list);
-    parts.push(h('p', 'info__note',
-      'These are the engines offered for this aircraft TYPE. They do not tell you which engine this particular aircraft has.'));
+    box.append(list);
     const status = { 'verified-secondary': 'Checked against cited sources (via search excerpts).', 'partly-unverified': 'Some options are unconfirmed.', unverified: 'Unconfirmed: please treat with caution.' };
-    parts.push(h('p', 'info__note', `Verification: ${status[type.verification] ?? type.verification}`));
-    if (type.notes) parts.push(h('p', 'info__note', type.notes));
-    const sources = h('details', 'info__sources');
-    sources.append(h('summary', null, `Sources (${type.source.length})`));
-    const ul = h('ul');
+    box.append(h('p', 'info__note', `Number of engines: ${type.engineCount}. Verification: ${status[type.verification] ?? type.verification}`));
+    if (type.notes) box.append(h('p', 'info__note', type.notes));
+    const ul = h('ul', 'info__sources');
     for (const s of type.source) {
       const li = h('li');
       li.append(safeLink(s.url, s.name));
       ul.append(li);
     }
-    sources.append(ul);
-    parts.push(sources);
+    box.append(ul);
+    parts.push(box);
   }
 
   // ---- Where the data comes from ----
   const legend = h('p', 'info__legend');
-  legend.append(LIVE(), ` live feed (${liveSourceName}) · `, DB(), ' aircraft database · ', TYPE(), ' type table · ', CALC(), ' calculated');
+  legend.append(LIVE(), ` live feed (${liveSourceName}) · `, DB(), ' tar1090-db · ', OSN(), ' OpenSky aircraft database · ',
+    TCDS(), ' official type certificate · ', TYPE(), ' type table · ', CALC(), ' calculated');
   parts.push(legend);
   parts.push(h('p', 'info__note',
     'Database entries are community-maintained and can be outdated or wrong (for example after an aircraft changes operator).'));
