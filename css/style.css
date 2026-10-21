@@ -290,6 +290,8 @@ button.primary { background: var(--accent); color: var(--accent-text); border-co
   .info__photo img { aspect-ratio: auto; height: 150px; }
   /* Keep the zoom buttons and credits above the bottom sheet */
   body.card-open .leaflet-bottom { bottom: 62%; }
+  /* Little room above the sheet: hide the track legend so it doesn't cover the credits */
+  body.card-open .track-legend { display: none; }
   .drawer, .drawer--small { left: 8px; right: 8px; top: 8px; bottom: 8px; width: auto; }
   .drawer--small { bottom: auto; }
 }
