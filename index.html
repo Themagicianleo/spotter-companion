@@ -28,6 +28,35 @@
 
   <main class="layout">
     <div id="map" class="map" aria-label="Map of nearby aircraft"></div>
+
+    <aside class="sidebar">
+      <!-- Filters apply to both the map and the list -->
+      <form id="filters" class="filters" autocomplete="off">
+        <label>Type codes
+          <input id="filter-types" list="seen-types" placeholder="e.g. A359, B77W">
+          <datalist id="seen-types"></datalist>
+        </label>
+        <label>Callsign / airline prefix
+          <input id="filter-prefix" placeholder="e.g. SIA or TGW">
+        </label>
+        <div class="filters__row">
+          <label>Min alt (ft) <input id="filter-min-alt" type="number" step="500" min="0"></label>
+          <label>Max alt (ft) <input id="filter-max-alt" type="number" step="500" min="0"></label>
+        </div>
+        <div class="filters__row">
+          <label class="check"><input id="filter-ground" type="checkbox" checked> Include aircraft on ground</label>
+          <button type="reset">Clear filters</button>
+        </div>
+      </form>
+
+      <div class="list-toolbar">
+        <span id="list-count">0 shown</span>
+        <button type="button" id="export-csv">Export CSV</button>
+      </div>
+      <div class="list-wrap">
+        <table id="aircraft-list" class="aircraft-list"></table>
+      </div>
+    </aside>
   </main>
 
   <footer class="footer">

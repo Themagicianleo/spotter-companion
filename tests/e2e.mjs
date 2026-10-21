@@ -101,8 +101,47 @@ export const scenarios = {
   },
 };
 
-// Later phases add their own scenarios to this list.
-export const extraScenarios = [];
+// Phase 2: filters, list, sorting, CSV export.
+async function phase2(browser) {
+  const page = await newPage(browser, 'fixture');
+  await page.waitForSelector('#aircraft-list tbody tr');
+  const rows = () => page.locator('#aircraft-list tbody tr');
+  check('[list] all 5 aircraft listed (including one without position)', (await rows().count()) === 5);
+  const firstCallsign = await rows().first().locator('td').first().textContent();
+  check('[list] default sort is closest first', firstCallsign === 'Unknown', `first row: ${firstCallsign} (3.1 nm, no callsign)`);
+
+  await page.fill('#filter-types', 'B38M');
+  check('[filter] type filter narrows list and map', (await rows().count()) === 1 && (await page.locator('.plane').count()) === 1);
+  await page.click('button[type=reset]');
+  await page.waitForTimeout(50);
+  await page.fill('#filter-prefix', 'tst');
+  check('[filter] callsign prefix', (await rows().count()) === 2);
+  await page.fill('#filter-prefix', '');
+  await page.fill('#filter-min-alt', '10000');
+  check('[filter] min altitude', (await rows().count()) === 2);
+  check('[filter] count label', (await page.textContent('#list-count')) === '2 of 5 shown');
+  await page.click('button[type=reset]');
+  await page.waitForTimeout(50);
+
+  await page.click('th button[data-key="altitudeFt"]');
+  await page.click('th button[data-key="altitudeFt"]');
+  const topAlt = await rows().first().locator('td').nth(3).textContent();
+  check('[sort] clicking Alt twice sorts highest first', topAlt === '36,000 ft', topAlt);
+
+  await rows().first().click();
+  check('[select] clicking a row highlights it and opens the map popup',
+    (await page.locator('tr.selected').count()) === 1 && (await page.locator('.plane--selected').count()) === 1 && (await page.isVisible('.popup')));
+
+  const [download] = await Promise.all([page.waitForEvent('download'), page.click('#export-csv')]);
+  const csv = readFileSync(await download.path(), 'utf8').trim().split('\r\n');
+  check('[csv] export has a header plus one line per listed aircraft, in list order', csv.length === 6 && csv[1].includes('TST202'), csv[1]);
+  check('[csv] filename', /^aircraft-.*\.csv$/.test(download.suggestedFilename()), download.suggestedFilename());
+  await page.waitForTimeout(500);
+  await page.screenshot({ path: 'docs/screenshots/synthetic-test-data.png' });
+  await page.close();
+}
+
+export const extraScenarios = [phase2];
 
 const server = await startServer();
 const browser = await chromium.launch();

@@ -19,6 +19,7 @@ import { CONFIG } from './config.js';
 export const PROVIDERS = {
   adsbLol: {
     name: 'adsb.lol',
+    csvCredit: 'adsb.lol (ODbL 1.0)', // added as a "source" column to exported CSV files
     attributionHtml:
       'Live positions: <a href="https://adsb.lol" target="_blank" rel="noopener">adsb.lol</a> ' +
       '(<a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noopener">ODbL 1.0</a>)',
@@ -29,6 +30,7 @@ export const PROVIDERS = {
   // doesn't have the shape above, the app shows a "format" error instead of guessing.
   airplanesLive: {
     name: 'airplanes.live',
+    csvCredit: 'airplanes.live (non-commercial use)',
     attributionHtml:
       'Live positions: <a href="https://airplanes.live" target="_blank" rel="noopener">airplanes.live</a> ' +
       '(non-commercial use)',
