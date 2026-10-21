@@ -1,9 +1,16 @@
 {
-  "source": "tar1090-db (wiedehopf/tar1090-db, csv branch), built from the Mictronics aircraft database",
+  "source": "tar1090-db (from the Mictronics database) + OpenSky Network aircraft database",
   "sourceUrl": "https://github.com/wiedehopf/tar1090-db",
-  "sourceLastModified": null,
-  "builtAt": "2026-10-21T00:34Z",
-  "rowsInSource": 622506,
+  "openskyUrl": "https://opensky-network.org/data/aircraft",
+  "builtAt": "2026-10-21T05:34Z",
+  "tar1090": {
+    "url": "https://raw.githubusercontent.com/wiedehopf/tar1090-db/csv/aircraft.csv.gz",
+    "lastModified": null,
+    "rowsInSource": 622506
+  },
+  "opensky": {
+    "error": "OpenSky file is missing expected columns ['serialnumber']; not guessing."
+  },
   "rowsKept": 36306,
   "typesKept": [
     "A19N",
@@ -65,5 +72,5 @@
     "BCS1",
     "BCS3"
   ],
-  "note": "Community-maintained data. Entries can be outdated or wrong. No serial numbers in this source."
+  "note": "Community-maintained data. Entries can be outdated or wrong."
 }

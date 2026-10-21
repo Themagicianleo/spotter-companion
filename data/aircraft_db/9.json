@@ -1,1 +1,1 @@
-{"fields":["registration","typeCode","typeDescription","yearBuilt","operator"],"aircraft":{}}
+{"fields":["registration","typeCode","typeDescription","yearBuilt","operator","osModel","osSerialNumber","osBuilt","osEngines","osTypeCode"],"aircraft":{}}
