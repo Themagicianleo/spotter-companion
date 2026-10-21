@@ -56,12 +56,6 @@ export async function lookupType(typeCode) {
   return (await typeTablePromise).get(typeCode) ?? null;
 }
 
-// Age in whole years from a year-built string like "2019". Returns null if unusable.
-export function ageFromYear(yearBuilt, now = new Date()) {
-  const year = Number(yearBuilt);
-  if (!Number.isInteger(year) || year < 1900 || year > now.getFullYear()) return null;
-  return now.getFullYear() - year;
-}
 
 // ---- Exact model -> certified engines (data/aircraft_variants.json, built from official TCDS) ----
 

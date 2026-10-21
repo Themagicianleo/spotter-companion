@@ -240,7 +240,6 @@ button.primary { background: var(--accent); color: var(--accent-text); border-co
 .src--osn { background: #164e63; color: #a5f3fc; }
 .src--tcds { background: #166534; color: #dcfce7; border: 1px solid #4ade80; }
 .src--type { background: #78350f; color: #fde68a; }
-.src--calc { background: #581c87; color: #e9d5ff; }
 .src--vrs { background: #134e4a; color: #99f6e4; }
 .src--route { background: #881337; color: #fecdd3; }
 .badge { font-size: 11px; padding: 1px 6px; border-radius: 4px; }

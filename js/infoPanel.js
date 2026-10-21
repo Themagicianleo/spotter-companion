@@ -7,7 +7,7 @@
 // so nothing from the internet can inject HTML into the page.
 
 import * as fmt from './format.js';
-import { lookupAircraft, lookupType, getDbMeta, ageFromYear, lookupVariant } from './aircraftDb.js';
+import { lookupAircraft, lookupType, getDbMeta, lookupVariant } from './aircraftDb.js';
 import { getPhoto } from './photos.js';
 import { getTrack } from './track.js';
 import { lookupRoute, routeProgress } from './routes.js';
@@ -128,7 +128,6 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
   const VRS = () => sourceTag('VRS', `Virtual Radar Server standing data (crowd-sourced, CC0)${builtOn}`);
   const TCDS = () => sourceTag('TCDS', 'Official type certificate data sheet (see sources below)');
   const TYPE = () => sourceTag('TYPE', 'Type table (data/aircraft_types.json)');
-  const CALC = () => sourceTag('CALC', 'Calculated from year built');
 
   const parts = [];
 
@@ -138,17 +137,11 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
   else if (!db) parts.push(h('p', 'info__note', 'Not in our database (it only holds the Boeing/Airbus types in the type table).'));
 
   const t1 = h('table', 'info__table');
-  // The live feed's registration/type/year/operator also come from the provider's own database.
+  // The live feed's registration/type also come from the provider's own database.
   const [reg, regTag] = pick([db?.registration, DB()], [ac.registration, LIVE()]);
   const [code, codeTag] = pick([db?.typeCode, DB()], [db?.osTypeCode, OSN()], [ac.typeCode, LIVE()]);
   const [model, modelTag] = pick([type?.model, TYPE()], [db?.typeDescription, DB()], [ac.typeDescription, LIVE()]);
   const [exact, exactTag] = pick([db?.osModel, OSN()], [db?.vrsModel, VRS()]);
-  const [serial, serialTag] = pick([db?.osSerialNumber, OSN()], [db?.vrsSerialNumber, VRS()]);
-  // OpenSky's "built" is a date like "2018-01-01"; only the year is meaningful.
-  const osYear = db?.osBuilt ? db.osBuilt.slice(0, 4) : null;
-  const [year, yearTag] = pick([db?.yearBuilt, DB()], [osYear, OSN()], [db?.vrsYearBuilt, VRS()], [ac.yearBuilt, LIVE()]);
-  const [operator, opTag] = pick([db?.operator, DB()], [db?.vrsOperator, VRS()], [ac.operator, LIVE()]);
-  const age = ageFromYear(year);
 
   // Show the rows we know; list the missing ones on one line instead of a stack of "Unknown"s.
   const missing = [];
@@ -161,17 +154,12 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
   known('Type', model, modelTag);
   known('Exact model', exact, exactTag);
   known('Manufacturer', type?.manufacturer, TYPE());
-  known('Serial number (MSN)', serial, serialTag, 'serial number');
-  known('Year built', year, yearTag, 'year built (so no age)');
-  if (age !== null) row(t1, 'Age', `about ${age} year${age === 1 ? '' : 's'}`, CALC());
-  known('Operator / owner', operator, opTag, 'operator');
   parts.push(t1);
   if (missing.length) parts.push(h('p', 'info__note', `Unknown (not in our databases): ${missing.join(', ')}.`));
   // Crowd-sourced databases sometimes disagree; say so rather than silently picking one.
   const disagree = [];
   const differs = (a, b) => a && b && a.replace(/[\s-]/g, '').toUpperCase() !== b.replace(/[\s-]/g, '').toUpperCase();
   if (differs(db?.osModel, db?.vrsModel)) disagree.push(`model: OpenSky says ${db.osModel}, VRS says ${db.vrsModel}`);
-  if (differs(db?.osSerialNumber, db?.vrsSerialNumber)) disagree.push(`serial: OpenSky says ${db.osSerialNumber}, VRS says ${db.vrsSerialNumber}`);
   if (disagree.length) parts.push(h('p', 'info__warn', `The databases disagree on the ${disagree.join('; ')}.`));
 
   // ---- Engines ----
@@ -244,10 +232,10 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
   // ---- Where the data comes from ----
   const legend = h('p', 'info__legend');
   legend.append(LIVE(), ` live feed (${liveSourceName}) · `, DB(), ' tar1090-db · ', OSN(), ' OpenSky aircraft database · ',
-    TCDS(), ' official type certificate · ', VRS(), ' VRS standing data · ', sourceTag('ROUTE', 'Route database'), ' route database · ', TYPE(), ' type table · ', CALC(), ' calculated');
+    TCDS(), ' official type certificate · ', VRS(), ' VRS standing data · ', sourceTag('ROUTE', 'Route database'), ' route database · ', TYPE(), ' type table');
   parts.push(legend);
   parts.push(h('p', 'info__note',
-    'Database entries are community-maintained and can be outdated or wrong (for example after an aircraft changes operator).'));
+    'Database entries are community-maintained and can be outdated or wrong.'));
 
   detailsSection.replaceChildren(...parts);
 }

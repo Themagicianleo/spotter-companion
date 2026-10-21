@@ -186,11 +186,10 @@ async function phase4(browser) {
 
   let text = await openPanelFor('TST202');
   check('[panel] registration from database, tagged DB', (await rowText('Registration')) === 'RegistrationN11206DB');
-  check('[panel] year built and calculated age', (await rowText('Year built')).includes('2000') && (await rowText('Age')).includes(`about ${new Date().getFullYear() - 2000} years`));
-  check('[panel] operator from database', (await rowText('Operator')).includes('UNITED AIRLINES INC'));
+  check('[panel] serial number, year built, age and operator are not shown',
+    ['Serial number', 'Year built', 'Age', 'Operator'].every((label) => !text.includes(label)));
   check('[panel] type name from type table, tagged TYPE', (await page.locator('#info-panel tr', { hasText: /^Type/ }).first().textContent()) === 'TypeBoeing 737-800 (737 NG)TYPE');
-  check('[panel] exact model and serial number from OpenSky, tagged OSN',
-    (await rowText('Exact model')) === 'Exact model737-824OSN' && (await rowText('Serial number')) === 'Serial number (MSN)30578OSN');
+  check('[panel] exact model from OpenSky, tagged OSN', (await rowText('Exact model')) === 'Exact model737-824OSN');
   check('[panel] single-engine type: engine applies to this aircraft', (await rowText('Engine')).includes('2 × CFM International CFM56-7B series') && text.includes('only engine offered for this aircraft type'));
   check('[panel] engine as recorded by OpenSky shown verbatim', (await rowText('Recorded for this aircraft')).includes('CFM INTL. CFM56 SERIES'));
   const squawkTile = await page.locator('#info-panel .tile', { hasText: 'Squawk' }).textContent();

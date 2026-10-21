@@ -20,8 +20,8 @@ free, open data. It gives you some features that paid flight trackers charge for
   A sortable list opens from the **List** button, filters from **Filters**, and you can export the current view as CSV.
 - **Type and engine table** (Phase 3): 58 Boeing and Airbus airliner types in `data/aircraft_types.json`,
   each with its engine options and sources.
-- **Aircraft info panel** (Phase 4): a photo from Planespotters.net (credited to its photographer), registration, model, manufacturer, year built, age, operator and
-  engine options. Every value is tagged with where it came from (LIVE / DB / TYPE / CALC), and
+- **Aircraft info panel** (Phase 4): a photo from Planespotters.net (credited to its photographer), registration, type, exact model, manufacturer and
+  engines. Every value is tagged with where it came from (LIVE / DB / OSN / VRS / TCDS / TYPE), and
   missing values show "Unknown".
 
 ## Screenshots
@@ -168,16 +168,13 @@ Remember that a static site can't keep any key secret.
   direct browser requests (CORS). Whether direct calls would work was never tested.
 - **airplanes.live may now be feeders-only**, and its response format wasn't verified. The app shows
   an error rather than guessing if the format differs.
-- **Many details are still missing.** The database merges three free sources (tar1090-db, OpenSky, VRS),
-  but for the 299 Singapore-registered aircraft only 66 have a build year and operator, and 193 a serial
-  number (Oct 2026). Missing fields are listed on one line in the card. When sources disagree (e.g. one
-  says E195-E2, another E190-E2), the card shows both. The official CAAS register would fill the gaps
-  for 9V- aircraft, but its website terms don't allow redistributing it without written permission.
+- **Serial number, year built, age and operator are not shown.** The free databases had them for too few
+  aircraft (e.g. 66 of 299 Singapore-registered aircraft had a build year), so they were removed from the
+  card. Missing fields that remain are listed on one line. When sources disagree on the exact model
+  (e.g. E195-E2 vs E190-E2), the card shows both.
 - **Every Singapore-registered (9V-) aircraft is in the database**, whatever its type; other countries'
   aircraft only if they're one of the Boeing/Airbus types in the type table.
-- **Age will often be "Unknown".** In tar1090-db, none of the 299 Singapore-registered (9V-)
-  aircraft have a year or operator, and only about 20% of airliners overall have a year.
-- **Exact model, serial number and certified engine are often missing.** These come from OpenSky's
+- **Exact model and certified engine are often missing.** These come from OpenSky's
   community database (August 2025 snapshot). For Airbus types, about 63% of aircraft get an exact
   certified engine. The table covers Airbus and A220 models (104 models from the official type
   certificates); Boeing model numbers are customer codes that don't identify the engine. When a model
