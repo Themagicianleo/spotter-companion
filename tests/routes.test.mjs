@@ -61,3 +61,11 @@ test('route length, distance to go, arrival estimate and takeoff detection', asy
   assert.equal(findTakeoff(track.slice(1), ZSFZ), null); // never seen on the ground: unknown
   assert.equal(findTakeoff(track, WSSS), null); // ground point wasn't at the origin
 });
+
+test('current leg of a multi-stop route', async () => {
+  const { currentLegEnd } = await import('../js/routes.js');
+  const YSSY = { lat: -33.946098, lon: 151.177002 }; // Sydney
+  assert.equal(currentLegEnd({ lat: -20, lon: 130 }, [YSSY, WSSS, EGLL]), 1); // over Australia: SYD -> SIN
+  assert.equal(currentLegEnd({ lat: 25, lon: 70 }, [YSSY, WSSS, EGLL]), 2); // over Arabian Sea: SIN -> LHR
+  assert.equal(currentLegEnd(null, [YSSY, WSSS, EGLL]), null);
+});

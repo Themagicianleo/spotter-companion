@@ -10,7 +10,7 @@ import * as fmt from './format.js';
 import { lookupAircraft, lookupType, getDbMeta, lookupVariant } from './aircraftDb.js';
 import { getPhoto } from './photos.js';
 import { getTrack } from './track.js';
-import { lookupRoute, routeProgress, routeLengthNm, remainingNm, estimateArrival, findTakeoff } from './routes.js';
+import { lookupRoute, routeProgress, routeLengthNm, remainingNm, estimateArrival, findTakeoff, distanceNm, currentLegEnd } from './routes.js';
 
 let panel;
 let liveSection;
@@ -295,7 +295,20 @@ async function showRoute(ac) {
   // Great-circle distance: the shortest path over the Earth between the airports (sum of the legs).
   const lengthNm = routeLengthNm(route.airports);
   const stats = h('dl', 'facts');
-  stats.append(h('dt', null, 'Distance'), h('dd', null, nmAndKm(lengthNm) + (route.airports.length > 2 ? ' (all legs)' : '')));
+  if (route.airports.length > 2) {
+    // Flights with stops (e.g. QF1 SYD → SIN → LHR): each leg on its own line, then the total.
+    // The leg the plane is flying now is marked (only if the route matches where it is).
+    const nowOn = route.plausible === false ? null : currentLegEnd(ac.lat === null ? null : ac, route.airports);
+    for (let i = 1; i < route.airports.length; i++) {
+      const a = route.airports[i - 1];
+      const b = route.airports[i];
+      const name = `${a.iata ?? a.icao ?? a.code} → ${b.iata ?? b.icao ?? b.code}`;
+      stats.append(h('dt', null, name), h('dd', null, nmAndKm(distanceNm(a, b)) + (i === nowOn ? ' · flying now' : '')));
+    }
+    stats.append(h('dt', null, 'Total'), h('dd', null, nmAndKm(lengthNm)));
+  } else {
+    stats.append(h('dt', null, 'Distance'), h('dd', null, nmAndKm(lengthNm)));
+  }
   parts.push(stats);
   // Departure / arrival lines, refreshed on every live update. Skipped if the route doesn't match
   // where the plane is, since the numbers would be wrong.

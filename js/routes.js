@@ -114,14 +114,22 @@ export function routeLengthNm(airports) {
   return total;
 }
 
-// Distance still to fly in nm, from the aircraft to the destination along the remaining legs
-// (to the end of the leg it is closest to, then the legs after that). Null without a position.
-export function remainingNm(position, airports) {
+// Which leg is the aircraft on? Returns the index of the airport that leg ends at (1 = first leg),
+// choosing the leg whose line the aircraft is closest to. Null without a position.
+export function currentLegEnd(position, airports) {
   if (!position || position.lat === null || airports.length < 2) return null;
   let best = 1;
   for (let i = 2; i < airports.length; i++) {
     if (distanceToSegmentNm(position, airports[i - 1], airports[i]) < distanceToSegmentNm(position, airports[best - 1], airports[best])) best = i;
   }
+  return best;
+}
+
+// Distance still to fly in nm, from the aircraft to the destination along the remaining legs
+// (to the end of the leg it is closest to, then the legs after that). Null without a position.
+export function remainingNm(position, airports) {
+  const best = currentLegEnd(position, airports);
+  if (best === null) return null;
   let rest = distanceNm(position, airports[best]);
   for (let i = best + 1; i < airports.length; i++) rest += distanceNm(airports[i - 1], airports[i]);
   return rest;

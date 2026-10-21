@@ -7,7 +7,8 @@ free, open data. It gives you some features that paid flight trackers charge for
   rotated to their direction of travel. Click a plane for callsign, registration, type, altitude,
   speed, vertical speed and squawk.
 - **Distance and times:** the flight card shows the route's great-circle distance (e.g. LHR → SIN 5,877 nm /
-  10,883 km), the distance still to fly, an **estimated** arrival time (distance to go ÷ current ground speed),
+  10,883 km); flights with a stop (e.g. QF1 SYD → SIN → LHR) list each leg separately plus the total, with
+  the leg being flown marked. It also shows the distance still to fly, an **estimated** arrival time (distance to go ÷ current ground speed),
   and the departure time **only if the app saw the takeoff** (in a recorded or live track). There is no
   schedule data, so scheduled/actual gate times aren't available.
 - **Flight routes:** origin, stops and destination for each callsign (e.g. CXA865 FOC → SIN) in the
