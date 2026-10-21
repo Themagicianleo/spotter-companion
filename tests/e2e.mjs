@@ -141,7 +141,58 @@ async function phase2(browser) {
   await page.close();
 }
 
-export const extraScenarios = [phase2];
+// Phase 4: info panel. One aircraft gets a hex that really exists in data/aircraft_db
+// (a03618 = N11206, B738, year 2000) so we test the real database file. Positions stay synthetic.
+async function phase4(browser) {
+  const data = JSON.parse(fixture);
+  Object.assign(data.ac[1], { hex: 'a03618', t: 'B738', r: undefined, desc: undefined, ownOp: undefined, year: undefined });
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  page.on('pageerror', (e) => check('[panel] no JavaScript errors', false, e.message));
+  await page.route('https://tile.openstreetmap.org/**', (r) => r.fulfill({ status: 204 }));
+  await page.route('**/relay?**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(data) }));
+  const shardRequests = [];
+  page.on('request', (req) => req.url().includes('/data/aircraft_db/') && shardRequests.push(req.url()));
+  await page.goto(BASE);
+  await page.waitForSelector('#aircraft-list tbody tr');
+
+  const openPanelFor = async (callsign) => {
+    await page.locator('#aircraft-list tbody tr', { hasText: callsign }).click();
+    // Click the button in THIS aircraft's popup (an old popup may still be fading out).
+    await page.locator('.leaflet-popup', { hasText: callsign }).locator('.popup__more').click();
+    await page.waitForFunction((cs) => {
+      const panel = document.getElementById('info-panel');
+      return !panel.hidden && panel.querySelector('.info__title').textContent === cs && panel.querySelector('.info__legend');
+    }, callsign);
+    return page.textContent('#info-panel');
+  };
+  const rowText = (label) => page.locator('#info-panel tr', { hasText: label }).first().textContent();
+
+  let text = await openPanelFor('TST202');
+  check('[panel] registration from database, tagged DB', (await rowText('Registration')) === 'RegistrationN11206DB');
+  check('[panel] year built and calculated age', (await rowText('Year built')).includes('2000') && (await rowText('Age')).includes(`about ${new Date().getFullYear() - 2000} years`));
+  check('[panel] operator from database', (await rowText('Operator')).includes('UNITED AIRLINES INC'));
+  check('[panel] full model from type table, tagged TYPE', (await rowText('Model')) === 'ModelBoeing 737-800 (737 NG)TYPE');
+  check('[panel] serial number is Unknown (not guessed)', (await rowText('Serial number')).includes('Unknown'));
+  check('[panel] engine options labelled as type options', text.includes('CFM International CFM56-7B series') && text.includes('do not tell you which engine this particular aircraft has'));
+  check('[panel] live section with live tags', (await rowText('Squawk')) === 'Squawk4512LIVE');
+  await page.screenshot({ path: 'docs/screenshots/info-panel-synthetic.png' });
+  await page.click('.info__close');
+
+  text = await openPanelFor('TST101');
+  check('[panel] aircraft not in database says so, falls back to live registration', text.includes('Not in our database') && (await rowText('Registration')) === 'RegistrationTEST-ALIVE');
+  check('[panel] A359 shows both engine options', text.includes('Trent XWB-84') && text.includes('Trent XWB-75'));
+  check('[panel] database shard downloaded once (cached)', new Set(shardRequests).size === shardRequests.length, shardRequests.join(' '));
+  await page.click('.info__close');
+
+  text = await openPanelFor('XYZ9'); // B77W, hex not in DB
+  check('[panel] unconfirmed badge only where verified=false', !text.includes('unconfirmed'));
+  await page.click('.info__close');
+  await page.locator('#aircraft-list tbody tr', { hasText: 'A20N' }).click(); // no position: no popup
+  check('[panel] closing panel shows the list again', await page.isVisible('#aircraft-list'));
+  await page.close();
+}
+
+export const extraScenarios = [phase2, phase4];
 
 const server = await startServer();
 const browser = await chromium.launch();

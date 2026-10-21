@@ -155,3 +155,36 @@ button:hover { border-color: var(--accent); }
   .sidebar { width: 100%; border-left: none; border-top: 1px solid var(--border); }
   .list-wrap { max-height: 60vh; }
 }
+
+/* ---- Aircraft info panel (Phase 4) ---- */
+.sidebar { position: relative; }
+.info {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  overflow: auto;
+  background: var(--panel);
+  padding: 12px 16px 24px;
+}
+.info[hidden] { display: none; }
+.info__header { display: flex; justify-content: space-between; align-items: center; }
+.info__title { margin: 0; font-size: 18px; }
+.info h3 { margin: 16px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+.info__table { width: 100%; border-collapse: collapse; }
+.info__table td { padding: 4px 6px 4px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+.info__table td:first-child { color: var(--muted); width: 40%; }
+.info__table td:last-child { text-align: right; width: 3.5em; }
+.info__engines { margin: 6px 0; padding-left: 20px; }
+.info__note, .info__legend { color: var(--muted); font-size: 12px; margin: 6px 0; }
+.info__warn { color: var(--error-text); background: var(--error-bg); padding: 6px 8px; border-radius: 6px; }
+.info__sources { font-size: 12px; margin-top: 6px; }
+.info__sources li { margin: 4px 0; }
+
+/* Source tags: small coloured labels saying where a value came from */
+.src { display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 4px; cursor: help; }
+.src--live { background: #dcfce7; color: #166534; }
+.src--db { background: #e0e7ff; color: #3730a3; }
+.src--type { background: #fef3c7; color: #92400e; }
+.src--calc { background: #f3e8ff; color: #6b21a8; }
+.badge { font-size: 11px; padding: 1px 6px; border-radius: 4px; }
+.badge--warn { background: var(--error-bg); color: var(--error-text); }

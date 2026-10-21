@@ -54,3 +54,12 @@ test('CSV: header, empty cells for unknown, source column, and safe escaping', (
   assert.ok(trickyRow.includes('"A,B"'));
   assert.ok(trickyRow.includes(',,')); // unknown values are empty cells
 });
+
+test('age from year built: whole years, null when unusable', async () => {
+  const { ageFromYear } = await import('../js/aircraftDb.js');
+  const now = new Date('2026-10-21');
+  assert.equal(ageFromYear('2019', now), 7);
+  assert.equal(ageFromYear(null, now), null);
+  assert.equal(ageFromYear('abc', now), null);
+  assert.equal(ageFromYear('2099', now), null);
+});
