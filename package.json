@@ -1,0 +1,10 @@
+{
+  "name": "spotters-companion",
+  "private": true,
+  "description": "Live map of nearby aircraft using free, open ADS-B data. No dependencies: this file only tells Node that js/ files are ES modules and defines the test commands.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "node tests/e2e.mjs"
+  }
+}

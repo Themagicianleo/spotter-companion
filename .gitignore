@@ -1,0 +1,12 @@
+# Secrets never go in git. (The current providers need no key, but if one is ever added, put it here.)
+.env
+.env.*
+!.env.example
+
+# Local tooling and test output
+node_modules/
+test-results/
+playwright-report/
+scripts/cache/
+__pycache__/
+.DS_Store
