@@ -1,0 +1,15 @@
+{
+  "_note": "SYNTHETIC TEST FIXTURE, NOT REAL DATA. The shape (ac/msg/now/total/ctime/ptime) and field names come from the readsb and adsb.lol source code; the values are made up for testing only. Registrations use TEST- so they can't be confused with real aircraft.",
+  "ac": [
+    { "hex": "7fff01", "flight": "TST101  ", "r": "TEST-A", "t": "A359", "desc": "AIRBUS A-350-900", "alt_baro": 12000, "gs": 310.2, "track": 45.5, "baro_rate": -1280, "squawk": "2301", "lat": 1.40, "lon": 103.95, "seen": 0.3, "dst": 8.4, "dir": 70.1 },
+    { "hex": "7fff02", "flight": "TST202  ", "r": "TEST-B", "t": "B38M", "desc": "BOEING 737 MAX 8", "ownOp": "TEST OPERATOR", "year": "2019", "alt_baro": 36000, "gs": 455, "track": 300, "baro_rate": 0, "squawk": "4512", "lat": 1.10, "lon": 103.60, "seen": 1.2, "dst": 18.6, "dir": 225.0 },
+    { "hex": "7fff03", "flight": "XYZ9    ", "t": "B77W", "alt_baro": "ground", "gs": 12, "true_heading": 200, "lat": 1.36, "lon": 103.99, "seen": 2.0, "dst": 10.0, "dir": 90.0 },
+    { "hex": "7fff04", "alt_baro": 4500, "lat": 1.30, "lon": 103.80, "seen": 5.0, "dst": 3.1, "dir": 190.0 },
+    { "hex": "7fff05", "flight": "NOPOS1  ", "t": "A20N", "alt_baro": 8000, "seen": 1.0 }
+  ],
+  "msg": "No error",
+  "now": 1792540800000,
+  "total": 5,
+  "ctime": 1792540800000,
+  "ptime": 1
+}
