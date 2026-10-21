@@ -2,7 +2,8 @@
 
 `cloudflare-worker.js` runs on Cloudflare's free plan as **spotters-relay**. It does two jobs:
 
-1. **Relay** (`/?url=…`): fetches data for the website from adsb.lol and Planespotters. Those
+1. **Relay** (`/?url=…`): fetches data for the website from adsb.lol, Planespotters and
+   aviationweather.gov (METAR/TAF weather). Those
    services may not allow web pages on other sites to read their answers (CORS). It only relays
    to the hosts in `ALLOWED_HOSTS`, and only answers your GitHub Pages site (`ALLOWED_ORIGIN`).
 2. **Recorder**: once a minute, Cloudflare runs it automatically (a "Cron Trigger"). It asks
@@ -10,6 +11,8 @@
    database, keeping 24 hours. When you click a plane, the website asks `/track?hex=…` for its
    recent path, so the track no longer starts only when you open the page.
    - `/recorder-status` shows how many snapshots are stored and when the last one was taken.
+   - `/stats?hours=24` sums up the stored snapshots for the Stats panel: aircraft per hour and the top
+     types and airlines. The database does the counting; the answer is reused for 5 minutes.
 
 Free-plan budget (checked Oct 2026): D1 allows 100,000 row writes and 5 million row reads per
 day, and 5 GB of storage. The recorder writes about 2,900 rows a day (one snapshot plus one
@@ -29,6 +32,20 @@ cleanup per minute) and stores roughly 4 MB. It sends adsb.lol one request a min
 
 If you fork this project: change `ALLOWED_ORIGIN` here, and `publicProxyBase` and
 `recorderBase` in `js/config.js`, to your own addresses.
+
+## Updating the worker (do this after pulling new code)
+
+When `cloudflare-worker.js` changes, Cloudflare keeps running the old copy until you paste the new one:
+**Workers & Pages → spotters-relay → Edit code**, select everything, paste the new file, **Deploy**.
+The bindings and Cron Trigger stay as they are.
+
+The Oct 2026 update (Weather + Stats) needs this: it adds `aviationweather.gov` to the relay, records each
+aircraft's callsign and type, and adds `/stats`. Check afterwards:
+- `https://spotters-relay.<your-name>.workers.dev/stats` answers with JSON (types fill in over the next hour), and
+- the Weather button on the site changes from "Weather" to something like `WSSS 28° 4 kt`.
+
+Storage after the update: each snapshot also holds callsigns and types, roughly doubling it to about 8 MB
+for 24 hours, still far below the free 5 GB.
 
 ## Data licence
 

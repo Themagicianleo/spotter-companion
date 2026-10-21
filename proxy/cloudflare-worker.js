@@ -9,12 +9,15 @@
 //    once a minute it asks adsb.lol for all aircraft around RECORD_CENTER and saves their positions
 //    in a D1 database (binding name "DB"), one row per minute. The website asks /track?hex=...
 //    for an aircraft's path, so tracks don't start only when you open the page.
+//    /stats sums up the last 24 hours (aircraft per hour, top types and airlines) for the Stats panel.
 //
 // Free-plan budget (checked Oct 2026): D1 allows 100,000 row writes/day; this uses about 2,900
 // (one insert + one cleanup delete per minute). Workers allow 10 ms CPU per run; the database
 // does the heavy lifting (json_extract), not the worker.
 
-const ALLOWED_HOSTS = ['api.adsb.lol', 'api.airplanes.live', 'api.planespotters.net'];
+const ALLOWED_HOSTS = ['api.adsb.lol', 'api.airplanes.live', 'api.planespotters.net', 'aviationweather.gov'];
+// How long Cloudflare may reuse an answer, per host (seconds). Weather changes every 30-60 minutes.
+const CACHE_SECONDS = { 'aviationweather.gov': 300 };
 
 // Set this to your GitHub Pages address so only your site can use the relay and track API.
 const ALLOWED_ORIGIN = 'https://themagicianleo.github.io';
@@ -37,8 +40,10 @@ const json = (data, status = 200) => new Response(JSON.stringify(data), { status
 // Recorder
 // ---------------------------------------------------------------------------------------------
 
-// Turn the adsb.lol answer into a compact snapshot: { "76cd41": [lat, lon, altFt|0 on ground|null, track|null], ... }
-// Uses the same readsb fields the website uses (hex, lat, lon, alt_baro, track/true_heading/calc_track).
+// Turn the adsb.lol answer into a compact snapshot:
+//   { "76cd41": [lat, lon, altFt|0 on ground|null, track|null, callsign|null, typeCode|null], ... }
+// Uses the same readsb fields the website uses (hex, lat, lon, alt_baro, track/true_heading/calc_track,
+// flight, t). Snapshots recorded before Oct 2026's update have only the first four values.
 export function buildSnapshot(data) {
   const snapshot = {};
   for (const ac of data?.ac ?? []) {
@@ -46,7 +51,9 @@ export function buildSnapshot(data) {
     if (typeof ac.lat !== 'number' || typeof ac.lon !== 'number') continue;
     const alt = ac.alt_baro === 'ground' ? 0 : typeof ac.alt_baro === 'number' ? ac.alt_baro : null;
     const track = ac.track ?? ac.true_heading ?? ac.calc_track ?? null;
-    snapshot[ac.hex] = [Math.round(ac.lat * 1e4) / 1e4, Math.round(ac.lon * 1e4) / 1e4, alt, track === null ? null : Math.round(track)];
+    const callsign = typeof ac.flight === 'string' ? ac.flight.trim() || null : null;
+    const type = typeof ac.t === 'string' ? ac.t : null;
+    snapshot[ac.hex] = [Math.round(ac.lat * 1e4) / 1e4, Math.round(ac.lon * 1e4) / 1e4, alt, track === null ? null : Math.round(track), callsign, type];
   }
   return snapshot;
 }
@@ -85,6 +92,36 @@ async function getTrack(env, hex, minutes) {
   });
 }
 
+// Totals for the last `hours` hours. The database does the counting (json_each walks each
+// snapshot's aircraft), so the worker stays within its CPU limit. An aircraft counts once per
+// hour it was seen, and once overall.
+async function getStats(env, hours) {
+  const since = Math.floor(Date.now() / 1000) - hours * 3600;
+  const from = 'FROM snapshots AS s, json_each(s.data) AS j WHERE s.t >= ?1';
+  const [perHour, types, airlines, total] = await env.DB.batch([
+    env.DB.prepare(`SELECT (s.t / 3600) * 3600 AS hour, COUNT(DISTINCT j.key) AS aircraft ${from} GROUP BY hour ORDER BY hour`).bind(since),
+    env.DB.prepare(`SELECT json_extract(j.value, '$[5]') AS type, COUNT(DISTINCT j.key) AS aircraft ${from}
+      AND json_extract(j.value, '$[5]') IS NOT NULL GROUP BY type ORDER BY aircraft DESC LIMIT 15`).bind(since),
+    env.DB.prepare(`SELECT substr(json_extract(j.value, '$[4]'), 1, 3) AS airline, COUNT(DISTINCT j.key) AS aircraft ${from}
+      AND json_extract(j.value, '$[4]') GLOB '[A-Z][A-Z][A-Z][0-9]*' GROUP BY airline ORDER BY aircraft DESC LIMIT 15`).bind(since),
+    env.DB.prepare(`SELECT COUNT(DISTINCT j.key) AS aircraft, MIN(s.t) AS oldest,
+      MIN(CASE WHEN json_array_length(j.value) >= 6 THEN s.t END) AS detailsSince ${from}`).bind(since),
+  ]);
+  const t = total.results[0] ?? {};
+  return {
+    hours,
+    area: { ...RECORD_CENTER, radiusNm: RECORD_RADIUS_NM },
+    uniqueAircraft: t.aircraft ?? 0,
+    oldest: t.oldest ?? null, // unix seconds of the oldest snapshot used
+    detailsSince: t.detailsSince ?? null, // types/callsigns are only recorded from this time on
+    perHour: perHour.results, // [{ hour (unix s), aircraft }]
+    types: types.results, // [{ type, aircraft }]
+    airlines: airlines.results, // [{ airline (ICAO code), aircraft }]
+  };
+}
+
+let statsCache = null; // { time, hours, body }: stats change slowly, so reuse them for 5 minutes
+
 // ---------------------------------------------------------------------------------------------
 // Request handling
 // ---------------------------------------------------------------------------------------------
@@ -103,7 +140,7 @@ async function relay(request) {
   const upstream = await fetch(target, {
     headers: { 'User-Agent': USER_AGENT },
     // Ask Cloudflare to cache answers for 5 s, so many viewers = few provider requests.
-    cf: { cacheTtl: 5, cacheEverything: true },
+    cf: { cacheTtl: CACHE_SECONDS[host] ?? 5, cacheEverything: true },
   });
   const headers = new Headers(corsHeaders);
   const retryAfter = upstream.headers.get('Retry-After');
@@ -124,6 +161,19 @@ export default {
         return json({ hex, minutes, points: await getTrack(env, hex, minutes) });
       } catch (err) {
         return json({ error: `Track lookup failed: ${err.message}` }, 500); // e.g. no snapshots yet
+      }
+    }
+
+    if (url.pathname === '/stats') {
+      if (!env.DB) return json({ error: 'Recorder database not connected (add a D1 binding named DB)' }, 503);
+      const hours = Math.min(Math.max(Math.round(Number(url.searchParams.get('hours')) || 24), 1), KEEP_HOURS);
+      if (statsCache && statsCache.hours === hours && Date.now() - statsCache.time < 5 * 60 * 1000) return json(statsCache.body);
+      try {
+        const body = await getStats(env, hours);
+        statsCache = { time: Date.now(), hours, body };
+        return json(body);
+      } catch (err) {
+        return json({ error: `Stats failed: ${err.message}` }, 500); // e.g. nothing recorded yet
       }
     }
 

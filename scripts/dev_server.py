@@ -23,7 +23,7 @@ import urllib.request
 from pathlib import Path
 
 PORT = 8000
-ALLOWED_HOSTS = {"api.adsb.lol", "api.airplanes.live", "api.planespotters.net"}
+ALLOWED_HOSTS = {"api.adsb.lol", "api.airplanes.live", "api.planespotters.net", "aviationweather.gov"}
 MIN_GAP_SECONDS = 1.1  # providers ask for at most 1 request per second
 USER_AGENT = "SpottersCompanion/1.0 (personal non-commercial project; +https://github.com/Themagicianleo/spotter-companion)"
 
