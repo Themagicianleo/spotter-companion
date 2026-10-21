@@ -6,6 +6,8 @@ free, open data. It gives you some features that paid flight trackers charge for
 - **Live map** (Phase 1): aircraft around a point (default: Singapore, 1.35, 103.82), with plane icons
   rotated to their direction of travel. Click a plane for callsign, registration, type, altitude,
   speed, vertical speed and squawk.
+- **Flight tracks:** select a plane (on the map or in the list) to see where it has flown, coloured
+  by altitude. Click empty map to hide it.
 - **Filters, list and CSV** (Phase 2): filter by type codes, altitude range, or callsign/airline prefix.
   A sortable list sits next to the map, and you can export the current view as CSV.
 - **Type and engine table** (Phase 3): 58 Boeing and Airbus airliner types in `data/aircraft_types.json`,
@@ -81,6 +83,8 @@ js/list.js         the sortable table
 js/csv.js          CSV export
 js/aircraftDb.js   cached lookups in data/aircraft_db/ and data/aircraft_types.json
 js/infoPanel.js    the aircraft info panel
+js/photos.js       aircraft photos from Planespotters.net
+js/track.js        remembers positions so the map can draw tracks
 js/format.js       turns values into text, with "Unknown" for anything missing
 js/main.js         wires everything together
 data/aircraft_types.json   type + engine table (Phase 3)
@@ -155,6 +159,9 @@ Remember that a static site can't keep any key secret.
   then confirmed them. Photos are matched by hex code and may show an
   older livery. The app asks Planespotters directly first and falls back to the relay, which sends a
   User-Agent with this repo's URL as contact information.
+- **Tracks only cover the time since you opened the page** (up to 2 hours), built from the app's own
+  10-second updates. adsb.lol's API has no documented track/history endpoint, so there's no
+  full-flight history, and a plane that leaves the search radius stops being tracked.
 - **Engine options are per type, never per aircraft.** The app never claims which engine a specific airframe has.
 - **Simplifications:** positions refresh every 10 s, so markers jump instead of gliding.
   Aircraft without a position are listed but not drawn. Polling pauses while the tab is hidden.

@@ -193,3 +193,16 @@ button:hover { border-color: var(--accent); }
 .info__photo { margin-top: 10px; }
 .info__photo img { display: block; width: 100%; max-width: 420px; height: auto; border-radius: 8px; background: var(--bg); }
 .info__credit { font-size: 12px; margin: 4px 0 0; }
+
+/* ---- Track legend (bottom-left of the map) ---- */
+.track-legend {
+  background: var(--panel);
+  color: var(--text);
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  line-height: 1.6;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.track-legend strong, .track-legend span { display: block; }
+.track-legend i { display: inline-block; width: 14px; height: 4px; margin-right: 6px; vertical-align: middle; border-radius: 2px; }

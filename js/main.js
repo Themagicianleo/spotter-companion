@@ -8,7 +8,10 @@ import * as mapView from './map.js';
 import { parseFilterInputs, applyFilters } from './filters.js';
 import { initList, renderList, highlightRow, getShownInOrder } from './list.js';
 import { downloadCsv } from './csv.js';
-import { initInfoPanel, openInfoPanel, updateLive, isOpenFor } from './infoPanel.js';
+import { initInfoPanel, openInfoPanel, updateLive, isOpenFor, closeInfoPanel } from './infoPanel.js';
+import { getTrack } from './track.js';
+
+let selectedHex = null; // the aircraft whose track is drawn (null = none)
 
 // ---- Phase 2: filters, list and CSV export ----
 const filterForm = document.getElementById('filters');
@@ -42,6 +45,7 @@ function updateTypeSuggestions() {
 function render() {
   const visible = applyFilters(state.aircraft, currentFilters());
   mapView.updateAircraft(visible);
+  mapView.showTrack(selectedHex ? getTrack(selectedHex) : []);
   renderList(visible);
   listCount.textContent = `${visible.length} of ${state.aircraft.length} shown`;
   updateTypeSuggestions();
@@ -53,9 +57,13 @@ function render() {
 
 // Selecting a plane (from the map or the list) highlights it in both places.
 // openPanel is true when the popup's "Aircraft info" button was clicked.
+// hex === null means "clear the selection" (clicking empty map).
 function select(hex, { openPanel = false, fromList = false } = {}) {
+  selectedHex = hex;
+  mapView.showTrack(hex ? getTrack(hex) : []);
   mapView.selectAircraft(hex, { pan: fromList, openPopup: fromList });
   highlightRow(hex);
+  if (hex === null) closeInfoPanel();
   const ac = state.aircraft.find((a) => a.hex === hex);
   if (ac && openPanel) openInfoPanel(ac);
 }

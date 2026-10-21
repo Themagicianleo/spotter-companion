@@ -207,7 +207,46 @@ async function phase4(browser) {
   await page.close();
 }
 
-export const extraScenarios = [phase2, phase4];
+// Tracks: the plane moves a little on every update; skip ahead with Playwright's fake clock.
+async function tracks(browser) {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  page.on('pageerror', (e) => check('[track] no JavaScript errors', false, e.message));
+  await page.clock.install();
+  await page.route('https://tile.openstreetmap.org/**', (r) => r.fulfill({ status: 204 }));
+  let update = 0;
+  await page.route('**/relay?**', (r) => {
+    const data = JSON.parse(fixture);
+    data.ac[0].lat += update * 0.02; // TST101 climbs north-east, 12,000 ft -> 27,000 ft
+    data.ac[0].lon += update * 0.02;
+    data.ac[0].alt_baro += update * 5000;
+    update++;
+    r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(data) });
+  });
+  await page.goto(BASE);
+  await page.waitForSelector('.plane');
+  for (let i = 0; i < 3; i++) {
+    await page.clock.runFor(11_000); // fire the next update...
+    await page.waitForTimeout(300); // ...and give its (real-time) network reply a moment to arrive
+  }
+  await page.waitForFunction(() => document.querySelectorAll('.plane').length === 4);
+  check('[track] several updates were fetched', update >= 4, `${update} updates`);
+
+  await page.locator('#aircraft-list tbody tr', { hasText: 'TST101' }).click();
+  const segments = await page.locator('.leaflet-overlay-pane path.leaflet-interactive, .leaflet-overlay-pane path').count();
+  // 1 path is the dashed search circle; the rest are track segments.
+  check('[track] selecting a plane draws its track (one segment per move)', segments - 1 === update - 1, `${segments - 1} segments`);
+  const colors = await page.locator('.leaflet-overlay-pane path[stroke="#2563eb"]').count();
+  check('[track] segments above 25,000 ft are blue', colors >= 1);
+  check('[track] legend appears', await page.isVisible('.track-legend'));
+  if (process.env.SHOT) await page.screenshot({ path: process.env.SHOT });
+
+  await page.click('#map', { position: { x: 30, y: 400 } }); // empty map
+  const after = await page.locator('.leaflet-overlay-pane path').count();
+  check('[track] clicking empty map hides the track and legend', after === 1 && !(await page.isVisible('.track-legend')));
+  await page.close();
+}
+
+export const extraScenarios = [phase2, phase4, tracks];
 
 const server = await startServer();
 const browser = await chromium.launch();

@@ -5,6 +5,7 @@
 import { CONFIG } from './config.js';
 import { fetchAircraftNear, PROVIDERS } from './api.js';
 import * as mapView from './map.js';
+import { recordPositions } from './track.js';
 
 // ---- Settings the user can change (remembered in this browser if storage is allowed) ----
 const SETTINGS_KEY = 'spotters-companion:settings';
@@ -90,6 +91,7 @@ async function poll() {
     const result = await fetchAircraftNear(center.lat, center.lon, radiusNm);
     state.aircraft = result.aircraft;
     state.lastUpdate = new Date(result.fetchedAt);
+    recordPositions(result.aircraft, result.fetchedAt); // remember positions for tracks
     state.backoffMs = 0;
     if (result.aircraft.length === 0) {
       showBanner(`No aircraft reported within ${radiusNm} nm right now. That's normal late at night or in a quiet area; try a bigger radius.`, 'info');

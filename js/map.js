@@ -6,6 +6,8 @@ import * as fmt from './format.js';
 
 let map;
 let radiusCircle;
+let trackLayer; // the selected aircraft's track (a group of coloured line segments)
+let trackLegend;
 const markers = new Map(); // hex -> Leaflet marker, so we move markers instead of recreating them
 let onSelect = () => {}; // set by app.js: what to do when a plane is clicked
 let selectedHex = null;
@@ -84,7 +86,45 @@ export function initMap(elementId, center, radiusNm, attributionHtml, selectHand
     fill: false,
     dashArray: '4 6',
   }).addTo(map);
+
+  trackLayer = L.layerGroup().addTo(map);
+  // Small legend explaining the track colours, shown only while a track is drawn.
+  trackLegend = L.control({ position: 'bottomleft' });
+  trackLegend.onAdd = () => {
+    const box = L.DomUtil.create('div', 'track-legend');
+    box.innerHTML = '<strong>Track altitude</strong>' + // fixed text, no API data
+      ALT_BANDS.map((b) => `<span><i style="background:${b.color}"></i>${b.label}</span>`).join('');
+    return box;
+  };
+  // Clicking empty map (not a plane) clears the selection.
+  map.on('click', () => onSelect(null, { openPanel: false }));
   return map;
+}
+
+// Track colour by altitude, like many flight trackers. Checked top to bottom.
+const ALT_BANDS = [
+  { max: 0, color: '#9ca3af', label: 'Ground' },
+  { max: 10000, color: '#f97316', label: '< 10,000 ft' },
+  { max: 25000, color: '#16a34a', label: '10–25,000 ft' },
+  { max: Infinity, color: '#2563eb', label: '> 25,000 ft' },
+];
+const UNKNOWN_ALT_COLOR = '#a855f7';
+const altColor = (alt) => (alt === null ? UNKNOWN_ALT_COLOR : ALT_BANDS.find((b) => alt <= b.max).color);
+
+// Draw a track from points [{lat, lon, alt}], oldest first. An empty list hides the track.
+export function showTrack(points) {
+  trackLayer.clearLayers();
+  if (points.length < 2) {
+    trackLegend.remove();
+    return;
+  }
+  // One short line per pair of points, so each piece can have its own altitude colour.
+  for (let i = 1; i < points.length; i++) {
+    const a = points[i - 1];
+    const b = points[i];
+    L.polyline([[a.lat, a.lon], [b.lat, b.lon]], { color: altColor(b.alt), weight: 3, opacity: 0.9, interactive: false }).addTo(trackLayer);
+  }
+  trackLegend.addTo(map);
 }
 
 export function setSearchArea(center, radiusNm) {
@@ -129,6 +169,7 @@ export function updateAircraft(aircraftList) {
 export function selectAircraft(hex, { pan = false, openPopup = false } = {}) {
   const previous = selectedHex;
   selectedHex = hex;
+  if (hex === null) map.closePopup();
   // Re-draw the old and new selection so the highlight moves.
   for (const h of [previous, hex]) {
     const m = markers.get(h);
