@@ -229,6 +229,15 @@ async function tracks(browser) {
     update++;
     r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(data) });
   });
+  // The recorder (Cloudflare worker) knows 3 earlier positions of TST101 (7fff01), south-west of it.
+  let recorderCalls = 0;
+  await page.route('https://spotters-relay.maotianze.workers.dev/track?**', (r) => {
+    recorderCalls++;
+    const hex = new URL(r.request().url()).searchParams.get('hex');
+    const now = Math.floor(Date.now() / 1000); // the page's fake clock starts at the real time
+    const points = hex === '7fff01' ? [1, 2, 3].map((i) => ({ t: now - (4 - i) * 60, lat: 1.40 - (4 - i) * 0.03, lon: 103.95 - (4 - i) * 0.03, alt: 3000 * i })) : [];
+    r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ hex, minutes: 180, points }) });
+  });
   await page.goto(BASE);
   await page.waitForSelector('.plane');
   for (let i = 0; i < 3; i++) {
@@ -241,14 +250,17 @@ async function tracks(browser) {
   await page.locator('#aircraft-list tbody tr', { hasText: 'TST101' }).click();
   const segments = await page.locator('.leaflet-overlay-pane path.leaflet-interactive, .leaflet-overlay-pane path').count();
   // 1 path is the dashed search circle, 1 is the track's dark outline; the rest are coloured segments.
-  check('[track] selecting a plane draws its track (one segment per move)', segments - 2 === update - 1, `${segments - 2} segments`);
+  check('[track] selecting a plane draws its track (one segment per move)', segments - 2 >= update - 1, `${segments - 2} segments`);
+  await page.waitForTimeout(300); // recorder answer arrives
+  const withRecorded = (await page.locator('.leaflet-overlay-pane path').count()) - 2;
+  check('[recorder] earlier recorded positions are added before the live ones', recorderCalls === 1 && withRecorded === (update - 1) + 3, `${withRecorded} segments, ${recorderCalls} recorder call(s)`);
   const colors = await page.locator('.leaflet-overlay-pane path[stroke="#2563eb"]').count();
   check('[track] segments above 25,000 ft are blue', colors >= 1);
   check('[track] legend appears', await page.isVisible('.track-legend'));
   await page.locator('.leaflet-popup', { hasText: 'TST101' }).locator('.popup__more').click();
   await page.waitForSelector('#info-panel:not([hidden])');
   const recorded = await page.locator('#info-panel tr', { hasText: 'Track on map' }).textContent();
-  check('[track] info panel says how much track is recorded', recorded.includes('recorded since you opened the page'), recorded);
+  check('[track] info panel says how much track is recorded, incl. recorder', recorded.includes('min of track') && recorded.includes('from your recorder'), recorded);
   await page.click('.info__close');
   if (process.env.SHOT) await page.screenshot({ path: process.env.SHOT });
 

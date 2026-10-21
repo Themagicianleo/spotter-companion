@@ -264,9 +264,10 @@ export function updateLive(ac) {
   // How much track we have so far (it only starts when the page is opened).
   const track = getTrack(ac.hex);
   const minutes = track.length > 1 ? Math.round((track.at(-1).time - track[0].time) / 60000) : 0;
+  const fromRecorder = track.some((p) => p.recorded);
   const trackText = track.length < 2
     ? 'Starting… (needs two updates, about 20 s)'
-    : `${minutes < 1 ? 'under 1' : minutes} min recorded since you opened the page`;
+    : `${minutes < 1 ? 'under 1' : minutes} min of track` + (fromRecorder ? ' (includes earlier positions from your recorder)' : ' (since you opened the page)');
   const tr = table.insertRow();
   tr.insertCell().textContent = 'Track on map';
   tr.insertCell().textContent = trackText;

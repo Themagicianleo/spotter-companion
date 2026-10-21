@@ -33,6 +33,13 @@ export const CONFIG = {
   // - On the public site, leave publicProxyBase empty to call the provider directly, or set it
   //   to your relay (see proxy/README.md), e.g. 'https://my-relay.example.workers.dev/?url='
   publicProxyBase: 'https://spotters-relay.maotianze.workers.dev/?url=',
+
+  // The recorder on the same Cloudflare worker (proxy/cloudflare-worker.js) keeps 24 hours of
+  // positions, so a clicked plane's track starts before you opened the page. Leave empty to turn
+  // it off. (It only answers requests from the GitHub Pages site, so on localhost tracks fall back
+  // to "since you opened the page".)
+  recorderBase: 'https://spotters-relay.maotianze.workers.dev',
+  recordedTrackMinutes: 180,
   get proxyBase() {
     const host = globalThis.location?.hostname;
     return host === 'localhost' || host === '127.0.0.1' ? '/relay?url=' : this.publicProxyBase;

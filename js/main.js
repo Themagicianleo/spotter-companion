@@ -9,7 +9,7 @@ import { parseFilterInputs, applyFilters } from './filters.js';
 import { initList, renderList, highlightRow, getShownInOrder } from './list.js';
 import { downloadCsv } from './csv.js';
 import { initInfoPanel, openInfoPanel, updateLive, isOpenFor, closeInfoPanel } from './infoPanel.js';
-import { getTrack } from './track.js';
+import { getTrack, loadRecordedTrack } from './track.js';
 
 let selectedHex = null; // the aircraft whose track is drawn (null = none)
 
@@ -61,6 +61,8 @@ function render() {
 function select(hex, { openPanel = false, fromList = false } = {}) {
   selectedHex = hex;
   mapView.showTrack(hex ? getTrack(hex) : []);
+  // Fetch the recorder's earlier positions, then redraw if this plane is still selected.
+  if (hex) loadRecordedTrack(hex).then((found) => found && selectedHex === hex && mapView.showTrack(getTrack(hex)));
   mapView.selectAircraft(hex, { pan: fromList, openPopup: fromList });
   highlightRow(hex);
   if (hex === null) closeInfoPanel();

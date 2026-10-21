@@ -8,7 +8,8 @@ free, open data. It gives you some features that paid flight trackers charge for
   speed, vertical speed and squawk.
 - **Satellite view:** switch between the street map and Sentinel-2 satellite imagery (top-right of the map).
 - **Flight tracks:** select a plane (on the map or in the list) to see where it has flown, coloured
-  by altitude. Click empty map to hide it.
+  by altitude. Click empty map to hide it. A small recorder on Cloudflare keeps 24 hours of positions
+  around Singapore, so tracks include where the plane was before you opened the page (see `proxy/README.md`).
 - **Filters, list and CSV** (Phase 2): filter by type codes, altitude range, or callsign/airline prefix.
   A sortable list sits next to the map, and you can export the current view as CSV.
 - **Type and engine table** (Phase 3): 58 Boeing and Airbus airliner types in `data/aircraft_types.json`,
@@ -99,7 +100,7 @@ data/aircraft_variants.json exact model -> certified engines, parsed from offici
 data/aircraft_db/          airliner-only extract of tar1090-db (Phase 4)
 scripts/dev_server.py      local server + relay
 scripts/build_aircraft_db.py
-proxy/                     optional relay for GitHub Pages
+proxy/                     Cloudflare worker: relay + flight recorder (setup steps in proxy/README.md)
 vendor/leaflet/            Leaflet 1.9.4 (copied in so the site needs no CDN)
 tests/                     unit + browser tests (the fixture is synthetic, and labelled so)
 ```
@@ -179,9 +180,10 @@ Remember that a static site can't keep any key secret.
   then confirmed them. Photos are matched by hex code and may show an
   older livery. The app asks Planespotters directly first and falls back to the relay, which sends a
   User-Agent with this repo's URL as contact information.
-- **Tracks only cover the time since you opened the page** (up to 2 hours), built from the app's own
-  10-second updates. adsb.lol's API has no documented track/history endpoint, so there's no
-  full-flight history, and a plane that leaves the search radius stops being tracked.
+- **Tracks are regional, not whole flights.** The recorder only covers 80 nm around Singapore, saves
+  one position per minute (so older parts of a track are less detailed), and keeps 24 hours. The page
+  shows up to 3 hours of it, and drops any part separated by more than 5 minutes (e.g. an earlier
+  flight of the same aircraft). Without the recorder (or on localhost), tracks start when you open the page.
 - **Satellite imagery is about 10 m per pixel** (Sentinel-2), so you'll see airports and runways but not
   individual aircraft. Sharper imagery (Esri, Google, Mapbox) needs an account or key, or doesn't
   allow this use. The EOX tile URL comes from third-party listings, so check that the Satellite

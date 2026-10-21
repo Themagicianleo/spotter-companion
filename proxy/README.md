@@ -1,24 +1,37 @@
-# Optional relay (only if the live map shows a "CORS" error on GitHub Pages)
+# The Cloudflare worker: relay + flight recorder
 
-## Why this exists
+`cloudflare-worker.js` runs on Cloudflare's free plan as **spotters-relay**. It does two jobs:
 
-Browsers protect you by refusing to let a web page read data from another website unless
-that website says it's OK, using a `Access-Control-Allow-Origin` header ("CORS").
-A third-party page says adsb.lol does **not** send that header. I could not test it from
-my build environment, so this is unconfirmed. If it's true, the GitHub Pages version can't
-read the data directly, and you'll see the "Could not reach adsb.lol … (CORS)" message.
+1. **Relay** (`/?url=…`): fetches data for the website from adsb.lol and Planespotters. Those
+   services may not allow web pages on other sites to read their answers (CORS). It only relays
+   to the hosts in `ALLOWED_HOSTS`, and only answers your GitHub Pages site (`ALLOWED_ORIGIN`).
+2. **Recorder**: once a minute, Cloudflare runs it automatically (a "Cron Trigger"). It asks
+   adsb.lol once for all aircraft within 80 nm of Singapore and saves their positions in a D1
+   database, keeping 24 hours. When you click a plane, the website asks `/track?hex=…` for its
+   recent path, so the track no longer starts only when you open the page.
+   - `/recorder-status` shows how many snapshots are stored and when the last one was taken.
 
-Running locally with `python3 scripts/dev_server.py` avoids this, because that server
-fetches the data for the page.
+Free-plan budget (checked Oct 2026): D1 allows 100,000 row writes and 5 million row reads per
+day, and 5 GB of storage. The recorder writes about 2,900 rows a day (one snapshot plus one
+cleanup per minute) and stores roughly 4 MB. It sends adsb.lol one request a minute.
 
-## Fix for the public site: a tiny relay
+## Setup (one time)
 
-`cloudflare-worker.js` is about 30 lines. Cloudflare Workers has a free plan.
+1. **Create the database.** In the Cloudflare dashboard: **Storage & databases → D1 SQL database →
+   Create** and name it `spotters-tracks`. The worker creates its own table, so there's nothing to type in.
+2. **Connect it to the worker.** Open **Workers & Pages → spotters-relay → Settings → Bindings →
+   Add → D1 database**. Set the variable name to exactly `DB`, choose `spotters-tracks`, and save.
+3. **Make it run every minute.** In the same **Settings**, under **Trigger events** (or **Triggers**),
+   click **Add → Cron Triggers** and enter `* * * * *` ("every minute"), then save.
+4. **Update the code.** Click **Edit code**, replace everything with `cloudflare-worker.js`, and **Deploy**.
+5. **Check it.** After 2–3 minutes, open `https://spotters-relay.<your-name>.workers.dev/recorder-status`.
+   You should see `"snapshots"` counting up and `"aircraftInLatest"` above 0.
 
-1. Make a free Cloudflare account, go to **Workers & Pages → Create → Worker**.
-2. Paste in `cloudflare-worker.js`, change `ALLOWED_ORIGIN` to your GitHub Pages address, deploy.
-3. In `js/config.js`, set the relay URL for the public site, for example:
-   `'https://spotters-relay.YOUR-NAME.workers.dev/?url='`
+If you fork this project: change `ALLOWED_ORIGIN` here, and `publicProxyBase` and
+`recorderBase` in `js/config.js`, to your own addresses.
 
-This *is* a small backend, which the original brief wanted to avoid. It's only needed if CORS
-really is blocked. It holds no secrets, and it only relays to the two allowed provider hosts.
+## Data licence
+
+The recorded positions come from adsb.lol, whose data is under the
+[ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). If you ever publish the stored data
+itself (not just maps made from it), it has to stay under ODbL and credit adsb.lol.
