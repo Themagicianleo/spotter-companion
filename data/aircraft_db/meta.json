@@ -2,14 +2,14 @@
   "source": "tar1090-db (from the Mictronics database) + OpenSky Network aircraft database",
   "sourceUrl": "https://github.com/wiedehopf/tar1090-db",
   "openskyUrl": "https://opensky-network.org/data/aircraft",
-  "builtAt": "2026-10-21T05:34Z",
+  "builtAt": "2026-10-21T05:35Z",
   "tar1090": {
     "url": "https://raw.githubusercontent.com/wiedehopf/tar1090-db/csv/aircraft.csv.gz",
     "lastModified": null,
     "rowsInSource": 622506
   },
   "opensky": {
-    "error": "OpenSky file is missing expected columns ['serialnumber']; not guessing."
+    "error": "OpenSky file (metadata/aircraft-database-complete-2025-08.csv) is missing expected columns ['serialnumber']; not guessing. Its header is: ['icao24', 'timestamp', 'acars', 'adsb', 'built', 'categoryDescription', 'country', 'engines', 'firstFlightDate', 'firstSeen', 'icaoAircraftClass', 'lineNumber', 'manufacturerIcao', 'manufacturerName', 'model', 'modes', 'nextReg', 'notes', 'operator', 'operatorCallsign', 'operatorIata', 'operatorIcao', 'owner', 'prevReg', 'regUntil', 'registered', 'registration', 'selCal', 'serialNumber', 'status', 'typecode', 'vdl']; first data line: \"'000000','2017-10-19 18:30:18',0,0,,'',,'',,,'','','','',unknow,0,'','','','','','','','',,,'','','','','',0\""
   },
   "rowsKept": 36306,
   "typesKept": [
