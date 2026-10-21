@@ -43,11 +43,11 @@ Opening `index.html` by double-clicking it won't work: browsers block JavaScript
 Push the repo to GitHub, then go to **Settings → Pages → Deploy from branch → main / root**.
 There's no build step.
 
-**CORS:** a third-party page says adsb.lol doesn't send the
-`Access-Control-Allow-Origin` header, which would stop a web page on another site (like GitHub
-Pages) from reading its data. I couldn't test this. If the public site shows
-"Could not reach adsb.lol … (CORS)", deploy the 30-line relay in [`proxy/`](proxy/README.md)
-(free Cloudflare Worker) and set `publicProxyBase` in `js/config.js`.
+**CORS:** a third-party page says adsb.lol doesn't send the `Access-Control-Allow-Origin`
+header, which would stop a page on another site from reading its data. So the public site calls
+adsb.lol through a small relay: the Cloudflare Worker in [`proxy/`](proxy/README.md), set as
+`publicProxyBase` in `js/config.js`. If you fork this project, deploy your own relay and change
+both `publicProxyBase` and `ALLOWED_ORIGIN`.
 
 ### Tests
 
@@ -123,12 +123,15 @@ Remember that a static site can't keep any key secret.
 
 ## Limitations (please read)
 
-- **I never saw a real API response.** The build environment's network blocked every
-  live-data provider. The response format (`{"ac": [...], "msg", "now", "total", "ctime", "ptime"}`)
-  and the field names come from the **source code** of adsb.lol's API and readsb (the software
-  that produces it), not from a live response. The tests use a synthetic fixture. Check a real
-  response yourself: `curl https://api.adsb.lol/v2/point/1.35/103.82/40`.
-- **CORS on GitHub Pages is untested** (see above).
+- **The response format was first worked out from source code, then confirmed live.** The build
+  environment couldn't reach any provider, so the format came from the source code of adsb.lol's
+  API and readsb. A real response fetched through the relay on 21 Oct 2026 (14 aircraft near
+  Singapore) matched it: `{"ac": [...], "msg": "No error", "now", "total", "ctime", "ptime"}`.
+  It also showed `calc_track`, which is now used as a fallback direction. The automated tests
+  still use a synthetic fixture.
+- **The public site goes through a relay.** It calls adsb.lol through a Cloudflare Worker
+  (`publicProxyBase` in `js/config.js`, code in `proxy/`), in case adsb.lol doesn't allow
+  direct browser requests (CORS). Whether direct calls would work was never tested.
 - **airplanes.live may now be feeders-only**, and its response format wasn't verified. The app shows
   an error rather than guessing if the format differs.
 - **Age will often be "Unknown".** In tar1090-db, none of the 299 Singapore-registered (9V-)

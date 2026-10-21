@@ -32,7 +32,7 @@ export const CONFIG = {
   // - On your own computer (localhost), scripts/dev_server.py provides one at /relay.
   // - On the public site, leave publicProxyBase empty to call the provider directly, or set it
   //   to your relay (see proxy/README.md), e.g. 'https://my-relay.example.workers.dev/?url='
-  publicProxyBase: '',
+  publicProxyBase: 'https://spotters-relay.maotianze.workers.dev/?url=',
   get proxyBase() {
     const host = globalThis.location?.hostname;
     return host === 'localhost' || host === '127.0.0.1' ? '/relay?url=' : this.publicProxyBase;

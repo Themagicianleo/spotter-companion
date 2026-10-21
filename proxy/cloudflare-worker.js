@@ -7,7 +7,7 @@
 const ALLOWED_HOSTS = ['api.adsb.lol', 'api.airplanes.live'];
 
 // Set this to your GitHub Pages address so only your site can use the relay.
-const ALLOWED_ORIGIN = 'https://YOUR-USERNAME.github.io';
+const ALLOWED_ORIGIN = 'https://themagicianleo.github.io';
 
 export default {
   async fetch(request) {

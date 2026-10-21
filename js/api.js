@@ -75,7 +75,8 @@ export function normalizeAircraft(ac) {
     onGround: ac.alt_baro === 'ground',
     groundSpeedKt: ac.gs ?? null,
     // Prefer track over ground; on the ground some aircraft only send true_heading.
-    trackDeg: ac.track ?? ac.true_heading ?? null,
+    // calc_track (seen in a real Oct 2026 response) is readsb's track worked out from positions.
+    trackDeg: ac.track ?? ac.true_heading ?? ac.calc_track ?? null,
     // Barometric rate is what pilots see; fall back to the GPS-based rate.
     verticalRateFpm: ac.baro_rate ?? ac.geom_rate ?? null,
     squawk: ac.squawk ?? null,
