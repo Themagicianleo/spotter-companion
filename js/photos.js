@@ -1,8 +1,8 @@
 // photos.js
 // Aircraft photos from Planespotters.net's public photo API.
 //
-// Response shape (confirmed from two open-source projects' parsers and test fixtures, since
-// the build environment couldn't reach planespotters.net itself):
+// Response shape (first taken from two open-source projects' parsers, then confirmed by a real
+// response for 76cd41 / 9V-SJA fetched through the relay on 21 Oct 2026):
 //   { "photos": [ { "id", "thumbnail": {"src", "size"}, "thumbnail_large": {"src", "size"},
 //                   "link": <photo page URL>, "photographer": <name> } ] }
 //

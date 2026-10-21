@@ -150,8 +150,9 @@ Remember that a static site can't keep any key secret.
 - **ICAO codes:** all 53 codes in the original list exist in tar1090-db with the expected names.
   Added: B732, A30B, B74S, B778, B779. I couldn't open ICAO Doc 8643 itself, so I checked against an
   FAA order that reproduces it, plus search results.
-- **Photos:** I couldn't open Planespotters' API page from the build environment, so the response
-  fields come from two open-source projects' parsers. Photos are matched by hex code and may show an
+- **Photos:** I couldn't open Planespotters' API documentation, so the response fields were first taken
+  from two open-source projects' parsers. A real response through the relay (21 Oct 2026, 9V-SJA)
+  then confirmed them. Photos are matched by hex code and may show an
   older livery. The app asks Planespotters directly first and falls back to the relay, which sends a
   User-Agent with this repo's URL as contact information.
 - **Engine options are per type, never per aircraft.** The app never claims which engine a specific airframe has.
