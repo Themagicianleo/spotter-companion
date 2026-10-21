@@ -25,6 +25,13 @@ They're split into 16 files by the first hex character, so the page downloads on
 file per click.
 
 Output: data/aircraft_db/<0-f>.json  and  data/aircraft_db/meta.json
+
+It also writes data/aircraft_flags.json: the hex codes tar1090-db flags as military or
+"interesting" (any type, any country). The flags column is a string of '0'/'1' characters;
+readsb reads character 1 as "military" and character 2 as "interesting" (aircraft.c, dbFlags
+bits 1 and 2). Characters 3-4 are privacy flags (PIA, LADD): we don't use or copy them.
+
+Only the flags file:   python3 scripts/build_aircraft_db.py --flags-only
 """
 
 import csv
@@ -69,15 +76,38 @@ def load_tar1090(wanted_types):
     raw, last_modified = download(TAR1090_URL)
     text = gzip.decompress(raw).decode("utf-8", errors="replace")
     rows = {}
+    flags = {"military": [], "interesting": []}
     total = 0
     for row in csv.reader(io.StringIO(text), delimiter=";"):
         total += 1
         if len(row) < 7:
             continue
-        hex_code, reg, type_code, _flags, type_long, year, own_op = (field.strip() for field in row[:7])
+        hex_code, reg, type_code, db_flags, type_long, year, own_op = (field.strip() for field in row[:7])
+        hex_code = hex_code.lower()
+        if re.fullmatch(r"[0-9a-f]{6}", hex_code):
+            if db_flags[:1] == "1":
+                flags["military"].append(hex_code)
+            if db_flags[1:2] == "1":
+                flags["interesting"].append(hex_code)
         if type_code in wanted_types or reg.startswith(LOCAL_PREFIX):
-            rows[hex_code.lower()] = [reg or None, type_code, type_long or None, year or None, own_op or None]
-    return rows, {"url": TAR1090_URL, "lastModified": last_modified, "rowsInSource": total}
+            rows[hex_code] = [reg or None, type_code, type_long or None, year or None, own_op or None]
+    info = {"url": TAR1090_URL, "lastModified": last_modified, "rowsInSource": total}
+    return rows, info, flags
+
+
+def write_flags(flags, info):
+    payload = {
+        "source": "tar1090-db dbFlags column (military = character 1, interesting = character 2)",
+        "sourceUrl": TAR1090_URL,
+        "sourceLastModified": info.get("lastModified"),
+        "builtAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),
+        "note": "Community-maintained flags. Some military aircraft are missing and some entries can be wrong.",
+        "military": sorted(flags["military"]),
+        "interesting": sorted(flags["interesting"]),
+    }
+    path = ROOT / "data" / "aircraft_flags.json"
+    path.write_text(json.dumps(payload, separators=(",", ":")))
+    print(f"Flags: {len(payload['military']):,} military, {len(payload['interesting']):,} interesting -> {path}")
 
 
 def latest_opensky_key():
@@ -158,7 +188,10 @@ def load_vrs(wanted_types, known_hexes):
 
 def main():
     wanted_types = {t["icao"] for t in json.loads((ROOT / "data" / "aircraft_types.json").read_text())["types"]}
-    tar_rows, tar_info = load_tar1090(wanted_types)
+    tar_rows, tar_info, flags = load_tar1090(wanted_types)
+    write_flags(flags, tar_info)
+    if "--flags-only" in sys.argv:
+        return
     try:
         os_rows, os_info = load_opensky(wanted_types, tar_rows)
     except Exception as err:  # OpenSky down or moved: carry on without it, and say so

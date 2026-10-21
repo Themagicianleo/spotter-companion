@@ -1,4 +1,4 @@
-# Rebuilds data/aircraft_db/ (tar1090-db + OpenSky aircraft database) and data/routes.json
+# Rebuilds data/aircraft_db/ + data/aircraft_flags.json (tar1090-db + OpenSky + VRS) and data/routes.json
 # (Virtual Radar Server standing data), and commits them.
 # Runs on GitHub's servers (which can download both databases), monthly, when the build
 # script changes, or by hand: Actions tab -> "Build aircraft database" -> "Run workflow".
@@ -35,7 +35,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/aircraft_db data/routes.json data/airlines.json
+          git add data/aircraft_db data/aircraft_flags.json data/routes.json data/airlines.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
