@@ -43,3 +43,21 @@ test('route progress: 0 at origin, about halfway at the midpoint, 1 at destinati
   assert.ok(routeProgress(WSSS, [ZSFZ, WSSS]) > 0.99);
   assert.equal(routeProgress(null, [ZSFZ, WSSS]), null);
 });
+
+test('route length, distance to go, arrival estimate and takeoff detection', async () => {
+  const { routeLengthNm, remainingNm, estimateArrival, findTakeoff, distanceNm } = await import('../js/routes.js');
+  const length = routeLengthNm([ZSFZ, WSSS]);
+  assert.ok(Math.abs(length - distanceNm(ZSFZ, WSSS)) < 1e-9);
+  assert.ok(length > 1500 && length < 1800, String(length)); // Fuzhou-Changi is about 1,730 nm (3,200 km)
+  const midpoint = { lat: 13.76596720503663, lon: 111.41156788991924 };
+  assert.ok(Math.abs(remainingNm(midpoint, [ZSFZ, WSSS]) - length / 2) < 1);
+  // Halfway at 480 kt: about length/2/480 hours from now.
+  const eta = estimateArrival({ ...midpoint, onGround: false, groundSpeedKt: 480 }, [ZSFZ, WSSS], 0);
+  assert.ok(Math.abs(eta.getTime() - (length / 2 / 480) * 3_600_000) < 60_000);
+  assert.equal(estimateArrival({ ...midpoint, onGround: true, groundSpeedKt: 0 }, [ZSFZ, WSSS]), null);
+  // Takeoff: ground point at Fuzhou then airborne -> time of the first airborne point.
+  const track = [{ ...ZSFZ, alt: 0, time: 1000 }, { lat: 25.9, lon: 119.6, alt: 1500, time: 2000 }, { lat: 25, lon: 119, alt: 9000, time: 3000 }];
+  assert.equal(findTakeoff(track, ZSFZ), 2000);
+  assert.equal(findTakeoff(track.slice(1), ZSFZ), null); // never seen on the ground: unknown
+  assert.equal(findTakeoff(track, WSSS), null); // ground point wasn't at the origin
+});

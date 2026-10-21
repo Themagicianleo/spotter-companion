@@ -6,6 +6,10 @@ free, open data. It gives you some features that paid flight trackers charge for
 - **Live map** (Phase 1): aircraft around a point (default: Singapore, 1.35, 103.82), with plane icons
   rotated to their direction of travel. Click a plane for callsign, registration, type, altitude,
   speed, vertical speed and squawk.
+- **Distance and times:** the flight card shows the route's great-circle distance (e.g. LHR → SIN 5,877 nm /
+  10,883 km), the distance still to fly, an **estimated** arrival time (distance to go ÷ current ground speed),
+  and the departure time **only if the app saw the takeoff** (in a recorded or live track). There is no
+  schedule data, so scheduled/actual gate times aren't available.
 - **Flight routes:** origin, stops and destination for each callsign (e.g. CXA865 FOC → SIN) in the
   list, hover label, flight card and CSV. A "(?)" warns when the plane isn't near the route on record.
 - **Dark, map-first interface** (inspired by flight-tracker apps like Plane Finder): full-screen map,

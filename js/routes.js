@@ -106,3 +106,45 @@ export function routeProgress(position, airports) {
   const along = Math.min(distanceNm(leg.a, position), leg.length);
   return Math.max(0, Math.min(1, (before + along) / total));
 }
+
+// Total length of the route in nm: the straight (great-circle) line between consecutive airports.
+export function routeLengthNm(airports) {
+  let total = 0;
+  for (let i = 1; i < airports.length; i++) total += distanceNm(airports[i - 1], airports[i]);
+  return total;
+}
+
+// Distance still to fly in nm, from the aircraft to the destination along the remaining legs
+// (to the end of the leg it is closest to, then the legs after that). Null without a position.
+export function remainingNm(position, airports) {
+  if (!position || position.lat === null || airports.length < 2) return null;
+  let best = 1;
+  for (let i = 2; i < airports.length; i++) {
+    if (distanceToSegmentNm(position, airports[i - 1], airports[i]) < distanceToSegmentNm(position, airports[best - 1], airports[best])) best = i;
+  }
+  let rest = distanceNm(position, airports[best]);
+  for (let i = best + 1; i < airports.length; i++) rest += distanceNm(airports[i - 1], airports[i]);
+  return rest;
+}
+
+// Rough arrival estimate: remaining straight-line distance divided by the current ground speed.
+// Returns a Date, or null when it would be meaningless (on the ground, slow, or no position).
+// It ignores winds, holding, the approach path and the slowdown before landing.
+export function estimateArrival(ac, airports, now = Date.now()) {
+  if (ac.onGround || !(ac.groundSpeedKt > 80)) return null;
+  const rest = remainingNm(ac, airports);
+  if (rest === null) return null;
+  return new Date(now + (rest / ac.groundSpeedKt) * 3_600_000);
+}
+
+// Did we see this aircraft take off from its origin? Looks in its track (points with alt 0 =
+// on the ground) for the last ground -> airborne change within 15 nm of the origin airport.
+// Returns the time (ms) of the first airborne point, or null if no takeoff was recorded.
+export function findTakeoff(track, origin) {
+  for (let i = track.length - 1; i > 0; i--) {
+    const before = track[i - 1];
+    const after = track[i];
+    if (before.alt === 0 && after.alt !== null && after.alt > 0 && distanceNm(before, origin) <= 15) return after.time;
+  }
+  return null;
+}

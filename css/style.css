@@ -207,7 +207,8 @@ button.primary { background: var(--accent); color: var(--accent-text); border-co
 .info__section { padding: 4px 14px 8px; }
 .info h3 { margin: 14px 0 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 
-.info__photo img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: var(--panel-2); }
+/* Show the whole photo (no cropping): photos come in different shapes */
+.info__photo img { display: block; width: 100%; height: auto; background: var(--panel-2); }
 .info__photo .info__credit { padding: 4px 14px 0; }
 .info__photo .info__note { padding: 0 14px; }
 .info__credit { font-size: 11px; color: var(--muted); margin: 4px 0 0; }
@@ -287,7 +288,7 @@ button.primary { background: var(--accent); color: var(--accent-text); border-co
   .status { display: none; }
   /* Flight card becomes a bottom sheet */
   .info { top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 62%; border-radius: var(--radius) var(--radius) 0 0; }
-  .info__photo img { aspect-ratio: auto; height: 150px; }
+  .info__photo img { max-height: 200px; object-fit: contain; } /* whole photo, letterboxed if needed */
   /* Keep the zoom buttons and credits above the bottom sheet */
   body.card-open .leaflet-bottom { bottom: 62%; }
   /* Little room above the sheet: hide the track legend so it doesn't cover the credits */

@@ -10,13 +10,15 @@ import * as fmt from './format.js';
 import { lookupAircraft, lookupType, getDbMeta, lookupVariant } from './aircraftDb.js';
 import { getPhoto } from './photos.js';
 import { getTrack } from './track.js';
-import { lookupRoute, routeProgress } from './routes.js';
+import { lookupRoute, routeProgress, routeLengthNm, remainingNm, estimateArrival, findTakeoff } from './routes.js';
 
 let panel;
 let liveSection;
 let detailsSection;
 let photoSection;
 let routeSection;
+let currentRoute = null; // the route shown on the card (for the live times), or null
+let routeTimesEl = null; // where the departure / arrival lines go
 let currentHex = null;
 let liveSourceName = 'live feed';
 
@@ -243,6 +245,8 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
 // Flight route from data/routes.json (Virtual Radar Server standing data, crowd-sourced).
 async function showRoute(ac) {
   routeSection.replaceChildren();
+  currentRoute = null;
+  routeTimesEl = null;
   if (!ac.callsign) return;
   let route;
   try {
@@ -288,6 +292,18 @@ async function showRoute(ac) {
     bar.title = `About ${Math.round(progress * 100)}% of the way (straight-line estimate)`;
     parts.push(bar);
   }
+  // Great-circle distance: the shortest path over the Earth between the airports (sum of the legs).
+  const lengthNm = routeLengthNm(route.airports);
+  const stats = h('dl', 'facts');
+  stats.append(h('dt', null, 'Distance'), h('dd', null, nmAndKm(lengthNm) + (route.airports.length > 2 ? ' (all legs)' : '')));
+  parts.push(stats);
+  // Departure / arrival lines, refreshed on every live update. Skipped if the route doesn't match
+  // where the plane is, since the numbers would be wrong.
+  if (route.plausible !== false) {
+    currentRoute = route;
+    routeTimesEl = h('div');
+    parts.push(routeTimesEl);
+  }
   // Full names in a table too, with their source tag.
   const table = h('table', 'info__table');
   const label = (a) => `${a.name ?? a.code} (${[a.iata, a.icao].filter(Boolean).join(' / ') || a.code})`;
@@ -302,6 +318,27 @@ async function showRoute(ac) {
     parts.push(h('p', 'info__note', 'Route by callsign from a crowd-sourced database; it can be outdated.'));
   }
   routeSection.replaceChildren(...parts);
+  renderRouteTimes(ac);
+}
+
+const nmAndKm = (nm) => `${Math.round(nm).toLocaleString('en')} nm (${Math.round(nm * 1.852).toLocaleString('en')} km)`;
+const clock = (ms) => new Date(ms).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+// Departure (if we saw the takeoff), distance to go, and an estimated arrival time.
+function renderRouteTimes(ac) {
+  if (!routeTimesEl || !currentRoute) return;
+  const airports = currentRoute.airports;
+  const takeoff = findTakeoff(getTrack(ac.hex), airports[0]);
+  const rest = remainingNm(ac.lat === null ? null : ac, airports);
+  const eta = estimateArrival(ac, airports);
+  const facts = h('dl', 'facts');
+  const line = (label, value) => facts.append(h('dt', null, label), h('dd', null, value));
+  line('Departed', takeoff ? `${clock(takeoff)} (seen taking off)` : 'Not available (no schedule data)');
+  if (rest !== null) line('To go', nmAndKm(rest));
+  line('Est. arrival', eta ? `about ${clock(eta)} (estimate)` : ac.onGround ? 'Not available (on the ground)' : 'Not available');
+  const note = h('p', 'info__note',
+    'Times are in your time zone. Departure is shown only if this app saw the takeoff. Arrival = distance to go ÷ current ground speed, so it ignores winds and the approach and is only a rough guide.');
+  routeTimesEl.replaceChildren(facts, note);
 }
 
 // Photo from Planespotters.net. The terms require the photographer credit and a link to the
@@ -365,4 +402,5 @@ export function updateLive(ac) {
     facts.append(h('dt', null, label), h('dd', null, value));
   }
   liveSection.replaceChildren(heading, tiles, facts);
+  renderRouteTimes(ac); // the arrival estimate changes as the plane flies
 }

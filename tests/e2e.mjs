@@ -200,6 +200,7 @@ async function phase4(browser) {
   await page.waitForSelector('.info__photo img');
   const photoLink = page.locator('.info__photo > a');
   check('[photo] image links to its Planespotters page', (await photoLink.getAttribute('href')) === 'https://www.planespotters.net/photo/1/test');
+  check('[photo] photo is not cropped', (await page.locator('.info__photo img').evaluate((img) => getComputedStyle(img).objectFit)) !== 'cover');
   check('[photo] photographer credit shown', (await page.textContent('.info__credit')).includes('© Test Photographer'));
   await page.screenshot({ path: 'docs/screenshots/info-panel-synthetic.png' });
   await page.click('.info__close');
@@ -224,6 +225,9 @@ async function phase4(browser) {
   check('[route] info panel shows full airport names',
     (await rowText('From')).includes('Fuzhou Changle International Airport (FOC / ZSFZ)') && (await rowText('To')).includes('Singapore Changi International Airport (SIN / WSSS)'));
   check('[route] no "outdated" warning when the plane is on its route', !text.includes('may be outdated'));
+  check('[route] great-circle distance shown (Fuzhou-Singapore ~1,650 nm)', /Distance1,[5-7]\d\d nm \(\d,\d{3} km\)/.test(text.replace(/\s+/g, '')) || /Distance\s*1,[5-7]\d\d nm/.test(text), text.match(/Distance[^A-Z]{0,40}/)?.[0]);
+  check('[route] no made-up times: departure not seen, no arrival estimate on the ground',
+    text.includes('Departed') && text.includes('Not available (no schedule data)') && text.includes('Not available (on the ground)'));
   check('[panel] missing fields are listed on one line, not as rows of Unknown',
     text.includes('Unknown (not in our databases): registration') && (await page.locator('#info-panel tr', { hasText: 'Serial number' }).count()) === 0);
   check('[panel] aircraft not in database says so, falls back to live type', text.includes('Not in our database') && (await rowText('ICAO type code')) === 'ICAO type codeB77WLIVE');
