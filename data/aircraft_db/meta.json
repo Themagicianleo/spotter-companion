@@ -2,7 +2,7 @@
   "source": "tar1090-db (from the Mictronics database) + OpenSky Network aircraft database + VRS standing data",
   "sourceUrl": "https://github.com/wiedehopf/tar1090-db",
   "openskyUrl": "https://opensky-network.org/data/aircraft",
-  "builtAt": "2026-10-21T08:21Z",
+  "builtAt": "2026-10-21T09:08Z",
   "tar1090": {
     "url": "https://raw.githubusercontent.com/wiedehopf/tar1090-db/csv/aircraft.csv.gz",
     "lastModified": null,
