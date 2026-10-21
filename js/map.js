@@ -91,19 +91,24 @@ export function initMap(elementId, center, radiusNm, attributionHtml, selectHand
   // Two backgrounds. Each carries the attribution its licence requires; Leaflet shows the
   // attribution of whichever layer is currently on the map.
   const osmAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
+  const ofmAttribution = '<a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> ' +
+    '&copy; <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> ' +
+    'Data from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>';
+
+  // Sharp vector maps from OpenFreeMap (free, no key; attribution required), drawn by MapLibre.
+  // Only offered if MapLibre loaded and this browser supports WebGL; otherwise the image maps remain.
+  const vector = (style) => L.maplibreGL({ style: `https://tiles.openfreemap.org/styles/${style}`, attribution: ofmAttribution });
+  const canDrawVector = typeof L.maplibreGL === 'function' && typeof maplibregl !== 'undefined' &&
+    (() => {
+      try {
+        return !!document.createElement('canvas').getContext('webgl2') || !!document.createElement('canvas').getContext('webgl');
+      } catch {
+        return false;
+      }
+    })();
+
   const baseLayers = {
-    // The same OpenStreetMap tiles, darkened in the browser with a CSS filter (.tiles-dark)
-    // so the map matches the dark interface. The tiles themselves are unchanged.
-    'Dark map': L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      className: 'tiles-dark',
-      attribution: osmAttribution,
-    }),
-    // OpenStreetMap's standard tiles. Their tile policy requires this attribution.
-    Map: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
-    }),
+    ...(canDrawVector ? { Dark: vector('dark'), Streets: vector('liberty') } : {}),
     // EOX Sentinel-2 cloudless 2024: free for non-commercial use with attribution
     // (CC BY-NC-SA 4.0). About 10 m per pixel, so airports are visible but not parked planes.
     // Tiles exist up to zoom 16; beyond that Leaflet enlarges the zoom-16 tiles.
@@ -114,8 +119,10 @@ export function initMap(elementId, center, radiusNm, attributionHtml, selectHand
         '(contains modified Copernicus Sentinel data 2024), ' +
         '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>',
     }),
+    // OpenStreetMap's standard image tiles. Their tile policy requires this attribution.
+    Classic: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: osmAttribution }),
   };
-  baseLayers[loadBaseLayerName()].addTo(map);
+  (baseLayers[loadBaseLayerName(Object.keys(baseLayers))] ?? baseLayers.Classic).addTo(map);
   L.control.layers(baseLayers, null, { position: 'topright' }).addTo(map);
   map.on('baselayerchange', (e) => saveBaseLayerName(e.name)); // remember the choice
   map.attributionControl.addAttribution(attributionHtml);
@@ -173,13 +180,18 @@ export function showTrack(points) {
 
 // Remember Map/Satellite between visits (if this browser allows storage).
 const BASE_LAYER_KEY = 'spotters-companion:base-layer';
-function loadBaseLayerName() {
+function loadBaseLayerName(available) {
+  // Older versions saved "Map" / "Dark map"; map them to today's names.
+  const renamed = { Map: 'Classic', 'Dark map': 'Dark' };
+  let saved = null;
   try {
-    const saved = localStorage.getItem(BASE_LAYER_KEY);
-    return ['Map', 'Satellite', 'Dark map'].includes(saved) ? saved : 'Dark map';
+    saved = localStorage.getItem(BASE_LAYER_KEY);
   } catch {
-    return 'Dark map';
+    // storage blocked: use the default
   }
+  saved = renamed[saved] ?? saved;
+  if (available.includes(saved)) return saved;
+  return available.includes('Dark') ? 'Dark' : 'Classic';
 }
 function saveBaseLayerName(name) {
   try {

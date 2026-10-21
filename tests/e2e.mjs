@@ -308,12 +308,17 @@ async function satellite(browser) {
   const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
   page.on('pageerror', (e) => check('[satellite] no JavaScript errors', false, e.message));
   const tileHosts = new Set();
-  await page.route(/tile\.openstreetmap\.org|tiles\.maps\.eox\.at/, (r) => { tileHosts.add(new URL(r.request().url()).hostname); r.fulfill({ status: 204 }); });
+  await page.route(/tile\.openstreetmap\.org|tiles\.maps\.eox\.at|tiles\.openfreemap\.org/, (r) => { tileHosts.add(new URL(r.request().url()).hostname); r.fulfill({ status: 404 }); });
   await page.route('**/relay?**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: fixture }));
   await page.addInitScript(() => localStorage.setItem('spotters-companion:open-panel', 'list-panel'));
   await page.goto(BASE);
   await page.waitForSelector('.plane');
-  check('[satellite] starts on the dark street map', tileHosts.has('tile.openstreetmap.org') && !tileHosts.has('tiles.maps.eox.at') && (await page.locator('.tiles-dark').count()) === 1);
+  // Default: the sharp "Dark" vector map (OpenFreeMap via MapLibre) if this browser has WebGL, else "Classic".
+  const vectorDrawn = (await page.locator('.leaflet-gl-layer, .maplibregl-canvas').count()) > 0;
+  const darkOffered = (await page.getByLabel('Dark').count()) === 1;
+  check('[map] starts on the sharp Dark map (or Classic when WebGL is missing)',
+    darkOffered ? vectorDrawn && tileHosts.has('tiles.openfreemap.org') && !tileHosts.has('tiles.maps.eox.at') : tileHosts.has('tile.openstreetmap.org'),
+    `WebGL vector map: ${darkOffered}, hosts asked: ${[...tileHosts].join(', ')}`);
   await page.hover('.leaflet-control-layers');
   await page.getByLabel('Satellite').check();
   await page.waitForTimeout(300);
@@ -325,7 +330,22 @@ async function satellite(browser) {
   await page.close();
 }
 
-export const extraScenarios = [phase2, phase4, tracks, satellite];
+// If MapLibre can't load, the map falls back to the Classic image map and nothing breaks.
+async function noVectorFallback(browser) {
+  const page = await browser.newPage({ viewport: { width: 1000, height: 700 } });
+  page.on('pageerror', (e) => check('[fallback] no JavaScript errors', false, e.message));
+  await page.route('**/vendor/maplibre-gl/maplibre-gl.js', (r) => r.fulfill({ status: 404, body: '' }));
+  await page.route(/tile\.openstreetmap\.org|tiles\.maps\.eox\.at|tiles\.openfreemap\.org/, (r) => r.fulfill({ status: 204 }));
+  await page.route('**/relay?**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: fixture }));
+  await page.addInitScript(() => localStorage.clear());
+  await page.goto(BASE);
+  await page.waitForSelector('.plane');
+  check('[fallback] without MapLibre the Classic map is used and planes still show',
+    (await page.getByLabel('Dark').count()) === 0 && (await page.getByLabel('Classic').isChecked()) && (await page.locator('.plane').count()) === 4);
+  await page.close();
+}
+
+export const extraScenarios = [phase2, phase4, tracks, satellite, noVectorFallback];
 
 const server = await startServer();
 const browser = await chromium.launch();

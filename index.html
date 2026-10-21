@@ -7,6 +7,8 @@
   <meta name="description" content="A live map of nearby aircraft built on free, open ADS-B data.">
   <!-- Leaflet (map library), stored in vendor/ so the site needs no CDN -->
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <!-- MapLibre draws the sharp vector maps (OpenFreeMap); the bridge lets Leaflet use it as a layer -->
+  <link rel="stylesheet" href="vendor/maplibre-gl/maplibre-gl.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -90,6 +92,8 @@
   </main>
 
   <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="vendor/maplibre-gl/maplibre-gl.js"></script>
+  <script src="vendor/maplibre-gl-leaflet/leaflet-maplibre-gl.js"></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>

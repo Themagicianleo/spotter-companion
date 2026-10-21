@@ -161,9 +161,6 @@ button.primary { background: var(--accent); color: var(--accent-text); border-co
 .plane--no-track { opacity: 0.6; }
 .plane--selected svg { fill: var(--selected); stroke: #fff; stroke-width: 1.2; }
 
-/* "Dark map": OpenStreetMap tiles darkened in the browser */
-.tiles-dark { filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9) saturate(0.6); }
-
 /* Hover label (Leaflet tooltip) */
 .leaflet-tooltip.plane-label {
   background: var(--bar);
