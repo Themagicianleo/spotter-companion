@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spotter's Companion</title>
+  <meta name="description" content="A live map of nearby aircraft built on free, open ADS-B data.">
+  <!-- Leaflet (map library), stored in vendor/ so the site needs no CDN -->
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>✈ Spotter's Companion</h1>
+    <!-- Change the center of the search area -->
+    <form id="center-form" class="center-form">
+      <label>Lat <input id="center-lat" type="number" step="0.0001" min="-90" max="90" required></label>
+      <label>Lon <input id="center-lon" type="number" step="0.0001" min="-180" max="180" required></label>
+      <label>Radius (nm) <input id="radius" type="number" step="1" min="1" max="250" required></label>
+      <button type="submit">Go</button>
+      <button type="button" id="use-map-center" title="Search around the middle of the visible map">Use map center</button>
+      <button type="button" id="reset-center" title="Back to Singapore">Reset</button>
+    </form>
+  </header>
+
+  <!-- Error / info messages appear here instead of a silent blank map -->
+  <div id="banner" class="banner" role="status" aria-live="polite" hidden></div>
+
+  <main class="layout">
+    <div id="map" class="map" aria-label="Map of nearby aircraft"></div>
+  </main>
+
+  <footer class="footer">
+    <span id="status" class="status">Starting…</span>
+    <span class="credits">
+      <span id="provider-credit"></span> ·
+      Map © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors ·
+      Data may be incomplete or wrong. Not for navigation.
+    </span>
+  </footer>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

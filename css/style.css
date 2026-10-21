@@ -1,0 +1,113 @@
+/* style.css
+   Colours are defined once as variables, then redefined for dark mode. */
+
+:root {
+  --bg: #f7f8fa;
+  --panel: #ffffff;
+  --text: #1c2430;
+  --muted: #5d6b7e;
+  --border: #d8dee6;
+  --accent: #2563eb;
+  --plane: #1d4ed8;
+  --plane-ground: #6b7280;
+  --plane-selected: #dc2626;
+  --error-bg: #fde8e8;
+  --error-text: #8a1c1c;
+  --info-bg: #e6f0ff;
+  --info-text: #1e3a8a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f141a;
+    --panel: #171e27;
+    --text: #e4e9f0;
+    --muted: #9aa7b8;
+    --border: #2b3542;
+    --accent: #60a5fa;
+    --plane: #93c5fd;
+    --plane-ground: #9ca3af;
+    --plane-selected: #f87171;
+    --error-bg: #3b1515;
+    --error-text: #fecaca;
+    --info-bg: #13233f;
+    --info-text: #bfdbfe;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; margin: 0; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+a { color: var(--accent); }
+
+/* ---- Top bar ---- */
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 8px 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+.topbar h1 { font-size: 18px; margin: 0; }
+
+.center-form { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.center-form input { width: 8em; }
+.center-form #radius { width: 5em; }
+
+input, select, button {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+button { cursor: pointer; }
+button:hover { border-color: var(--accent); }
+
+/* ---- Message banner ---- */
+.banner { padding: 8px 16px; }
+.banner--error { background: var(--error-bg); color: var(--error-text); }
+.banner--info { background: var(--info-bg); color: var(--info-text); }
+
+/* ---- Main layout ---- */
+.layout { flex: 1; display: flex; min-height: 0; }
+.map { flex: 1; min-height: 300px; }
+
+/* ---- Plane markers ---- */
+.plane-icon { background: none; border: none; }
+.plane { width: 26px; height: 26px; transition: transform 0.5s linear; }
+.plane svg { fill: var(--plane); stroke: #fff; stroke-width: 0.8; display: block; }
+.plane--ground svg { fill: var(--plane-ground); }
+.plane--no-track { opacity: 0.6; }
+.plane--selected svg { fill: var(--plane-selected); }
+
+/* ---- Popup ---- */
+.popup table { border-collapse: collapse; margin-top: 4px; }
+.popup td { padding: 1px 8px 1px 0; }
+.popup td:first-child { color: #5d6b7e; }
+.popup__more { margin-top: 6px; }
+
+/* ---- Footer ---- */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 6px 16px;
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
