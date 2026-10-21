@@ -1,0 +1,45 @@
+# Downloads the official type certificate data sheets listed in scripts/tcds_sources.txt,
+# converts them to text, and pushes the text to the "tcds-text" branch (not main), so the
+# engine tables can be checked against the real documents.
+name: Fetch type certificate data sheets
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/tcds_sources.txt
+      - .github/workflows/fetch-tcds.yml
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt-get install -y poppler-utils >/dev/null
+      - uses: actions/checkout@v4
+        with:
+          path: main
+      - name: Download and convert
+        run: |
+          mkdir out
+          grep -v '^#' main/scripts/tcds_sources.txt | while read -r name url; do
+            [ -z "$name" ] && continue
+            if curl -sSL --fail -m 120 -A "SpottersCompanion-build/1.0 (+https://github.com/${{ github.repository }})" -o "$name.pdf" "$url"; then
+              pdftotext -layout "$name.pdf" "out/$name.txt" && echo "OK   $name $(wc -l < out/$name.txt) lines" | tee -a out/INDEX.txt
+            else
+              echo "FAIL $name $url" | tee -a out/INDEX.txt
+            fi
+            echo "$name $url" >> out/SOURCES.txt
+          done
+      - name: Push to tcds-text branch
+        run: |
+          cd out
+          git init -q -b tcds-text
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -qm "TCDS text extracted $(date -u +%F)"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" tcds-text
