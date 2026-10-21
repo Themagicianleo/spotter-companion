@@ -1,0 +1,8 @@
+ukcaa-A320-family https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3873
+faa-A28NM-A320-family https://downloads.regulations.gov/FAA-2021-0799-0001/attachment_3.pdf
+easa-A004-A330 https://www.easa.europa.eu/en/downloads/7518/en
+ukcaa-A340 https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3887
+easa-A151-A350 https://www.easa.europa.eu/en/downloads/17736/en
+ukcaa-A380 https://www.caa.co.uk/Documents/Download/3934/ca692457-336e-4190-840e-cd26cf498935/3889
+easa-A172-A300-A310 https://www.easa.europa.eu/en/downloads/17110/en
+easa-IMA570-A220 https://www.easa.europa.eu/en/downloads/20964/en

@@ -1,0 +1,3078 @@
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+
+
+                                       Civil Aviation Authority
+                                               United Kingdom
+
+
+
+
+                          TYPE-CERTIFICATE DATA SHEET
+
+
+                                                       UK.TC.A.00156
+
+                                                                  for
+                                                          AIRBUS A340
+
+
+                                                    Type Certificate Holder
+                                                         AIRBUS S.A.S.
+
+                                               2 Rond-Point Emile Dewoitine
+                                                          31700 Blagnac
+                                                               France
+
+
+
+
+ Model(s):                   A340-211               A340-311              A340-541               A340-642
+                             A340-212               A340-312              A340-542               A340-643
+                             A340-213               A340-313
+
+
+ Issue:                      1
+ Date of issue:              03 February 2026
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                              Issue: 1
+Date: 03 February 2026                                                                                           Page 1 of 59
+                                                           OFFICIAL - Public
+                                          OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+General (All Models)
+TABLE OF CONTENTS
+
+
+Section 0         General (All Models) .................................................................................................................................3
+   I.       General ............................................................................................................................................................3
+   II.      Correspondance Table Models / Engine Manufacturers .................................................................................3
+Section 1         A340-200 Series .......................................................................................................................................4
+   I.       General ............................................................................................................................................................4
+   II.      Certification Basis ............................................................................................................................................5
+   III.     Technical Characteristics and Operating Limitations ......................................................................................9
+   IV.      Operating and Service Instructions ...............................................................................................................14
+   V.       Notes..............................................................................................................................................................15
+Section 2         A340-300 Series .....................................................................................................................................16
+   I.       General ..........................................................................................................................................................16
+   II.      Certification Basis ..........................................................................................................................................17
+   III.     Technical Characteristics and Operating Limitations ....................................................................................21
+   IV.      Operating and Service Instructions ...............................................................................................................27
+   V.       Notes..............................................................................................................................................................28
+Section 3         A340-600 Series .....................................................................................................................................30
+   I.       General ..........................................................................................................................................................30
+   II.      Certification Basis ..........................................................................................................................................31
+   III.     Technical Characteristics and Operating Limitations ....................................................................................35
+   IV.      Operating and Service Instructions ...............................................................................................................41
+   V.       Notes..............................................................................................................................................................42
+Section 4         A340-500 Series .....................................................................................................................................43
+   I.       General ..........................................................................................................................................................43
+   II.      Certification Basis ..........................................................................................................................................44
+   III.     Technical Characteristics and Operating Limitations ....................................................................................48
+   IV.      Operating and Service Instructions ...............................................................................................................52
+   V.       Notes..............................................................................................................................................................54
+Section 5         Data Pertinent to All Models ...................................................................................................................55
+   I.       Maintenance Instructions and Airworthiness Limitations ...............................................................................55
+   II.      Operational Suitability Data (OSD) ................................................................................................................56
+   III.     Part‐26 Compliance Information ....................................................................................................................56
+Annex to TCDS UK.TC.A.00156.................................................................................................................................57
+   I.       Special Conditions .........................................................................................................................................57
+   II.      Deviations ......................................................................................................................................................57
+   III.     Equivalent Safety Findings ............................................................................................................................57
+Administration .............................................................................................................................................................58
+   I.       Acronyms and Abbreviations .........................................................................................................................58
+   II.      Type Certificate Holder Record .....................................................................................................................59
+   III.     Amendment Record .......................................................................................................................................59
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                                                            Issue: 1
+Date: 03 February 2026                                                                                                                                         Page 2 of 59
+                                                                              OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+ General (All Models)
+Section 0       General (All Models)
+
+I.      General
+        This Type-Certificate Data Sheet (TCDS) is the concise definition of the type-certificated product accepted
+        and or approved by the CAA in the UK for the affected types and models.
+        This TCDS includes:
+        1.      Details of the type design that affect the TCDS that have been approved or accepted by the CAA in
+                the UK from 01 January 2021.
+
+        2.      Details of the type design that affected the TCDS and were approved or accepted by EASA before
+                01 January 2021, and were incorporated into EASA TCDS EASA.A.015 at Issue 25 dated 04 July
+                2019 and are therefore accepted by the UK under Article 15 of Annex 30 of the UK-EU Trade and
+                Cooperation Agreement.
+
+II.     Correspondance Table Models / Engine Manufacturers
+        The following table provides a summary of the relationship between models and applicable engine
+        manufacturer.
+
+
+                              A340-200                     A340-300                      A340-500                 A340-600
+                                series                        series                        series                 series
+                              A340-211                     A340-311
+       CFM Engines            A340-212                     A340-312                            -                     -
+                              A340-213                     A340-313
+                                                                                         A340-541                    -
+       RR Engines                  -                             -                       A340-542                 A340-642
+                                                                                               -                  A340-643
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                          Issue: 1
+Date: 03 February 2026                                                                                                       Page 3 of 59
+                                                            OFFICIAL - Public
+                             OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-200 Series
+Section 1          A340-200 Series
+
+I.        General
+
+1.        Type / Variant / Model
+       a) Type:           A340
+       b) Model:          A340-211, A340-212, A340-213
+
+2.        Airworthiness Category
+          Large Aeroplanes
+          Performance Category A
+
+3.        Manufacturer
+          AIRBUS
+          2 Rond-Point Emile Dewoitine
+          31700 Blagnac FRANCE
+
+4.        State of Design Authority Type Certification
+4.1       State of Design Authority
+          DGAC-F
+4.2       Application Date
+          A340-211:       15 June 1988
+          A340-212:       15 June 1988
+          A340-213:       15 June 1988
+4.3       State of Design Authority Type Certificate Date
+          A340-211:       22 December 1992
+          A340-212:       14 March 1994
+          A340-213:       19 December 1995
+
+5.        EASA Type Certification
+5.1       State of Design Authority
+          N/A
+5.2       Application Date
+          N/A
+5.3.      State of Design Authority Type Certificate Date
+          N/A
+          DGAC-F TC 183 remains a valid reference for models certified before 28 September 2003
+
+
+6.        UK CAA Type Validation Date
+          Prior to 01 January 2021, application dates for type certification are covered by DGAC-F and EASA type
+          certification application dates, as per Section 4.2 and Section 5.2 above.
+          New applications for UK CAA type validation received from 01 January 2021 will be recorded in this
+          section. At the current issue of this UK CAA TCDS, no new applications for type validation have been
+          received since 01 January 2021.
+          Prior to 01 January 2021, dates of type certification are covered by DGAC-F and EASA type certification,
+          as per Section 4.3 and Section 5.3 above.
+          UK CAA type validation dates from 01 January 2021 will be recorded in this section. At the current issue of
+          this UK CAA TCDS, no UK CAA type validations have been completed since 01 January 2021.
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                             Page 4 of 59
+                                                             OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-200 Series
+
+
+
+II.    Certification Basis
+
+1.     Reference Date for determining the applicable requirements
+       Reference Application Date for EASA Certification: 15 June 1988
+
+2.     State of Design Airworthiness Authority Type Certification Data Sheet Number
+       EASA.A.015
+
+3.     State of Design Airworthiness Authority Certification Basis
+       Refer to TCDS EASA.A.015.
+
+4.     UK CAA Airworthiness Requirements
+       Original Airworthiness Requirements (at time of TC):
+       -   Certification Requirements
+           JAR 25 Change 13 effective on October 5, 1989 except as follows:
+           Deviation on limited areas for compliance against paragraphs 25.561 and 25.562 such as:
+            -   Compliance at change 12 for wing tank outside the fuselage contour
+            -   For showing compliance with JAR 25.785 (a)(b)(c), the front row seats located behind a bulkhead
+                are not tested according to JAR 25.562(c)(5)(6). Instead, a minimum 35 inches distance between
+                the seats and the bulkhead is considered an acceptable alternative
+            -   All Weather Operations
+            JAR AWO Change 1
+            NPA JAR AWO-3 (Take-off in low visibility)
+       Additional Airworthiness Requirements (added post TC):
+       -   Airborne Communication, Navigation, Surveillance
+           CS-ACNS Initial Issue
+            -   Subpart B, Section 2 – for optional modifications (Post TC) installing FANS aiming at answering to
+                SES mandate as defined in (EU) N° 29/2009 and amended by (EU) N° 310/2015 of 26 Febuary
+                2015.
+                Note:   For compliance to CS-ACNS Subpart B, Section 2, a deviation to CS-ACNS.B.DLS.B1.075
+                        is accepted by CRI ACNS-B-GEN-01 to not include DM89 MONITORING [unit name]
+                        [frequency] in the downlink message set installed.
+            -   Subpart D – for optional modifications installing transponders aiming at answering to SES mandate
+                as defined in (EU) No 1207/2011 and amended by (EU) No 1028/2014 of 26 September 2014.
+
+5.     Special Conditions
+       Original Special Conditions part of Certification Basis (at time of TC):
+       -   JAA Numbering:
+           SC A-1       Discrete gust requirements (NPA 25C-205)
+           SC A-2       Interaction of systems and structure (NPA 25C-199)
+           SC A-3       Design manoeuver requirements
+           SC A-4       Design dive speed
+           SC A-5       Limit pilot forces and torque
+           SC A-7       Stalling speeds for structural design
+           SC A-11      Aeroelastic stability requirements (NPA 25B, C, D-236)
+           SC F-1       Stalling and scheduled operating speeds
+           SC F-2       Motion and effects of cockpit controls
+TCDS No.: UK.TC.A.00156                                                                                               Issue: 1
+Date: 03 February 2026                                                                                            Page 5 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-200 Series
+           SC F-3      Static longitudinal stability
+           SC F-4      Static directional and lateral stability
+           SC F-5      Flight envelope protections
+           SC F-6      Normal load factor limiting system
+           SC G-5      Resistance to fire terminology (NPA 25D-181)
+           SC G-7      Function and reliability testing
+           SC S-3      Landing gear warning (NPA 25D-162)
+           SC S-6      Lightning protection indirect effects
+           SC S-10     Effects of external radiations upon aircraft systems
+           SC S-13     Autothrust system
+           SC S-16     Control signal integrity
+           SC S-18     Electronic flight controls
+           SC S-20     Emergency electrical power (NPA 25D, F-179)
+           SC S-23     Electrical wiring and miscellaneous electrical requirements (NPA 25D, F-191)
+           SC S-24     Doors (NPA 25D, F-251)
+           SC S-38     Towbarless towing
+           SC S-148    Longitudinal touchdown performance limit and Minimum Approach Break-Off Height ((NPA
+                       AWO-8, this SC replaces S-48)
+           SC P-1      FADEC
+           SC P-2      Centre of gravity control system
+       Additional Special Conditions part of Certification Basis (added post TC):
+       -   JAA Numbering:
+           SC P-27     Flammability Reduction System
+                       (applicable from June 2010)
+           SC P-32     Fuel Tank Safety
+                       (applicable from November 2013)
+           SC E-2      Crew rest
+                       (applicable from February 1993)
+           SC E-5.1    Lower deck Lavatory
+                       (applicable from August 2000)
+           SC E-8.1    Lower deck stowage area
+                       (applicable from August 2000)
+           SC E-11     Bulk crew rest compartment
+                       (applicable from January 2002)
+           SC E-19     F/C sliding screens
+                       (applicable from September 2003)
+           SC E-28     Partial Bulk Crew Rest Compartment with attached to galley
+                       (applicable from January 2009)
+           SC E-128    Improved flammability standards for thermal/acoustic insulation
+                       (applicable from February 2009)
+           SC E-130    Application of heat release and smoke density requirements to seat materials
+                       (applicable from February 2010)
+           SC E-1014 HIC compliance for front row seating (inflatable restraints)
+                     (applicable from July 2007)
+
+
+           SC F-GEN-01 Installation of non-rechargeable lithium battery
+                     (applicable as of 04 July 2019)
+TCDS No.: UK.TC.A.00156                                                                                               Issue: 1
+Date: 03 February 2026                                                                                            Page 6 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-200 Series
+           SC H-01     Enhanced Airworthiness Programme for Aeroplane Systems - ICA on EWIS
+                       (applicable from May 2010)
+       -   EASA Numbering:
+           SC D-100    Installation of mini suite type seating
+                       (applicable from April 2018)
+           SC D-102    Incorporation of Inertia Locking Device in Dynamic Seats
+                       (applicable from January 2019)
+           SC F-126    Flight Recorders including Data Link Recording
+                       (applicable from June 2013)
+           SC F-131    Flight Instrument External Probes – Qualification in Icing Conditions
+                       (applicable from April 2016)
+           SC F-137    Security Protection of Aircraft Systems and Networks
+                       (applicable from May 2018)
+
+6.     Exemptions
+       None.
+
+7.     Deviations
+       None
+
+8.     Equivalent Safety Findings
+       Original Equivalent Safety Findings part of Certification Basis (at time of TC):
+       -   JAA Numbering:
+           ESF S-45    Oil temperature indication
+           The following Special Conditions provide an equivalent safety level to JAR 25 accelerate-stop and
+           brakes qualification requirements (NPA 25 B, D, G 244)
+           -    SC F-8 (or F-8.1)            Accelerate stop distances
+           -    SC S-21                      Brakes wear limits
+           For A340-213 Weight Variant 021 only:
+           -    SC F-8.1 is applicable instead of SC F-8.
+       Additional Equivalent Safety Findings part of the Certification Basis (added post TC):
+       The following Equivalent Safety Findings are additionally applicable when an A/C configuration include the
+       subject optional design change(s):
+       -   JAA Numbering:
+           ESF E-15    Reinforced security cockpit door
+                       (applicable from July 2002)
+           ESF E-17    Trolley Lift
+                       (applicable from November 2003)
+           ESF E-18    Lower Deck galley compartment
+                       (applicable from November 2003)
+           ESF E-21    Emergency exit marking reflectance
+                       (applicable from December 2004)
+           ESF E-27    Forward facing seats over 18 degrees to A/C centreline
+                       (applicable from June 2009)
+           ESF E-29    Fuselage burn through – aft pressure bulkhead
+                       (applicable from March 2009)
+           ESF E-30    Fuselage burn through – belly fairing
+                       (applicable from April 2009)
+           ESF E-31    Fuselage burn through – bilge area
+                       (applicable from April 2009)
+TCDS No.: UK.TC.A.00156                                                                                               Issue: 1
+Date: 03 February 2026                                                                                            Page 7 of 59
+                                                            OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-200 Series
+           ESF E-134 Installation of seats that make an angle of more than 18° with the aircraft longitudinal axis
+                     (applicable from November 2013)
+           ESF E-1022 Improved flammability standards for thermal / acoustic insulation materials, it provides an
+                      equivant level of safety to JAR 25.853(b)
+                      (applicable from August 2005)
+           ESF F-128 Minimum Mass Flow of Supplemental Oxygen, it provides an equivalent level of safety to
+                     JAR 25.1443(c)
+                     (applicable from November 2014).
+           ESF F-129 Crew Determination of Quantity of Oxygen in Passenger Oxygen System, it provides an
+                     equivalent level of safety to JAR 25.1441(c)
+                     (applicable from November 2014).
+       -   EASA Numbering:
+           ESF D-101 Green arrow and “Open” Placard of Emergency Exit marking, it provides an equivalent
+                     level of safety to CS 25.811(e)(4) amdt 3, when the aircraft is equipped with symbolic exit
+                     signs
+                     (applicable from July 2018).
+
+9.     Environmental Protection
+9.1    Noise
+       ICAO Annex 16, Volume I
+       See TCDSN no UK.TC.A.00156.
+       Note: MOD 55005 originally used for compliance demonstration is not mandatory anymore.
+9.2    Fuel Venting and Emissions
+       ICAO Annex 16, Volume II
+
+10.    Operational Suitability Data (OSD)
+       See SECTION 5 DATA PERTINENT TO ALL MODELS for:
+       - Operational Suitability Requirements
+       - Approved Operational Suitability Data
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                              Issue: 1
+Date: 03 February 2026                                                                                           Page 8 of 59
+                                                           OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-200 Series
+
+
+
+III.   Technical Characteristics and Operating Limitations
+
+1.     Type Design Definition
+       With CFM International (CFMI) engines
+       A340-211: 00F000A0211/C00
+       A340-212: 00F000A0212/C00
+       A340-213: 00F000A0213/C00
+
+2.     Description
+       Four turbo-fan, long range, twin-aisle, large category aeroplane.
+
+3.     Equipment
+       Refer to Type Design Definition.
+       Cabin furnishings, equipment and arrangement shall conform to the following specification:
+       -        00F252K0005/C01 for cabin seats.
+       -        00F252K0006/C01 for galley.
+       -        00F252K0020/C01 for cabin attendant seats.
+
+4.     Dimensions
+       -        Length:           59.39m                 (194ft 10in)
+       -        Diameter:         5.64m                  (18ft 6in)
+       -        Wing Span:        60.30m                 (197ft 10in)
+       -        Height:           16.83 m                (55ft 3in)
+
+5.     Engine
+5.1    Model
+       CFM International (CFMI) engines
+       A340-211: Four (4) CFM56-5C2 or CFM56-5C2/4 or CFM56-5C2/F or CFM56-5C2/F4 or CFM56-5C2/G
+                 or CFM56-5C2/G4 or CFM56-5C2/P turbofan engines
+       A340-212: Four (4) CFM56-5C3/F or CFM56-5C3/F4 or CFM56-5C3/G or CFM56-C3/G4 or CFM56-
+                 5C3/P turbofan engines
+       A340-213: Four (4) CFM56-5C4 or CFM56-5C4/1 or CFM56-5C4/P or CFM56-5C4/1P turbofan engines
+5.2    Type Certificate
+       CFM International (CFMI) engines
+       FAA Engine TCDS:           E37NE
+       EASA Engine TCDS:          EASA.E.003
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                               Issue: 1
+Date: 03 February 2026                                                                                            Page 9 of 59
+                                                            OFFICIAL - Public
+                                   OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-200 Series
+5.3     Limitations
+5.3.1   Installed Engine Limits
+        CFM International (CFMI) engines
+
+
+           A/C Model                       A340-211                    A340-212                    A340-213
+
+           Engine Model                   CFM56-5C2                  CFM56-5C3/F                  CFM56-5C4
+           Data Sheet                   CFM56-5C2/4                 CFM56-5C3/F4                 CFM56-5C4/1
+           E37NE (FAA)                  CFM56-5C2/F                 CFM56-5C3/G                  CFM56-5C4/P
+           E.003 (EASA)                 CFM56-5C2/F4                CFM56-5C3/G4                CFM56-5C4/1P
+                                        CFM56-5C2/G                  CFM56-5C3/P
+                                        CFM56-5C2/G4
+                                        CFM56-5C2/P
+
+           Static thrust at sea
+           level:
+              - take-off (5mn) *
+                                         13,878 daN                  14,456 daN                  15,124 daN
+              (flat rated 30°C)
+              - maximum
+                                         12,588 daN                  13,078 daN                  13,371 daN
+              continuous
+
+           Approved Oils: see CFMI engine Service Bulletin N°79-001, latest revision
+        * 10 minutes at take-off thrust allowed only in case of engine failure (at take-off or during go-around)
+          in accordance with EASA TCDS paragraph VI-1.
+
+        Other engine limitations: See the relevant Engine Type Certificate Data Sheet
+
+
+6.      Fluids (Fuel / Oil / Additives / Hydraulics)
+6.1     Fuel
+        The following fuels may be used:
+
+          ENGINES                                                      KEROSENE DESIGNATION
+                                                                       JET A, JET A-1, JP5, JP8, N° 3 Jet Fuel, Jet B, JP-4
+          CFMI: (Operating Instruction in CFMI Manuals)
+                                                                       TS-1(GOST), RT(GOST)
+
+
+        The above mentioned fuels and additives are also suitable for the APU.
+        Refer to Consumable Material List (CML) for details on approved fuel specifications.
+6.2     Oil
+        Refer to the Consumable Material List (CML).
+        Refer to Engine and APU Manufacturers Operating Instructions.
+
+
+6.3     Additives
+        Refer to the Consumable Material List (CML).
+        See CFMI "Specific Operating Instructions", installation manual.
+
+
+6.4     Hydraulics
+        Refer to the Consumable Material List (CML).
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                            Issue: 1
+Date: 03 February 2026                                                                                                        Page 10 of 59
+                                                                    OFFICIAL - Public
+                             OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-200 Series
+7.     Fluid capacities
+7.1    Fuel
+       Fuel quantity (0.8 kg / litre):
+
+
+       A340-211, A340-212, A340-213
+
+                                           3 – TANK AIRPLANE
+                                                    Usable fuel                      Usable fuel                 Unusable fuel
+                                                     liters (kg)            liters (kg) (MOD 46761)                litres (kg)
+                            WING TANK            91,056 (72,845)                   91,056 (72,845)                 245 (196)
+                               CENTER            41,468 (33,174)                   41,468 (33,174)                 83 (66)
+                            TRIM TANK              6,114 (4,891)                    6,230 (4,984)                    6 (5)
+                    TOTAL                       138,638 (110,910)                 138,754 (111,003)                334 (267)
+
+
+
+       A340-213 Weight Variant 021 and on
+
+                                                                                                      3 – TANK AIRPLANE
+                                                     3 – TANK AIRPLANE
+                                                                                           WITH OPTIONAL ACTs MOD 44002,
+                                                                                                      44005
+                                                Usable fuel           Unusable fuel           Usable fuel           Unusable fuel
+                                                 liters (kg)             litres (kg)               liters (kg)         litres (kg)
+                            WING TANK         92,850 (74,280)           245 (196)           92,850 (74,280)           245 (196)
+                               CENTER         41,468 (33,174)            83 (66)            41,468 (33,174)            83 (66)
+                            TRIM TANK          6,230 (4,984)               6 (5)             6,230 (4,984)               6 (5)
+                    TOTAL                   140,548 (112,438)           334 (267)                      -                     -
+
+                     1 ACT in cargo hold              -                       -              7,200 (5,760)              28 (22)
+                    TOTAL with
+                                                      -                       -            147,748 (118,198)          362 (290)
+                    1 ACT in cargo hold
+
+                         2 ACTs in cargo
+                                                      -                       -             14,400 (11,520)             56 (44)
+                                    hold
+                    TOTAL with
+                    2 ACTs in cargo                                                        154,948 (123,958)          390 (312)
+                    hold
+
+
+7.2    Oil
+       Refer to Weight & Balance Manual.
+7.3    Coolant system capacity
+       N/A
+
+8.     Air Speeds Limits
+       Refer to approved Aeroplane Flight Manual.
+
+9.     Rotor Speed Limits
+       N/A
+
+10.    Maximum Operating Altitude and Temperature
+10.1   Altitude
+       Maximum Flight level:                  41,100 ft (12,527m)
+
+TCDS No.: UK.TC.A.00156                                                                                                                   Issue: 1
+Date: 03 February 2026                                                                                                               Page 11 of 59
+                                                               OFFICIAL - Public
+                               OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-200 Series
+       Maximum Airfield altitude:                12,500 ft (3,810m)
+10.2   Temperature
+       Flight:             Minimum: -74°C SAT
+       Ground:             Range: -54°C to +55°C
+
+11.    Operating Limitations
+       Refer to approved Aeroplane Flight Manual for maximum demonstrated crosswind.
+       Wind Speed Limitations:
+       - Crosswind:        Takeoff:              A/C :        37.5kt (gust included)
+                                                 Engine: Refer to AFM Limitation section
+                           Landing:              A/C :        41kt (gust included)
+                                                 Engine: Refer to AFM Limitation section
+       - Tailwind:         Takeoff:              10kt
+                           Landing:              10kt
+
+
+
+12.    Maximum Weight
+       Valid for A340-211, A340-212 and A340-213
+
+                 Variant     000         001         002
+                 (MOD)      (Basic)    (41302)      (44229)
+           MTOW (T)          235.5        257         260
+
+           MLW (T)            181         181         181
+
+           MZFW (T)           169         169         169
+
+
+
+
+       Valid for A340-213 Weight Variant 020
+
+                 Variant     021
+                 (MOD)     (44281)
+           MTOW (T)           275
+
+           MLW (T)            185
+
+           MZFW (T)           173
+
+
+
+
+13.    Centre of Gravity Range
+       Refer to approved Aeroplane Flight Manual.
+
+14.     Datum / Mean Aerodynamic Chord (MAC)
+       Datum: Station 0.0, located 6.382 meters forward of aeroplane nose.
+       MAC:       7.290m
+
+15.    Levelling Means
+       Three primary jacking points: Refer to approved Weight and Balance Manual.
+
+16.    Minimum Flight Crew
+       Two (2): Pilot and Co-pilot.
+
+17.    Passenger Emergency Exit
+       Two Passenger Emergency Exit configurations:
+TCDS No.: UK.TC.A.00156                                                                                                   Issue: 1
+Date: 03 February 2026                                                                                               Page 12 of 59
+                                                                OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-200 Series
+       -        Configuration A-A-I-A:       Basic       3 Type A passenger doors and 1 Emergency Exit Type I
+       -        Configuration A-A-A-A: Option 4 Type A passenger doors (MOD 40161)
+
+18.    Maximum Passenger Seating Capacity and associated Minimum Number of Cabin Crew
+       The maximum number of passengers approved for emergency evacuation is:
+       -        375     Basic
+       -        420     Option (in Configuration A-A-A-A, MOD 40161).
+       See interior layout drawing for the maximum passenger capacities approved for each aeroplane when
+       delivered.
+       The table below provides the certified Maximum Passenger Seating Capacities (MPSC), the corresponding
+       cabin configuration (exit arrangement and modifications) and the associated minimum numbers of cabin
+       crew members used to demonstrate compliance with the certification requirement:
+             Maximum Passenger Seating Capacity (MPSC)                               Minimum
+             & Cabin Configuration                                                  Cabin crew
+               420           Configuration A-A-A-A (MOD 40161)                              9
+               400           Configuration A-A-A-A (MOD 40161)                              8
+              375           Configuration A-A-I-A (Basic)                                   8
+       A lower number of cabin crew may be approved by the UK CAA for specific cabin layouts.
+
+19.    Maximum Baggage/ Cargo Loads
+             Cargo compartment               Maximum load (kg)
+               Forward                         18,507
+              Aft                                15,241
+              Rear (bulk)                        3,468
+       For the positions and the loading conditions authorized in each position (references of containers, pallets
+       and associated weights), see Weight and Balance Manual.
+
+20.    Rotor Blade control movement
+       N/A
+
+21.    Auxiliary Power Unit (APU)
+       One GARRETT (Company name changed to Honeywell International Inc. in 1999):
+       - GTCP 331-350C (Specification 31-7677A)
+
+22.    Life-limited parts
+       Refer to Airworthiness Limitation Section
+       See SECTION 5: DATA PERTINENT TO ALL MODELS.
+
+23.    Wheels and Tyres
+       Refer to Airbus Service Bulletin A340-32-4007.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 13 of 59
+                                                            OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-200 Series
+IV.    Operating and Service Instructions
+       In accordance with Part 21 regulation, Airbus provides on-demand access to the following technical
+       publications to any person required to comply with any of those instructions :
+       (Access via AirbusWorld portal)
+
+1.     Flight Manual (AFM)
+       Ref. AFM 34000 (latest published revision).
+
+2.     Maintenance Manual
+       Refer to Customized Maintenance Manuals published by Airbus (latest published revision).
+
+3.     Structural Repair Manual (SRM)
+       Refer to Customized SRM published by Airbus (latest published revision).
+
+4.     Weight and Balance Manual (W&BM)
+       Refer to Customized W&BM published by Airbus (latest published revision).
+
+5.     Illustrated Parts Catalogue (IPC)
+       Refer to Customized IPC published by Airbus (latest published revision).
+
+6.     Service Bulletins (SBs)
+       Refer to applicability section of Airbus Service Bulletins (latest published revision).
+
+7.     Required Equipment
+       The equipment required by the applicable regulation shall be installed.
+       Refer also to MMEL – See SECTION 5: DATA PERTINENT TO ALL MODELS.]
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                               Issue: 1
+Date: 03 February 2026                                                                                           Page 14 of 59
+                                                           OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-200 Series
+V.     Notes
+
+1.     All Weather Capability
+
+                                                                      CFMI Engines
+           A/C Model
+                                  A340-211                              A340-212                              A340-213
+
+           Type                                                                                                   Cat 3
+           Design                      -                                    -                         Precision approach and
+           Capability                                                                                         autoland
+
+           Option                   Cat 2
+           Capability        Precision approach
+                                                                          Cat 3
+           (MOD)                   (41549)
+                                                                Precision approach and
+                                    Cat 3                                                                           -
+                                                                        autoland
+                           Precision approach and                        (42100)
+                                   autoland
+                                   (42100)
+
+2.     Conversions between Models
+       The following A/C Model conversions are approved:
+       -      A340-211 aircraft can be converted into A340-212 by application of Airbus Service Bulletin A340-00-
+              4029 (Mod 50472 – conversion of CFM56-5C2/F into CFM56-5C3/F).
+       The following A/C Model engine configuration changes are approved:
+       -      A340-211 (Mod. 42680 or Mod. 43092 or Mod 44752 or Mod 51296):
+              CFM56-5C2, CFM56-5C2/4, CFM56-5C2/F, CFM56-5C2/F4, CFM56-5C2/G, CFM56-5C2/G4,
+              CFM56-5C2/P engine can be intermixed on the same aircraft whatever the number and the position.
+       -      A340-212 (Mod. 43574 or Mod 44752 or Mod 51296):
+              CFM56-5C3/F, CFM56-5C3/F4, CFM56-5C3/G, CFM56-5C3/G4, CFM56-5C3/P engine can be
+              intermixed on the same aircraft whatever the number or the position.
+       -      A340-213 (Mod. 51296):
+              CFM56-5C4, CFM56-5C4/P, engines can be intermixed on the same aircraft whatever the number or
+              the position.
+       -      A340-213 (Mod 45912/45913):
+              A340-213 can be fitted with CFM56-5C2 engines by application of Airbus Industrie Service Bulletin 00-
+              4016 (mod 45912) and revert to CFM56-5C4 engines installation by Airbus Industrie Service Bulletin
+              00-4017 (mod 45913).
+
+3.     Change of Weight Variants
+       N/A.
+
+4.     Other Notes
+       -      A340-211 (CFM56-5C2/F or CFM56-5C2/F4 engines)
+              A340-212 (CFM56-5C3/F or CFM56-5C3/F4 engines):
+              The maximum permissible gas temperature at take-off and maximum continuous is extended to 965°C
+              and 930°C respectively. However, the ECAM indication remains at 950°C and 915°C.
+       -      A340-211 (CFM56-5C2/G or CFM56-5C2/G4 or CFM56-5C2/P engines)
+              A340-212 (CFM 56-5C3/G or CFM56-5C3/G4 or CFM56-5C3/P engines)
+              A340-213 (CFM 56-5C4 or CFM56-5C4/P or CFM56-5C4/1P engines):
+              The maximum permissible gas temperature at take-off and maximum continuous is extended to
+              975°C and 940°C respectively, however the ECAM indications remain at 950°C and 915°C.
+       -      A340-213 (Mod 44260):
+              When CFM56-5C4/1 engines are installed, the thrust bump can be activated by Mod 44260.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                             Issue: 1
+Date: 03 February 2026                                                                                                         Page 15 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+Section 2         A340-300 Series
+
+I.       General
+
+1.       Type / Variant / Model
+      a) Type:           A340
+      b) Model:          A340-311, A340-312, A340-313
+
+2.       Airworthiness Category
+         Large Aeroplanes
+         Performance Category A
+
+3.       Manufacturer
+         AIRBUS
+         2 Rond-Point Emile Dewoitine
+         31700 Blagnac FRANCE
+
+4.       State of Design Authority Type Certification
+4.1      State of Design Authority
+         DGAC-F
+4.2      Application Date
+         A340-311:       15 June 1988
+         A340-312:       15 June 1988
+         A340-313:       15 June 1988
+4.3      State of Design Authority Type Certificate Date
+         A340-311:       22 December 1992
+         A340-312:       14 March 1994
+         A340-313:       16 March 1995
+         DGAC-F TC 183 remains a valid reference for models certified before 28 September 2003
+
+
+5.       UK CAA Type Validation Date
+         Prior to 01 January 2021, application dates for type certification are covered by DGAC-F and EASA type
+         certification application dates, as per Section 4.2 above.
+         New applications for UK CAA type validation received from 01 January 2021 will be recorded in this
+         section. At the current issue of this UK CAA TCDS, no new applications for type validation have been
+         received since 01 January 2021.
+         Prior to 01 January 2021, dates of type certification are covered by DGAC-F and EASA type certification,
+         as per Section 4.3 above.
+         UK CAA type validation dates from 01 January 2021 will be recorded in this section. At the current issue of
+         this UK CAA TCDS, no UK CAA type validations have been completed since 01 January 2021.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 16 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+II.    Certification Basis
+
+1.     Reference Date for determining the applicable requirements
+       Reference Application Date for EASA Certification: 15 June 1988
+
+2.     State of Design Airworthiness Authority Type Certification Data Sheet Number
+       EASA.A.015
+
+3.     State of Design Airworthiness Authority Certification Basis
+       Refer to TCDS EASA.A.015.
+
+4.     UK CAA Airworthiness Requirements
+       Original Airworthiness Requirements (at time of TC):
+       -   Certification Requirements
+           JAR 25 Change 13 effective on October 5, 1989 except as follows:
+           Deviation on limited areas for compliance against paragraphs 25.561 and 25.562 such as:
+            -   Compliance at change 12 for wing tank outside the fuselage contour
+            -   For showing compliance with JAR 25.785 (a)(b)(c), the front row seats located behind a bulkhead
+                are not tested according to JAR 25.562(c)(5)(6). Instead, a minimum 35 inches distance between
+                the seats and the bulkhead is considered an acceptable alternative
+            -   All Weather Operations
+            JAR AWO Change 1
+            NPA JAR AWO-3 (Take-off in low visibility)
+       Additional Airworthiness Requirements (added post TC):
+       -   Airborne Communication, Navigation, Surveillance
+           CS-ACNS Initial Issue
+            -   Subpart B, Section 2 – for optional modifications (Post TC) installing FANS aiming at answering to
+                SES mandate as defined in (EU) N° 29/2009 and amended by (EU) N° 310/2015 of 26 Febuary
+                2015.
+                Note:   For compliance to CS-ACNS Subpart B, Section 2, a deviation to CS-ACNS.B.DLS.B1.075
+                        is accepted by CRI ACNS-B-GEN-01 to not include DM89 MONITORING [unit name]
+                        [frequency] in the downlink message set installed.
+            -   Subpart D – for optional modifications installing transponders aiming at answering to SES mandate
+                as defined in (EU) No 1207/2011 and amended by (EU) No 1028/2014 of 26 September 2014.
+
+5.     Special Conditions
+       Original Special Conditions part of Certification Basis (at time of TC):
+       -   JAA Numbering:
+           SC A-1       Discrete gust requirements (NPA 25C-205)
+           SC A-2       Interaction of systems and structure (NPA 25C-199)
+           SC A-3       Design manoeuver requirements
+           SC A-4       Design dive speed
+           SC A-5       Limit pilot forces and torque
+           SC A-7       Stalling speeds for structural design
+           SC A-11      Aeroelastic stability requirements (NPA 25B, C, D-236)
+           SC F-1       Stalling and scheduled operating speeds
+           SC F-2       Motion and effects of cockpit controls
+           SC F-3       Static longitudinal stability
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 17 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+           SC F-4      Static directional and lateral stability
+           SC F-5      Flight envelope protections
+           SC F-6      Normal load factor limiting system
+           SC G-5      Resistance to fire terminology (NPA 25D-181)
+           SC G-7      Function and reliability testing
+           SC S-3      Landing gear warning (NPA 25D-162)
+           SC S-6      Lightning protection indirect effects
+           SC S-10     Effects of external radiations upon aircraft systems
+           SC S-13     Autothrust system
+           SC S-16     Control signal integrity
+           SC S-18     Electronic flight controls
+           SC S-20     Emergency electrical power (NPA 25D, F-179)
+           SC S-23     Electrical wiring and miscellaneous electrical requirements (NPA 25D, F-191)
+           SC S-24     Doors (NPA 25D, F-251)
+           SC S-38     Towbarless towing
+           SC S-148    Longitudinal touchdown performance limit and Minimum Approach Break-Off Height ((NPA
+                       AWO-8, this SC replaces S-48)
+           SC P-1      FADEC
+           SC P-2      Centre of gravity control system
+       Additional Special Conditions part of Certification Basis (added post TC):
+       -   JAA Numbering:
+           SC P-27     Flammability Reduction System
+                       (applicable from June 2010)
+           SC P-32     Fuel Tank Safety
+                       (applicable from November 2013)
+           SC E-2      Crew rest
+                       (applicable from February 1993)
+           SC E-5.1    Lower deck Lavatory
+                       (applicable from August 2000)
+           SC E-8.1    Lower deck stowage area
+                       (applicable from August 2000)
+           SC E-11     Bulk crew rest compartment
+                       (applicable from January 2002)
+           SC E-19     F/C sliding screens
+                       (applicable from September 2003)
+           SC E-28     Partial Bulk Crew Rest Compartment with attached to galley
+                       (applicable from January 2009)
+           SC E-128    Improved flammability standards for thermal/acoustic insulation
+                       (applicable from February 2009)
+           SC E-130    Application of heat release and smoke density requirements to seat materials
+                       (applicable from February 2010)
+           SC E-1014 HIC compliance for front row seating (inflatable restraints)
+                     (applicable from July 2007)
+           SC F-GEN-01 Installation of non-rechargeable lithium battery
+                     (applicable as of 04 July 2019)
+           SC H-01     Enhanced Airworthiness Programme for Aeroplane Systems - ICA on EWIS
+                       (applicable from May 2010)
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 18 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+
+
+       -   EASA Numbering:
+           SC D-100    Installation of mini suite type seating
+                       (applicable from April 2018)
+           SC D-102    Incorporation of Inertia Locking Device in Dynamic Seats
+                       (applicable from January 2019)
+           SC F-126    Flight Recorders including Data Link Recording
+                       (applicable from June 2013)
+           SC F-131    Flight Instrument External Probes – Qualification in Icing Conditions
+                       (applicable from April 2016)
+           SC F-137    Security Protection of Aircraft Systems and Networks
+                       (applicable from May 2018)
+
+6.     Exemptions
+       None.
+
+7.     Deviations
+       None
+
+8.     Equivalent Safety Findings
+       Original Equivalent Safety Findings part of Certification Basis (at time of TC):
+       -   JAA Numbering:
+           ESF S-45    Oil temperature indication
+           ESF S-48    Minimum Approach Break-off
+           The following Special Conditions provide an equivalent safety level to JAR 25 accelerate-stop and
+           brakes qualification requirements (NPA 25 B, D, G 244)
+           -    SC F-8 (or F-8.1)            Accelerate stop distances
+           -    SC S-21                      Brakes wear limits
+           For A340-313 Weight Variant 020, 021, 024, 026, 027, 028 only:
+           -    SC F-8.1 is applicable instead of SC F-8.
+
+       Additional Equivalent Safety Findings part of the Certification Basis (added post TC):
+       The following Equivalent Safety Findings are additionally applicable when an A/C configuration include the
+       subject optional design change(s):
+       -   JAA Numbering:
+           ESF E-15    Reinforced security cockpit door
+                       (applicable from July 2002)
+           ESF E-17    Trolley Lift
+                       (applicable from November 2003)
+           ESF E-18    Lower Deck galley compartment
+                       (applicable from November 2003)
+           ESF E-21    Emergency exit marking reflectance
+                       (applicable from December 2004)
+           ESF E-27    Forward facing seats over 18 degrees to A/C centreline
+                       (applicable from June 2009)
+           ESF E-29    Fuselage burn through – aft pressure bulkhead
+                       (applicable from March 2009)
+           ESF E-30    Fuselage burn through – belly fairing
+                       (applicable from April 2009)
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 19 of 59
+                                                            OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+           ESF E-31    Fuselage burn through – bilge area
+                       (applicable from April 2009)
+           ESF E-134 Installation of seats that make an angle of more than 18° with the aircraft longitudinal axis
+                     (applicable from November 2013)
+           ESF E-1022 Improved flammability standards for thermal / acoustic insulation materials, it provides an
+                      equivant level of safety to JAR 25.853(b)
+                      (applicable from August 2005)
+           ESF F-128 Minimum Mass Flow of Supplemental Oxygen, it provides an equivalent level of safety to
+                     JAR 25.1443(c)
+                     (applicable from November 2014).
+           ESF F-129 Crew Determination of Quantity of Oxygen in Passenger Oxygen System, it provides an
+                     equivalent level of safety to JAR 25.1441(c)
+                     (applicable from November 2014).
+       -   EASA Numbering:
+           ESF D-101 Green arrow and “Open” Placard of Emergency Exit marking, it provides an equivalent
+                     level of safety to CS 25.811(e)(4) amdt 3, when the aircraft is equipped with symbolic exit
+                     signs
+                     (applicable from July 2018).
+
+9.     Environmental Protection
+9.1    Noise
+       ICAO Annex 16, Volume I
+       See TCDSN no UK.TC.A.00156.
+       Note: MOD 55005 originally used for compliance demonstration is not mandatory anymore.
+9.2    Fuel Venting and Emissions
+       ICAO Annex 16, Volume II
+
+10.    Operational Suitability Data (OSD)
+       See SECTION 5 DATA PERTINENT TO ALL MODELS for:
+       - Operational Suitability Requirements
+       - Approved Operational Suitability Data
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                               Issue: 1
+Date: 03 February 2026                                                                                           Page 20 of 59
+                                                           OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+III.   Technical Characteristics and Operating Limitations
+
+1.     Type Design Definition
+       With CFM International (CFMI) engines
+       A340-311: 00F000A0311/C00
+       A340-312: 00F000A0312/C00
+       A340-313: 00F000A0313/C00
+
+2.     Description
+       Four turbo-fan, long range, twin-aisle, large category aeroplane.
+
+3.     Equipment
+       Refer to Type Design Definition.
+       Cabin furnishings, equipment and arrangement shall conform to the following specification:
+       -        00F252K0005/C01 for cabin seats.
+       -        00F252K0006/C01 for galley.
+       -        00F252K0020/C01 for cabin attendant seats.
+
+4.     Dimensions
+       -        Length:           63.66m                 (208ft 10in)
+       -        Diameter:         5.64m                  (18ft 6in)
+       -        Wing Span:        60.30m                 (197ft 10in)
+       -        Height:           16.63 m                (54ft 7in)
+
+5.     Engine
+5.1    Model
+       CFM International (CFMI) engines
+       A340-311: Four (4) CFM56-5C2 or CFM56-5C2/4 or CFM56-5C2/F or CFM56-5C2/F4 or CFM56-5C2/G
+                 or CFM56-5C2/G4 or CFM56-5C2/P turbofan engines
+       A340-312: Four (4) CFM56-5C3/F or CFM56-5C3/F4 or CFM56-5C3/G or CFM56-C3/G4 or CFM56-
+                 5C3/P turbofan engines
+       A340-313: Four (4) CFM56-5C4 or CFM56-5C4/1 or CFM56-5C4/P or CFM56-5C4/1P turbofan engines
+5.2    Type Certificate
+       CFM International (CFMI) engines
+       FAA Engine TCDS:           E37NE
+       EASA Engine TCDS:          EASA.E.003
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 21 of 59
+                                                            OFFICIAL - Public
+                                   OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+5.3     Limitations
+5.3.1   Installed Engine Limits
+        CFM International (CFMI) engines
+
+
+           A/C Model                       A340-211                    A340-212                    A340-213
+
+           Engine Model                   CFM56-5C2                  CFM56-5C3/F                  CFM56-5C4
+           Data Sheet                   CFM56-5C2/4                 CFM56-5C3/F4                 CFM56-5C4/1
+           E37NE (FAA)                  CFM56-5C2/F                 CFM56-5C3/G                  CFM56-5C4/P
+           E.003 (EASA)                 CFM56-5C2/F4                CFM56-5C3/G4                CFM56-5C4/1P
+                                        CFM56-5C2/G                  CFM56-5C3/P
+                                        CFM56-5C2/G4
+                                        CFM56-5C2/P
+
+           Static thrust at sea
+           level:
+              - take-off (5mn) *
+                                         13,878 daN                  14,456 daN                  15,124 daN
+              (flat rated 30°C)
+              - maximum
+                                         12,588 daN                  13,078 daN                  13,371 daN
+              continuous
+
+           Approved Oils: see CFMI engine Service Bulletin N°79-001, latest revision
+        * 10 minutes at take-off thrust allowed only in case of engine failure (at take-off or during go-around)
+          in accordance with EASA TCDS paragraph VI-1.
+
+        Other engine limitations: See the relevant Engine Type Certificate Data Sheet.
+
+
+6.      Fluids (Fuel / Oil / Additives / Hydraulics)
+6.1     Fuel
+        The following fuels may be used:
+
+          ENGINES                                                      KEROSENE DESIGNATION
+                                                                       JET A, JET A-1, JP5, JP8, N° 3 Jet Fuel, Jet B, JP-4
+          CFMI: (Operating Instruction in CFMI Manuals)
+                                                                       TS-1(GOST), RT(GOST)
+
+
+        The above mentioned fuels and additives are also suitable for the APU.
+        Refer to Consumable Material List (CML) for details on approved fuel specifications.
+6.2     Oil
+        Refer to the Consumable Material List (CML).
+        Refer to Engine and APU Manufacturers Operating Instructions.
+
+
+6.3     Additives
+        Refer to the Consumable Material List (CML).
+        See CFMI "Specific Operating Instructions", installation manual.
+
+
+6.4     Hydraulics
+        Refer to the Consumable Material List (CML).
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                            Issue: 1
+Date: 03 February 2026                                                                                                        Page 22 of 59
+                                                                    OFFICIAL - Public
+                               OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+7.     Fluid capacities
+7.1    Fuel
+       Fuel quantity (0.8 kg / litre):
+
+
+       A340-311, A340-312 (except for WV 029) and A340-313
+                                         3-TANK AEROPLANE
+                                                                                                                     Unusable fuel
+                                                                Usable fuel liters (kg)
+                                                                                                                      litres (kg)
+                          WING TANK                                91,056 (72,845)                                    245 (196)
+                              CENTER                               41,468 (33,174)                                     83 (66)
+                          TRIM TANK                                6,114 (4,891)                                        6 (5)
+               TOTAL                                             138,638 (110,910)                                    334 (267)
+
+
+
+       A340-312 WV 029
+       A340-313 WV 020 without MOD 49428 and without MOD 200118
+                                                         3 – TANK AIRPLANE                               3 – TANK AIRPLANE
+                                                                                                WITH OPTIONAL ACTs MOD 42612
+                                               Usable fuel                Unusable fuel          Usable fuel           Unusable fuel
+                                                liters (kg)                litres (kg)            liters (kg)           litres (kg)
+                          WING TANK          92,850 (74,280)               245 (196)           92,850 (74,280)          245 (196)
+                             CENTER          42,420 (33,936)                83 (66)           42,420 (33,936)            83 (66)
+                          TRIM TANK           6,230 (4,984)                    6 (5)            6,230 (4,984)               6 (5)
+               TOTAL                        141,500 (113,200)              334 (267)
+                   1 ACT in cargo hold               -                           -              7,200 (5,760)              28 (22)
+               TOTAL with
+                                                     -                           -            148,700 (118,960)           362 (290)
+               1 ACT in cargo hold
+
+
+
+       A340-313 WV 020 without MOD 49428 and without MOD 200118 and MOD 202897
+                                                         3 – TANK AIRPLANE                               3 – TANK AIRPLANE
+                                                                                                WITH OPTIONAL ACTs MOD 42612
+                                               Usable fuel                Unusable fuel          Usable fuel           Unusable fuel
+                                                liters (kg)                litres (kg)            liters (kg)           litres (kg)
+                          WING TANK          92,850 (74,280)               245 (196)           92,850 (74,280)          245 (196)
+                             CENTER          41,560 (33,248)                83 (66)           41,560 (33,248)            83 (66)
+                          TRIM TANK           6,230 (4,984)                    6 (5)            6,230 (4,984)               6 (5)
+               TOTAL                        141,500 (113,200)              334 (267)                   -                      -
+
+                   1 ACT in cargo hold               -                           -              7,200 (5,760)              28 (22)
+               TOTAL with
+                                                     -                           -            147,840 (118,960)           362 (290)
+               1 ACT in cargo hold
+
+
+
+7.2    Oil
+       Refer to Weight & Balance Manual.
+7.3    Coolant system capacity
+       N/A
+
+8.     Air Speeds Limits
+       Refer to approved Aeroplane Flight Manual.
+
+9.     Rotor Speed Limits
+       N/A
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                                     Issue: 1
+Date: 03 February 2026                                                                                                                 Page 23 of 59
+                                                                OFFICIAL - Public
+                               OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+10.    Maximum Operating Altitude and Temperature
+10.1   Altitude
+       Maximum Flight level:                     41,450 ft (12,634m)
+       Maximum Airfield altitude:                12,500 ft (3,810m)
+10.2   Temperature
+       Flight:             Minimum: -78°C SAT
+       Ground:             Range: -54°C to +55°C
+
+11.    Operating Limitations
+       Refer to approved Aeroplane Flight Manual for maximum demonstrated crosswind.
+       Wind Speed Limitations:
+       - Crosswind:        Takeoff:              A/C :        37.5kt (gust included)
+                                                 Engine: Refer to AFM Limitation section
+                           Landing:              A/C :        41kt (gust included)
+                                                 Engine: Refer to AFM Limitation section
+       - Tailwind:         Takeoff:              10kt
+                           Landing:              10kt
+
+
+
+12.    Maximum Weight
+       Valid for A340-311, A340-312 and A340-313
+
+                 Variant     000         001         002          003         004
+                  (MOD)     (Basic)    (41302)      (44228)     (44102)     (44230)
+           MTOW (T)         235.5        257          260         257         260
+
+           MLW (T)           186         186          186         188         188
+
+           MZFW (T)          174         174          174         178         178
+
+       Valid for A340-312 only
+
+                 Variant     029
+                           (53243)
+             MTOW (T)        260
+
+                 MLW (T)     188
+
+             MZFW (T)        178
+
+       Valid for A340-313 only
+
+                 Variant     020         021         023          024         025          026         027         028
+                           (43500)     (44135)     (44625)      (45738)     (44791)      (46613)     (46650)     (49529)
+             MTOW (T)        271         275          262         275         260          275         271           276.5
+
+                 MLW (T)     190         190          190         192         190          192         192            190
+
+             MZFW (T)        178         178          178         180         178          181         178            178
+
+                 Variant     050         051         052          053         054
+                           (51808)     (51809)     (51810)      (55566)     (55677)
+             MTOW (T)        275         275        276.5        276.5        275
+
+                 MLW (T)     192         192          192         192         192
+
+             MZFW (T)        180         181          181         183         183
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                           Issue: 1
+Date: 03 February 2026                                                                                                       Page 24 of 59
+                                                                OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+13.    Centre of Gravity Range
+       Refer to approved Aeroplane Flight Manual.
+
+14.     Datum / Mean Aerodynamic Chord (MAC)
+       Datum: Station 0.0, located 6.382 meters forward of aeroplane nose.
+       MAC:     7.290m
+
+15.    Levelling Means
+       Three primary jacking points: Refer to approved Weight and Balance Manual.
+
+16.    Minimum Flight Crew
+       Two (2): Pilot and Co-pilot.
+
+17.    Passenger Emergency Exit
+       Two Passenger Emergency Exit configurations:
+       -        Configuration A-A-I-A:       Basic       3 Type A passenger doors and 1 Emergency Exit Type I
+       -        Configuration A-A-A-A: Option 4 Type A passenger doors (MOD 40161)
+
+
+
+18.    Maximum Passenger Seating Capacity and associated Minimum Number of Cabin Crew
+       The maximum number of passengers approved for emergency evacuation is:
+       -        375      Basic
+       -        440      Option (in Configuration A-A-A-A, MOD 40161).
+       See interior layout drawing for the maximum passenger capacities approved for each aeroplane when
+       delivered.
+       The table below provides the certified Maximum Passenger Seating Capacities (MPSC), the corresponding
+       cabin configuration (exit arrangement and modifications) and the associated minimum numbers of cabin
+       crew members used to demonstrate compliance with the certification requirement:
+
+           Maximum Passenger Seating Capacity (MPSC)                              Minimum
+           & Cabin Configuration                                                  Cabin crew
+             440           Configuration A-A-A-A (MOD 40161)                             9
+             400           Configuration A-A-A-A (MOD 40161)                             8
+             375           Configuration A-A-I-A (Basic)                                 8
+       A lower number of cabin crew may be approved by the UK CAA for specific cabin layouts.
+
+19.    Maximum Baggage/ Cargo Loads
+
+           Cargo compartment              Maximum load (kg)
+             Forward                        22,861
+             Aft                            18,507
+             Rear (bulk)                    3,468
+       For the positions and the loading conditions authorized in each position (references of containers, pallets
+       and associated weights), see Weight and Balance Manual.
+
+20.    Rotor Blade control movement
+       N/A
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 25 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+21.    Auxiliary Power Unit (APU)
+       One GARRETT (Company name changed to Honeywell International Inc. in 1999):
+       - GTCP 331-350C (Specification 31-7677A)
+
+22.    Life-limited parts
+       Refer to Airworthiness Limitation Section
+       See SECTION 5: DATA PERTINENT TO ALL MODELS.
+
+23.    Wheels and Tyres
+       Refer to Airbus Service Bulletin A340-32-4007.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 26 of 59
+                                                            OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+IV.    Operating and Service Instructions
+       In accordance with Part 21 regulation, Airbus provides on-demand access to the following technical
+       publications to any person required to comply with any of those instructions :
+       (Access via AirbusWorld portal)
+
+1.     Flight Manual (AFM)
+       Ref. AFM 34000 (latest published revision).
+
+2.     Maintenance Manual
+       Refer to Customized Maintenance Manuals published by Airbus (latest published revision).
+
+3.     Structural Repair Manual (SRM)
+       Refer to Customized SRM published by Airbus (latest published revision).
+
+4.     Weight and Balance Manual (W&BM)
+       Refer to Customized W&BM published by Airbus (latest published revision).
+
+5.     Illustrated Parts Catalogue (IPC)
+       Refer to Customized IPC published by Airbus (latest published revision).
+
+6.     Service Bulletins (SBs)
+       Refer to applicability section of Airbus Service Bulletins (latest published revision).
+
+7.     Required Equipment
+       The equipment required by the applicable regulation shall be installed.
+       Refer also to MMEL – See SECTION 5: DATA PERTINENT TO ALL MODELS.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                               Issue: 1
+Date: 03 February 2026                                                                                           Page 27 of 59
+                                                           OFFICIAL - Public
+                             OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+V.     Notes
+
+1.     All Weather Capability
+
+                                                                       CFMI Engines
+            A/C Model
+                                   A340-311                              A340-312                              A340-313
+
+            Type                                                                                                   Cat 3
+            Design                      -                                    -                         Precision approach and
+            Capability                                                                                         autoland
+
+            Option                   Cat 2
+            Capability       Precision approach
+                                                                           Cat 3
+            (MOD)                   (41549)
+                                                                 Precision approach and
+                                     Cat 3                                                                           -
+                                                                         autoland
+                           Precision approach and                         (42100)
+                                   autoland
+                                    (42100)
+
+2.     Conversions between Models
+       The following A/C Model conversions are approved:
+       -      Conversion of A340-311 into A340-312:
+              A340-311 aircraft can be converted into A340-312 by application of Airbus Service Bulletin:
+                 A340-00-4014 (Mod 45247).
+       -      Conversion of A340-312 into A340-311:
+              A340-312 aircraft can be converted into A340-311 by application of Airbus Service Bulletins:
+                 A340-00-4028 (Mod 47596 – Conversion of CFM56-5C3/F into CFM56-5C2).
+                 A340-00-4026 (Mod 47427 – Conversion of CFM56-5C3/F into CFM56-5C2/F).
+       -      Conversion of A340-313 into A340-312:
+              A340-313 aircraft can be converted into A340-312 by application of Airbus Service Bulletin:
+                 A340-00-4035 (Mod 53452)
+
+
+       The following A/C Model engine configuration changes are approved:
+       -      A340-311 (Mod. 42680 or Mod. 43092 or Mod 44752 or Mod 51296):
+              CFM56-5C2, CFM56-5C2/4, CFM56-5C2/F, CFM56-5C2/F4, CFM56-5C2/G, CFM56-5C2/G4,
+              CFM56-5C2/P engine can be intermixed on the same aircraft whatever the number and the position.
+       -      A340-312 (Mod. 43574 or Mod 44752 or Mod 51296):
+              CFM56-5C3/F, CFM56-5C3/F4, CFM56-5C3/G, CFM56-5C3/G4, CFM56-5C3/P engine can be
+              intermixed on the same aircraft whatever the number or the position.
+       -      A340-313 (Mod. 51296):
+              CFM56-5C4, CFM56-5C4/P, engine can be intermixed on the same aircraft whatever the number or
+              the position.
+       --     A340-313 (Modification 45912/45913)
+              A340-313 can be fitted with CFM56-5C2 engines by application of Airbus Industrie Service Bulletin 00-
+              4016 (mod 45912) and revert to CFM56-5C4 engines installation by Airbus Industrie Service Bulletin
+              00-4017 (mod 45913).
+
+3.     Change of Weight Variants
+       N/A.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                              Issue: 1
+Date: 03 February 2026                                                                                                          Page 28 of 59
+                                                             OFFICIAL - Public
+                          OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-300 Series
+4.     Other Notes
+       -   A340-311 (CFM56-5C2/F or CFM56-5C2/F4 engines)
+           A340-312 (CFM56-5C3/F or CFM56-5C3/F4 engines):
+           The maximum permissible gas temperature at take-off and maximum continuous is extended to 965°C
+           and 930°C respectively. However, the ECAM indication remains at 950°C and 915°C.
+       -   A340-311 (CFM56-5C2/G or CFM56-5C2/G4 or CFM56-5C2/P engines)
+           A340-312 (CFM 56-5C3/G or CFM56-5C3/G4 or CFM56-5C3/P engines)
+           A340-313 (CFM 56-5C4 or CFM56-5C4/P or CFM56-5C4/1P engines):
+           The maximum permissible gas temperature at take-off and maximum continuous is extended to
+           975°C and 940°C respectively, however the ECAM indications remain at 950°C and 915°C.
+       -   A340-313 (Mod 44260):
+           When CFM56-5C4/1 engines are installed, the thrust bump can be activated by Mod 44260.
+       -   A340-313 WV 027 Short Range Variant
+           The A340-313 WV 027 aircraft can be operated as short range variant and have their new design
+           service goal increased to 30000 cycles respectively 60000 FH providing the following condition is
+           fulfilled: “These aircraft are maintained according to the specific temporary inspection program as per
+           letter AI/SE-M 95A.1372/98 and the revised MRB for SSIs’ quoted post modification 46651“.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                              Issue: 1
+Date: 03 February 2026                                                                                          Page 29 of 59
+                                                          OFFICIAL - Public
+                             OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-600 Series
+Section 3          A340-600 Series
+
+I.        General
+
+1.        Type / Variant / Model
+       a) Type:           A340
+       b) Model:          A340-642, A340-643
+
+2.        Airworthiness Category
+          Large Aeroplanes
+          Performance Category A
+
+3.        Manufacturer
+          AIRBUS
+          2 Rond-Point Emile Dewoitine
+          31700 Blagnac FRANCE
+
+4.        State of Design Authority Type Certification
+4.1       State of Design Authority
+          DGAC-F
+4.2       Application Date
+          A340-642:       31 December 1997
+4.3       State of Design Authority Type Certificate Date
+          A340-643:       21 May 2002
+          DGAC-F TC 183 remains a valid reference for models certified before 28 September 2003.
+
+5.        EASA Type Certification
+5.1       State of Design Authority
+          EASA
+5.2       Application Date
+          A340-643:       31 December 1997
+5.3.      State of Design Authority Type Certificate Date
+          A340-643:       11 April 2006
+
+6.        UK CAA Type Validation Date
+          Prior to 01 January 2021, application dates for type certification are covered by DGAC-F or EASA type
+          certification application dates, as per Section 4.2 and Section 5.2 above.
+          New applications for UK CAA type validation received from 01 January 2021 will be recorded in this
+          section. At the current issue of this UK CAA TCDS, no new applications for type validation have been
+          received since 01 January 2021.
+          Prior to 01 January 2021, dates of type certification are covered by DGAC-F or EASA type certification, as
+          per Section 4.3 and Section 5.3 above.
+          UK CAA type validation dates from 01 January 2021 will be recorded in this section. At the current issue of
+          this UK CAA TCDS, no UK CAA type validations have been completed since 01 January 2021.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                 Issue: 1
+Date: 03 February 2026                                                                                             Page 30 of 59
+                                                             OFFICIAL - Public
+                                OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-600 Series
+II.    Certification Basis
+
+1.     Reference Date for determining the applicable requirements
+       Reference Application Date for EASA Certification: 31 December 1997
+
+2.     State of Design Airworthiness Authority Type Certification Data Sheet Number
+       EASA.A.015
+
+3.     State of Design Airworthiness Authority Certification Basis
+       Refer to TCDS EASA.A.015.
+
+4.     UK CAA Airworthiness Requirements
+       Original Airworthiness Requirements (at time of TC):
+       -       Certification Requirements
+               JAR 25 Change 14
+               Except JAR 25.365(g) which remains at Change 13 for the design of the cockpit wall.
+
+
+           -    All Weather Operations
+                JAR AWO change 2 plus:
+                -   Orange Paper AWO 96/1
+       Additional Airworthiness Requirements (added post TC):
+       -       Airborne Communication, Navigation, Surveillance
+               CS-ACNS Initial Issue
+               -    Subpart B, Section 2 – for optional modifications (Post TC) installing FANS aiming at answering to
+                    SES mandate as defined in (EU) N° 29/2009 and amended by (EU) N° 310/2015 of 26 Febuary
+                    2015.
+                    Note:   For compliance to CS-ACNS Subpart B, Section 2, a deviation to CS-ACNS.B.DLS.B1.075
+                            is accepted by CRI ACNS-B-GEN-01 to not include DM89 MONITORING [unit name]
+                            [frequency] in the downlink message set installed.
+               -    Subpart D – for optional modifications installing transponders aiming at answering to SES mandate
+                    as defined in (EU) No 1207/2011 and amended by (EU) No 1028/2014 of 26 September 2014.
+
+5.     Special Conditions
+       Original Special Conditions part of Certification Basis (at time of TC):
+       -       JAA Numbering:
+               SC A-1001 Revised Loads Requirements (NPA 25C20 and NPA 25C282)
+               SC A-1002 Interaction of systems and structure
+               SC A-1003 Design Maneuver Requirements
+               SC A-1004 Design Dive Speed
+               SC A-5       Limit pilot forces and torque
+               SC A-1006 Grounds Loads and Conditions for Central Landing Gear
+               SC A-1011 Vibration, Buffet and Aeroelastic Requirements (NPA25BCD236)
+               SC A-1017 Braked Roll Conditions (NPA 25C-276)
+               SC A-1020 Shock Absorption test (NPA 25D-279)
+               SC F-1001 Stalling and scheduled operating speeds
+               SC F-2       Motion and effects of cockpit controls
+               SC F-1003 Static longitudinal stability
+
+TCDS No.: UK.TC.A.00156                                                                                                    Issue: 1
+Date: 03 February 2026                                                                                                Page 31 of 59
+                                                                OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-600 Series
+           SC F-4      Static directional and lateral stability
+           SC F-5      Flight envelope protections
+           SC F-6      Normal load factor limiting system
+           SC F-1008 Accelerate stop distances
+           SC F-1014 Flap Gates (NPA 25B238)
+           SC G-7      Function and Reliability Testing
+           SC P-1018 Engine Sustained Imbalance
+           SC P-1020 APU Instruments (NPA 25J246)
+           SC P-1021 Windmilling without oil (NPA 25E268)
+           SC P-1022 Falling and Blowing Snow (NPA 25E288)
+           SC S-10.2   Effects of external radiations upon aircraft systems
+           SC S-1013 Autothrust system
+           SC S-16     Control Signal Authority
+           SC S-18     Electrical Flight Control unusual features
+           SC S-38     Towbarless towing
+           SC S-148    Longitudinal touchdown performance limit and Minimum Approach Break-Off Height ((NPA
+                       AWO-8, this SC replaces S-48)
+           SC S-1021 Brakes (partial NPA 25D-291)
+
+
+       Additional Special Conditions part of Certification Basis (added post TC):
+       -   JAA Numbering:
+           SC E-2      Crew rest
+                       (applicable from February 1993)
+           SC E-5.1    Lower deck Lavatory
+                       (applicable from August 2000)
+           SC E-8.1    Lower deck stowage area
+                       (applicable from August 2000)
+           SC E-11     Bulk crew rest compartment
+                       (applicable from January 2002)
+           SC E-19     F/C sliding screens
+                       (applicable from September 2003)
+           SC E-28     Partial Bulk Crew Rest Compartment with attached to galley
+                       (applicable from January 2009)
+           SC E-128    Improved flammability standards for thermal/acoustic insulation
+                       (applicable from February 2009)
+           SC E-130    Application of heat release and smoke density requirements to seat materials
+                       (applicable from February 2010)
+           SC E-1014 HIC compliance for front row seating (inflatable restraints)
+                     (applicable from July 2007)
+           SC E-1023 Side Facing Seats with Inflatable Restraints
+                     (applicable from December 2005)
+           SC F-GEN-01 Installation of non-rechargeable lithium battery
+                     (applicable as of 04 July 2019)
+           SC H-01     Enhanced Airworthiness Programme for Aeroplane Systems - ICA on EWIS
+                       (applicable from May 2010)
+           SC O-1001 Ferrying one engine unserviceable
+                     (applicable from Oct 2002)
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 32 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-600 Series
+           SC P-27     Flammability Reduction System
+                       (applicable from June 2010)
+       -   EASA Numbering:
+           SC D-100    Installation of mini suite type seating
+                       (applicable from April 2018)
+           SC D-102    Incorporation of Inertia Locking Device in Dynamic Seats
+                       (applicable from January 2019)
+           SC F-126    Flight Recorders including Data Link Recording
+                       (applicable from June 2013)
+           SC F-131    Flight Instrument External Probes – Qualification in Icing Conditions
+                       (applicable from April 2016)
+           SC F-137    Security Protection of Aircraft Systems and Networks
+                       (applicable from May 2018)
+
+6.     Exemptions
+       Temporary exemption (A340-642 only):
+           P-1024      ECAM EGT indication (cancelled by modification 50560).
+
+7.     Deviations
+       None
+
+8.     Equivalent Safety Findings
+       Original Equivalent Safety Findings part of Certification Basis (at time of TC):
+       -   JAA Numbering:
+           ESF A-1015 Checked Pitching Maneuver Loads
+           ESF A-1021 Engine Failure Loads
+           ESF A-1023 Continuous Turbulence
+           ESF A-1024 Casting Factors
+           ESF A-1026 Proof of structure
+           ESF S-45       Oil temperature indication
+           ESF S-148      Longitudinal touch down performance and Minimum Approach Break-off Height deletion
+                          (NPA AWO 8)
+           ESF S-1059 Hydraulics System
+           ESF S-1065 Packs Off Operation
+           ESF S-1066 Excess deviation alert
+           ESF S-1070 AFM – Runway Visual Range Limits
+           ESF P-1008 Fuel Tank Access Covers
+           ESF P-1009 Rolls-Royce Trent 500 Turbine Overheat Detection
+           ESF P-1011 Thrust Reverser Testing
+      The following Special Condition provide an equivalent safety level to JAR 25 accelerate-stop and brakes
+      qualification requirements (NPA 25 B, D, G 244)
+           -   SC F-1008          Accelerate stop distances
+           -   SC F-1014          Flap Gates (NPA 25B238)
+           -   SC S-1021          Brakes (partial NPA 25D-291).
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 33 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-600 Series
+       Additional Equivalent Safety Findings part of the Certification Basis (added post TC):
+       The following Equivalent Safety Findings are additionally applicable when an A/C configuration include the
+       subject optional design change(s):
+       -   JAA Numbering:
+           ESF E-15    Reinforced security cockpit door
+                       (applicable from July 2002)
+           ESF E-17    Trolley Lift
+                       (applicable from November 2003)
+           ESF E-18    Lower Deck galley compartment
+                       (applicable from November 2003)
+           ESF E-21    Emergency exit marking reflectance
+                       (applicable from December 2004)
+           ESF E-27    Forward facing seats over 18 degrees to A/C centreline
+                       (applicable from June 2009)
+           ESF E-29    Fuselage burn through – aft pressure bulkhead
+                       (applicable from March 2009)
+           ESF E-30    Fuselage burn through – belly fairing
+                       (applicable from April 2009)
+           ESF E-31    Fuselage burn through – bilge area
+                       (applicable from April 2009)
+           ESF E-134 Installation of seats that make an angle of more than 18° with the aircraft longitudinal axis
+                     (applicable from November 2013)
+           ESF E-1022 Improved flammability standards for thermal / acoustic insulation materials, it provides an
+                      equivant level of safety to JAR 25.853(b)
+                      (applicable from August 2005)
+           ESF F-128 Minimum Mass Flow of Supplemental Oxygen, it provides an equivalent level of safety to
+                     JAR 25.1443(c)
+                     (applicable from November 2014).
+           ESF F-129 Crew Determination of Quantity of Oxygen in Passenger Oxygen System, it provides an
+                     equivalent level of safety to JAR 25.1441(c)
+                     (applicable from November 2014).
+       -   EASA Numbering:
+           ESF D-101 Green arrow and “Open” Placard of Emergency Exit marking, it provides an equivalent
+                     level of safety to CS 25.811(e)(4) amdt 3, when the aircraft is equipped with symbolic exit
+                     signs
+                     (applicable from July 2018).
+
+9.     Environmental Protection
+9.1    Noise
+       ICAO Annex 16, Volume I
+       See TCDSN no UK.TC.A.00156.
+       Note: MOD 55005 originally used for compliance demonstration is not mandatory anymore.
+
+9.2    Fuel Venting and Emissions
+       ICAO Annex 16, Volume II
+
+10.    Operational Suitability Data (OSD)
+       See SECTION 5 DATA PERTINENT TO ALL MODELS for:
+       - Operational Suitability Requirements
+       - Approved Operational Suitability Data
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 34 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-600 Series
+III.   Technical Characteristics and Operating Limitations
+
+1.     Type Design Definition
+       With Rolls Royce (RR) engines
+           A340-642: EAL 415.0410/02
+           A340-643: F00RP0604310
+
+2.     Description
+       Four turbo-fan, long range, twin-aisle, large category aeroplane.
+
+3.     Equipment
+       Refer to Type Design Definition.
+       Cabin furnishings, equipment and arrangement shall conform to the following specification:
+       -        00F252K0005/C01 for cabin seats.
+       -        00F252K0006/C01 for galley.
+       -        00F252K0020/C01 for cabin attendant seats.
+
+4.     Dimensions
+       -        Length:           74.77m                 (245ft 3in)
+       -        Diameter:         5.64m                  (18ft 6in)
+       -        Wing Span:        63.45m                 (208ft 2in)
+       -        Height:           17.29m                 (56ft 9in)
+
+5.     Engine
+5.1    Model
+       Rolls Royce (RR) engines
+       A340-642: Four (4) Rolls Royce RB211 Trent 556-61 or RB211 Trent 556A2-61 turbofan engines
+       A340-643: Four (4) Rolls Royce RB211 Trent 560A2-61 turbofan engines
+5.2    Type Certificate
+       Rolls Royce (RR) engines
+       UK CAA Engine TCDS: 1056
+       EASA Engine TCDS:          EASA.E.060
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 35 of 59
+                                                            OFFICIAL - Public
+                                      OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-600 Series
+5.3     Limitations
+5.3.1   Installed Engine Limits
+        Rolls Royce (RR) engines
+
+
+        A/C Model                                                  A340-642                        A340-643
+
+        Engine Model                                         RB211 Trent 556-61            RB211 Trent 560A2-61
+        Data Sheet EASA.E.060                              RB211 Trent 556A2-61
+        Static thrust at sea level:
+          - take-off (5mn)*                                       58,462 lbs                      61,902 lbs
+          - maximum continuous                                    44,359 lbs                      44,359 lbs
+
+        Approved Oils: Refer to the RR Engine Operating Instructions
+              *   10 minutes at take-off thrust allowed only in case of engine failure (at take-off or during go-
+                  around in accordance with DGAC "Fiche de caractéristiques moteur".
+
+        Other engine limitations: See the relevant Engine Type Certificate Data Sheet
+
+
+6.      Fluids (Fuel / Oil / Additives / Hydraulics)
+6.1     Fuel
+        The following fuels may be used:
+
+         ENGINES                                                         KEROSENE DESIGNATION
+                                                                         JET A, JET A-1, JP5, JP8, N° 3 Jet Fuel,
+         RR: (Operating Instruction in RR Manuals)
+                                                                         TS-1(GOST), RT(GOST)
+
+        The above mentioned fuels and additives are also suitable for the APU.
+        Refer to Consumable Material List (CML) for details on approved fuel specifications.
+6.2     Oil
+        Refer to the Consumable Material List (CML).
+        Refer to Engine and APU Manufacturers Operating Instructions.
+6.3     Additives
+        Refer to the Consumable Material List (CML).
+        See Rolls Royce “RB211 Specific Operating Instructions for Trent 500", installation manual.
+6.4     Hydraulics
+        Refer to the Consumable Material List (CML).
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                          Issue: 1
+Date: 03 February 2026                                                                                                      Page 36 of 59
+                                                                      OFFICIAL - Public
+                             OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-600 Series
+7.     Fluid capacities
+7.1    Fuel
+       Fuel quantity (0.8 kg / litre):
+       A340-642 without mod 53000 and without mod 54679
+
+                                                     3 – TANK AIRPLANE                         3 – TANK AIRPLANE
+                                                                                       WITH OPTIONAL ACTs MOD 48487
+                                                 Usable fuel          Unusable fuel    Usable fuel LWW Unusable fuel LWW
+                                                  litres (kg)            litres (kg)       litres (kg)             litres (kg)
+                         CENTER               55,133* (44,106)         240* (192)      55,133 (44,106)         240 (192)
+                                Inner 1 / 4    49,002 (39,202)            68 (54)      69,610 (55,688)             190 (152)
+                                Inner 2 / 3    69,514 (55,611)          230 (184)      49,432 (39,546)              48 (38)
+                 WING TANK         Outer       12,290 (9,832)             34 (27)      12,620 (10,096)              44 (35)
+                                                   130,806                                 131,662
+                                   Total                                332 (265)                                  282 (225)
+                                                  (104,645)                               (105,329)
+                              FCMC before
+                                                8,361 (6,689)
+                                  FL 6.0
+                                                                                        7,986 (6,389)
+                  TRIM TANK FCMC FL 6.0         7,986 (6,389)             25 (20)                                   25 (20)
+                             up to FL 7.0
+                              FCMC FL 7.1
+                                                7,886 (6,309)                           7,886 (6,309)
+                                onwards
+                              FCMC before          194,300
+                                  FL 6.0          (155,440)                                194,781
+                                                                                          (155,825)
+                 TOTAL        FCMC FL 6.0          193,925              597 (477)                                  547 (437)
+                               up to FL 7.0       (155,140)
+                              FCMC FL 7.1          193,825                                 194,681
+                                onwards           (155,060)                               (155,745)
+
+                  * For A/C not fitted with Jet Pumps (Mod 50812), values for CENTER Tank are:
+                       54,969 litres (43,975 kgs) for usable and
+                       404 litres (323 kgs) for unusable.
+                Total are modified as follows:
+                              FCMC before          194,136
+                                  FL 6.0          (155,309)                                194,781
+                                                                                          (155,825)
+                 TOTAL        FCMC FL 6.0          193,136              761 (608)                                  547 (437)
+                               up to FL 7.0       (155,309)
+                              FCMC FL 7.1          193,661                                 194,681
+                                onwards           (154,929)                               (155,745)
+
+
+
+
+       A340-642 with mod 54679
+       A maximum total of 2,800 litres can be added to the values identified in paragraph above starting refueling
+       Center tank and continuing with Inner Tanks as necessary, according to the following added quantities:
+        - Center tank up to 1,050 litres
+        - Inner tank 2 / 3 up to 550 litres each
+        - Inner tank 1 / 4 up to 325 litres each
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                               Issue: 1
+Date: 03 February 2026                                                                                                           Page 37 of 59
+                                                                OFFICIAL - Public
+                             OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-600 Series
+       A340-642 with mod 53000, A340-643
+
+                                                                                   3 – TANK AIRPLANE
+                                                                           Usable fuel                   Unusable fuel
+                                                                            litres (kg)                     litres (kg)
+                          CENTER                                        55,202 (44,161)                    171 (137)
+                                           Inner 1 / 4                  49,178 (39,342)                      56 (45)
+                                           Inner 2 / 3                  69,648 (55,718)                     220 (176)
+                     WING TANK
+                                              Outer                      12,442 (9,954)                      54 (43)
+                                              Total                    131,268 (105,014)                    330 (264)
+                                              Basic                       7,886 (6,309)                      25 (20)
+                     TRIM TANK              Extended
+                                                                          9,509 (7,607)                      45 (36)
+                                          (Mod 54382)
+                                       Basic Trim Tank                 194,356 (155,484)                    526 (421)
+                  TOTAL               Extended Trim Tank
+                                                                       195,979 (156,783)                    546 (437)
+                                          (Mod 54382)
+
+
+
+7.2    Oil
+       Refer to Weight & Balance Manual.
+7.3    Coolant system capacity
+       N/A
+
+8.     Air Speeds Limits
+       Refer to approved Aeroplane Flight Manual.
+
+9.     Rotor Speed Limits
+       N/A
+
+10.    Maximum Operating Altitude and Temperature
+10.1   Altitude
+       Maximum Flight level:                  41,450 ft (12,634m)
+       Maximum Airfield altitude:             12,500 ft (3,810m)
+10.2   Temperature
+       Flight:            Minimum: -78°C SAT
+       Ground:            Range: -54°C to +55°C
+
+11.    Operating Limitations
+       Refer to approved Aeroplane Flight Manual for maximum demonstrated crosswind.
+       Wind Speed Limitations:
+       - Crosswind:       Takeoff:            A/C :       35kt (gust included)
+                                              Engine: Refer to AFM Limitation section
+                          Landing:            A/C :       37kt (gust included)
+                                              Engine: Refer to AFM Limitation section
+       - Tailwind:        Takeoff:            10kt
+                          Landing:            10kt
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                        Issue: 1
+Date: 03 February 2026                                                                                                    Page 38 of 59
+                                                             OFFICIAL - Public
+                             OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-600 Series
+12.    Maximum Weight
+       Valid for A340-642
+
+               Variant     000         001         101          102          103
+               (MOD)      (Basic)    (50312)      (53043)     (54805)      (57713)
+            MTOW (T)        365        368          380         368         365
+
+            MLW (T)         256        259          265         259         265
+
+            MZFW (T)        242        245          251         245         251
+
+
+
+
+       Valid for A340-643
+
+               Variant     101          102         103
+               (MOD)      (53043)     (54805)     (57713)
+            MTOW (T)        380        368          365
+
+            MLW (T)         265        259          265
+
+            MZFW (T)        251        245          251
+
+
+
+
+13.    Centre of Gravity Range
+       Refer to approved Aeroplane Flight Manual.
+
+14.     Datum / Mean Aerodynamic Chord (MAC)
+       Datum: Station 0.0, located 6.382 meters forward of aeroplane nose.
+       MAC:     8.370m
+
+15.    Levelling Means
+       Three primary jacking points: Refer to approved Weight and Balance Manual.
+
+16.    Minimum Flight Crew
+       Two (2): Pilot and Co-pilot.
+
+17.    Passenger Emergency Exit
+       Two Passenger Emergency Exit configurations:
+       -        Configuration A-A-III-A-A:                  Basic 4 Type A passenger doors and 1 Emergency Exit Type II
+
+18.    Maximum Passenger Seating Capacity and associated Minimum Number of Cabin Crew
+       The maximum number of passengers approved for emergency evacuation is 440.
+       See interior layout drawing for the maximum passenger capacities approved for each aeroplane when
+       delivered.
+       The table below provides the certified Maximum Passenger Seating Capacities (MPSC), the corresponding
+       cabin configuration (exit arrangement and modifications) and the associated minimum numbers of cabin
+       crew members used to demonstrate compliance with the certification requirement:
+
+
+           Maximum Passenger Seating Capacity (MPSC)                                 Minimum
+           & Cabin Configuration                                                     Cabin crew
+             440                                                                          9
+             400                                                                          8
+       A lower number of cabin crew may be approved by the UK CAA for specific cabin layouts.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                 Issue: 1
+Date: 03 February 2026                                                                                             Page 39 of 59
+                                                             OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-600 Series
+19.    Maximum Baggage/ Cargo Loads
+
+         Cargo compartment                Maximum load (kg)
+           Forward                          30,482
+           Aft                              22,861
+           Rear (bulk)                      3,468
+       For the positions and the loading conditions authorized in each position (references of containers, pallets
+       and associated weights), see Weight and Balance Manual.
+
+20.    Rotor Blade control movement
+       N/A
+
+21.    Auxiliary Power Unit (APU)
+       One HONEYWELL E. & S. 331-600[A] (Model Specification 31-15857-01).
+       Oils: refer to applicable approved Manuals
+
+22.    Life-limited parts
+       Refer to Airworthiness Limitation Section
+       See SECTION 5: DATA PERTINENT TO ALL MODELS.
+
+23.    Wheels and Tyres
+       Refer to Airbus Service Bulletin.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 40 of 59
+                                                            OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-600 Series
+IV.    Operating and Service Instructions
+       In accordance with Part 21 regulation, Airbus provides on-demand access to the following technical
+       publications to any person required to comply with any of those instructions :
+       (Access via AirbusWorld portal)
+
+1.     Flight Manual (AFM)
+       Ref. AFM 34000 (latest published revision).
+
+2.     Maintenance Manual
+       Refer to Customized Maintenance Manuals published by Airbus (latest published revision).
+
+3.     Structural Repair Manual (SRM)
+       Refer to Customized SRM published by Airbus (latest published revision).
+
+4.     Weight and Balance Manual (W&BM)
+       Refer to Customized W&BM published by Airbus (latest published revision).
+
+5.     Illustrated Parts Catalogue (IPC)
+       Refer to Customized IPC published by Airbus (latest published revision).
+
+6.     Service Bulletins (SBs)
+       Refer to applicability section of Airbus Service Bulletins (latest published revision).
+
+7.     Required Equipment
+       The equipment required by the applicable regulation shall be installed.
+       Refer also to MMEL – See SECTION 5: DATA PERTINENT TO ALL MODELS.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                               Issue: 1
+Date: 03 February 2026                                                                                           Page 41 of 59
+                                                           OFFICIAL - Public
+                              OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-600 Series
+V.     Notes
+
+1.     All Weather Capability
+
+                                                                         RR Engines
+
+           A/C Model
+                                              A340-642                                                 A340-643
+
+
+              Type                                                                                       Cat 3
+              Design                               -
+              Capability                                                                 Precision approach and autoland
+
+
+              Option                            Cat 3
+              Capability         Precision approach and autoland                                            -
+              (MOD)                            (50321)
+
+2.     Conversions between Models
+       The following A/C Model engine configuration changes are approved:
+          -        A340-642
+                   RB211 Trent 556-61, RB211 Trent 556A2-61 engines can be intermixed on the same aircraft
+                   whatever the number or the position.
+
+3.     Change of Weight Variants
+       N/A.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                         Issue: 1
+Date: 03 February 2026                                                                                                     Page 42 of 59
+                                                              OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-500 Series
+Section 4      A340-500 Series
+
+I.     General
+
+1.     Type / Variant / Model
+        a)     Type:             A340
+        b)     Model:            A340-542, A340-542
+
+2.     Airworthiness Category
+       Large Aeroplanes
+       Performance Category A
+
+3.     Manufacturer
+       AIRBUS
+       2 Rond-Point Emile Dewoitine
+       31700 Blagnac FRANCE
+
+4.     State of Design Authority Type Certification
+4.1    State of Design Authority
+       DGAC-F
+4.2    Application Date
+       A340-541:        31 December 1997
+4.3    State of Design Authority Type Certificate Date
+       A340-541:        03 December 2002
+       DGAC-F TC 183 remains a valid reference for models certified before 28 September 2003.
+
+5.     EASA Type Certification
+5.1    State of Design Authority
+       EASA
+5.2    Application Date
+       A340-542:        31 December 1997
+5.3.   State of Design Authority Type Certificate Date
+       A340-542:        15 February 2007
+
+6.     UK CAA Type Validation Date
+       Prior to 01 January 2021, application dates for type certification are covered by DGAC-F or EASA type
+       certification application dates, as per Section 4.2 and Section 5.2 above.
+       New applications for UK CAA type validation received from 01 January 2021 will be recorded in this
+       section. At the current issue of this UK CAA TCDS, no new applications for type validation have been
+       received since 01 January 2021.
+       Prior to 01 January 2021, dates of type certification are covered by DGAC-F or EASA type certification, as
+       per Section 4.3 and Section 5.3 above.
+       UK CAA type validation dates from 01 January 2021 will be recorded in this section. At the current issue of
+       this UK CAA TCDS, no UK CAA type validations have been completed since 01 January 2021
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                               Issue: 1
+Date: 03 February 2026                                                                                           Page 43 of 59
+                                                           OFFICIAL - Public
+                                OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-500 Series
+II.    Certification Basis
+
+1.     Reference Date for determining the applicable requirements
+       Reference Application Date for EASA Certification: 31 December 1997
+
+2.     State of Design Airworthiness Authority Type Certification Data Sheet Number
+       EASA.A.015
+
+3.     State of Design Airworthiness Authority Certification Basis
+       Refer to TCDS EASA.A.015.
+
+4.     UK CAA Airworthiness Requirements
+       Original Airworthiness Requirements (at time of TC):
+       -       Certification Requirements
+               JAR 25 Change 14
+               Except JAR 25.365(g) which remains at Change 13 for the design of the cockpit wall.
+
+
+           -    All Weather Operations
+                JAR AWO change 2 plus:
+                -   Orange Paper AWO 96/1
+       Additional Airworthiness Requirements (added post TC):
+       -       Airborne Communication, Navigation, Surveillance
+               CS-ACNS Initial Issue
+               -    Subpart B, Section 2 – for optional modifications (Post TC) installing FANS aiming at answering to
+                    SES mandate as defined in (EU) N° 29/2009 and amended by (EU) N° 310/2015 of 26 Febuary
+                    2015.
+                    Note:   For compliance to CS-ACNS Subpart B, Section 2, a deviation to CS-ACNS.B.DLS.B1.075
+                            is accepted by CRI ACNS-B-GEN-01 to not include DM89 MONITORING [unit name]
+                            [frequency] in the downlink message set installed.
+               -    Subpart D – for optional modifications installing transponders aiming at answering to SES mandate
+                    as defined in (EU) No 1207/2011 and amended by (EU) No 1028/2014 of 26 September 2014.
+
+5.     Special Conditions
+       Original Special Conditions part of Certification Basis (at time of TC):
+       -       JAA Numbering:
+               SC A-1001 Revised Loads Requirements (NPA 25C20 and NPA 25C282)
+               SC A-1002 Interaction of systems and structure
+               SC A-1003 Design Maneuver Requirements
+               SC A-1004 Design Dive Speed
+               SC A-5       Limit pilot forces and torque
+               SC A-1006 Grounds Loads and Conditions for Central Landing Gear
+               SC A-1011 Vibration, Buffet and Aeroelastic Requirements (NPA25BCD236)
+               SC A-1017 Braked Roll Conditions (NPA 25C-276)
+               SC A-1020 Shock Absorption test (NPA 25D-279)
+               SC F-1001 Stalling and scheduled operating speeds
+               SC F-2       Motion and effects of cockpit controls
+               SC F-1003 Static longitudinal stability
+
+TCDS No.: UK.TC.A.00156                                                                                                    Issue: 1
+Date: 03 February 2026                                                                                                Page 44 of 59
+                                                                OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-500 Series
+           SC F-4      Static directional and lateral stability
+           SC F-5      Flight envelope protections
+           SC F-6      Normal load factor limiting system
+           SC F-1008 Accelerate stop distances
+           SC F-1014 Flap Gates (NPA 25B238)
+           SC G-7      Function and Reliability Testing
+           SC P-1016 Rear Centre Tank and Tyre Failure
+           SC P-1018 Engine Sustained Imbalance
+           SC P-1020 APU Instruments (NPA 25J246)
+           SC P-1021 Windmilling without oil (NPA 25E268)
+           SC P-1022 Falling and Blowing Snow (NPA 25E288)
+           SC S-10.2   Effects of external radiations upon aircraft systems
+           SC S-1013 Autothrust system
+           SC S-16     Control Signal Authority
+           SC S-18     Electrical Flight Control unusual features
+           SC S-38     Towbarless towing
+           SC S-148    Longitudinal touchdown performance limit and Minimum Approach Break-Off Height ((NPA
+                       AWO-8, this SC replaces S-48)
+           SC S-1021 Brakes (partial NPA 25D-291)
+
+
+       Additional Special Conditions part of Certification Basis (added post TC):
+       -   JAA Numbering:
+           SC E-2      Crew rest
+                       (applicable from February 1993)
+           SC E-5.1    Lower deck Lavatory
+                       (applicable from August 2000)
+           SC E-8.1    Lower deck stowage area
+                       (applicable from August 2000)
+           SC E-11     Bulk crew rest compartment
+                       (applicable from January 2002)
+           SC E-19     F/C sliding screens
+                       (applicable from September 2003)
+           SC E-28     Partial Bulk Crew Rest Compartment with attached to galley
+                       (applicable from January 2009)
+           SC E-128    Improved flammability standards for thermal/acoustic insulation
+                       (applicable from February 2009)
+           SC E-130    Application of heat release and smoke density requirements to seat materials
+                       (applicable from February 2010)
+           SC E-1014 HIC compliance for front row seating (inflatable restraints)
+                     (applicable from July 2007)
+           SC E-1023 Side Facing Seats with Inflatable Restraints
+                     (applicable from December 2005)
+           SC F-GEN-01 Installation of non-rechargeable lithium battery
+                     (applicable as of 04 July 2019)
+           SC H-01     Enhanced Airworthiness Programme for Aeroplane Systems - ICA on EWIS
+                       (applicable from May 2010)
+
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 45 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-500 Series
+           SC O-1001 Ferrying one engine unserviceable
+                     (applicable from Oct 2002)
+           SC P-27     Flammability Reduction System
+                       (applicable from June 2010)
+       -   EASA Numbering:
+           SC D-100    Installation of mini suite type seating
+                       (applicable from April 2018)
+           SC D-102    Incorporation of Inertia Locking Device in Dynamic Seats
+                       (applicable from January 2019)
+           SC F-126    Flight Recorders including Data Link Recording
+                       (applicable from June 2013)
+           SC F-131    Flight Instrument External Probes – Qualification in Icing Conditions
+                       (applicable from April 2016)
+           SC F-137    Security Protection of Aircraft Systems and Networks
+                       (applicable from May 2018)
+
+6.     Exemptions
+       None.
+
+7.     Deviations
+       None
+
+8.     Equivalent Safety Findings
+       Original Equivalent Safety Findings part of Certification Basis (at time of TC):
+       -   JAA Numbering:
+           ESF A-1015 Checked Pitching Maneuver Loads
+           ESF A-1021 Engine Failure Loads
+           ESF A-1023 Continuous Turbulence
+           ESF A-1024 Casting Factors
+           ESF A-1026 Proof of structure
+           ESF S-45       Oil temperature indication
+           ESF S-148      Longitudinal touch down performance and Minimum Approach Break-off Height deletion
+                          (NPA AWO 8)
+           ESF S-1059 Hydraulics System
+           ESF S-1065 Packs Off Operation
+           ESF S-1066 Excess deviation alert
+           ESF S-1070 AFM – Runway Visual Range Limits
+           ESF P-1008 Fuel Tank Access Covers
+           ESF P-1009 Rolls-Royce Trent 500 Turbine Overheat Detection
+           ESF P-1011 Thrust Reverser Testing
+      The following Special Condition provide an equivalent safety level to JAR 25 accelerate-stop and brakes
+      qualification requirements (NPA 25 B, D, G 244)
+           -   SC F-1008          Accelerate stop distances
+           -   SC F-1014          Flap Gates (NPA 25B238)
+           -   SC S-1021          Brakes (partial NPA 25D-291).
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 46 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-500 Series
+       Additional Equivalent Safety Findings part of the Certification Basis (added post TC):
+       The following Equivalent Safety Findings are additionally applicable when an A/C configuration include the
+       subject optional design change(s):
+       -   JAA Numbering:
+           ESF E-15    Reinforced security cockpit door
+                       (applicable from July 2002)
+           ESF E-17    Trolley Lift
+                       (applicable from November 2003)
+           ESF E-18    Lower Deck galley compartment
+                       (applicable from November 2003)
+           ESF E-21    Emergency exit marking reflectance
+                       (applicable from December 2004)
+           ESF E-27    Forward facing seats over 18 degrees to A/C centreline
+                       (applicable from June 2009)
+           ESF E-29    Fuselage burn through – aft pressure bulkhead
+                       (applicable from March 2009)
+           ESF E-30    Fuselage burn through – belly fairing
+                       (applicable from April 2009)
+           ESF E-31    Fuselage burn through – bilge area
+                       (applicable from April 2009)
+           ESF E-134 Installation of seats that make an angle of more than 18° with the aircraft longitudinal axis
+                     (applicable from November 2013)
+           ESF E-1022 Improved flammability standards for thermal / acoustic insulation materials, it provides an
+                      equivant level of safety to JAR 25.853(b)
+                      (applicable from August 2005)
+           ESF F-128 Minimum Mass Flow of Supplemental Oxygen, it provides an equivalent level of safety to
+                     JAR 25.1443(c)
+                     (applicable from November 2014).
+           ESF F-129 Crew Determination of Quantity of Oxygen in Passenger Oxygen System, it provides an
+                     equivalent level of safety to JAR 25.1441(c)
+                     (applicable from November 2014).
+       -   EASA Numbering:
+           ESF D-101 Green arrow and “Open” Placard of Emergency Exit marking, it provides an equivalent
+                     level of safety to CS 25.811(e)(4) amdt 3, when the aircraft is equipped with symbolic exit
+                     signs
+                     (applicable from July 2018).
+
+9.     Environmental Protection
+9.1    Noise
+       ICAO Annex 16, Volume I
+       See TCDSN no UK.TC.A.00156.
+       Note: MOD 55005 originally used for compliance demonstration is not mandatory anymore.
+
+9.2    Fuel Venting and Emissions
+       ICAO Annex 16, Volume II
+
+10.    Operational Suitability Data (OSD)
+       See SECTION 5 DATA PERTINENT TO ALL MODELS for:
+       - Operational Suitability Requirements
+       - Approved Operational Suitability Data
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 47 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-500 Series
+III.   Technical Characteristics and Operating Limitations
+
+1.     Type Design Definition
+       With Rolls Royce (RR) engines
+           A340-541: EAL 415.1094/02
+           A340-542: EAL F01M06010396
+
+2.     Description
+       Four turbo-fan, long range, twin-aisle, large category aeroplane.
+
+3.     Equipment
+       Refer to Type Design Definition.
+       Cabin furnishings, equipment and arrangement shall conform to the following specification:
+       -        00F252K0005/C01 for cabin seats.
+       -        00F252K0006/C01 for galley.
+       -        00F252K0020/C01 for cabin attendant seats.
+
+4.     Dimensions
+       -        Length:           67.33m                 (220ft 11in)
+       -        Diameter:         5.64m                  (18ft 6in)
+       -        Wing Span:        63.45m                 (208ft 2in)
+       -        Height:           17.11m                 (56ft 1in)
+
+5.     Engine
+5.1    Model
+       Rolls Royce (RR) engines
+       A340-541: Four (4) Rolls Royce RB211 Trent 553-61 or RB211 Trent 553A2-61 turbofan engines
+       A340-542: Four (4) Rolls Royce RB211 Trent 556A2-61 turbofan engines
+5.2    Type Certificate
+       Rolls Royce (RR) engines
+       UK CAA Engine TCDS: 1056
+       EASA Engine TCDS:          EASA.E.060
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 48 of 59
+                                                            OFFICIAL - Public
+                                      OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-500 Series
+5.3     Limitations
+5.3.1   Installed Engine Limits
+        Rolls Royce (RR) engines
+
+
+        A/C Model                                                    A340-541                          A340-542
+
+        Engine Model                                           RB211 Trent 553-61              RB211 Trent 556A2-61
+        Data Sheet EASA.E.060                                RB211 Trent 553A2-61
+        Static thrust at sea level:
+          - take-off (5mn)*                                         55,780 lbs                        58,462 lbs
+          - maximum continuous                                      44,359 lbs                        44,359 lbs
+
+        Approved Oils: Refer to the RR Engine Operating Instructions
+              *   10 minutes at take-off thrust allowed only in case of engine failure (at take-off or during go-
+                  around in accordance with DGAC "Fiche de caractéristiques moteur".
+
+        Other engine limitations: See the relevant Engine Type Certificate Data Sheet
+
+
+6.      Fluids (Fuel / Oil / Additives / Hydraulics)
+6.1     Fuel
+        The following fuels may be used:
+
+         ENGINES                                                         KEROSENE DESIGNATION
+                                                                         JET A, JET A-1, JP5, JP8, N° 3 Jet Fuel,
+         RR: (Operating Instruction in RR Manuals)
+                                                                         TS-1(GOST), RT(GOST)
+
+        The above mentioned fuels and additives are also suitable for the APU.
+        Refer to Consumable Material List (CML) for details on approved fuel specifications.
+6.2     Oil
+        Refer to the Consumable Material List (CML).
+        Refer to Engine and APU Manufacturers Operating Instructions.
+6.3     Additives
+        Refer to the Consumable Material List (CML).
+        See Rolls Royce “RB211 Specific Operating Instructions for Trent 500", installation manual.
+6.4     Hydraulics
+        Refer to the Consumable Material List (CML).
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                          Issue: 1
+Date: 03 February 2026                                                                                                      Page 49 of 59
+                                                                      OFFICIAL - Public
+                                OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-500 Series
+7.     Fluid capacities
+7.1    Fuel
+       Fuel quantity (0.8 kg / litre):
+       A340-541 without mod 53000
+
+                                                        3 – TANK AIRPLANE                         3 – TANK AIRPLANE
+                                                                                          WITH OPTIONAL ACTs MOD 48487
+                                                    Usable fuel          Unusable fuel    Usable fuel LWW Unusable fuel LWW
+                                                     litres (kg)            litres (kg)       litres (kg)             litres (kg)
+                          CENTER                  55,133 (44,106)          240 (192)      55,133 (44,106)         240 (192)
+                                   Inner 1 / 4    49,002 (39,202)            68 (54)      49,432 (39,546)              48 (38)
+                                   Inner 2 / 3    69,514 (55,611)          230 (184)      69,610 (55,688)             190 (152)
+                 WING TANK            Outer       12,290 (9,832)             34 (27)      12,620 (10,096)              44 (35)
+                                                      130,806                                 131,662
+                                      Total                                332 (265)                                  282 (225)
+                                                     (104,645)                               (105,330)
+                            Without liner
+                       REAR               19,873 (15,898)                     10 (8)      19,873 (15,898)               10 (8)
+                            (Mod 51344)
+                    CENTER
+                              With liner
+                    5 FRAME               19,741 (15,793)                   100 (80)      19,741 (15,793)             100 (80)
+                            (Mod 51344)
+
+                 REAR CENTER 7 FRAME                                                      27,329 (21,863)             241 (193)
+
+                                 FCMC FL 7.1
+                  TRIM TANK                        7,886 (6,309)             25 (20)       7,886 (6,309)               25 (20)
+                                    onwards
+                                  Without liner       213,698                                 214,554
+                      TOTAL                                                597 (485)                                  557 (445)
+                                  (Mod 51344)        (170,958)                               (171,643)
+                  (with RCT 5
+                                   With liner         213,566                                 214,422
+                       Frame)                                              697 (557)                                  647 (517)
+                                  (Mod 51344)        (170,958)                               (171,538)
+
+                           TOTAL                                                              222,010
+                                                                                                                      788 (630)
+                    (with RCT 7 Frame)                                                       (177,608)
+
+
+
+       For aircraft with FCMC FL 6.0 up to FL 7.0, trim tank and total usable fuel quantities are increased by 100
+       liters (80 kg).
+       A340-541 with mod 53000, A340-542
+
+                                                                                3 – TANK AIRPLANE
+                                                                        Usable fuel                           Unusable fuel
+                                                                         litres (kg)                             litres (kg)
+                         CENTER                                       55,202 (44,161)                           171 (137)
+                                   Inner 1 / 4                        49,178 (39,342)                             56 (45)
+                                   Inner 2 / 3                        69,648 (55,718)                           220 (176)
+                WING TANK
+                                      Outer                           12,442 (9.954)                              54 (43)
+                                      Total                         131,268 (105,014)                           330 (264)
+                   REAR
+                                   With liner
+                  CENTER                                              19,741 (15,793)                            100 (80)
+                                  (Mod 51344)
+                  5 FRAME
+                 TRIM TANK         Extended                            9,509 (7,607)                              45 (36)
+                          TOTAL
+                (with Extended trim tank and                        215,720 (172,576)                           646 (517)
+                       RCT 5 Frame)
+
+7.2    Oil
+TCDS No.: UK.TC.A.00156                                                                                                                  Issue: 1
+Date: 03 February 2026                                                                                                              Page 50 of 59
+                                                                   OFFICIAL - Public
+                              OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-500 Series
+       Refer to Weight & Balance Manual.
+7.3    Coolant system capacity
+       N/A
+
+8.     Air Speeds Limits
+       Refer to approved Aeroplane Flight Manual.
+
+9.     Rotor Speed Limits
+       N/A
+
+10.    Maximum Operating Altitude and Temperature
+10.1   Altitude
+       Maximum Flight level:                     41,450 ft (12,634m)
+       Maximum Airfield altitude:                12,500 ft (3,810m)
+10.2   Temperature
+       Flight:             Minimum: -78°C SAT
+       Ground:             Range: -54°C to +55°C
+
+11.    Operating Limitations
+       Refer to approved Aeroplane Flight Manual for maximum demonstrated crosswind.
+       Wind Speed Limitations:
+       - Crosswind:        Takeoff:              A/C :       35kt (gust included)
+                                                 Engine: Refer to AFM Limitation section
+                           Landing:              A/C :       37kt (gust included)
+                                                 Engine: Refer to AFM Limitation section
+       - Tailwind:         Takeoff:              10kt
+                           Landing:              10kt
+
+12.    Maximum Mass
+       Valid for A340-541
+
+                 Variant     000        001         002          003*        004*         101         102            103
+                  (MOD)    (51000)    (51080)      (50791)      (54237)    (56719)      (53039)      (54806)        (55642)
+             MTOW (T)        368        372          372         374         374          380         372            372
+
+             MLW (T)         240        243          243         231         243          246         243            246
+
+             MZFW (T)        225        230          230         218         218          232         230            232
+
+
+                 (*)WV003 and WV004 are only certified for those aircraft equipped with the Light Weight Wings
+                 and the 7-frame RCT.
+       Valid for A340-542
+
+                 Variant     101         102         103
+                           (53039)     (54806)     (55642)
+              MTOW (T)       380        372          372
+
+                 MLW (T)     246        243          246
+
+              MZFW (T)       232        230          232
+
+
+
+
+13.    Centre of Gravity Range
+       Refer to approved Aeroplane Flight Manual.
+TCDS No.: UK.TC.A.00156                                                                                                            Issue: 1
+Date: 03 February 2026                                                                                                        Page 51 of 59
+                                                               OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-500 Series
+14.     Datum / Mean Aerodynamic Chord (MAC)
+       Datum: Station 0.0, located 6.382 meters forward of aeroplane nose.
+       MAC:    8.370m
+
+15.    Levelling Means
+       Three primary jacking points: Refer to approved Weight and Balance Manual.
+
+16.    Minimum Flight Crew
+       Two (2): Pilot and Co-pilot.
+
+17.    Passenger Emergency Exit
+       Two Passenger Emergency Exit configurations:
+
+       - Configuration A-A-I-A: Basic        3 Type A passenger doors and 1 Emergency Exit Type I
+
+18.    Maximum Passenger Seating Capacity and associated Minimum Number of Cabin Crew
+       The maximum number of passengers approved for emergency evacuation is 375.
+       See interior layout drawing for the maximum passenger capacities approved for each aeroplane when
+       delivered.
+       The table below provides the certified Maximum Passenger Seating Capacities (MPSC), the corresponding
+       cabin configuration (exit arrangement and modifications) and the associated minimum numbers of cabin
+       crew members used to demonstrate compliance with the certification requirement:
+
+
+         Maximum Passenger Seating Capacity (MPSC)                                Minimum
+         & Cabin Configuration                                                    Cabin crew
+           375                                                                           8
+       A lower number of cabin crew may be approved by the UK CAA for specific cabin layouts.
+
+19.    Maximum Baggage/ Cargo Loads
+
+         Cargo compartment                Maximum load (kg)
+           Forward                          24,494
+           Aft                              16,330
+           Rear (bulk)                      3,468
+       For the positions and the loading conditions authorized in each position (references of containers, pallets
+       and associated weights), see Weight and Balance Manual.
+
+20.    Rotor Blade control movement
+       N/A
+
+21.    Auxiliary Power Unit (APU)
+       One HONEYWELL E. & S. 331-600[A] (Model Specification 31-15857-01).
+       Oils: refer to applicable approved Manuals
+
+22.    Life-limited parts
+       Refer to Airworthiness Limitation Section
+       See SECTION 5: DATA PERTINENT TO ALL MODELS.
+
+23.    Wheels and Tyres
+       Refer to Airbus Service Bulletin.
+
+IV.    Operating and Service Instructions
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 52 of 59
+                                                            OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-500 Series
+       In accordance with Part 21 regulation, Airbus provides on-demand access to the following technical
+       publications to any person required to comply with any of those instructions :
+       (Access via AirbusWorld portal)
+
+1.     Flight Manual (AFM)
+       Ref. AFM 34000 (latest published revision).
+
+2.     Maintenance Manual
+       Refer to Customized Maintenance Manuals published by Airbus (latest published revision).
+
+3.     Structural Repair Manual (SRM)
+       Refer to Customized SRM published by Airbus (latest published revision).
+
+4.     Weight and Balance Manual (W&BM)
+       Refer to Customized W&BM published by Airbus (latest published revision).
+
+5.     Illustrated Parts Catalogue (IPC)
+       Refer to Customized IPC published by Airbus (latest published revision).
+
+6.     Service Bulletins (SBs)
+       Refer to applicability section of Airbus Service Bulletins (latest published revision).
+
+7.     Required Equipment
+       The equipment required by the applicable regulation shall be installed.
+       Refer also to MMEL – See SECTION 5: DATA PERTINENT TO ALL MODELS.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                               Issue: 1
+Date: 03 February 2026                                                                                           Page 53 of 59
+                                                           OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+A340-500 Series
+V.     Notes
+
+1.     All Weather Capability
+
+
+
+                                                                      RR Engines
+
+            A/C Model
+                                           A340-541                                                 A340-542
+
+
+            Type                                                                                      Cat 3
+            Design                              -
+            Capability                                                                Precision approach and autoland
+
+
+            Option                           Cat 3
+            Capability        Precision approach and autoland                                            -
+            (MOD)                           (51315)
+
+
+
+2.     Conversions between Models
+       The following A/C Model engine configuration changes are approved:
+        -     Conversion from A340-541 to A340-542 and engines change from 553A2-61 to 556A2-61: A340-541
+              aircraft can be converted into A340-542 aircraft by application of Airbus Service Bulletin A340-00-
+              5010 (Mod 58770).
+        -     Conversion from A340-542 to A340-541 and engines change from 556A2-61 to 553A2-61:
+              A340-542 aircraft can be converted into A340-541 aircraft by application of Airbus Service Bulletin
+              A340-00-5009 (Mod 58771).
+
+
+       The following A/C Model engine configuration changes are approved:
+        -     A340-541
+              RB211 Trent 553-61, RB211 Trent 553A2-61 engines can be intermixed on the same aircraft
+              whatever the number or the position.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                      Issue: 1
+Date: 03 February 2026                                                                                                  Page 54 of 59
+                                                           OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Data Pertinent to All Models
+Section 5       Data Pertinent to All Models
+The below information is applicable to all models unless specifically mentioned:
+
+I.      Maintenance Instructions and Airworthiness Limitations
+        The complete set of Instructions for Continued Airworthiness is identified in paragraph 2 of the Aircraft
+        Maintenance Manual introduction.
+        The following initial minimum maintenance requirements and their frequencies shall be used in the
+        development of an approved maintenance programme for the aircraft:
+        Applicable Document Reference:
+        -       A340 Maintenance Review Board Report (latest published revision)
+
+
+        The following Airworthiness Limitations Sections (ALS) apply:
+        -       ALS PART 1: SAFE LIFE AIRWORTHINESS LIMITATION ITEMS (SL ALI)
+        Limitations applicable to Safe Life Airworthiness Limitation Items are provided in the A340 Airworthiness
+        Limitations Section (ALS) sub-parts 1-2 and 1-3 approved by EASA;
+        Applicable Document Reference:
+        -       Ref: A340 ALS Part 1 (latest published revision)
+        -       Ref: A340 ALS Part 1 Variations (latest published set of variations)
+
+
+        -       ALS PART 2: DAMAGE TOLERANCE AIRWORTHINESS LIMITATION ITEMS (DT ALI)
+        Limitations applicable to Damage Tolerant Airworthiness Limitation Items are provided in the A340
+        Airworthiness Limitations Section (ALS) Part 2 approved by EASA;
+        Applicable Document Reference:
+        -       Ref: A340 ALS Part 2 (latest published revision)
+        -       Ref: A340 ALS Part 2 Variations (latest published set of variations)
+
+
+        -       ALS PART 3: CERTIFICATION MAINTENANCE REQUIREMENTS (CMR)
+        Certification Maintenance Requirements are provided in the A340 Airworthiness Limitations Section (ALS)
+        Part 3 approved by EASA;
+        Applicable Document Reference:
+        -       Ref: A340 ALS Part 3 (latest published revision)
+        -       Ref: A340 ALS Part 3 Variations (latest published set of variations)
+
+
+        -       ALS PART 4: AGEING SYSTEMS MAINTENANCE (ASM)
+        Limitations applicable to Ageing System Maintenance are provided in the A340 Airworthiness Limitation
+        Section (ALS) Part 4 approved by EASA;
+        Applicable Document Reference:
+        -       Ref: A340 ALS Part 4 (latest published revision)
+        -       Ref: A340 ALS Part 4 Variations (latest published set of variations)
+
+
+        -       ALS PART 5: FUEL AIRWORTHINESS LIMITATIONS (FAL)
+        Fuel Airworthiness Limitations are provided in the A340 Airworthiness Limitations Section (ALS) Part 5
+        approved by EASA;
+        Applicable Document Reference:
+        -       Ref: A340 ALS Part 5 (latest published revision)
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 55 of 59
+                                                            OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Data Pertinent to All Models
+       -       Ref: A340 ALS Part 5 Variations (latest published set of variations)
+
+
+
+II.    Operational Suitability Data (OSD)
+       The Operational Suitability Requirements and Data listed below are applicable to all A340 models:
+       The Operational Suitability Data elements (e.g. FCD, CCD, MMEL) as listed below are approved by the
+       European Union Aviation Safety Agency under the EASA Type Certificate EASA.A.015 in accordance with
+       Commission Regulation (EU) 748/2012, as amended.
+       These OSD elements and any future revisions are either accepted under Article 13 of the UK-EU Trade
+       and Cooperation Agreement or subject to approval by Validation under Article 10 of Annex 30 of the UK-EU
+       Trade and Cooperation Agreement, for use by UK operators.
+
+1.     Flight Crew Data (FCD)
+       -       Operational Suitability Requirements:
+               CS-FCD Initial Issue
+       -       Approved Operational Suitability Data:
+               a.      FCD ref. F01RP1536752 Issue 1 dated 07 December 2015 or later approved revisions
+               b.      Required for Entry into Service by UK operator
+
+2.     Cabin Crew Data (CCD)
+       -       Operational Suitability Requirements:
+               SC A-01-CCD OSD Cabin Crew Data (CCD) Certification Basis
+               SC CCD-01 OSD                Changes to A340 Cabin Crew Data
+       -       Approved Operational Suitability Data:
+               a.      CCD ref. LR01RP1534111 Issue 1 dated 16th November 2015 or later approved revisions
+               b.      Required for Entry into Service by UK operator
+               c.      A340-200 and A340-300 are one aircraft type.
+                       A340-500 and A340-600 are variants of the A340-200 and A340-300.
+
+3.     Master Minumum Equipment List (MMEL)
+       -       Operational Suitability Requirements:
+               JAR MMEL / MEL Subpart B amendment 1
+
+
+       -       Approved Operational Suitability Data:
+               a.      MMEL Ref. MMEL STL 33100 Revision November 2015 or later approved revisions
+               b.      Required for Entry into Service by UK operator
+
+III.   Part‐26 Compliance Information
+       For all models, compliance with point 26.300(a) of UK Regulation (EU) 2015/640 Annex 1 (Part 26) has
+       been accepted by UK CAA as a result of the demonstration of compliance to Commission Regulation (EU)
+       2015/640 Annex 1 (Part‐26), as amended, and approval by EASA, by complying with points 26.301,
+       26.302, 26.303, 26.304, 26.306, 26.307, 26.308, 26.309.
+       Note that compliance to point 26.305 is ensured by compliance to Part-21.A.65.
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                               Issue: 1
+Date: 03 February 2026                                                                                           Page 56 of 59
+                                                           OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Annex to TCDS UK.TC.A.00156
+Annex to TCDS UK.TC.A.00156
+
+
+This Annex was created to make public non-proprietary data contained in selected UK specific Special Conditions,
+Deviations, or Equivalent Safety Findings that are part of the applicable Certification Basis as recorded in TCDS
+UK.TC.A.00156
+Only those Conditions, Deviations, or Equivalent Safety Findings raised on or after 01 January 2021 shall be
+included in this Explanatory Note.
+For Special Conditions, Deviations or Equivalent Safety Findings included as part of the Certification Basis prior to
+01 January 2021, refer to the EASA Explanatory Note to EASA TCDS EASA.A.015.
+
+
+
+
+    I.   Special Conditions
+
+         None
+
+
+
+    II. Deviations
+         None
+
+
+
+    III. Equivalent Safety Findings
+         None
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 57 of 59
+                                                            OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+
+
+Administration
+Administration                                                              Acronym /              Definition
+                                                                            Abbreviation
+I. Acronyms and Abbreviations                                                                      International Civil Aviation
+                                                                            ICAO
+                                                                                                   Organization
+ Acronym /       Definition
+ Abbreviation                                                               JAA                    Joint Aviation Authorities
+ A/C             Aircraft                                                   JAR                    Joint Aviation Requirements
+                 Airborne Communication,                                    MSN                    Manufacturer Serial Number
+ ACNS
+                 Navigation, Surveillance                                   MMEL                   Master Minimum Equiment List
+ AFM             Aeroplane Flight Manual                                    MLM                    Maximum Landing Mass
+ ALI             Airworthiness Limitation Item                              MOD                    Modification
+ ALS             Airworthiness Limitation Section                           MTOM                   Maximum Take-Off Mass
+ AMC             Acceptable Means of Compliance                             MZFM                   Maximum Zero Fuel Mass
+ APU             Auxiliary Power Unit                                       NAA                    National Aviation Authority
+ ASM             Aging Systems Maintenance                                  NPA                    Notice of Proposed Amendment
+ AWO             All Weather Operations                                     OSD                    Operational Suitability Data
+ CAA             Civil Aviation Authority                                   SB                     Service Bulletin
+ CCD             Cabin Crew Data                                            SC                     Special Condition
+ CML             Consumable Material LIst                                   SL                     Safe Life
+                 Certification Maintenance                                  TC                     Type Certificate
+ CMR
+                 Requirement
+                                                                            TCDS                   Type Certificate Data Sheet
+ CRI             Certification Review Item
+                                                                            TCH                    Type Certificate Holder
+ CS              Certification Specification
+                                                                            WV                     Weight Variant
+                 Direction Générale de l’Aviation
+ DGAC-F
+                 Civile (French NAA)
+ DT              Damage Tolerant
+ EASA            European Aviation Safety Agency
+ EC              European Commission
+ EIS             Entry Into Service
+ ESF             Equivalent Safety Finding
+                 Extended-range Twin-engine
+ ETOPS           Operational Performance
+                 Standards
+ EU              European Union
+ EU MS           European Union Member States
+                 Electrical Wiring Interconnection
+ EWIS
+                 System
+ FCD             Flight Crew Data
+ FAA             Federal Aviation Administration
+ FAL             Fuel Airworthiness Limitation
+ FAR             Federal Aviation Regulation
+ FRS             Flammability Reduction Systems
+ GOST            Government Standard (Russian)
+ HIC             Head Injury Criterion
+                 Instructions for Continued
+ ICA
+                 Airworthiness
+
+TCDS No.: UK.TC.A.00156                                                                                                           Issue: 1
+Date: 03 February 2026                                                                                                       Page 58 of 59
+
+
+                                                            OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+
+Administration
+II.    Type Certificate Holder Record
+
+ TCH Record                                                                                        Period
+ Airbus S.A.S.                                                                                     Present. No changes.
+ 2 Rond-Point Emile Dewoitine
+ 31700 Blagnac
+ France
+
+III.   Amendment Record
+
+ TCDS        TCDS Issue         Changes                                                                             TC Issue and
+ Issue No.   Date                                                                                                   Date
+ 1           03 Feb 2026        The content of the initial issue of this UK CAA TCDS was taken                      Issue 1
+                                from EASA TCDS No. EASA.A.015 Issue 25 dated 04 July 2019                           03 Feb 2026
+                                which was the current EASA version at 31 December 2020 and
+                                therefore the version of the TCDS for the A340 accepted by the
+                                UK under Article 15 of Annex 30 of the UK-EU Trade and
+                                Cooperation Agreement, except as listed below:
+
+                                      •    Formatting changes to align with UK CAA TCDS
+                                           template content, and updates to wording to reflect EU-
+                                           exit.
+                                      •    Section 0 General (All Models) added including
+                                           Correspondance Table Models/Engine Manufacturers
+                                           contained in the front matter of TCDS EASA.A.015.
+                                      •    Sections 1.I.6, 2.I.6, 3.I.6, 4.I.6: information concerning
+                                           UK CAA type validation dates added.
+                                      •    Sections 1.II.4, 2.II.4, 3.II.4, 4.II.4: title changed to “UK
+                                           CAA Airworthiness Requirements”
+                                      •    Sections 1.II.9, 2.II.9, 3.II.9, 4.II.9: reference included to
+                                           TCDSN UK.TC.A.00156
+                                      •    Section 5.II. Statement on approval of OSD elements
+                                           revised.
+                                      •    Section 5.III Part-26 Compliance Information added.
+                                      •    Section 6.I additional Acronyms and Abbreviations
+                                           added.
+                                      •    Annex to TCDS UK.TC.A.00156 added.
+
+
+
+
+                                                              – END –
+
+
+
+
+TCDS No.: UK.TC.A.00156                                                                                                        Issue: 1
+Date: 03 February 2026                                                                                                    Page 59 of 59
+
+                                                           OFFICIAL - Public
+

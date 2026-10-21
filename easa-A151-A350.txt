@@ -1,0 +1,1710 @@
+TCDS EASA.A.151                      AIRBUS A350
+Issue 33                                                          Date: 01.07.2026
+
+
+
+
+                              TYPE-CERTIFICATE
+                                 DATA SHEET
+
+
+                                    No. EASA.A.151
+
+
+                                     AIRBUS A350
+
+                                Type Certificate Holder:
+
+                                     AIRBUS S.A.S.
+
+                              2 Rond-point Emile Dewoitine
+                                    31700 BLAGNAC
+                                        FRANCE
+
+
+
+                       Airworthiness Category: Large Aeroplanes
+
+
+
+
+  For Model(s):   A350-941
+                  A350-1041
+
+
+
+
+                                       Page 1 / 39
+ TCDS EASA.A.151                  AIRBUS A350
+ Issue 33                                                        Date: 01.07.2026
+
+
+
+
+Table of Contents
+SECTION 1: A350-900 SERIES                                                 4
+I.     GENERAL                                                             4
+1.      Type/Model                                                         4
+2.      Performance Class                                                  4
+3.      Certifying Authority                                               4
+4.      Manufacturer                                                       4
+5.      EASA Certification Application Date                                4
+6.      EASA Type Certification Date                                       4
+II.    CERTIFICATION BASIS                                                 5
+1.      EASA Certification Basis                                           5
+2.      Special Conditions                                                 6
+3.      Deviations                                                         7
+4.      Equivalent safety findings                                         7
+5.      Environmental Protection                                           8
+6.      Operational Suitability Data                                       9
+III.   TECHNICAL CHARACTERISTICS AND OPERATIONAL LIMITATIONS              10
+1.      A350-900 powered by RR engines                                    10
+2.      Data pertinent to all A350-900 series                             12
+IV.    OPERATING AND SERVICE INSTRUCTIONS                                 16
+1.      Airplane Flight Manual                                            16
+2.      Maintenance Instructions and Airworthiness Limitations            16
+3.      ETOPS                                                             16
+V.     OPERATIONAL SUITABILITY DATA (OSD)                                 18
+1.      Master Minimum Equipment List                                     18
+2.      Flight Crew Data                                                  18
+3.      Cabin Crew Data                                                   18
+VI.    PART-26 COMPLIANCE INFORMATION                                     18
+SECTION 2: A350-1000 SERIES                                              20
+I.     GENERAL                                                            20
+1.      Type/Model                                                        20
+2.      Performance Class                                                 20
+3.      Certifying Authority                                              20
+4.      Manufacturer                                                      20
+5.      EASA Certification Application Date                               20
+6.      EASA Type Certification Date                                      20
+II.    CERTIFICATION BASIS                                                21
+1.      EASA Certification Basis                                          21
+2.      Special Conditions                                                22
+3.      Deviations                                                        23
+4.      Equivalent Safety Findings                                        23
+5.      Environmental Protection                                          24
+6.      Operational Suitability Data                                      25
+III.   TECHNICAL CHARACTERISTICS AND OPERATIONAL LIMITATIONS              26
+1.      A350-1000 powered by RR engines                                   26
+2.      Data pertinent to all A350-1000 series                            27
+
+                                    Page 2 / 39
+TCDS EASA.A.151                         AIRBUS A350
+Issue 33                                                        Date: 01.07.2026
+
+
+
+
+IV.   OPERATING AND SERVICE INSTRUCTIONS                                 31
+1.     Airplane Flight Manual                                            31
+2.     Maintenance Instructions and Airworthiness Limitations            31
+3.     ETOPS                                                             31
+V.    OPERATIONAL SUITABILITY DATA (OSD)                                 32
+1.     Master Minimum Equipment List                                     32
+2.     Flight Crew Data                                                  32
+3.     Cabin Crew Data                                                   32
+VI.   PART-26 COMPLIANCE INFORMATION                                     32
+ADMINISTRATIVE SECTION                                                  34
+VII. ACRONYMS AND ABBREVIATIONS                                          34
+VIII. CHANGE RECORD                                                      34
+
+
+
+
+                                          Page 3 / 39
+ TCDS EASA.A.151                         AIRBUS A350
+ Issue 32                                                                      Date: 01.07.2026
+ SECTION 1: A350-900 SERIES
+
+
+
+
+SECTION 1: A350-900 SERIES
+
+
+I.   GENERAL
+
+
+1. Type/Model
+
+                                                A350-941
+
+2. Performance Class
+
+                                                A
+
+3. Certifying Authority
+
+                                                EASA
+
+4. Manufacturer
+
+                                                AIRBUS
+                                                2 Rond-point Emile Dewoitine
+                                                31700 Blagnac
+                                                FRANCE
+
+5. EASA Certification Application Date
+
+                                                A350-941: 15 November 2009
+
+6. EASA Type Certification Date
+
+                                                A350-941: 30 September 2014
+
+
+
+
+                                           Page 4 / 39
+TCDS EASA.A.151                                AIRBUS A350
+Issue 32                                                                                 Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+II. CERTIFICATION BASIS
+
+1. EASA Certification Basis
+
+The following EASA airworthiness standards are:
+
+   EASA Certification Specifications 25, Amendment 8 – Large Aeroplanes except paragraph 25.795, at
+    Amendment 9, except CS 25.795(b)(3)(iii).
+   EASA Certification Specification 25.851 (a) and (c) at Amendment 17 for the installation of halon free
+    handheld fire extinguisher.
+   EASA Certification Specifications AWO, Initial Issue – All Weather Operations
+   EASA Certification Specifications and Acceptable Means of Compliance for Airborne
+    Communications, Navigation and Surveillance CS ACNS Initial Issue dated 17 December 2013,
+    Subpart D Sections 2/3/4
+
+
+   For type A+ emergency exit installation (see also ESF D-39), the following CS are applicable at
+    amendment 20:
+    CS 25.561(c), 25.601, 25.603(a)(b)(c), 25.605(a)(b), 25.789(a), 25.0795(d), 25.801(a)(d),
+    25.0803(a)(c), 25.0807 (a)(7)(g)(i)(f), 25.809, 25.810(a)(1), 25.0811(d)(2)(g), 25.812(h)(k), 25.0813,
+    25.853(a), 25.869(a)(3), 25.901(c), 25.1301(a)(1)(2)(3), 25.1309(a)(b), 25.1411(c)(d),
+    25.1415(a)(b)(c), 25.1438, 25.1501, 25.1561(a)(d)(e), 25.1701(a), 25.1703(a)(b)(c), 25.1705(a),
+    25.1707(a)(d)(l), 25.1709(a)(b), 25.1711(a)(c)(d)(e), 25.1713(a)(c)
+    For mixed configurations involving Type A, C and A+ emergency exits, except CS 25.795(d) and
+    25.803(a)(c), the applicable CS may continue to be applied at an amendment that was applicable
+    before the installation of type A+ emergency exits if the area is not affected by the type +
+    installation.
+
+   For modification 114946 installation or changes to the cowling or nacelle skin:
+    CS 25.1193(e)(4)(f) amendment 22
+
+   For modification 116832 or changes to the emergency locator transmitter distress tracking and
+    antenna installation: CS-ACNS issue 3, Subpart E Section 3.
+   For cabin layouts, CS 25.853 (g) and 25.791(d) amendment 23 for the removal of ashtrays on
+    lavatories’ inner doors.
+   When ROPS step3 (MOD 109746), and FCGS X13 or FCGS X14 (MOD 115496 or 117966) are installed,
+    CS 25.705 is applicable at Amendment 24.
+   The following part of the certification basis constitutes the minimum required safety level of CS
+    25.571 amdt 8.
+   With XWB-84EP engine installed on the airplane, CS 25.1535 is at amendment 27.
+For changes that affect or introduce fatigue critical structures CS 25.571 amdt 8 applies, plus:
+
+
+
+                                                 Page 5 / 39
+TCDS EASA.A.151                              AIRBUS A350
+Issue 32                                                                             Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+1.     For structures susceptible to widespread fatigue damage (WFD):
+       a.       WFD evaluations must substantiate freedom from WFD up to the limit of validity (LOV);
+       b.       Inspections and other maintenance actions upon which the LOV is dependent must be
+       established and submitted to EASA for approval;
+
+
+2.      The list of fatigue critical modified structures (FCMS) must be developed or amended as
+necessary and made available to aircraft operators as part of the ICA of the change;
+
+3.      The baseline corrosion prevention and control programme must be amended or supplemented
+to address the influence of the change on the effectiveness of the programme, as necessary.
+
+       Note 1: Points 1 and 3 do not apply to changes introduced by STC.
+
+       Note 2: Points 1, 2 and 3 do not apply to repairs.
+
+       Note 3: CS 25.571 amdt 19 or later does not include the above exceptions for STC and repair
+       applicants any longer.
+
+       Note 4: This TCDS entry does not invalidate the 21.A.101 process by which a later CS 25.571
+       amendment may become applicable.
+
+
+2. Special Conditions
+
+      SC B-01        Stalling and Scheduled Operating Speeds
+      SC B-02        Motion and effect of cockpit controls
+      SC B-04        Static Directional, Lateral and Longitudinal Stability and Low Energy Awareness
+      SC B-05        Flight envelope protection
+      SC B-06        Normal Load Factor limiting System
+      SC B-09        Flight in Icing Condition
+      SC B-11        Soft Go Around Mode (post-TC)
+      SC B-15        Shorter Landing Distances on eligible Wet Grooved or PFC runways
+
+      SC C-01        Crash Survivability for CFRP Fuselage
+      SC C-02        Design dive speed
+      SC C-05        Tyre Debris vs. Fuel Leakage for CFRP Fuel Tank
+      SC C-06        Dynamic braking
+      SC C-07        Limit pilot forces
+      SC C-10        Design Manoeuvre Requirements
+      SC C-14        Pivoting Loads
+
+      SC D-04        Crew Rest Compartments (post-TC)
+      SC D-05        Towbarless Towing
+      SC D-06        High Altitude Operation / High Cabin Heat Load
+      SC D-07        Control Surface Position Awareness / Electronic Flight Control Systems
+
+
+                                                Page 6 / 39
+TCDS EASA.A.151                              AIRBUS A350
+Issue 32                                                                              Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+      SC D-14       Application of Heat Release and Smoke Density Requirements to Seat Materials
+      SC D-16       In Flight Fire - Composite Fuselage Construction
+      SC D-20       Lateral Trim Function through Differential Flap Setting
+      SC D-21       Type C Passenger Exits
+      SC D-32       Use of Magnesium Alloys for Passenger Seat Components (post-TC)
+      SC D-35       Installation of inflatable seat belts (post-TC)
+      SC D-36       Installation of structure mounted airbag (post-TC)
+      SC D-37       Installation of mini-suite type seating (post-TC)
+      SC D-42       Installation of stowage or charging stations for Personal Electronic Devices (PED) in
+                    an aircraft cabin (post-TC)
+      SC D-43       Installation of oblique seats
+      SC D-44       Installation of Three Point Restraint & Pretensioner System (post-TC)
+      SC D-45       Incorporation of Inertia Locking Device in Dynamic Seats
+      SC D-MULTI-06 Installation of high wall suite type seating
+
+      SC E-08        Fire withstanding Capability of CFRP Wing Fuel Tanks
+      SC E-12        Water / Ice in Fuel System
+
+      SC F-12        HIRF Protection
+      SC F-13        Lithium Battery Installations
+      SC F-26        Flight Recorders including Data Link Recording
+      SC F-38        Security Assurance Process to isolate or protect the Aircraft Systems and Networks
+                     from internal and external Security Threats
+      SC F-53        Fuel System low Level Indication / Fuel Exhaustion
+      SC F-GEN-01    Non-rechargeable lithium battery installations, applicable by the date of this TCDS
+                     at issue 18
+
+      SC G-01        ETOPS Approval
+      SC G-06        Cancellation of AFM Engine Management Tables
+
+      SC M-TS-0000566 Installed Physical Secondary Barrier (IPSB)
+
+
+3. Deviations
+      None
+
+
+4. Equivalent safety findings
+
+      ESF B-19       A350 Large Antenna Installation - Vibration and Buffeting
+      ESF C-11       Ground Loads Conditions
+      ESF C-12       Undercarriage Lateral Turning Loads
+
+      ESF D-11       Packs off operations
+      ESF D-15       Post Crash Fire - Composite Fuselage Construction
+      ESF D-19       Overpressure Relief Valves and Outflow Valves
+
+
+                                               Page 7 / 39
+TCDS EASA.A.151                              AIRBUS A350
+Issue 32                                                                              Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+     ESF D-23        Indication of the Passenger Door from outside Position if the Door is not fully
+                     Closed, Latched and Locked
+     ESF D-28        Green Arrow and “Open” Placard for Emergency Exit Marking
+     ESF D-30        Installation of Angled Seats (post-TC)
+     ESF D-31        Application of reduced Intrusion Loads in certain Areas of the Flight Deck
+                     Boundaries
+     ESF D-34        APU Doors Compliance to CS 25.783(a)
+     ESF D-39        Type A+ Emergency Exits
+
+     ESF E-04        Thrust Reverser Testing
+     ESF E-07        Warning Means for Rolls Royce Engine Fuel Filters
+     ESF E-09        Rolls Royce Engine Turbine Overheat Detection
+     ESF E-13        Fire Extinguishing Agent Concentration
+     ESF E-14        Pressure fuelling system shut-off operation check
+
+     ESF F-22        Minimum Mass Flow of Supplemental Oxygen
+     ESF F-23        Landing Light Switch
+     ESF F-33        Pneumatic Systems – harmonised 25.1438
+     ESF F-52        Crew Determination of Quantity of Oxygen in Passenger Oxygen System
+     ESF F-63        Improved Passenger Oxygen Mask Deployment System
+     ESF F-69        Pitot Heat Indication Systems
+     ESF F-76        First Aid Oxygen Equipment
+
+     ESF FCD-MULTI-01 CS-FCD T3 Evaluation Process
+
+     ESF G-05        Engine Oil Temperature Indication
+     ESF G-11        Alternative to CS 25.1563 Airspeed Placard, for the installation of modification
+                     114913
+
+     ESF K-03        Localizer Excessive Deviation Alerts (post-TC)
+     ESF K-04        Limit Risk (post-TC)
+     ESF K-08        CAT 3 Operations - Super Fail Passive Anomalies (post-TC)
+
+     ESF P-TS- 0000540-0060084666:
+                    CS-25 Firewall installation of 5min fire withstanding (instead of 15min) CS-E firewall
+
+
+5. Environmental Protection
+
+     5.1 Noise
+     See TCDSN No. EASA.A.151
+
+     5.2 Fuel Venting
+     ICAO Annex 16, Volume II, Amendment 6, Part II, Chapter 2
+
+     5.3 CO2 Emissions
+
+
+                                               Page 8 / 39
+TCDS EASA.A.151                               AIRBUS A350
+Issue 32                                                                               Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+      For aircraft with A350-941 Step 7 configuration (MOD 117155) and Fan Mark II (MOD 106353):
+      ICAO Annex 16, Volume III, Amendment 2, implemented in Art. 9 of Regulation (EU) 2018/1139 as
+      amended by Regulation (EU) 2025/870;
+      CO2 standard in accordance with ICAO Annex 16, Volume III, Part II, Chapter 2, § 2.4.2 f);
+      Note: corresponds to CAEP/10 In-Production standard.
+      For CO2 metric values see EASA Aeroplane CO2 Emissions Database.
+
+
+6. Operational Suitability Data
+
+  The EASA Type Certification with respect to Operational Suitability Data (OSD) is defined as
+  follows:
+  CCD:      Certification Specifications and Guidance Material for Cabin Crew Data CS-CCD
+            Initial Issue dated 31 January 2014
+  MMEL:     Certification Specifications for Master Minimum Equipment List CS-MMEL Initial
+            Issue dated 31 January 2014 (Book 1 only)
+  FCD:      Certification Specifications for Operational Suitability Data (OSD) Flight Crew Data
+            CS-FCD Initial Issue dated 31 January 2014.
+            From September 2023, CS-FCD Issue 2 dated 15 September 2021 is applicable.
+
+
+
+
+                                                Page 9 / 39
+TCDS EASA.A.151                               AIRBUS A350
+Issue 32                                                                                 Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+III. TECHNICAL CHARACTERISTICS AND OPERATIONAL LIMITATIONS
+
+1. A350-900 powered by RR engines
+
+1.1   Type Design Definition
+
+      A350-941 Type Design Definition:              00 V 000 A0941 / C90 Issue 2 or later approved issues
+
+
+1.2   Engines
+
+      A350-941:     Two (2) Rolls Royce Trent XWB-84 or XWB-75 (modification 113768) or XWB-84EP
+                    (modification 120074) turbofan engines
+      See Engine Type Certificate Data Sheet EASA E.111
+      Engine limitations: See Engine TCDS EASA.E.111
+
+      XWB-84 engine can be intermixed with XWB-84EP on the same aircraft.
+
+
+1.3   Fuel and fuel additives
+
+      The fuel system has been certified with: JET A, JET A1, JP5, JP8, N° 3 Jet Fuel, RT and TS-1.
+
+      Refer to applicable Airbus Consumable Material List (CML) for additives.
+
+
+1.4   Oil
+
+      Refer to applicable Airbus Consumable Material List (CML).
+
+
+1.5   Limit Speeds
+
+      Refer to approved Airplane Flight Manual.
+
+
+1.6   Centre of Gravity Range
+
+      Refer to approved Airplane Flight Manual.
+
+
+
+
+                                                Page 10 / 39
+TCDS EASA.A.151                                 AIRBUS A350
+Issue 32                                                                                    Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+1.7     Maximum Certified Weights
+
+     With Trent XWB-84 / -84EP engines:
+                   - Maximum Take-Off Weight: 283 t
+                   - Maximum Landing Weight: 207 t
+                   - Maximum Zero Fuel Weight: 195.7 t (197.2 t for MSN 5 only)
+
+        With Trent XWB-75 engines:
+                   - Maximum Take-Off Weight: 255 t
+                   - Maximum Landing Weight: 207 t
+                   - Maximum Zero Fuel Weight: 195.7 t
+
+         Note: See applicable Airplane Flight Manual (AFM), as listed in ‘Operating and Service
+         Instructions’, for configuration specific mass limitations and aircraft eligibility (Weight Variant).
+
+
+
+
+                                                  Page 11 / 39
+TCDS EASA.A.151                              AIRBUS A350
+Issue 32                                                                              Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+2. Data pertinent to all A350-900 series
+
+2.1   Description
+      Two turbo-fan, long range, twin-aisle, large category airplane
+
+2.2   Fuel quantity
+
+        Tanks                  Usable Fuel (l)               Usable Fuel (kg)
+        Mod number           Basic       110211            Basic        110211
+        Wing                29,924        29,726          23,490        23,335
+        Center              80,947       107,036          63,543        84,023
+        Total               140,795      166,488          110,523      130,693
+      Fuel density is 0.785 kg/l
+
+2.3   Minimum Flight Crew
+
+      Two (2): Pilot and Co-pilot
+
+2.4   Minimum Cabin Crew
+
+      For the A350-900, the minimum required cabin crew number established during the aircraft
+      certification process is 8 (2 per exit pair), irrespective of the Maximum Operational Passenger
+      Seating Capacity (MOPSC).
+
+      The above minimum cabin crew numbers are those demonstrated by the type certificate holder. A
+      lower number is acceptable in the case of specific cabin layouts if documented in an EASA approved
+      major design change or Supplemental Type Certificate (STC).
+
+      In accordance with the operational requirement ORO.CC.100-Number and composition of cabin
+      crew, if the MOPSC for the specific aircraft exceeds 400, the minimum required cabin crew number
+      becomes 9.
+
+      If, for the installation of Type A+ emergency exits, the modifications referenced in Section 1, part
+      III, paragraph 2.5 are embodied, in addition a third cabin crew member must be stationed at each
+      installed pair of Type A+ emergency exits.
+
+
+2.5   Maximum Operational Passenger Seating Capacity
+
+      The maximum number of passengers approved for emergency evacuation are:
+
+                       D1               D2                             D3                D4
+
+
+
+
+                                               Page 12 / 39
+TCDS EASA.A.151                             AIRBUS A350
+Issue 32                                                                                Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+             A350-941             Max Pax      D1-D2         D2-D3   D3-D4      D1-D3        D2-D4
+                                   D1-D4
+            A-A-A-A                 440         110           189     141        299          330
+            A-A-A-A                 428         98            184     146        282          330
+            A-A-A-A                 439         121           159     159        280          318
+            A-A-A-A                 432         102           181     149        283          330
+            A-A-A-A                 440         121           168     151        289          319
+            A-A-A-A                 440         110           171     159        281          330
+            C-A-A-A                 385         55            189     141        244          330
+            C-A-A-A                 385         95            180     110        275          290
+            C-A-A-A                 385         55            179     151        234          330
+            C-A-A-A                 385         55            188     142        243          330
+            C-A-A-A                 385         55            180     150        235          330
+            C-A-A-A                 385         100           135     150        235          285
+            C-A-C-A                 330         56            129     145        185          274
+            C-A-C-A                 283         24            133     126        157          259
+            C-A-C-A                 295         30            138     127        168          265
+            C-A-C-A                 303         28            138     137        166          275
+            A-A-C-A                 385         111           129     145        240          274
+            C–C-C-A                 275         63            92      120        155          212
+            C–C–A-A                 330         55            125     150        180          275
+
+
+
+     If, for the installation of Type A+ emergency exits, the following modifications are embodied:
+           - Mod 115016 and 110972 and as applicable
+               - Mod 110654 (Type A+ dual lane slide-rafts at PAX doors 1 LH/RH) and/or
+               - Mod 110655 (Type A+ dual lane slide-rafts at PAX doors 2 LH/RH) and/or
+               - Mod 114823 (Type A+ dual lane slide-rafts at PAX doors 3 LH/RH) and/or
+               - Mod 110657 (Type A+ dual lane slide-rafts at PAX doors 4 LH/RH)
+
+         a. the limitations as per ESF D-39 are applicable.
+         b. the maximum operational passenger seating capacity and zonal capacities approved for
+            emergency evacuation are:
+
+     A350-941 including Type A+   Max Pax      D1-D2         D2-D3   D3-D4      D1-D3        D2-D4
+           configuration           D1-D4
+            C_A+_A+_A+              415         56            190     169         246          359
+            C_A+_A_A+               405         110           135     160         245          295
+            C_A_A+_A+               405         55            190     160         245          350
+             C_A+_A_A               395         110           135     150         245          285
+             C_A_A_A+               395         55            180     160         235          340
+             C_C_A+_A+              350         55            135     160         190          295
+             C_C_A_A+               340         55            125     160         180          285
+              C_C_C_A+              285         63            92      130         155          222
+
+
+                                              Page 13 / 39
+TCDS EASA.A.151                               AIRBUS A350
+Issue 32                                                                           Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+2.6   Cargo compartment loading
+
+         Cargo compartment                           Maximum load (kg)
+                                               Basic       Mods 110456 / 110512
+         Forward
+                                              22,000                 0
+         Aft                                              19,000
+         Rear (bulk)                                      3,468
+
+      For the positions and the loading conditions authorized in each position
+      (references of containers, pallets and associated weights), see Weight and
+      Balance Manual Chapter 1.10 ref. 00 V 080 A0001 / C9S.
+
+
+2.7   Environmental Flight Envelope
+
+      Maximum operating altitude is 43,100 ft.
+      Refer to approved Airplane Flight Manual.
+
+2.8   Other Limitations
+
+      Refer to approved Airplane Flight Manual.
+
+
+2.9   Auxiliary Power Unit (APU)
+
+      One APU, Honeywell HGT1700.
+
+      Fuel and Oil: Refer to applicable approved Manuals.
+
+
+2.10 Equipment
+
+      The equipment required by the applicable requirements shall be installed.
+
+
+2.11 All Weather Capabilities
+
+The aircraft is qualified to Cat 3 precision approach and autoland.
+
+
+2.12 Wheels and Tyres
+
+              Gear              Quantity          Wheel size               Tyre size
+              NLG                  2                16”               1050 x 395R16 28PR
+              MLG                  8                23”               1400 x 530R23 42PR
+
+
+2.13 Hydraulics
+
+
+                                                Page 14 / 39
+TCDS EASA.A.151                            AIRBUS A350
+Issue 32                                                                           Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+     Fluid specifications: Refer to applicable Airbus Consumable Material List (CML) document.
+
+
+
+
+                                             Page 15 / 39
+TCDS EASA.A.151                                 AIRBUS A350
+Issue 32                                                                                   Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+IV. OPERATING AND SERVICE INSTRUCTIONS
+
+1. Airplane Flight Manual
+
+   A350 Airplane Flight Manual: STL 35000 (certification reference for TC: 00 V 101 A0941 / C9S Issue 4)
+   or later approved revisions.
+
+2. Maintenance Instructions and Airworthiness Limitations
+
+The complete set of Instructions for Continued Airworthiness is identified in paragraph 1.B. of the
+Maintenance Procedure Introduction.
+
+   - Safe Life Airworthiness Limitation Items are provided in the A350 Airworthiness Limitations Section
+     (ALS) Part 1, [1];
+
+   - Damage-Tolerant Airworthiness Limitation Items are provided in the A350 Airworthiness
+     Limitations Section (ALS) Part 2, [1];
+
+   - Certification Maintenance Requirements are provided in the A350 Airworthiness Limitations
+     Section (ALS) Part 3, [1];
+
+   - A350 System Equipment Maintenance Requirements are provided in the A350 Airworthiness
+     Limitations Section (ALS) Part 4, [1];
+
+   - A350 Fuel System Airworthiness Limitations are provided in the A350 Airworthiness Limitations
+     Section (ALS) Part 5, [1];
+
+   - Maintenance Review Board Report, [2].
+
+   Except if documented in Aircraft documentation (Maintenance Procedures, Structural Repair
+   Instructions, Electrical Standard Practices, Service Bulletins), all elements that are part of the Electrical
+   Structure Network (ESN) shall not be modified, removed or repaired without agreement of Airbus.
+
+   Note [1]: Initial Revision and subsequent Variations (that may be compiled in a Revision) are approved
+   under the EASA system. The applicable Airworthiness Limitations Section of the ICA is available on the
+   AirbusWorld website.
+
+   Note [2]: The applicable Revision and subsequent Temporary Revisions of the MRBR are available on
+   the AirbusWorld website.
+
+3. ETOPS
+
+   The Type Design, system reliability and performance of the following A350 model(s) were found
+   capable for Extended Range Operations (ETOPS) when configured, maintained and operated in
+   accordance with the current revision of the ETOPS Configuration, Maintenance and Procedures (CMP)
+   document, XWB/EASA: CS 25.1535/CMP.
+
+
+                                                  Page 16 / 39
+TCDS EASA.A.151                             AIRBUS A350
+Issue 32                                                                            Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+  This finding does not constitute an approval to conduct Extended Range Operations (operational
+  approval must be obtained from the responsible Authority).
+
+  Certificated models are A350 aircraft models, with all applicable engines as listed in the applicable
+  ETOPS CMP document.
+
+
+
+
+                                             Page 17 / 39
+TCDS EASA.A.151                              AIRBUS A350
+Issue 32                                                                               Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+V. OPERATIONAL SUITABILITY DATA (OSD)
+
+   The Operational Suitability Data elements listed below are approved by the European Union Aviation
+   Safety Agency under the EASA Type Certificate [original TC number] as per Commission Regulation (EU)
+   748/2012 as amended by Commission Regulation (EU) No 69/2014.
+
+1. Master Minimum Equipment List
+
+   a. The Master Minimum Equipment List has been approved as per the defined Operational Suitability
+      Data Certification Basis and as documented in A350 MMEL (reference: STL 35100) first revision
+      dated 06 November 2014, or later approved revisions.
+   b. Required for entry into service by EU operator.
+
+2. Flight Crew Data
+
+   a. The Flight Crew data has been approved as per the defined Operational Suitability Data Certification
+      Basis and as documented in “A350 Operational Suitability Data Flight Crew, (Ref: Airbus
+      V01RP1505446 Issue 1, dated 05 May 2015)”, or later approved revisions.
+   b. Required for entry into service by EU operator.
+   c. Pilot Type Rating: The licence endorsement for the A350-900 series aircraft is "A330/A350". The
+      A350-900 and the A330 series aircraft are variants of the same type of aircraft.
+
+3. Cabin Crew Data
+
+   a. The Cabin Crew data has been approved as per the defined Operational Suitability Data Certification
+      Basis and as documented in “A350 Operational Suitability Data Cabin Crew, Issue 1.0. (Ref: Airbus
+      V01RP1519368 dated 03 July 2015)”, or later approved revisions.
+   b. Required for entry into service by EU operator.
+   c. The A350-941 aircraft model is determined to be a variant to the A330-200/-300 aircraft model(s).
+   d. The A350-941 model equipped with at least one pair of Type A+ exits is determined to be a variant
+      to the A350-941 model equipped with Type A exits.
+   e. The model A350-941 equipped with at least one pair of Type A+ exits is determined to be a variant
+      to the A330-200/-300 aircraft models.
+
+VI. PART-26 COMPLIANCE INFORMATION
+
+   For all models, compliance with point 26.300(a) of Part-26(*) is demonstrated by complying with
+   points:
+
+   -     26.301 (a) Compliance Plan for (R)TC holders
+   -     26.302 Fatigue and damage tolerance evaluation
+   -     26.303 Limit of Validity
+   -     26.304 (a)(b) Corrosion prevention and control programme
+   -     26.306 (a)(b)(c) Fatigue critical baseline structure
+   -     26.307 Damage tolerance data for existing changes to fatigue-critical structure
+   -     26.308 Damage tolerance data for existing repairs to fatigue-critical structure
+
+
+                                               Page 18 / 39
+TCDS EASA.A.151                            AIRBUS A350
+Issue 32                                                                   Date: 01.07.2026
+SECTION 1: A350-900 SERIES
+
+
+
+  * compliance to point 26.305 is ensured by compliance to Part-21.A.65.
+
+
+
+
+                                             Page 19 / 39
+ TCDS EASA.A.151                         AIRBUS A350
+ Issue 32                                                                     Date: 01.07.2026
+ SECTION 2: A350-1000 SERIES
+
+
+SECTION 2: A350-1000 SERIES
+
+I.   GENERAL
+
+
+1. Type/Model
+
+                                               A350-1041
+
+2. Performance Class
+
+                                               A
+
+3. Certifying Authority
+
+                                               EASA
+
+4. Manufacturer
+
+                                               AIRBUS S.A.S
+                                               2 Rond-point Emile Dewoitine
+                                               31700 Blagnac
+                                               FRANCE
+
+5. EASA Certification Application Date
+
+                                               A350-1041: 30 July 2013
+
+6. EASA Type Certification Date
+
+                                               A350-1041: 21 November 2017
+
+
+
+
+                                          Page 20 / 39
+TCDS EASA.A.151                                AIRBUS A350
+Issue 32                                                                                   Date: 01.07.2026
+SECTION 2: A350-1000 SERIES
+
+
+II. CERTIFICATION BASIS
+
+The Certification Basis included in the below §1 to §7 is valid for all areas of the A350-1041 (no distinction
+between affected or non-affected areas).
+
+1. EASA Certification Basis
+
+The following EASA airworthiness standards are applicable:
+
+   EASA Certification Specification 25, Amendment 13 – Large Aeroplanes
+   CS 25 at Amendment 8 is applied for paragraph 25.1322 “Flight Crew Alerting”.
+   EASA Certification Specification 25.851 (a) and (c) at Amendment 17 for the installation of halon free
+    handheld fire extinguisher.
+   EASA Certification Specification AWO, Initial Issue – All Weather Operations
+   EASA Certification Specifications and Acceptable Means of Compliance for Airborne Communications,
+    Navigation and Surveillance CS ACNS Initial Issue, Subpart D Sections 2/3/4 and Subpart E Section2.
+
+   For type A+ emergency exit installation (see also ESF D-39), the following CS are applicable at
+    amendment 20:
+    CS 25.561(c), 25.601, 25.603(a)(b)(c), 25.605(a)(b), 25.789(a), 25.0795(d), 25.801(a)(d),
+    25.0803(a)(c), 25.0807 (a)(7)(g)(i)(f), 25.809, 25.810(a)(1), 25.0811(d)(2)(g), 25.812(h)(k), 25.0813,
+    25.853(a), 25.869(a)(3), 25.901(c), 25.1301(a)(1)(2)(3), 25.1309(a)(b), 25.1411(c)(d),
+    25.1415(a)(b)(c), 25.1438, 25.1501, 25.1561(a)(d)(e), 25.1701(a), 25.1703(a)(b)(c), 25.1705(a),
+    25.1707(a)(d)(l), 25.1709(a)(b), 25.1711(a)(c)(d)(e), 25.1713(a)(c)
+    For mixed configurations involving Type A, C and A+ emergency exits, except CS 25.795(d) and
+    25.803(a)(c), the applicable CS may continue to be applied at an amendment that was applicable
+    before the installation of type A+ emergency exits if the area is not affected by the type +
+    installation.
+
+   For modification 114947 installation or changes to the cowling or nacelle skin:
+    CS 25.1193(e)(4)(f) amendment 22
+
+   For modification 116832 or changes to the emergency locator transmitter distress tracking and
+    antenna installation: CS-ACNS issue 3, Subpart E Section 3.
+   For cabin layout, CS 25.853 (g) and 25.791(d) amendment 23 for the removal of ashtrays on
+    lavatories’ inner doors.
+   When ROPS step3 (MOD 109746), and FCGS X13 or FCGS X14 (MOD 115496 or 117966) are installed,
+    CS 25.705 is applicable at Amendment 24.
+
+   The following part of the certification basis constitutes the minimum required safety level of CS
+    25.571 amdt 13.
+
+For changes that affect or introduce fatigue critical structures CS 25.571 amdt 13 applies, plus:
+
+
+                                                 Page 21 / 39
+TCDS EASA.A.151                              AIRBUS A350
+Issue 32                                                                             Date: 01.07.2026
+SECTION 2: A350-1000 SERIES
+
+
+
+       1.        For structures susceptible to widespread fatigue damage (WFD):
+                a.       WFD evaluations must substantiate freedom from WFD up to the limit of
+       validity (LOV);
+                b.       Inspections and other maintenance actions upon which the LOV is dependent
+       must be established and submitted to EASA for approval;
+
+       2.      The list of fatigue critical modified structures (FCMS) must be developed or amended as
+necessary and made available to aircraft operators as part of the ICA of the change.
+
+       3.      The baseline corrosion prevention and control programme must be amended or
+supplemented to address the influence of the change on the effectiveness of the programme, as
+necessary.
+
+       Note 1: Points 1 and 3 do not apply to changes introduced by STC.
+
+       Note 2: Points 1, 2 and 3 do not apply to repairs.
+
+       Note 3: CS 25.571 amdt 19 or later does not include the above exceptions for STC and repair
+       applicants any longer.
+
+Note 4: This TCDS entry does not invalidate the 21.A.101 process by which a later CS 25.571 amendment
+may become applicable.
+
+2. Special Conditions
+
+      SC B-01        Stalling and Scheduled Operating Speeds
+      SC B-1002      Motion and effect of cockpit controls
+      SC B-04        Static Directional, Lateral and Longitudinal Stability and Low Energy Awareness
+      SC B-05        Flight envelope protection
+      SC B-09        Flight in Icing Condition
+      SC B-11        Soft Go Around mode
+
+      SC C-01        Crash Survivability for CFRP Fuselage
+      SC C-05        Tyre Debris vs. Fuel Leakage for CFRP Fuel Tank
+      SC C-06        Dynamic braking
+      SC C-14        Pivoting Loads
+
+      SC D-04        Crew Rest Compartments
+      SC D-06        High Altitude Operation / High Cabin Heat Load
+      SC D-07        Control Surface Position Awareness / Electronic Flight Control Systems
+      SC D-14        Application of Heat Release and Smoke Density Requirements to Seat Materials
+      SC D-16        In Flight Fire - Composite Fuselage Construction
+      SC D-20        Lateral Trim Function through Differential Flap Setting
+      SC D-32        Use of magnesium alloys for passenger seats components
+      SC D-35        Installation of inflatable seat belts
+
+                                               Page 22 / 39
+TCDS EASA.A.151                              AIRBUS A350
+Issue 32                                                                              Date: 01.07.2026
+SECTION 2: A350-1000 SERIES
+
+
+      SC D-36       Installation of structure-mounted airbag
+      SC D-37       Installation of mini-suite type seating
+      SC D-42       Installation of stowage or charging stations for Personal Electronic Devices (PED) in
+                    an aircraft cabin (post-TC)
+      SC D-43       Installation of oblique seats
+      SC D-44       Installation of Three Point Restraint & Pretensioner System (post-TC)
+      SC D-45       Incorporation of Inertia Locking Device in Dynamic Seats
+      SC D-MULTI-06 Installation of high wall suite type seating
+
+      SC E-08        Fire withstanding Capability of CFRP Wing Fuel Tanks
+      SC E-12        Water / Ice in Fuel System
+
+      SC F-12        HIRF Protection
+      SC F-13        Lithium Battery Installations
+      SC F-26        Flight Recorders including Data Link Recording
+      SC F-38        Security Assurance Process to isolate or protect the Aircraft Systems and Networks
+                     from internal and external Security Threats
+      SC F-GEN-01    Non-rechargeable lithium battery installations, applicable by the date of this TCDS
+                     at issue 18
+
+      SC G-06        Cancellation of AFM Engine Management Tables
+
+      SC M-TS-0000566 Installed Physical Secondary Barrier (IPSB)
+
+
+3.   Deviations
+
+      None
+
+
+4. Equivalent Safety Findings
+
+      ESF B-19       A350 Large Antenna Installation - Vibration and Buffeting
+      ESF C-11       Ground Loads Conditions
+      ESF C-12       Undercarriage Lateral Turning Loads
+
+      ESF D-11       Packs off operations
+      ESF D-15       Post Crash Fire – Composite Fuselage Construction
+      ESF D-19       Overpressure Relief Valves and Outflow Valves
+      ESF D-23       Indication of the Passenger Door from outside Position if the Door is not fully
+                     Closed, Latched and Locked
+      ESF D-28       Green Arrow and “Open” Placard for Emergency Exit Marking
+      ESF D-30       Installation of Angled Seats
+      ESF D-31       Application of reduced Intrusion Loads in certain Areas of the Flight Deck
+                     Boundaries
+      ESF D-34       APU Doors Compliance to CS 25.783(a)
+
+
+                                               Page 23 / 39
+TCDS EASA.A.151                             AIRBUS A350
+Issue 32                                                                              Date: 01.07.2026
+SECTION 2: A350-1000 SERIES
+
+
+     ESF D-39        Type A+ Emergency Exits
+
+     ESF E-1004      Trent XWB 97k Thrust Reverser Testing
+     ESF E-07        Warning Means for Rolls Royce Engine Fuel Filters
+     ESF E-09        Rolls Royce Engine Turbine Overheat Detection
+     ESF E-13        Fire Extinguishing Agent Concentration
+     ESF E-14        Pressure fuelling system shut-off operation check
+     ESF E-1022      Trent XWB -97 zone 2 and 3 (seals and caps) fire withstanding capability
+
+     ESF F-22        Minimum Mass Flow of Supplemental Oxygen
+     ESF F-23        Landing Light Switch
+     ESF F-33        Pneumatic Systems – harmonised 25.1438
+     ESF F-52        Crew Determination of Quantity of Oxygen in Passenger Oxygen System
+     ESF F-63        Improved Passenger Oxygen Mask Deployment System
+     ESF F-69        Pitot Heat Indication Systems
+     ESF F-76        First Aid Oxygen Equipment
+
+     ESF FCD-MULTI-01          CS-FCD T3 Evaluation Process
+
+     ESF G-05        Engine Oil Temperature Indication
+     ESF G-11        Alternative to CS 25.1563 Airspeed Placard, for the installation of modification
+                     114913
+
+     ESF K-03        Localizer Excessive Deviation Alerts
+     ESF K-04        Limit Risk
+     ESF K-08        CAT 3 Operations – Super Fail Passive Anomalies
+
+
+5. Environmental Protection
+
+     5.1 Noise
+     See TCDSN No. EASA.A.151
+
+     5.2 Fuel Venting
+     ICAO Annex 16, Volume II, Amendment 7, Part II, Chapter 2
+
+     5.3 CO2 Emissions
+     For aircraft with Step7 Improvement Package (Structure) (MOD 115348) and 97K Continuous
+     Improvement Step 1 Modifications (MOD 117240):
+     ICAO Annex 16, Volume III, Amendment 1, implemented in Art. 9 of Regulation (EU) 2018/1139 as
+     amended by Regulation (EU) 2021/1087;
+
+     CO2 standard in accordance with ICAO Annex 16, Volume III, Part II, Chapter 2, § 2.4.2 f);
+     Note: corresponds to CAEP/10 In-Production Standard.
+     For CO2 metric values see EASA Aeroplane CO2 Emissions Database.
+
+                                               Page 24 / 39
+TCDS EASA.A.151                               AIRBUS A350
+Issue 32                                                                                Date: 01.07.2026
+SECTION 2: A350-1000 SERIES
+
+
+
+6. Operational Suitability Data
+
+  The EASA Type Certification with respect to Operational Suitability Data (OSD) is defined as
+  follows:
+  CCD:      Certification Specifications and Guidance Material for Cabin Crew Data CS-CCD
+            Initial Issue
+  MMEL:     Certification Specifications for Master Minimum Equipment List CS-MMEL Initial
+            Issue (Book 1 only)
+  FCD:      Certification Specifications for Operational Suitability Data (OSD) Flight Crew Data
+            CS-FCD Initial Issue dated 31 January 2014.
+            From September 2023, CS-FCD Issue 2 dated 15 September 2021 is applicable.
+
+
+
+
+                                               Page 25 / 39
+TCDS EASA.A.151                               AIRBUS A350
+Issue 32                                                                                 Date: 01.07.2026
+SECTION 2: A350-1000 SERIES
+
+
+III. TECHNICAL CHARACTERISTICS AND OPERATIONAL LIMITATIONS
+
+1. A350-1000 powered by RR engines
+
+1.1   Type Design Definition
+
+      A350-1041 Type Design Definition:             00 V 000 A1041 / C10 Issue 2 or later approved issues
+
+
+1.2   Engines
+
+      A350-1041:        Two (2) Rolls Royce Trent XWB-97 turbofan engines
+      See Engine Type Certificate Data Sheet EASA E.111
+      Engine limitations: See Engine TCDS EASA.E.111.
+
+
+1.3   Fuel and fuel additives
+
+      The fuel system has been certified with: JET A, JET A1, JP5, JP8, N° 3 Jet Fuel, RT and TS-1.
+
+      Refer to applicable Airbus Consumable Material List (CML) for additives.
+
+
+1.4   Oil
+
+      Refer to applicable Airbus Consumable Material List (CML) document.
+
+
+1.5   Limit Speeds
+
+      Refer to approved Airplane Flight Manual.
+
+
+1.6   Centre of Gravity Range
+
+      Refer to approved Airplane Flight Manual.
+
+
+
+
+                                                Page 26 / 39
+TCDS EASA.A.151                               AIRBUS A350
+Issue 32                                                                                 Date: 01.07.2026
+SECTION 2: A350-1000 SERIES
+
+
+1.7   Maximum Certified Weights
+
+                    -   Maximum Take-Off Weight: 322 t
+                    -   Maximum Landing Weight: 236 t
+                    -   Maximum Zero Fuel Weight: 223 t
+
+Note: See applicable Airplane Flight Manual (AFM), as listed in ‘Operating and Service Instructions’, for
+configuration specific mass limitations and aircraft eligibility (Weight Variant).
+
+
+2. Data pertinent to all A350-1000 series
+
+2.1   Description
+      Two turbo-fan, long range, twin-aisle, large category airplane
+
+2.2   Fuel quantity
+                  Tanks               Usable Fuel (l)               Usable Fuel (kg)
+                  Wing                   29,437                         23,108
+                  Center                 99,917                         78,435
+                  Total                  158,791                       124,651
+
+              Fuel density is 0.785 kg/l
+
+2.3   Minimum Flight Crew
+      Two (2): Pilot and Co-pilot
+
+2.4   Minimum Cabin Crew
+      For the A350-1000, the minimum required cabin crew number established during the aircraft
+      certification process is 8, irrespective of the Maximum Operational Passenger Seating Capacity
+      (MOPSC).
+
+      The above minimum cabin crew numbers are those demonstrated by the type certificate holder. A
+      lower number is acceptable in the case of specific cabin layouts if documented in an EASA approved
+      major design change or Supplemental Type Certificate (STC).
+
+      In accordance with the operational requirement ORO.CC.100-Number and composition of cabin
+      crew, if the MOPSC for the specific aircraft exceeds 400, the minimum required cabin crew number
+      becomes 9.
+      If, for the installation of Type A+ emergency exits, the modifications referenced in Section 2, part
+      III, paragraph 2.5 are embodied, in addition a third cabin crew member must be stationed at each
+      installed pair of Type A+ emergency exits.
+
+2.5   Maximum Operational Passenger Seating Capacity
+      The zonal capacities certified on A350-941 (ref. Section 1, III, §2.5) are also considered acceptable
+
+
+                                                Page 27 / 39
+TCDS EASA.A.151                              AIRBUS A350
+Issue 32                                                                                Date: 01.07.2026
+SECTION 2: A350-1000 SERIES
+
+
+     for A350-1041. The zonal capacities certified on A350-1041 only are not acceptable for A350-941
+
+     The maximum number of passengers approved for emergency evacuation are:
+
+                     D1                 D2                           D3                   D4
+
+
+
+
+          A350-1041 only         Max Pax      D1-D2          D2-D3   D3-D4      D1-D3      D2-D4
+                                  D1-D4
+
+            A-A-A-A               440          110            177     153        287           330
+            A-A-A-A               440          110            158     172        268           330
+            A-A-A-A               440          110            165     165        275           330
+            A-A-A-A               440          110            161     169        271           330
+            C-A-A-A               385          55             158     172        213           330
+            C-A-A-A               370          40             162     168        202           330
+            C-A-A-A               372          44             165     163        209           328
+            C-A-A-A               385          55             165     165        220           330
+            C-A-A-A               385          90             140     155        230           295
+            C-A-A-A               385          55             160     170        215           330
+            C-A-A-A               385          96             140     149        236           289
+            C-A-A-A               385          55             155     175        210           330
+            C-A-A-A               385          100            130     155        230           285
+            C-A-C-A               330          55             110     165        165           275
+            C-A-C-A               330          56             129     145        185           274
+            A-A-C-A               385          110            110     165        220           275
+
+
+
+     If, for the installation of Type A+ emergency exits, the following modifications are embodied:
+           - Mod 115016 and 110972 and as applicable
+                - Mod 110654 (Type A+ dual lane slide-rafts at PAX doors 1 LH/RH) and/or
+                - Mod 110655 (Type A+ dual lane slide-rafts at PAX doors 2 LH/RH) and/or
+                - Mod 110656 (Type A+ dual lane slide-rafts at PAX doors 3 LH/RH) and/or
+                - Mod 110657 (Type A+ dual lane slide-rafts at PAX doors 4 LH/RH)
+           a. the limitations as per ESF D-39 are applicable.
+           b. the maximum operational passenger seating capacity and zonal capacities approved for
+               emergency evacuation are:
+
+      A350-1041 including Type   Max Pax      D1-D2          D2-D3    D3-D4     D1-D3       D2-D4
+          A+ configuration        D1-D4
+           A+_A+_A+_A+             480         120            180         180    300           360
+           A+_A+_A+_A+             480         120            170         190    290           360
+
+
+                                              Page 28 / 39
+TCDS EASA.A.151                              AIRBUS A350
+Issue 32                                                                                 Date: 01.07.2026
+SECTION 2: A350-1000 SERIES
+
+
+       A350-1041 including Type    Max Pax    D1-D2           D2-D3   D3-D4      D1-D3       D2-D4
+           A+ configuration         D1-D4
+            A+_A+_A+_A+               480        124           176     180        300         356
+            A_A+_A+_A+                470        110           175     185        285         360
+            A_A+_A+_A+                429        69            180     180        249         360
+             A_A+_A_A+                460        110           168     182        278         350
+             A_A_A+_A+                460        110           175     175        285         350
+             A_A+_A_A                 450        110           171     169        281         340
+             A_A_A_A+                 450        110           165     175        275         340
+            C_A+_A+_A+                415        55            180     180        235         360
+             C_A+_A_A+                405        55            165     185        220         350
+             C_A+_A_A+                405        110           130     165        240         295
+             C_A_A+_A+                405        55            170     180        225         350
+             C_A_A+_A+                405        96            150     159        246         309
+             C_A+_A_A                 395        55            165     175        220         340
+             C_A_A_A+                 395        55            165     175        220         340
+             C_A_A_A+                 395        90            140     165        230         305
+             C_A+_C_A+                350        56            139     155        195         294
+              C_A_C_A+                340        55            110     175        165         285
+
+
+
+2.6   Cargo compartment loading
+                  Cargo compartment                      Maximum load (kg)
+                  Forward                                     26,500
+                  Aft                                         24,500
+                  Rear (bulk)                                  1,500
+
+             For the positions and the loading conditions authorized in each
+             position (references of containers, pallets and associated weights), see
+             Weight and Balance Manual Chapter CTL-LIM ref. 00 V 080 A0001 /
+             C1S.
+
+
+2.7   Environmental Flight Envelope
+      Maximum operating altitude is 41,450 ft.
+
+      Refer to approved Airplane Flight Manual.
+
+
+2.8   Other Limitations
+      Refer to approved Airplane Flight Manual.
+
+
+2.9   Auxiliary Power Unit (APU)
+      One APU, Honeywell HGT1700.
+
+                                               Page 29 / 39
+TCDS EASA.A.151                               AIRBUS A350
+Issue 32                                                                             Date: 01.07.2026
+SECTION 2: A350-1000 SERIES
+
+
+
+      Fuel and Oil: Refer to applicable approved Manuals.
+
+
+2.10 Equipment
+      The equipment required by the applicable requirements shall be installed.
+
+
+2.11 All Weather Capabilities
+The aircraft is qualified to Cat 3 precision approach and autoland.
+
+
+2.12 Wheels and Tyres
+              Gear              Quantity          Wheel size                 Tyre size
+              NLG                  2                16”                1050 x 395R16 28PR
+              MLG                 12                22”                 50 x 20.0R22 34PR
+                                                                        50 x 20.0R22 36PR
+
+
+2.13 Hydraulics
+      Fluid specifications: Refer to applicable Airbus Consumable Material List (CML) document.
+
+
+
+
+                                                Page 30 / 39
+TCDS EASA.A.151                                 AIRBUS A350
+Issue 32                                                                                    Date: 01.07.2026
+SECTION 2: A350-1000 SERIES
+
+
+IV. OPERATING AND SERVICE INSTRUCTIONS
+
+1. Airplane Flight Manual
+   A350 Airplane Flight Manual: STL 35000 (certification reference for TC: 00 V 101 A1041 / C1S Issue 3)
+   or later approved revisions.
+
+2. Maintenance Instructions and Airworthiness Limitations
+The complete set of Instructions for Continued Airworthiness is identified in paragraph 1.B. of the
+Maintenance Procedure Introduction.
+
+   - Limitations applicable to Safe Life Airworthiness Limitation Items are provided in the A350
+     Airworthiness Limitations Section (ALS) Part 1 [1],
+
+   - Limitations applicable to Damage-Tolerant Airworthiness Limitation Items are provided in the A350
+     Airworthiness Limitations Section (ALS) Part 2 [1],
+
+   -   Certification Maintenance Requirements are provided in the A350 Airworthiness Limitations
+       Section (ALS) Part 3 [1],
+
+   -   System Equipment Maintenance Requirements are provided in the A350 Airworthiness Limitations
+       Section (ALS) Part 4 [1],
+
+   -   Fuel System Airworthiness Limitations are provided in the A350 Airworthiness Limitations Section
+       (ALS) Part 5 [1].
+
+   - Maintenance Review Board Report, [2].
+
+   Except if documented in Aircraft documentation (Maintenance Procedures, Structural Repair
+   Instructions, Electrical Standard Practices, Service Bulletins), all elements that are part of the Electrical
+   Structure Network (ESN) shall not be modified, removed or repaired without agreement of Airbus.
+
+   Note [1]: Initial Revision and subsequent Variations (that may be compiled in a Revision) are approved
+   under the EASA system. The applicable Airworthiness Limitations Section of the ICA is available on the
+   AirbusWorld website.
+
+   Note [2]: The applicable Revision and subsequent Temporary Revisions of the MRBR are available on
+   the AirbusWorld website.
+
+
+3. ETOPS
+   The Type Design, system reliability and performance of the following A350 model(s) were found
+   capable for Extended Range Operations (ETOPS) when configured, maintained and operated in
+   accordance with the current revision of the ETOPS Configuration, Maintenance and Procedures (CMP)
+   document, XWB/EASA: CS 25.1535/CMP.
+   This finding does not constitute an approval to conduct Extended Range Operations (operational
+   approval must be obtained from the responsible Authority).
+
+                                                  Page 31 / 39
+TCDS EASA.A.151                              AIRBUS A350
+Issue 32                                                                               Date: 01.07.2026
+SECTION 2: A350-1000 SERIES
+
+
+   Certificated models are A350 aircraft models, with all applicable engines as listed in the applicable
+   ETOPS CMP document.
+
+
+V. OPERATIONAL SUITABILITY DATA (OSD)
+
+   The Operational Suitability Data elements listed below are approved by the European Union Aviation
+   Safety Agency under the EASA Type Certificate [original TC number] as per Commission Regulation (EU)
+   748/2012 as amended by Commission Regulation (EU) No 69/2014.
+
+1. Master Minimum Equipment List
+
+   a. The Master Minimum Equipment List has been approved as per the defined Operational Suitability
+      Data Certification Basis and as documented in A350 MMEL (reference: STL 35100), first revision at
+      Type Certification date, or later applicable revision.
+   b. Required for entry into service by EU operator.
+
+2. Flight Crew Data
+
+   a. The Flight Crew data has been approved as per the defined Operational Suitability Data Certification
+      Basis and as documented in “Operational Suitability Data – Flight Crew – A330/A350 (ref: A330 350
+      FCDR update for A350-1000_V00RP1731843_v1.0, dated 13 October 2017), or later approved
+      revisions.
+   b. Required for entry into service by EU operator.
+   c. Pilot Type Rating: The licence endorsement for the A350-900 and A350-1000 series aircraft is
+      “A330/A350”. The A350-900, the A350-1000 and the A330 series aircraft are variants of the same
+      type of aircraft.
+
+3. Cabin Crew Data
+
+   a. The Cabin Crew data has been approved as per the defined Operational Suitability Data Certification
+      Basis and as documented in “A350 Operational Suitability Data Cabin Crew, Issue 2 (Ref: Airbus
+      V01RP1519368 dated 17 May 2017)”, or later approved revisions.
+   b. Required for entry into service by EU operator.
+   c. The A350-1041 model is determined to be the same aircraft type as the A350-941 model. The A350-
+      941/-1041 model(s) are determined to be variants to the A330-200/-300 aircraft model(s).
+   d. The A350-1041 model equipped with at least one pair of Type A+ exits is determined to be a variant
+       to the A350-1041 model equipped with Type A exits.
+   e. The model A350-1041 equipped with at least one pair of Type A+ exits is determined to be a variant
+       to the A330-200/-300 aircraft models.
+
+
+VI. PART-26 COMPLIANCE INFORMATION
+
+
+
+
+                                               Page 32 / 39
+TCDS EASA.A.151                              AIRBUS A350
+Issue 32                                                                              Date: 01.07.2026
+SECTION 2: A350-1000 SERIES
+
+
+  For all models, compliance with point 26.300(a) of Part-26(*) is demonstrated by complying with
+  points:
+
+  -      26.301 (a) Compliance Plan for (R)TC holders
+  -      26.302 Fatigue and damage tolerance evaluation
+  -      26.303 Limit of Validity
+  -      26.304 (a)(b) Corrosion prevention and control programme
+  -      26.306 (a)(b)(c) Fatigue critical baseline structure
+  -      26.307 Damage tolerance data for existing changes to fatigue-critical structure
+  -      26.308 Damage tolerance data for existing repairs to fatigue-critical structure
+
+      * compliance to point 26.305 is ensured by compliance to Part-21.A.65.
+
+
+
+
+                                              Page 33 / 39
+TCDS EASA.A.151                             AIRBUS A350
+Issue 32                                                                             Date: 01.07.2026
+
+
+
+
+ADMINISTRATIVE SECTION
+
+VII. ACRONYMS AND ABBREVIATIONS
+
+AFM             Airplane Flight Manual
+ALS             Airworthiness Limitations Section
+APU             Auxiliary Power Unit
+AWO             All Weather Operations
+CFRP            Carbon Fiber Reinforced Plastic
+EASA            European Union Aviation Safety Agency
+ESF             Equivalent Safety Finding
+ETOPS           Extended Range Operation with Two-Engine Aeroplanes
+HIRF            High Intensity Radiated Field
+RR              Rolls Royce
+SC              Special Condition
+TC              Type Certificate
+TCDS            Type Certificate Data Sheet
+XWB             Extra Wide Body
+
+
+VIII.      CHANGE RECORD
+
+        Issue           Date          Changes
+         01      30 September 2014    Initial Issue for TC
+         02       14 October 2014     Approval of ETOPS 180 min and beyond 180 min
+         03       09 January 2015      - Part II – Paragraph 2.1;
+                                       - Part III – Paragraph 1.1 ; Part III – Paragraph 2.10 ;
+                                       - Part III – Paragraph 2.13
+                                       - Part IV – Paragraph 1 ; Part IV – Paragraph 2
+                                       - Part V – Paragraph 1
+         04        31 August 2015      - Part II – Paragraph 7
+                                       - Part III – Paragraph 1.7, Paragraph 2.2, Paragraph 2.4 (new)
+                                       - Part V – Paragraph1, Paragraph 2, Paragraph 3 ;
+         05        22 February 2016    - Part III – Paragraph 1.7
+         06          18 May 2016       - Part II – Paragraph 2.1
+         07        24 October 2016     - Part III – Paragraph 1.7
+         08       08 December 2016     - Part III – Paragraph 1.7
+         09          30 June 2017      - Part II – Paragraph 2.1, Paragraph 6;
+                                       - Part III – Paragraph 1.7
+         10       21 November 2017     - Section 1, Part III – Paragraph 1.7
+                                       - Section 2: Inclusion of the A350-1000 TC
+         11       21 December 2017     - Section 2, Part III – Paragraph 1.7
+                                       - Section 2, Part IV – Paragraph 2
+
+
+
+
+                                              Page 34 / 39
+TCDS EASA.A.151                        AIRBUS A350
+Issue 32                                                                         Date: 01.07.2026
+
+
+
+
+   Issue              Date        Changes
+    12            29 May 2018     - Section 2, Part III – Paragraph 1.7
+                                  - Section 2, Part III – Paragraph 2.8
+                                  - Section 2, Part IV – Paragraph 3
+    13            27 June 2018    - Section 1. Part II – Paragraph 2.1, SC D-45 added
+                                  - Section 1, Part III – Paragraph 1.7, WV010 added
+                                  - Section 1, Part III – Paragraph 2.8 ALS-ETWF is. 5
+                                  - Section 2, Part II – Paragraph 2.1, SC D-45 added
+                                  - Section 2, Part III – Paragraph 2.8 ALS-ETWF is. 5
+                                  - Section 2, Part IV – Paragraph 3, ETOPS 180min added
+    14            09 July 2018    - Section 2, Part IV – Paragraph 3, ETOPS beyond 180min added
+    15        26 September 2018   - Section 1, Part II – Paragraph 2.1, SCs D-42 and D-44 added
+                                  - Section 1, Part III – Paragraph 1.7, WV013 added
+                                  - Section 1, Part III – Paragraph 2.2, optional fuel quantities
+                                    added
+                                  - Section 1, Part III – Paragraph 2.4, clarification on cabin crew
+                                    distribution
+                                  - Section 1, Part III – Paragraph 2.5, emergency exit
+                                    configuration C-C-C-A added
+                                  - Section 1, Part III – Paragraph 2.6, optional cargo compartment
+                                    loading added
+                                  - Section 2, Part II – Paragraph 2.1, SCs D-42 and D-44 added
+                                  - Section 2, Part III – Paragraph 2.11, all weather capabilities
+                                    updated
+    16            12 March 2019   - Section 1, Part II – Paragraph 1, CS 25.851(a)(c) amdt 17 added
+                                    for halon free handheld fire extinguishers
+                                  - Section 1, Part III – Paragraph 1.2, 75k engine rating added
+                                  - Section 1, Part III – Paragraph 1.7, WV016 added
+                                  - Section 2, Part II – Paragraph 1, CS 25.851(a)(c) amdt 17 added
+                                    for halon free handheld fire extinguishers
+
+    17            03 April 2019   - Section 1, Part III – Paragraph 1.2, wording correction
+                                  - Section 1, Part VI – Paragraph 3, ETOPS for XWB-75 engine
+                                   rating added
+    18            15 May 2018     - Section 1, Part II – Paragraph 2, SC F-GEN-01 added
+                                  - Section 1, Part II – Paragraph 5, Reference standardisation
+                                  - Section 1, Part III – Paragraph 1.7, WV018 added
+                                  - Section 2, Part II – Paragraph 2, SC F-GEN-01 added
+                                  - Section 2, Part II – Paragraph 5, Reference standardisation
+    19             02 July 2019   - Section 1, Part III – Paragraph 1.7, engine rating and WV 023
+                                    added
+                                  - Section 2, Part III – Paragraph 1.7, WV 005, 009, 010 added
+
+
+
+
+                                         Page 35 / 39
+TCDS EASA.A.151                          AIRBUS A350
+Issue 32                                                                           Date: 01.07.2026
+
+
+
+
+   Issue              Date         Changes
+    20            09 Aug. 2019     - Section 1, Part II – Paragraph 2, SC D-43 added
+                                   - Section 1, Part III – Paragraph 1.7, WV 019 and clarification *
+                                      for WV013 added
+                                   - Section 2, Part II – Paragraph 2, SC D-43 added
+    21            12 Nov. 2019     - Section 1, Part II – Paragraph 5, Fuel Venting requirement
+                                      added
+                                   - Section 1, Part III – Paragraph 1.2, generic reference to engine
+                                      TCDS EASA.E.111 added, duplication of engine TCDS deleted
+                                   - Section 1, Part III – Paragraph 1.7, WV 006 and added
+                                   - Section 2, Part II – Paragraph 5, Fuel Venting requirement
+                                      added
+                                   - Section 2, Part III – Paragraph 1.2, generic reference to engine
+                                      TCDS EASA.E.111 added, duplication of engine TCDS deleted
+    22            27 Nov. 2019     - Section 1, Part II – Paragraph 4, ESF D-39 added
+                                   - Section 1, Part III – Paragraph 2.4, 3rd cabin crew added
+                                   - Section 1, Part III – Paragraph 2.5, MPSC added
+                                   - Section 1, Part V – Paragraph 3, sub-paragraph d. and e. added
+                                   - Section 2, Part II – Paragraph 4, ESF D-39 added
+                                   - Section 2, Part III – Paragraph 2.4, 3rd cabin crew added
+                                   - Section 2, Part III – Paragraph 2.5, MPSC added
+                                   - Section 2, Part V – Paragraph 3, sub-paragraph d. and e. added
+    23            16 June 2020     - Section 1, Part II – Paragraph 1, CS at amdt 20 and 22 added
+                                   - Section 1, Part II – Paragraph 2, SC B-15 added
+                                   - Section 2, Part II – Paragraph 1, CS at amdt 20 and 22 added
+                                   - Section 2, Part III – Paragraph 1.7, WV 011 added
+    24             26 June 2020    - Section 1, Part III – Paragraph 1.7, WV 017 added
+    25            4 January 2022   - Section 1, Part II - Paragraph 4, ESF G-11 added
+                                   - Section 1, Part III - Paragraph 1.3 & 1.4, reference changed
+                                   from engine operating instruction to aircraft CML
+                                   - Section 1, Part III - Paragraph 2.13, reference changed to
+                                   aircraft CML
+                                   - Section 1, Part III -Paragraph 1.7, WV020 added
+                                   - Section 2, Part III - Paragraph 1.3 & 1.4, reference changed
+                                   from engine operating instruction to aircraft CML
+                                   Section 2, Part III - Paragraph 2.13, reference changed to aircraft
+                                   CML
+
+
+
+
+                                           Page 36 / 39
+TCDS EASA.A.151                           AIRBUS A350
+Issue 32                                                                           Date: 01.07.2026
+
+
+
+
+   Issue               Date         Changes
+    26             25 May 2023      - Section 1, Part II - Paragraph 1, CS-ACNS issue 3, Subpart E
+                                    Section 3 added
+                                    - Section 1, Part II - Paragraph 4, ESF FCD-MULTI-01 added
+                                    - Section 1, Part III - Paragraph 1.7, WV presentation updated
+                                    - Section 1, Part III - Paragraph 2.8, ALS-ETWF reference updated
+                                    - Section 1, Part III - Paragraph 2.10, Seat Frame Specification
+                                    issue updated
+                                    - Section 1, Part IV – Paragraph 2, Maintenance Instructions and
+                                    Airworthiness Limitations issue updated
+                                    - Section 2, Part II - Paragraph 1, CS-ACNS issue 3, Subpart E
+                                    Section 3 added
+                                    - Section 2, Part II - Paragraph 4, ESF FCD-MULTI-01 added
+                                    - Section 2, Part III - Paragraph 1.7, WV presentation updated
+                                    - Section 2, Part III - Paragraph 2.8, ALS-ETWF reference updated
+                                    - Section 2, Part III - Paragraph 2.10, Seat Frame Specification
+                                    issue updated
+                                    - Section 2, Part III - Paragraph 2.12, tyre ply rating 36PR added
+                                    - Section 2, Part IV – Paragraph 2, Maintenance Instructions and
+                                    Airworthiness Limitations issue updated
+    27             13 July 2023     - Section 1, Part II - Paragraph 1, CS 25.853 (g) & 25.791(d) at
+                                    Amdt 23 added
+                                    - Section 1, Part III - Paragraph 2.10, new Seat Frame
+                                    Specification reference added
+                                    - Section 1, Part III - Paragraph 2.14 removed (EPDS tool)
+                                    - Section 2, Part II - Paragraph 1, CS 25.853 (g) & 25.791(d) at
+                                    Amdt 23 added
+                                    - Section 2, Part II - Paragraph 4, ESF G-11 added
+                                    - Section 2, Part III - Paragraph 2.14 removed (EPDS tool)
+    28            25 October 2023   - Section 1, Part II - Paragraph 4, ESF F-76 added
+                                    - Section 1, Part II - Paragraph 6, CS-FCD Issue 2 added
+                                    - Section 2, Part II - Paragraph 4, ESF F-76 added
+                                    - Section 2, Part II - Paragraph 7, CS-FCD Issue 2 added
+                                    - Section 2, Part III - Paragraph 1.7, 322 t MTOW added
+    29             30 July 2024     - Section 1, Part II - Paragraph 4, ESF B-19 added
+                                    - Section 2, Part II - Paragraph 4, ESF B-19 added
+
+
+
+
+                                            Page 37 / 39
+TCDS EASA.A.151                          AIRBUS A350
+Issue 32                                                                            Date: 01.07.2026
+
+
+
+
+   Issue               Date        Changes
+    30             14 Feb. 2025     - Section 1, II, 1 and section 2, II, 1: added information regarding
+                                   to CS 25.571
+                                   - Section 1, II, 1 and section 2, II, 1: added information with
+                                   regards to CS 25.705 amendment 24.
+                                   - Section 1, II, 2 and Section 2, II, 2: added SC D-Multi-06
+                                   - Section 1, II, 5 Environmental Protection - Certification Basis
+                                   clarified (ref. to ICAO)
+                                   - Section 2, II, 5 - Environmental Protection – Paragraph 5.3 «
+                                   CO2 Emissions » added and Certification Basis clarified (ref. to
+                                   ICAO)
+                                   -Section 1 and Section 2: added VI Part 26 compliance
+                                   information
+    31             10 April 2025   - Section 1, III, §1.2: A350-941 added XWB-84EP turbofan
+                                   engines (modification 120074 - EASA Major Change Approval
+                                   10086876)
+                                   - Section 1, III, §1.7: added XWB-84EP
+                                   - Section 1, Part III - Paragraph 2.10, reference to Airbus
+                                   document “Seat Frame Specification” deleted
+                                   - Section 2, Part III - Paragraph 2.10, reference to Airbus
+                                   document “Seat Frame Specification” deleted
+                                   - Section 1, IV, §3 ETOPS: removed table and added reference to
+                                   CMP document for certified models details.
+                                   - Section 2, IV, §3 ETOPS: removed table and added reference to
+                                   CMP document for certified models details.
+                                   - Section 1, II, 4 added ESF P-TS- 0000540-0060084666 “CS-25
+                                   Firewall installation of 5min fire withstanding (instead of 15min)
+                                   CS-E firewall”
+                                   - Section 1, II, 1: for 25.571, added a note related to WFD
+                                   evaluation for changes
+                                   - Section 2, II, 1: for 25.571, added a note related to WFD
+                                   evaluation for changes
+                                   - Annex to TCDS updated to include ESF P-TS- 0000540-
+                                   0060084666 “CS-25 Firewall installation of 5min fire
+                                   withstanding (instead of 15min) CS-E firewall”
+                                   -section 1 and 2, VI: removed 26.303 from compliance
+                                   information pending availability of full compliance
+                                   substantiations. Added clarification note related to 26.305.
+    32            25 August 2025   - Corrected a typo in (VIII) CHANGE RECORD for issue 31
+                                   - Added Special Condition M-TS-0000566 “Installed Physical
+                                   Secondary Barrier (IPSB)” to the Certification Basis for all
+                                   models.
+
+
+
+
+                                           Page 38 / 39
+TCDS EASA.A.151                          AIRBUS A350
+Issue 32                                                                        Date: 01.07.2026
+
+
+
+
+   Issue             Date        Changes
+    33            01 July 2026   Impact on certification basis
+
+                                         SECTION 1 and 2, part VI: following EASA project V-Part-
+                                          26-CSIP iss 4 (approval 10077447 iss 3) addition of
+                                          26.303 in the information paragraph and deletion of the
+                                          note on WFD in section 1/2 part II paragraph 1
+                                         SECTION 1 and 2, part II, paragraph 5.3: addition or
+                                          update of the CO2 information (EASA approval 1089099)
+                                         SECTION 1, part II, paragraph 1, addition of CS 25.1535
+                                          amdt 27 when 84EP is installed.
+                                         SECTION 1 and 2, part III, paragraph 2.8, removal of
+                                          reference to ALS-ETFW has been removed as it is part of
+                                          the ALS Part 4 (EASA approval 10086922).
+                                         SECTION 1, part III, paragraph 1.2 introduction of XWB-
+                                          84/84EP intermixability (EASA approval 10089859)
+
+                                 Other updates
+
+                                         For harmonization purpose, replace “Aircraft Flight
+                                          Manual” by “Airplane Flight manual” in many instances
+                                         SECTION 1 – formatting correction to add V for the
+                                          paragraph related to OSD
+                                         SECTION 1 – relocation of the reversion paragraph into
+                                          the certification basis paragraph 1.
+                                         SECTION 2 part II paragraph 6 - deleted as content has
+                                          been moved to Part II paragraph 1.
+
+
+
+
+                                          Page 39 / 39
+

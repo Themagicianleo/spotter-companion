@@ -1,0 +1,1036 @@
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+
+
+                                     Civil Aviation Authority
+                                             United Kingdom
+
+
+
+
+                          TYPE-CERTIFICATE DATA SHEET
+
+
+                                                       UK.TC.A.00158
+
+                                                                  for
+                                                          AIRBUS A380
+
+
+                                                   Type Certificate Holder
+                                                         AIRBUS S.A.S.
+
+
+                                               2 Rond-point Emile Dewoitine
+                                                       31700 BLAGNAC,
+                                                              FRANCE
+
+
+
+
+ Model(s):                   A380-841
+                             A380-842
+                             A380-861
+ Issue:                      1
+ Date of issue:              03 February 2026
+
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                              Issue: 1
+Date: 03 February 2026                                                                                           Page 1 of 21
+                                                           OFFICIAL - Public
+                                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+TABLE OF CONTENTS
+
+
+Section 0           GENERAL (All Models) .............................................................................................................................4
+  General .....................................................................................................................................................................4
+Section 1           A380-800 SERIES ....................................................................................................................................5
+  I.          General ............................................................................................................................................................5
+        1.        Type / Variant / Model .................................................................................................................................5
+        2.        Airworthiness Category ...............................................................................................................................5
+        3.        Type Certificate Holder ................................................................................................................................5
+        4.        Manufacturer ...............................................................................................................................................5
+        5.        State of Design Authority .............................................................................................................................5
+        6.        State of Design Authority Application Date for Certification ........................................................................5
+        7.        State of Design Authority Type Certification Date .......................................................................................5
+        8.        UK CAA Type Validation Application Date ..................................................................................................5
+        9.        UK CAA Type Validation Date.....................................................................................................................5
+  II.         Certification Basis ............................................................................................................................................6
+        1.        Reference Date for Determining the Applicable Requirements ..................................................................6
+        2.        State of Design Airworthiness Authority Type Certification Data Sheet Number ........................................6
+        3.        State of Design Airworthiness Authority Certification Basis ........................................................................6
+        4.        UK CAA Airworthiness Requirements .........................................................................................................6
+        5.        Special Conditions .......................................................................................................................................6
+        6.        Deviations ....................................................................................................................................................8
+        7.        Equivalent safety findings............................................................................................................................8
+        8.        Operational Suitability Data .......................................................................................................................10
+        9.        Environmental Protection Requirements ...................................................................................................10
+        10.       Elect to Comply (extract) ...........................................................................................................................10
+  III.        Technical Characteristic and Operating Limitations ......................................................................................11
+        1.        Type Design Definition A380-841/-842 .....................................................................................................11
+  1.1             Type Design Description. ..........................................................................................................................11
+  1.2             Engines......................................................................................................................................................11
+  1.3             Fluids .........................................................................................................................................................11
+  1.4             Airspeed Limitations ..................................................................................................................................11
+  1.5             Centre of Gravity Range............................................................................................................................12
+  1.6             Maximum Masses......................................................................................................................................12
+  1.7             Notes .........................................................................................................................................................12
+        2.        Type Design Definition A380-861..............................................................................................................13
+  2.1             Description.................................................................................................................................................13
+  2.2              Engines.....................................................................................................................................................13
+  2.3             Fluids .........................................................................................................................................................13
+  2.4             Airspeed Limitations ..................................................................................................................................13
+  2.5             Centre of Gravity Range............................................................................................................................13
+  2.6              Maximum Masses.....................................................................................................................................14
+
+TCDS No.: UK.TC.A.00158                                                                                                                                               Issue: 1
+Date: 03 February 2026                                                                                                                                            Page 2 of 21
+                                                                                OFFICIAL - Public
+                                          OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+   IV.        Data Pertinent to all A380-800 Series ...........................................................................................................15
+        1.       Equipment .................................................................................................................................................15
+        2.       Auxiliary Power unit ...................................................................................................................................15
+        3.       Fluid Capacities .........................................................................................................................................15
+        4.       Flight Envelope ..........................................................................................................................................15
+        5.       Operating Limitations ................................................................................................................................15
+        6.       All Weather Capabilities ............................................................................................................................15
+        7.       Minimum Flight Crew .................................................................................................................................16
+        8.       Maximum Seating Capacity.......................................................................................................................16
+        9.       Minimum Cabin Crew ................................................................................................................................16
+        10.      Baggage/ Cargo Compartment .................................................................................................................16
+        11.      Wheels and Tyres......................................................................................................................................16
+        12.      Electrical Power Centre Configuration Data File Tool ...............................................................................16
+   IV.        Operating and Service Instructions ...............................................................................................................17
+   V.         Operational Suitability Data (OSD) ................................................................................................................17
+   VI.        Part 26 Compliance Information ....................................................................................................................18
+Annex to TCDS UK.TC.A.00158.................................................................................................................................19
+Administration .............................................................................................................................................................20
+   I.         Acronyms and Abbreviations .........................................................................................................................20
+   2          Type Certificate Holder Record .....................................................................................................................21
+   3          Amendment Record .......................................................................................................................................21
+
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                                                                         Issue: 1
+Date: 03 February 2026                                                                                                                                      Page 3 of 21
+                                                                             OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 0                                   GENERAL (All Models)
+
+
+
+Section 0       GENERAL (All Models)
+
+General
+This Type-Certificate Data Sheet (TCDS) is the concise definition of the type-certificated product accepted and or
+approved by the CAA in the UK for the affected types and models.
+This TCDS includes:
+        1.      Details of the type design that affect the TCDS that have been approved or accepted by the CAA in
+                the UK since 01 January 2021.
+        2.      Details of the type design that affected the TCDS and were approved or accepted by EASA before
+                01 January 2021 and were incorporated into EASA TCDS EASA.A.110 at Issue 15 dated 09
+                September 2020 and are therefore accepted by the UK under Article 15 of Annex 30 of the UK-EU
+                Trade and Cooperation Agreement.
+        3.      Reference to non-proprietary data contained in selected UK specific Special Conditions,
+                Deviations, or Equivalent Safety Findings that are included within section Annex to TCDS
+                UK.TC.A.00158.
+
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                               Issue: 1
+Date: 03 February 2026                                                                                            Page 4 of 21
+                                                            OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                     A380-800 SERIES
+
+
+Section 1      A380-800 SERIES
+
+I.     General
+
+1.     Type / Variant / Model
+        a) Type:                 A380
+        b) Variant or Model:     A380-800
+
+2.     Airworthiness Category
+       Large Aeroplane
+
+3.     Type Certificate Holder
+       AIRBUS
+       2 Rond-point Emile Dewoitine
+       31700 Blagnac,
+       FRANCE.
+
+4.     Manufacturer
+       AIRBUS
+       2 Rond-point Emile Dewoitine
+       31700 Blagnac,
+       FRANCE.
+
+5.     State of Design Authority
+       EASA.
+
+6.     State of Design Authority Application Date for Certification
+       A380-841/-842 20 December 2001
+       A380-861         30 April 2003
+
+7.     State of Design Authority Type Certification Date
+       A380-841/-842 12 December 2006
+       A380-861         14 December 2007
+
+8.     UK CAA Type Validation Application Date
+       Prior to 01 January 2021, application dates for type certification are covered by EASA type certification
+       application dates, as per Section 6.
+       New applications for UK CAA type validation received from 01 January 2021 will be recorded in this
+       section. At the current issue of this UK CAA TCDS, no new applications for type validation have been
+       received since 01 January 2021.
+
+9.     UK CAA Type Validation Date
+       Prior to 01 January 2021, dates of type certification are covered by EASA type certification, as per Section
+       7 above.
+
+       UK CAA type validation dates from 01 January 2021 will be recorded in this section. At the current issue of
+       this UK CAA TCDS, no UK CAA type validations have been completed since 01 January 2021.
+
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                              Issue: 1
+Date: 03 February 2026                                                                                           Page 5 of 21
+                                                           OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                     A380-800 SERIES
+
+
+
+
+II.    Certification Basis
+       Non-proprietary data contained in selected SC, ESF, or Deviation that are part of the Certification Basis
+       prior to 01 January 2021 are published in an EASA Explanatory Note to EASA TCDS EASA.A.110.
+       Any public non-proprietary data contained in selected UK specific Special Conditions, Deviations, or
+       Equivalent Safety Findings that are part of the applicable Certification Basis are published in Annex A of
+       TCDS UK.TC.A.00158.
+
+1.     Reference Date for Determining the Applicable Requirements
+       Reference Application Date for original Type Certification:
+               A380-841/-842                20 December 2001
+               A380-861                     30 April 2003
+
+2.     State of Design Airworthiness Authority Type Certification Data Sheet Number
+       EASA.A.110
+
+3.     State of Design Airworthiness Authority Certification Basis
+       Refer to EASA TCDS EASA.A.110
+
+4.     UK CAA Airworthiness Requirements
+
+
+       The following airworthiness standards effective on the reference date:
+       •    JAR 1 at change 5 plus orange papers 1/97/1 and 1/99/1
+       •    JAR 25 at change 15
+       •    JAR AWO at change 2 (post TC for autoland)
+
+
+
+5.     Special Conditions
+
+
+       2.1 Special Conditions issued because the product has novel or unusual design features relative to the
+       design practices on which the applicable JAR 25 are based (JAR 21.16(a)(1)):
+       - SC B-01 Stalling and scheduled operating speeds
+       - SC B-02 Motion and effects of cockpit control
+       - SC B-04 Static directional, lateral and longitudinal stability and low energy awareness
+       - SC B-05 Flight envelope protection
+       - SC B-06 Normal load factor limiting system
+       - SC B-10 Human factors evaluation of novel features in the flight deck
+       - SC B-15 Soft Go-Around mode (Post TC)
+       - SC C-01 Crashworthiness of Large Aircraft Structures
+       - SC C-02 Discrete gust
+       - SC C-03 Loading conditions for multi leg landing gear
+       - SC C-04 Undercarriage lateral turning loads
+       - SC C-05 Jacking by landing gear
+       - SC C-06 Dynamic braking
+       - SC C-11 Interaction of systems and structures
+       - SC C-13 Design manoeuvre requirements
+TCDS No.: UK.TC.A.00158                                                                                              Issue: 1
+Date: 03 February 2026                                                                                           Page 6 of 21
+                                                           OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                     A380-800 SERIES
+
+
+       - SC C-15 Design dive speed Vd
+       - SC C-16 Limit pilot forces
+       - SC D-03 Emergency exit arrangement—outside viewing
+       - SC D-04 Crew rest compartments (Post TC)
+       - SC D-06 Use of stairs between decks
+       - SC D-07 Fire detection and protection in passenger cabin
+       - SC D-12 Design for security
+       - SC D-28 Harmonised 671/672
+       - SC D-33 Extendable length escape slide
+       - SC D-39 Inertia Locking Device in Dynamic Seats (optional)
+       - SC D-41 Installation of Suite Type Seating (optional)
+       - SC D-42 Type C Passenger Exits (optional)
+       - SC D-45 Trolley Stowage/Lift Systems proximity to Upper Deck Staircase
+       - SC D-47 Installation of Inflatable Seat Belts (Optional)
+       - SC D-52 Installation of structure mounted airbag (optional)
+       - SC D-54 Installation of Suite Type Seating for two Passengers (Optional)
+       - SC D-55 Shower installation (optional)
+       - SC D-57 Installation High Wall Suite Type seating (optional)
+       - SC F-01 JAR 25.1301 and 1309 compliance: Design assurance and safety assessment process
+       - SC F-02 Slide/Raft portability
+       - SC F-12 HIRF Protection
+       - SC F-26 Flight recorders, data link recording
+       - SC F-52 Lithium–Ion battery installation
+
+
+       2.2 Special Conditions issued because the intended use of the product is unconventional (JAR 21.16(a)(2):
+       - SC D-20 Towbar-less towing
+       - SC D-31 High altitude operation
+       - SC G-06 Ferrying one engine unserviceable (optional)
+
+
+       2.3 Special Conditions issued because experience from other products has shown that unsafe conditions
+       may develop (JAR 21.16(a)(3)):
+       - SC D-13 Fire protection of thermal and acoustic insulation material
+       - SC D-15 Brakes and braking system – NPA 25D291
+       - SC D-43 Heat Release and Smoke Density to Seat Materials
+       - SC D-46 PED Charging Stowage
+       - SC E-02 Fuel tank safety
+       - SC E-04 Thrust reverser system requirements
+       - SC E-05 Sustained engine imbalance
+       - SC F-GEN-01 non-rechargeable lithium battery installations, applicable at Issue date of this TCDS Iss14
+       - SC H-01 ICA on EWIS
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                              Issue: 1
+Date: 03 February 2026                                                                                           Page 7 of 21
+                                                           OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                     A380-800 SERIES
+
+
+6.     Deviations
+       None
+
+7.     Equivalent safety findings
+       - ESF C-12 Vibration, buffet and aeroelastic stability requirements
+       - ESF C-14 Proof of structure
+       - ESF C-19 Checked Pitching manoeuvre loads
+       - ESF C-20 Engine failure loads
+       - ESF C-21 Continuous turbulence loads
+       - ESF D-17 Fuselage doors
+       - ESF D-19 Casting factors
+       - ESF D-21 Allowable CO2 and cabin ozone concentration
+       - ESF D-24 Packs off operation
+       - ESF D-48 Belly Fairing Thermal/acoustic Insulation Materials
+       - ESF D-49 Improved flammability standards for Lower Deck crew
+       - ESF D-50 Composite Pressure Bulkhead Thermal/acoustic Insulation Materials
+       - ESF D-56 Forward facing seat >18° to a/c centreline
+       - ESF E-06 Falling and blowing snow
+       - ESF E-09 Fuel tank crashworthiness
+       - ESF E-10 Fuel tank access covers
+       - ESF E-11 Rolls-Royce Trent turbine overheat detection (A380-841/-842)
+       - ESF E-12 GP7200 Fan zone as a non-fire zone (A380-861)
+       - ESF E-15 Warning means for engine fuel filters (A380-841/-842)
+       - ESF E-16 Thrust reverser testing
+       - ESF E-17 Oil temperature indication
+       - ESF E-19 Engine fuel filter location (A380-861)
+       - ESF E-20 Fire extinguishing agent concentration – JAR 25.1195(c) (Post TC A380-841/-842)
+       - ESF F-11 Pneumatic systems
+       - ESF F-15 Hydraulic systems
+       - ESF F-23 Landing light switch
+       - ESF F-29 New Harmonised JAR 25.1329
+       - ESF F-38 Overpressure relief valves and outflow valves
+       - ESF F-48 Use of simulation/similarity for high-energy rotor containment
+       - ESF F-53 Supplemental Cooling System – Impeller Pump containment test
+       - ESF J-02 APU installation requirements
+       - ESF K-06 Localizer excessive deviation alerts
+       - ESF K-07 Limit Risk (NPA AWO 14)
+
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                              Issue: 1
+Date: 03 February 2026                                                                                           Page 8 of 21
+                                                           OFFICIAL - Public
+                             OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                       A380-800 SERIES
+
+
+8.     Elect to Comply (extract)
+       The following paragraphs of JAR 25 at amendment 16 issued May 1st, 2003 are elected to comply by
+       Airbus:
+        JAR25.21(d)          JAR25.791                  JAR25.954                   JAR25.1321                 JAR25.1521(d)
+        JAR25.25             JAR25.803                  JAR25.961                   JAR25.1325 title           JAR25X1524
+        JAR25.149(e)         JAR25.807                  JAR25.967                   JAR25.1415                 JAR25.1527
+        JAR25.251            JAR25.812                  JAR25.975(a)(5)             JAR25.1441                 JAR25.1545
+        JAR25X261            JAR25.815                  JAR25.981                   JAR25.1443                 JAR25.1547
+        JAR25.337            JAR25.853                  JAR25.993                   JAR25.1445(a)              JAR25.1549
+        JAR25.493            JAR25.857                  JAR25.994                   JAR25.1447                 JAR25.1581
+        JAR25.562(b)         JAR25.863(b)(4)            JAR25.997                   JAR25.1449                 JAR25.1583
+        JAR25.605            JAR25.904                  JAR25.1013                  JAR25.1450                 JAR25.1585
+        JAR25.607            JAR25.907                  JAR25.1015                  JAR25.1457                 JAR25.1587
+        JAR25.701            JAR25.933                  JAR25.1019                  JAR25.1513
+        JAR25.733            JAR25.939                  JAR25.1145                  JAR25X1516
+        JAR25.777            JAR25.951                  JAR25.1303                  JAR25.1517
+        JAR25.781            JAR25.952                  JAR25.1305                  JAR25.1519
+
+       Appendix D paragraph (b)
+       Appendix H subparagraph H25.3(e)
+
+       Appendix I
+
+       Note: JAR 25.1517, as in amendment 16 of JAR 25, is amended by Equivalent Safety Finding ESF C-21.
+
+       The following paragraphs of CS 25 at amendment 3 issued September 12, 2007, are elected to comply by
+       Airbus for A/C fitted with modification 71249:
+
+       CS 25.811(d), (g)
+       CS 25.811(g)
+       CS 25.812(b)(1)(i)
+       CS 25.812(b)(1)(ii)
+
+       The following paragraph of CS 25 at amendment 6 issued July 6, 2009, is elected to comply by Airbus for
+       A/C fitted with modification 67860:
+
+       CS 25.856(b)
+
+       Certification Specification 25.851 (a) and (c) at Amendment 17 for the installation of halon free hand-held
+       fire extinguisher.
+
+       CS-ACNS initial issue for ELS, EHS and ADS-B Out is elected to comply by Airbus for A/C fitted with
+       modification 76012.
+
+       The following paragraphs of JAR AWO as modified per NPA AWO 8 and 10, adopted by the JAAC on 07
+       February 2003, that are elected to comply by Airbus per their letter AI/LE-A 828.0005/99 issue 3 dated 20
+       July 2001:
+
+       Introduction to JAR AWO Subpart 3, section B, 3rd paragraph, Introduction to JAR AWO Subpart 3, section
+       C, 2nd paragraph, Introduction to JAR AWO Subpart 3, section D, 1st paragraph, Introduction to JAR AWO
+       Subpart 4, 2nd paragraph
+
+       JAR AWO 131(c)(2)             JAR AWO 313                      JAR AWO 316(a)                       JAR AWO 381
+       JAR AWO 304(b)                JAR AWO 314                      JAR AWO 321(c)(4)                    JAR AWO 481(a)
+       JAR AWO 305                   JAR AWO 316 title                JAR AWO 321(d)(4)
+
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                                            Issue: 1
+Date: 03 February 2026                                                                                                         Page 9 of 21
+                                                             OFFICIAL - Public
+                          OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                    A380-800 SERIES
+
+
+9.     Operational Suitability Data
+       The Operational Suitability Data elements (e.g. FCD, CCD, MMEL) as listed below are approved by the
+       European Union Aviation Safety Agency under the EASA Type Certificate EASA.A.110 in accordance with
+       Commission Regulation (EU) 748/2012, as amended.
+       These OSD elements and any future revisions are either accepted under Article 13 of the UK-EU Trade
+       and Cooperation Agreement or subject to approval by Validation under Article 10 of Annex 30 of the UK-EU
+       Trade and Cooperation Agreement, for use by UK operators.
+       CCD:            The certification Basis is defined in CRI CCD-01
+       MMEL:           The Grandfathered OSD certification basis is JAR-MMEL Subpart B Amendment 1
+       FCD:            Certification Specifications for Operational Suitability Data (OSD) Flight Crew Data CS-
+                       FCD Initial Issue dated 31 January 2014.
+
+10.    Environmental Protection Requirements
+       Fuel venting:
+       ICAO Annex 16, Second Edition, Volume II, amendment 04, Part II and Part III, chapter II
+       Noise:
+       See TCDSN for Noise UK.TC.A.00158
+
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                              Issue: 1
+Date: 03 February 2026                                                                                          Page 10 of 21
+                                                          OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                      A380-800 SERIES
+
+
+III.   Technical Characteristic and Operating Limitations
+
+
+
+1.     A380-841/-842 Powered by RR Engines
+
+
+
+1.1    Type Design Definition
+       A380-841: 00L000H0841/C0S, Issue 3, October 2007
+       A380-842: 00L000H0842/C0S, Issue 1, December 2006
+
+
+
+1.2    Type Design Description.
+       Four turbo-fan, long range, twin-aisle, large category airplane.
+
+
+
+1.3    Engines
+       A380-841: Four (4) RB211 Trent 970-84 or RB211 Trent 970B-84 turbofan engines
+       A380-842: Four (4) RB211 Trent 972-84 or RB211 Trent 972B-84 or RB211 Trent 972E-84 turbofan
+       engines
+
+
+       Engine Limits:
+         ENGINE LIMITS             A380-841                            A380-842                            A380-842
+           DATA SHEET          RB211 Trent 970B-84                 RB211 Trent 972B-84                 RB211 Trent 972E-84
+          UK.TC.E.00059
+        Static thrust at
+        sea level:                      348.31 kN                          356.81 kN                              341.41 kN
+        -Take-off (5mn)*
+        (flat rated 30°C)
+       *10 minutes at take-off thrust allowed only in case of engine failure (at take-off or during go-around) in
+       accordance with UK CAA TCDS paragraph IV-1.
+       Other engine limitations: See the relevant Engine Type Certificate Data Sheet.
+
+
+
+1.4    Fluids
+       Fuel:    The fuel system has been certified with JET A, JET A1, JP5, JP8, N° 3 Jet Fuel, RT(GOST), TS-
+                1(GOST). The above mentioned fuel types are also suitable for the APU.
+                Refer to the applicable Consumable Material List (CML) for comprehensive fuel types specification.
+
+
+       Oil:     Refer to the applicable Consumable Material List (CML).
+                Refer also to the Engine Manufacturer Operating Instructions.
+
+
+       Additives:       Refer to the applicable Consumable Material List (CML).
+
+
+       Hydraulics:        Refer to the applicable Consumable Material List (CML).
+
+
+
+1.5    Airspeed Limitations
+       Refer to approved Airplane Flight Manual.
+TCDS No.: UK.TC.A.00158                                                                                                            Issue: 1
+Date: 03 February 2026                                                                                                        Page 11 of 21
+                                                            OFFICIAL - Public
+                             OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                       A380-800 SERIES
+
+
+
+
+1.6    Centre of Gravity Range
+
+
+       Refer to approved Airplane Flight Manual.
+
+
+
+1.7    Maximum Masses
+
+
+             VARIANT
+                             000       001            002            003            004           005            006         007
+            (Modification
+                            Basic    (64636)        (64605)        (66611)        (69436)       (69879)        (73786)     (71127)
+              Number)
+            MTW (T)          562        512             571           512           562            562             575         492
+            MTOW (T)         560        510             569           510           560            560             573         490
+            MLW (T)          386        394             391           395           391            386             393         395
+            MZFW (T)         361        372             366           373           366            366             368         373
+
+
+
+                  VARIANT
+                                   008           009            010           011           012           013          014
+                 (Modification
+                                 (73787)       (74293)        (74294)       (75724)       (76092)       (77844)      (77854)
+                   Number)
+                   MTW (T)          577           512           482           577            571           494           574
+                  MTOW (T)          575           510           480           575            569           492           572
+                   MLW (T)          394           386           386           395            395           386           391
+                  MZFW (T)          369           361           361           369            366           361           366
+
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                                               Issue: 1
+Date: 03 February 2026                                                                                                           Page 12 of 21
+                                                              OFFICIAL - Public
+                             OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                       A380-800 SERIES
+
+
+2.     A380-861 Powered by GP Engines
+
+2.1    Type Design Definition
+       A380-861:00L 000H0861/C01, Issue 2, June 2008
+
+
+
+2.2    Description
+       Four turbofan, long range, twin-aisle, large category airplane.
+
+
+
+2.3     Engines
+       A380-861:          Four (4) Engine Alliance GP7270 P/N GP7270GP01 turbofan engines
+
+
+       Engine Limits:
+                         ENGINE LIMITS                                      A380-861
+                           DATA SHEET                                     Engine Alliance
+                          EASA IM.E.026                                      GP7270
+                     Static thrust at sea level:
+            -        Take-off (5mn)* (flat rated 30°C)                        332.44 kN
+       *The normal 5 minute take-off rating may be extended to 10 minutes for engine out contingency in
+       accordance with the EASA TCDS IM.E.026 Note 1.
+       Other engine limitations: See the relevant Engine Type Certificate Data Sheet.
+
+
+
+2.4    Fluids
+
+
+       Fuel:              The fuel system has been certified with JET A, JET A1, JP5, JP8, N° 3 Jet Fuel,
+                          RT(GOST), TS-1(GOST). The above mentioned fuel types are also suitable for the APU.
+                          Refer to the applicable Consumable Material List (CML) for comprehensive fuel types of
+                          specification.
+
+
+       Oil:               Refer to the applicable Consumable Material List (CML).
+                          Refer also to the Engine Manufacturer Operating Instructions.
+
+
+       Additives:         Refer to the applicable Consumable Material List (CML).
+
+
+       Hydraulics:        Refer to the applicable Consumable Material List (CML).
+
+
+
+2.5    Airspeed Limitations
+       Refer to approved Airplane Flight Manual.
+
+
+
+2.6    Centre of Gravity Range
+       Refer to approved Airplane Flight Manual.
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                                 Issue: 1
+Date: 03 February 2026                                                                                             Page 13 of 21
+                                                             OFFICIAL - Public
+                               OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                         A380-800 SERIES
+
+
+
+
+2.7     Maximum Masses
+
+
+             VARIANT
+                               000        001            002           003            004           005            006          007
+            (Modification
+                              Basic     (64636)        (64605)       (66611)        (69436)       (69879)        (73786)      (71127)
+              Number)
+              MTW (T)         562          512           571            512           562            562             575          492
+             MTOW (T)         560          510           569            510           560            560             573          490
+              MLW (T)         386          394           391            395           391            386             393          395
+             MZFW (T)         361          372           366            373           366            366             368          373
+
+               VARIANT
+                                  008           009           010            011           012            013                014
+              (Modification
+                                (73787)       (74293)       (74294)        (75724)       (76092)        (77844)            (77854
+                Number)
+                MTW (T)           577            512           482            577           571            494              574
+               MTOW (T)           575            510           480            575           569            492              572
+                MLW (T)           394            386           386            395           395            386              391
+               MZFW (T)           369            361           361            369           366            361              366
+
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                                                  Issue: 1
+Date: 03 February 2026                                                                                                              Page 14 of 21
+                                                               OFFICIAL - Public
+                              OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                        A380-800 SERIES
+
+
+IV.    Data Pertinent to all A380-800 Series
+
+1.     Equipment
+       The equipment required by the applicable requirements shall be installed.
+
+
+       Cabin furnishings, equipment and arrangement shall conform to the following specification:
+       -    00L252C0028/C01 for cabin seats,
+       -    00L252C0027/C01 for galley,
+       -    00L252C0032/C01 for cabin attendant seats.
+
+
+
+2.     Auxiliary Power unit
+       One Pratt & Whitney Canada PW980A
+
+
+       Oils:     Refer to the Consumable Material List (CML).
+                 Refer to APU Manufacturers Operating Instructions
+
+
+
+3.     Fluid Capacities
+
+
+                      Tanks                            Usable Fuel                       Unusable Fuel
+                                                        Litres (Kg)                       Litres (Kg)
+                         Outer Left                  10 340 (8 272)                        38 (30)
+                           Feed 1                    27 632 (22 106)                       82 (66)
+                          Mid Left                   36 461 (29 169)                       50 (40)
+                         Inner Left                  46 142 (36 914)                       70 (56)
+                           Feed 2                    29 349 (23 479)                       88 (70)
+               Wing        Feed 3                    29 349 (23 479)                       88 (70)
+                        Inner Right                  46 142 (36 914)                       70 (56)
+                         Mid Right                   36 461 (29 169)                       50 (40)
+                           Feed 4                    27 632 (22 106)                       82 (66)
+                        Outer Right                  10 340 (8 272)                        38 (30)
+             Trim                                    23 698 (18 958)                       49 (39)
+            Systems                                     793 (634)                         382 (305)
+             Total                                  324339 (259471)                       1086 (869)
+
+
+
+4.     Flight Envelope
+       Refer to approved Airplane Flight Manual.
+
+
+
+5.     Operating Limitations
+       Refer to approved Airplane Flight Manual.
+
+
+
+6.     All Weather Capabilities
+       The aircraft is qualified to Cat 3 precision approach and autoland.
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                                  Issue: 1
+Date: 03 February 2026                                                                                              Page 15 of 21
+                                                              OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                     A380-800 SERIES
+
+
+7.     Minimum Flight Crew
+       Two (2): Pilot and Co-pilot
+
+
+
+8.     Maximum Seating Capacity
+       The maximum number of passengers approved for emergency evacuation is: 868
+       Upper deck:     330 pax
+       Main deck:      538 pax
+
+
+
+9.     Minimum Cabin Crew
+       In accordance with the following;
+
+
+                                       Installed Passenger Seats                       Minimum Cabin Crew
+             Upper Deck                         301 to 330                                     7
+             Upper Deck                        300 or fewer                                    6*
+             Main Deck                          501 to 538                                     11
+             Main Deck                         500 or fewer                                    10
+       * An additional cabin crew is needed at the fwd stair if the number of installed seats fwd of door U1 L/R is
+       above 30.
+
+
+       NOTE: The above minimum cabin crew numbers are those demonstrated by the type certificate holder. A
+       lower number is acceptable in the case of specific cabin layouts if documented in a UK CAA approved or
+       accepted major design change or Supplemental Type Certificate (STC).
+
+
+
+10.    Baggage/ Cargo Compartment
+
+
+             Cargo compartment                     Maximum load (kg)
+                   Forward                        28577 kg or 63000 lb
+                     Aft                          20310 kg or 44775 lb
+                  Rear (bulk)                      2515 kg or 5540 lb
+
+
+       For the positions and the loading conditions authorized in each position (references of containers, pallets
+       and associated weights), see Weight and Balance Manual Chapter 1.10 ref.: 00L080H0001/C0S.
+
+
+
+11.    Wheels and Tyres
+       Tyres mixability: See Service Bulletin A380-32-8021 (Landing Gear – Tires – General Procedures) for
+       allowable combinations.
+
+
+
+12.    Electrical Power Centre Configuration Data File Tool
+       An Airline Configuration Tool (ACTS) has been developed and qualified to allow airlines to manage the
+       Configuration Data File of Secondary Power Distribution Boxes (SPDB). This ACTS tool shall be used in
+       accordance with the SIL “Guidance on Electrical system Configuration Data File update” reference “SIL 24-
+       085”.
+       Applicable version of the ACTS tool is version 2 (CSCI 51220010-7)
+TCDS No.: UK.TC.A.00158                                                                                               Issue: 1
+Date: 03 February 2026                                                                                           Page 16 of 21
+                                                           OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                     A380-800 SERIES
+
+
+IV.    Operating and Service Instructions
+
+
+       1. Airplane Flight Manual (AFM)
+       Approved Aircraft Flight Manual: STL 38000
+
+
+       2. Instructions for Continued Airworthiness and Airworthiness Limitations
+
+
+       Limitations applicable to Safe Life Airworthiness Limitation Items are provided in the A380
+       Airworthiness Limitations Section Part 1,
+
+
+       Limitations applicable to Damage-Tolerant Airworthiness Limitation Items are provided in the
+       A380 Airworthiness Limitations Section Part 2,
+
+
+       Limitations applicable to Certification Maintenance Requirements are provided in the A380
+       Airworthiness Limitations Section Part 3,
+
+
+       Limitations applicable to Ageing System Maintenance are provided in the A380 Airworthiness
+       Limitations Section Part 4,
+
+
+       Limitations applicable to Fuel Airworthiness Limitations are provided in the A380 Airworthiness
+       Limitations Section Part 5,
+
+
+       A380 Maintenance Review Board Report.
+
+
+
+V.     Operational Suitability Data (OSD)
+       The Operational Suitability Data elements (e.g. FCD, CCD, MMEL) as listed below are approved by the
+       European Union Aviation Safety Agency under the EASA Type Certificate EASA.A.110 in accordance with
+       Commission Regulation (EU) 748/2012, as amended.
+       These OSD elements and any future revisions are either accepted under Article 13 of the UK-EU Trade
+       and Cooperation Agreement or subject to approval by Validation under Article 10 of Annex 30 of the UK-EU
+       Trade and Cooperation Agreement, for use by UK operators.
+
+
+       1. Master Minimum Equipment List
+
+
+       a. Grandfathered Master Minimum Equipment List applicable on 17 February 2014 and later UK CAA
+          approved revisions. STL38100 reference introduced from November 2015.
+       b. The Grandfathered OSD certification basis is JAR-MMEL Subpart B Amendment 1
+       c. Required for entry into service by EU operator
+
+
+       2. Flight Crew Data
+
+
+       a. The Flight Crew data (FCD) reference "A380 Family Operational Suitability Data Flight Crew -
+          L01RP1528235" at the latest applicable revision,
+       b. The certification basis is CS-FCD, Initial Issue, dated 31 Jan 2014
+TCDS No.: UK.TC.A.00158                                                                                               Issue: 1
+Date: 03 February 2026                                                                                           Page 17 of 21
+                                                           OFFICIAL - Public
+                          OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Section 1                                    A380-800 SERIES
+
+
+       c. Required for entry into service by EU operator
+       d. Pilot Type Rating : A 380
+
+
+       3. Cabin Crew Data
+
+
+       a. The Cabin Crew Data (CCD) reference "A380 Operational Suitability Data Cabin Crew (Ref:
+          L01RP1534107)" at the latest applicable revision as per the defined Operational Suitability Data
+          Certification Basis recorded in CRI CCD-01.
+       b. Required for entry into service by EU operator.
+       c. The A380-800 aircraft model is a new type for cabin crew
+
+
+
+VI.    Part 26 Compliance Information
+
+
+       For all models, compliance with point 26.300(a) of UK Regulation (EU) 2015/640 Annex 1 (Part 26) has been
+       accepted by UK CAA as a result of the demonstration of compliance to Commission Regulation (EU)
+       2015/640 Annex 1 (Part‐26), as amended, and approval by EASA, by complying with points 26.301, 26.302,
+       26.303, 26.304, 26.306, 26.307, 26.308, 26.309.
+
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                              Issue: 1
+Date: 03 February 2026                                                                                          Page 18 of 21
+                                                          OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+Annex to TCDS UK.TC.A.00158
+
+
+Annex to TCDS UK.TC.A.00158
+
+
+This Annex was created to make public non-proprietary data contained in selected UK specific Special Conditions,
+Deviations, or Equivalent Safety Findings that are part of the applicable Certification Basis as recorded in TCDS
+UK.TC.A.00158.
+Only those Conditions, Deviations, or Equivalent Safety Findings raised on or after 01 January 2021 shall be
+included in this Explanatory Note.
+For Special Conditions, Deviations or Equivalent Safety Findings included as part of the Certification Basis prior to
+01 January 2021, refer to the EASA Explanatory Note to EASA TCDS EASA.A.110
+
+
+
+
+        I. Special Conditions
+                None
+
+
+        II. Deviations
+                None
+
+
+        III. Equivalent Safety Findings
+                None
+
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                                Issue: 1
+Date: 03 February 2026                                                                                            Page 19 of 21
+                                                            OFFICIAL - Public
+                           OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+
+
+Administration
+Administration
+
+I.      Acronyms and Abbreviations
+
+ Acronym /       Definition
+ Abbreviation
+ AFM             Aircraft Flight Manual
+ ALS             Airworthiness Limitations Section
+ APU             Auxiliary Power Unit
+ AWO             All Weather Operations
+ CFRP            Carbon Fiber Reinforced Plastic
+ EASA            European Union Aviation Safety Agency
+ ESF             Equivalent Safety Finding
+ ETOPS           Extended Range Operation with Two-Engine
+                 Aeroplanes
+ HIRF            High Intensity Radiated Field
+ RR              Rolls Royce
+ SC              Special Condition
+ TC              Type Certificate
+ TCDS            Type Certificate Data Sheet
+ XWB             Extra Wide Body
+
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                               Issue: 1
+Date: 03 February 2026                                                                                           Page 20 of 21
+
+
+                                                           OFFICIAL - Public
+                            OFFICIAL - Public. This information has been cleared for unrestricted distribution.
+
+
+Administration
+2    Type Certificate Holder Record
+
+ TCH Record                                                                                         Period
+ AIRBUS S.A.S.                                                                                      Since 12 December 2006
+                                                                                                    (current)
+
+
+
+
+3    Amendment Record
+
+ TCDS         TCDS Issue         Changes                                                                            TC Issue and
+ Issue No.    Date                                                                                                  Date
+ 1            03 Feb 2026        The content of the initial issue of this UK CAA TCDS was taken                     Issue 1
+                                 from EASA TCDS No. EASA.A.110 Issue 15 dated 09                                    03 Feb 2026
+                                 September 2020 which was the current EASA version on 31
+                                 December 2020 and therefore the version of the TCDS for the
+                                 AIRBUS A380 Series accepted by the UK under Article 15 of
+                                 Annex 30 of the UK-EU Trade and Cooperation Agreement,
+                                 except as listed below:
+
+                                 The following changes have been made to reflect EU-Exit as
+                                 well as corrections:
+                                      1. Previous “Certification Basis” and “Airworthiness
+                                         Requirements” are combined under “Airworthiness
+                                         Requirements” to better align with current UK CAA
+                                         TCDS template at time of issue.
+                                      2. Addition of Explanatory Note – Annex to TCDS
+                                      3. Section 1 Addition of Part VI Part 26 Compliance
+                                         Information.
+                                      4. Section 1 and 2 Part II, §9 Environmental Protection
+                                         Requirements - Addition of references to TCDSN no.
+                                         UK.TC.A.00157
+                                      5. Section 1 Part II.8 and IV OSD statement revised.
+                                      6. Section 1 Part III §1– Reference to UK.TC.E.00059
+                                      7. Section 1 Part III §2 – Reference to EASA IM.E.026
+                                         added.
+                                      8. General editorial corrections and updates for migration
+                                         to UK CAA TCDS format.
+
+
+
+
+                                                               – END –
+
+
+
+
+TCDS No.: UK.TC.A.00158                                                                                                     Issue: 1
+Date: 03 February 2026                                                                                                 Page 21 of 21
+
+                                                            OFFICIAL - Public
+

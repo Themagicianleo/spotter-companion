@@ -1,0 +1,1637 @@
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                         Page 1 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+
+
+
+                                                            TYPE-CERTIFICATE
+                                                              DATA SHEET
+
+
+                                                               No. EASA.IM.A.570
+
+
+                                                                           For
+                                                                          BD-500
+
+
+                                                       Type Certificate Holder:
+                                                  Airbus Canada Limited Partnership
+                                                               13100 Henri-Fabre Blvd.
+                                                               Mirabel, Québec, Canada
+                                                                       J7N 3C6
+
+
+
+
+                For Models:           BD-500-1A10
+                                      BD-500-1A11
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                                                                 Intentionally left blank
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                                BD-500                                               Page 3 of 31
+                 Issue: 25                                                                                                          Date: 21 August 2026
+
+
+                TABLE OF CONTENTS
+
+
+                SECTION 1: MODEL BD-500-1A10 .......................................................................... 6
+                     I. General .......................................................................................................................... 6
+                         1. Type/ Model/ Variant .................................................................................................. 6
+                         2. Performance Class .................................................................................................... 6
+                         3. Certifying Authority .................................................................................................... 6
+                         4. State of Design Authority Certification Application Date ............................................. 6
+                         5. EASA Type Certification Application Date .................................................................. 6
+                         6. State of Design Authority Type Certificate Date ......................................................... 6
+                         7. EASA Type Certification Date .................................................................................... 6
+                     II. Certification Basis ....................................................................................................... 6
+                         1. Reference Date for determining the applicable airworthiness requirements ............... 6
+                         2. Reference Date for determining the applicable operational suitability requirements ... 7
+                         3. State of Origin Airworthiness Authority Type Certification Data Sheet No. ................. 7
+                         4. State of Origin Airworthiness Authority Certification Basis ......................................... 7
+                         5. EASA Airworthiness Requirements ............................................................................ 7
+                         5.2. Deviations ............................................................................................................... 8
+                         5.3. Equivalent Safety Findings ..................................................................................... 8
+                         6. Environmental Protection Requirements .................................................................... 9
+                         6.1 Noise ....................................................................................................................... 9
+                         6.2 Fuel Venting ............................................................................................................ 9
+                         6.3 Carbon Dioxide Emissions ....................................................................................... 9
+                         7. Operational Suitability Requirements ......................................................................... 9
+                         7.1 Flight Crew Data ...................................................................................................... 9
+                         7.2. Cabin Crew Data .................................................................................................... 9
+                         7.3. Master Minimum Equipment List ............................................................................. 9
+                     III. Technical Characteristics and Operational Limitations ..........................................10
+                         1. Type Design Definition ..............................................................................................10
+                         2. Description................................................................................................................10
+                         3. Equipment ................................................................................................................10
+                         4. Dimensions ...............................................................................................................10
+                         5. Engines ....................................................................................................................10
+                         6. Auxiliary Power Unit..................................................................................................10
+                         7. Propellers .................................................................................................................11
+                         8. Fluids (Fuel, Oil, Additives, Hydraulics) .....................................................................11
+                         8.1 Fuel ........................................................................................................................11
+                         8.2 Oil ...........................................................................................................................11
+                         8.3 Hydraulics ...............................................................................................................11
+                         9. Fluid Capacities ........................................................................................................11
+                         9.1 Fuel ........................................................................................................................11
+                         9.2 Oil ...........................................................................................................................11
+                         10. Airspeed Limits .......................................................................................................11
+                         11. Flight Envelope .......................................................................................................11
+                         12. Operating Limitations ..............................................................................................12
+                         13. Maximum Certified Weights ....................................................................................12
+                         14. Centre of Gravity Range .........................................................................................12
+                         15. Datum .....................................................................................................................12
+                         16. Levelling Means ......................................................................................................12
+                         17. Minimum Flight Crew ..............................................................................................12
+                         18. Minimum Cabin Crew..............................................................................................13
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                                BD-500                                               Page 4 of 31
+                 Issue: 25                                                                                                          Date: 21 August 2026
+
+                        19. Maximum Aircraft Occupants ..................................................................................13
+                        20. Baggage/ Cargo Compartment ...............................................................................13
+                        21. Wheels and Tyres ...................................................................................................13
+                        21.1 Wheels .................................................................................................................13
+                        21.2 Tyres ....................................................................................................................14
+                        22. ETOPS ...................................................................................................................14
+                     IV. Operating and Service Instructions .........................................................................14
+                        1. Airplane Flight Manual (AFM) ...................................................................................14
+                        2. Instructions for Continued Airworthiness and Airworthiness Limitations ....................14
+                        3. Weight and Balance Manual (WBM) .........................................................................14
+                     V. Operational Suitability Data (OSD)............................................................................15
+                     VI. PART-26 Compliance Information............................................................................15
+                     VII. Notes .........................................................................................................................16
+                SECTION 2: MODEL BD-500-1A11 ........................................................................ 17
+                     I. General .........................................................................................................................17
+                         1. Type/ Model/ Variant .................................................................................................17
+                         2. Performance Class ...................................................................................................17
+                         3. Certifying Authority ...................................................................................................17
+                         4. State of Design Authority Certification Application Date ............................................17
+                         5. EASA Type Certification Application Date .................................................................17
+                         6. State of Design Authority Type Certificate Date ........................................................17
+                         7. EASA Type Certification Date ...................................................................................17
+                     II. Certification Basis ......................................................................................................17
+                         1. Reference Date for determining the applicable airworthiness requirements ..............17
+                         2. Reference Date for determining the applicable operational suitability requirements ..18
+                         3. State of Origin Airworthiness Authority Type Certification Data Sheet No. ................18
+                         4. State of Origin Airworthiness Authority Certification Basis ........................................18
+                         5. EASA Airworthiness Requirements ...........................................................................18
+                         5.2. Deviations ..............................................................................................................19
+                         5.3. Equivalent Safety Findings ....................................................................................19
+                         6. Environmental Protection Requirements ...................................................................20
+                         6.1 Noise ......................................................................................................................20
+                         6.2 Fuel Venting ...........................................................................................................20
+                         6.3 Carbon Dioxide Emissions ......................................................................................20
+                         7. Operational Suitability Requirements ........................................................................20
+                         7.1 Flight Crew Data .....................................................................................................20
+                         7.2. Cabin Crew Data ...................................................................................................20
+                         7.3. Master Minimum Equipment List ............................................................................20
+                     III. Technical Characteristics and Operational Limitations ..........................................21
+                         1. Type Design Definition ..............................................................................................21
+                         2. Description................................................................................................................21
+                         3. Equipment ................................................................................................................21
+                         4. Dimensions ...............................................................................................................21
+                         5. Engines ....................................................................................................................21
+                         6. Auxiliary Power Unit..................................................................................................21
+                         7. Propellers .................................................................................................................21
+                         8. Fluids (Fuel, Oil, Additives, Hydraulics) .....................................................................22
+                         8.1 Fuel ........................................................................................................................22
+                         8.2 Oil ...........................................................................................................................22
+                         8.3 Hydraulics ...............................................................................................................22
+                         9. Fluid Capacities ........................................................................................................22
+                         9.1 Fuel ........................................................................................................................22
+                         9.2 Oil ...........................................................................................................................22
+                         10. Airspeed Limits .......................................................................................................22
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                              BD-500                                               Page 5 of 31
+                 Issue: 25                                                                                                        Date: 21 August 2026
+
+                        11. Flight Envelope .......................................................................................................22
+                        12. Operating Limitations ..............................................................................................23
+                        13. Maximum Certified Weights ....................................................................................23
+                        14. Centre of Gravity Range .........................................................................................23
+                        15. Datum .....................................................................................................................23
+                        16. Levelling Means ......................................................................................................23
+                        17. Minimum Flight Crew ..............................................................................................23
+                        18. Minimum Cabin Crew..............................................................................................24
+                        19. Maximum Aircraft Occupants ..................................................................................24
+                        20. Baggage/ Cargo Compartment ...............................................................................24
+                        21. Wheels and Tyres ...................................................................................................24
+                        21.1 Wheels .................................................................................................................24
+                        21.2 Tyres ....................................................................................................................25
+                        22. ETOPS ...................................................................................................................25
+                     IV. Operating and Service Instructions .........................................................................25
+                        1.     Airplane Flight Manual (AFM) .............................................................................25
+                        2.     Instructions for Continued Airworthiness and Airworthiness Limitations ..............25
+                        3.     Weight and Balance Manual (WBM) ...................................................................25
+                     V. Operational Suitability Data (OSD)............................................................................26
+                     VI. PART-26 Compliance Information............................................................................26
+                     VII. Notes .........................................................................................................................27
+                SECTION: ADMINISTRATIVE ................................................................................. 28
+                     I. Acronyms and Abbreviations .....................................................................................28
+                     II. Type Certificate Holder Record .................................................................................28
+                     III. Change Record ..........................................................................................................29
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                         Page 6 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+
+
+                SECTION 1: MODEL BD-500-1A10
+
+                I. General
+
+                This Data Sheet, which is part of Type Certificate No. EASA.IM.A.570, prescribes conditions and
+                limitations under which the product for which the Type Certificate was issued meets the
+                airworthiness requirements of the European Union Aviation Safety Agency
+
+                1. Type/ Model/ Variant
+
+                BD-500 / BD-500-1A10
+
+                2. Performance Class
+
+                A
+
+                3. Certifying Authority
+
+                Transport Canada Civil Aviation
+
+                4. State of Design Authority Certification Application Date
+
+                Initial:              10 December 2009
+                Deferred:             31 December 2011
+
+                5. EASA Type Certification Application Date
+
+                Initial:              4 March 2010
+                Deferred:             31 December 2011
+
+                6. State of Design Authority Type Certificate Date
+
+                17 December 2015
+
+                7. EASA Type Certification Date
+
+                15 June 2016
+
+
+                II. Certification Basis
+
+                1. Reference Date for determining the applicable airworthiness requirements
+
+                31 December 2011, nevertheless the 31st of October 2014 letter from TCCA was received (5010-
+                A704 (10076915)) to elect to comply with CS-25 Amendment 12.
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                         Page 7 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 1: MODEL BD-500-1A10 - continued
+
+                2. Reference Date for determining the applicable operational suitability requirements
+
+                31 December 2011 for CS-FCD, CS-MMEL and CS-CCD.
+
+                3. State of Origin Airworthiness Authority Type Certification Data Sheet No.
+
+                TCCA Type Certificate Data Sheet No. A-236 (initial revision 17th of December 2015, or subsequent
+                revisions)
+
+                4. State of Origin Airworthiness Authority Certification Basis
+
+                Refer to TCCA Type Certificate Data Sheet No. A-236.
+
+                5. EASA Airworthiness Requirements
+                Original Airworthiness Requirements (at time of type certificate TC):
+                EASA Certification Specification 25, Amendment 12.
+
+                EASA Certification Specification All Weather Operations (CS-AWO), Initial Issue.
+
+                Additional Airworthiness Requirements (added post TC):
+                The following requirements are additionally applicable.
+
+                For structural changes from 26th Feb 2026 on, particularly those that affect or introduce fatigue
+                critical structures CS 25.571 amendment 19 applies, plus:
+
+                        1. For structures susceptible to widespread fatigue damage (WFD):
+                           a. WFD evaluations must substantiate freedom from WFD up to the limit of validity (LOV).
+                           b. Inspections and other maintenance actions upon which the LOV is dependent must be
+                               established and submitted to EASA for approval.
+                        2. The list of fatigue critical modified structures (FCMS) must be developed or amended as
+                           necessary and made available to aircraft operators as part of the ICA of the change.
+                        3. The baseline corrosion prevention and control programme must be amended or
+                           supplemented to address the influence of the change on the effectiveness of the programme,
+                           as necessary.
+
+
+                        Note 1: Points 1 and 3 do not apply to changes introduced by STC.
+
+                        Note 2: Points 1, 2 and 3 do not apply to repairs.
+
+                        Note 3: CS 25.571 amdt 19 or later does not include the above exceptions for STC and repair
+                        applicants any longer.
+
+                        Note 4: This TCDS entry does not invalidate the 21.A.101 process by which a later CS 25.571
+                        amendment may become applicable.
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                         Page 8 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 1: MODEL BD-500-1A10 - continued
+
+                5.1 Special Conditions
+                          B-01       Flight in Icing Conditions
+                          B-02       Stalling and Scheduled Operating Speeds
+                          B-03       Motion and Effects of Cockpit Controls
+                          B-04       Static Directional, Lateral & Longitudinal Stability & Low Energy Awareness
+                          B-05       Flight Envelope Protection Design
+                          B-14       Steep Approach
+                          B-17       Normal Load Factor Limiting System
+                          B-26       Shorter Landing Distances on eligible Wet Grooved or PFC Runways
+                          C-02       Composite Fuel Tanks – Uncontained Engine Debris
+                          C-06       Design Dive Speed
+                          C-07       Design Manoeuvre Load
+                          C-08       Pilot Limit Forces & torques (Side Stick)
+                          C-12       Tyre Debris vs. Fuel Leakage for CFRP Fuel Tanks
+                          C-13       Automatic Braking System Loads
+                          D-04        Post-Crash Fire – Composite Construction
+                          D-07        Heat Release and Smoke Emission for Seat Installation
+                          D-08        In-Flight Fire – Composite and Unusual Construction
+                          D-14        Towbarless Towing
+                          D-16       Control Surface Position Awareness and EFCS
+                          E-01       Water/ Ice Fuel System
+                          E-11       Fire Withstand Capability of CFPR Wing Fuel Tanks
+                          F-01       HIRF Protection
+                          F-10       Data Link Services for the Single European Sky
+                          F-11       Flight Recorders, Data Link Recording
+                          F-14       Flight Instrument External Probes – Qualification in Icing Conditions
+                          F-21       Airborne Systems & Network Security
+                          F-29       Lithium Battery Installations
+                          F-32       Non Rechargeable Lithium Battery Installation
+
+                5.2. Deviations
+                None.
+
+                5.3. Equivalent Safety Findings
+
+                                  B-24       Out of Trim
+                                  D-09       Burnthrough Protection at Aft Pressure Bulkhead
+                                  D-13       Pack-off Dispatch
+                                  D-23       Burnthrough on WTBF (not applicable to a/c with ModSum 500T104747 embodied )
+                                  D-26       Burnthrough on Lower Deck Cargo Compartment
+                                  D-30       APU Doors ESF
+                                  E-13       Fan Zone Non Fire Zone
+                                  E-14       Digital Only Displays of Power-Plant Instruments
+                                  E-15       Engine Ignition Switches
+                                  E-16       Automatic Take-Off Thrust Control System Indication
+                                  F-24       Passenger Cabin Minimum Mass Flow of Supplemental Oxygen
+                                  F-26       Crew Determination of Quantity of Oxygen in Passenger Oxygen System
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                         Page 9 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 1: MODEL BD-500-1A10 - continued
+
+
+                6. Environmental Protection Requirements
+
+                                  6.1 Noise
+
+                                  See TCDSN no. EASA.IM.A.570
+
+                                  6.2 Fuel Venting
+
+                                  ICAO Annex 16, Volume II, Amendment 7, Part II
+
+                                  6.3 Carbon Dioxide Emissions
+
+                                  ICAO Annex 16, Volume III, Amendment 2, implemented in Art. 9 of Regulation (EU)
+                                  2018/1139 as amended by Regulation (EU) 2025/870.
+
+                                  CO2 standard in accordance with ICAO Annex 16, Volume III, Part II, Chapter 2, § 2.4.2 e).
+                                  Note: corresponds to CAEP/10 In-Production standard.
+
+                                  For CO2 metric values see EASA Aeroplane CO2 Emissions Database.
+
+                7. Operational Suitability Requirements
+
+                                  7.1 Flight Crew Data
+
+                                  Certification Specifications for Operational Suitability Data (OSD), Flight Crew Data (CS-FCD),
+                                  Initial Issue, 31 January 2014
+
+
+
+                                  7.2. Cabin Crew Data
+
+                                  Certification Specifications and Guidance Material for Cabin Crew Data (CS-CCD), Initial Issue
+                                  - 31 January 2014.
+
+                                  7.3. Master Minimum Equipment List
+
+                                  Certification Specifications for Master Minimum Equipment List CS-MMEL Initial Issue dated
+                                  31 January 2014 (Book 1 only)
+                                  Bombardier MMEL development and approval plan Ref. EASA – BD-500 – ORI 4 Issue 2 – 13
+                                  February 2014 (as AMC/GM)
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 10 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 1: MODEL BD-500-1A10 - continued
+
+
+                III. Technical Characteristics and Operational Limitations
+
+                1. Type Design Definition
+
+                Type design definition applicable to this TCDS for the BD-500-1A10 is defined in RAZ-BA500-027 at
+                Rev. A or later approved revisions.
+
+                For particular BD-500-1A10 aircraft configured with the Basic Airbus Corporate Jet (ACJ) modifications
+                in accordance with RAL-BA500-0005 Rev. – or later approved revisions, the approved type design
+                appropriate to the “as delivered” configuration is defined in RAZ-BA500-027 Rev. M or later approved
+                revisions, and RAL-BA500-XXXXX (production sequence number, where XXXXX denotes the aircraft
+                serial number).
+
+
+                2. Description
+
+                The BD-500-1A10 model airplane is a swept-wing monoplane with a pressurized single-aisle cabin.
+                The airplane is fitted with two (2) Pratt & Whitney PW1500G ultra-high bypass geared turbofan
+                engines.
+
+                The Airplane structure, in general, is fabricated from advanced weight-saving materials (Carbon Fibre
+                Reinforced Plastic (CFRP) and advanced aluminium alloys). Steel alloys and titanium are also used.
+
+                3. Equipment
+
+                The basic required equipment as prescribed in the applicable airworthiness regulations (see
+                Certification Basis) and defined in the Type Certificate Type Design Definition (RAZ-BA500-027 Rev A
+                or later approved revisions) must be installed in the airplane.
+
+                4. Dimensions
+
+                Wingspan                        35.1 m (115 ft 1 in)
+                Overall Length                  34.9 m (114 ft 9 in)
+                Height                          11.8 m (38 ft 8 in)
+
+                5. Engines
+
+                Two (2) Pratt & Whitney PW1524G (EASA TCDS EASA.IM.E.090)
+                Two (2) Pratt & Whitney PW1521G (EASA TCDS EASA.IM.E.090)
+                Two (2) Pratt & Whitney PW1519G (EASA TCDS EASA.IM.E.090)
+
+                6. Auxiliary Power Unit
+
+                One (1) Honeywell 131-9(C)
+
+                For operating limits, see applicable AFM as listed in Section IV of this TCDS.
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 11 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 1: MODEL BD-500-1A10 - continued
+
+                7. Propellers
+
+                N/A
+
+
+
+                8. Fluids (Fuel, Oil, Additives, Hydraulics)
+
+                                  8.1 Fuel
+                                  For approved fuel grades, fuel additives, fuel temperature limitations and fuel quantity
+                                  gauging inaccuracy, see applicable AFM as listed in Section IV of this TCDS.
+
+
+                                  8.2 Oil
+                                  For approved oils, see applicable Aircraft Maintenance Publication (AMP) BD500-3AB48-
+                                  10200-00.
+
+                                  8.3 Hydraulics
+                                  For approved hydraulic fluids, see applicable Aircraft Maintenance Publication (AMP) BD500-
+                                  3AB48-10200-00.
+
+
+                9. Fluid Capacities
+
+                                  9.1 Fuel
+                                      See applicable AFM as listed in Section IV of this TCDS.
+
+
+                                  9.2 Oil
+                                     See applicable Aircraft Maintenance Publication (AMP) BD500-3AB48-10200-00.
+
+
+                10. Airspeed Limits
+
+                Unless otherwise specified, speeds are indicated airspeeds
+                                                                                                                  knots           Mach
+                  VMO and MMO                                                                                       -               -
+                                                                     Sea Level to 8,000 ft.                        300              -
+                                                                     10,000 ft. to 27,500 ft.                      330              -
+                                                                     Above 27,500 ft.                               -             0.82
+
+                For additional approved speeds, see applicable AFM as listed in Section IV of this TCDS.
+
+                11. Flight Envelope
+
+                Maximum Operating Altitude:
+                      Take-off and Landing: 8,000 ft (2,438 m) - 10,000 ft (3,050 m) for aircraft fitted with post SB
+                      BD500-314004 or Mod 314004
+                      Enroute: 41,000 ft (12,497 m)
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                           BD-500                                      Page 12 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 1: MODEL BD-500-1A10 - continued
+
+                12. Operating Limitations
+
+                        See applicable AFM as listed in Section IV of this TCDS.
+
+                        12.1 Approved Operations
+
+                                  - Visual (VFR)
+                                  - Instrument (IFR)
+                                  - Icing Conditions
+                                  - Low weather minima (CAT I, CAT II, CAT III with decision height 50ft and CAT III with no decision height)
+                                  - Ditching (see Note 2)
+
+                        12.2 Other Limitations
+
+                                  Maximum Ambient Temperature for Takeoff and Landing                      +52.5°C
+                                  Minimum Ambient Temperature for Takeoff                                  -54°C
+                                  Minimum Ambient Temperature for Landing                                  -30°C -54˚C Post SB BD500-278001
+                                  Runway slope                                                             +/- 2%
+
+
+
+                13. Maximum Certified Weights
+
+                                                Weight                                kg                lb
+                                  Maximum Ramp Weight (MRW)                         64183             141500
+                                  Maximum Takeoff Weight (MTOW)                     63730             140500
+                                  Maximum Landing Weight (MLW)                      54658             120500
+                                  Maximum Zero Fuel Weight (MZFW)                   52617             116000
+
+                         For additional approved weight variants, see applicable AFM as listed in Section IV of this TCDS.
+
+                14. Centre of Gravity Range
+
+                See applicable AFM as listed in Section IV of this TCDS.
+
+
+                15. Datum
+
+                FS 0.0 is located 640 cm (252.0 in) forward of the aircraft nose.
+
+                16. Levelling Means
+
+                Aircraft is levelled in the longitudinal and lateral axis by means of a plumb bob and target plate in the
+                rear fuselage/aft equipment bay at FS 1390.83.
+
+
+                17. Minimum Flight Crew
+
+                Two (2) – Pilot and Co-Pilot
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 13 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 1: MODEL BD-500-1A10 - continued
+
+                18. Minimum Cabin Crew
+                (in accordance with the emergency evacuation test)
+
+
+                Three (3)
+                No cabin crew required when configured with the Basic Airbus Corporate Jet (ACJ) modifications in
+                accordance with RAL-BA500-0005 Rev.- or later approved revisions, unless fitted with an approved
+                interior.
+
+
+
+                19. Maximum Aircraft Occupants
+
+                133 (including 1 Pilot, 1 Co-pilot, 1 Observer, a minimum of 3 Cabin Crew* and a maximum of 127
+                Passengers*)
+                * Maximum 130 cabin occupants when fitted with an approved interior.
+
+                3 (1 Pilot, 1 Co-pilot and 1 Observer all located in the cockpit) with no Cabin Crew or passengers
+                when configured with the Basic Airbus Corporate Jet (ACJ) modifications in accordance with RAL-
+                BA500-0005 Rev.- or later approved revisions, unless fitted with an approved interior.
+
+                The table below provides the certified Maximum Passenger Seating Capacities (MPSC), the
+                corresponding cabin configuration (emergency exit arrangement and installed option(s)) and the
+                associated minimum number of cabin crew (CC) members required to demonstrate compliance with
+                the certification requirements.
+
+                      MPSC             Cabin Configuration        Installed Option(s)         Minimum CC          Maximum CC
+                       127                  C – III - C                    ---                     3                   5
+                        0                     None               Basic Airbus Corporate            0                   0
+                                                                        Jet (ACJ)
+
+
+
+
+                20. Baggage/ Cargo Compartment
+
+                                                                           Maximum Loading
+                                                                           lb          kg
+                                  Fwd Cargo Compartment                   3742        1697
+                                  Aft Cargo Compartment                   4548        2063
+
+                         See applicable Weight and Balance Manual as listed in Section IV of this TCDS.
+
+
+                21. Wheels and Tyres
+
+                                  21.1 Wheels
+
+                                        Nose Landing Gear:                   12”
+                                        Main Landing Gear:                   21”
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 14 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 1: MODEL BD-500-1A10 - continued
+                      21.2 Tyres
+
+                                          Nose Landing Gear:       27x8.5R12 - 16PR - 225 MPH
+                                          Main Landing Gear:       H42x15.0R21- 26PR - 225 MPH
+
+                22. ETOPS
+
+                The Type Design, system reliability and performance of the following BD-500-1A10 configurations were
+                found capable for Extended Range Operations (ETOPS) when configured, maintained and operated in
+                accordance with the current revision of the ETOPS Configuration, Maintenance and Procedures (CMP)
+                document, BD500-3AB48-11200-00 Issue 7 or later EASA approved revisions.
+
+
+                This finding does not constitute an approval to conduct Extended Range Operations (operational
+                approval must be obtained from the responsible Authority).
+                The following table provides details on the ETOPS approvals.
+
+                                                                                      Up to 120 min.                 Up to 180 min.
+                                  Model                  Engine Type
+                                                                                      Approval date                  Approval date
+                            BD-500-1A10                   PW1524G                     04 March 2021                  04 March 2021
+                            BD-500-1A10                   PW1521G                    18 October 2021                18 October 2021
+                            BD-500-1A10                   PW1519G                      11 April 2024                  11 April 2024
+
+
+
+                IV. Operating and Service Instructions
+
+                1. Airplane Flight Manual (AFM)
+
+                Airplane Flight Manual (AFM), BD500-3AB48-22200-00, Issue 003, or later approved revisions.
+
+                2. Instructions for Continued Airworthiness and Airworthiness Limitations
+
+                The Instructions for Continued Airworthiness consist of the publications listed in the Aircraft
+                Maintenance Publication (AMP) BD500-3AB48-10200-00
+                (Instructions for Continued Airworthiness, Data Module BD500-A-J00-00-00-00AAA-00VA-A).
+
+                Airworthiness Limitations (AWL), BD500-3AB48-11400-02, Issue 002 or later approved revisions.
+
+                Maintenance Review Board Report BD500-3AB48-11400-01 Issue 03 or later approved revisions.
+
+                3. Weight and Balance Manual (WBM)
+
+                Weight and Balance Manual, BD500−3AB48−22100−00-xxx, where xxx denotes the customer-specific
+                code.
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 15 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 1: MODEL BD-500-1A10 - continued
+
+
+                V. Operational Suitability Data (OSD)
+                The Operational Suitability Data elements listed below are approved by the European Union Aviation
+                Safety Agency under the EASA Type Certificate [original TC number] as per Commission Regulation
+                (EU) 748/2012 as amended by Commission Regulation (EU) No 69/2014.
+
+                1. Master Minimum Equipment List
+
+                a. The MMEL is defined in BD500-3AB48-12701-00, Issue 001 or later approved revisions
+
+                2. Flight Crew Data
+
+                a. The Flight Crew Data is defined in BAT-BD500-OSD-FC, Initial Issue or later approved revisions
+
+                3. Cabin Crew Data
+                a. The Cabin Crew Data has been approved as per the defined Operational Suitability Data
+                Certification Basis (see Chapter 2) and as demonstrated by the Airbus Canada (ACLP)’s Operational
+                Suitability Data (OSD) Cabin Crew Report A220-100/300 (BD-500-1A10/-1A11) Document Reference
+                S25D24017727 Issue 3 or later EASA approved revisions, which replaces and supersedes previous
+                Bombardier CSCCD, Doc#CC-E-BD500-100 EASA Operational Suitability Data (OSD), Cabin Crew Data
+                (CCD) for Bombardier CSeries BD-500-1A10 (CS100) Report, Issue 1, dated June 1st 2016 and its later
+                approved revisions.
+
+                b. The BD-500-1A10 aircraft model is determined to be a new type for cabin crew.
+
+
+
+                VI. PART-26 Compliance Information
+                For all aircraft models in this section, compliance with point 26.300(a) of Part 26 is demonstrated by
+                complying with points:
+
+                - 26.301 Compliance Plan for (R)TC holders
+                - 26.302 Fatigue and damage tolerance evaluation
+                - 26.303 Limit of Validity
+                - 26.304 Corrosion prevention and control program
+                - 26.305 Validity of the continuing structural integrity program
+                - 26.306 Fatigue critical baseline structure
+                - 26.307 Damage tolerance data for existing changes to fatigue critical structure
+                - 26.308 Damage tolerance data for existing repairs to fatigue critical structure
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 16 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 1: MODEL BD-500-1A10 - continued
+                VII. Notes
+                1. Import Requirements:
+
+                        a. The Export Certificate of Airworthiness to EU country issued by TCCA should contain the
+                           following statement (in the English language):
+
+                                  “The aircraft covered by this certificate has been examined, tested, and found to conform to
+                                  the Type Design approved under EASA Type Certificate No. EASA.IM.A.570 as defined in TCDS
+                                  EASA.IM.A.570 issue 1 (or later revision) and to be in condition for safe operation."
+
+                2. Ditching: The BD-500-1A10 Model configured with the Basic Airbus Corporate Jet (ACJ)
+                   modifications as defined in RAL-BA500-0005 Rev. – or later approved revisions, is not approved
+                   for ditching, unless fitted with the required ditching equipment.
+
+
+                3.       RAZ-BA500-027 Appendix A, Revision M or later revisions, provides guidance to completion
+                         centres when installing an interior regarding compliance with the certification basis for the
+                         BD500-1A10 configured with the Basic ACJ modifications in accordance with RAL-BA500-0005
+                         Rev. – or later approved revisions. This guidance notes general applicable conditions, or
+                         considerations regarding:
+                             How compliance has been demonstrated for the Basic ACJ aircraft.
+                             If compliance with some requirement(s) is partial for the Basic ACJ aircraft with the
+                                remainder to be addressed by the completion centre.
+                             Specific items for which compliance must be addressed by the completion centre (N/A to
+                                the Basic ACJ aircraft)
+
+
+                        The guidance in Appendix A guidance should not be understood as an exhaustive list of all the
+                        certification requirements to be addressed by the completion centre during the process of EASA
+                        certification for a cabin completion Supplemental Type Certificate.
+
+                        RAZ-BA500-027 Appendix B, Revision M or later revisions also includes references to installation,
+                        interface data with associated limitations, and relevant data to support completion centres’
+                        understanding of the scope of the compliance activities.
+
+                4. Model airplane BD-500-1A10 receives the commercial designation A220-100.
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 17 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+
+
+
+                SECTION 2: MODEL BD-500-1A11
+
+                I. General
+
+                This Data Sheet, which is part of Type Certificate No. EASA.IM.A.570, prescribes conditions and
+                limitations under which the product for which the Type Certificate was issued meets the
+                airworthiness requirements of the European Union Aviation Safety Agency
+
+                1. Type/ Model/ Variant
+
+                BD-500 / BD-500-1A11
+
+                2. Performance Class
+
+                A
+
+                3. Certifying Authority
+
+                Transport Canada Civil Aviation
+
+                4. State of Design Authority Certification Application Date
+
+                Initial:              10 December 2009
+                Deferred:             31 December 2011
+
+                5. EASA Type Certification Application Date
+
+                Initial:              4 March 2010
+                Deferred:             31 December 2011
+
+                6. State of Design Authority Type Certificate Date
+
+                8 July 2016
+
+                7. EASA Type Certification Date
+
+                07 October 2016
+
+                II. Certification Basis
+                1. Reference Date for determining the applicable airworthiness requirements
+
+                31 December 2011, nevertheless the 31st of October 2014 letter from TCCA was received (5010-
+                A704 (10076915)) to elect to comply with CS-25 Amendment 12.
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 18 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 2: MODEL BD-500-1A11 - continued
+                2. Reference Date for determining the applicable operational suitability requirements
+
+                31 December 2011 for CS-FCD, CS-MMEL and CS-CCD.
+
+                3. State of Origin Airworthiness Authority Type Certification Data Sheet No.
+
+                TCCA Type Certificate Data Sheet No. A-236 (initial revision 17th of December 2015, or subsequent
+                revisions)
+
+                4. State of Origin Airworthiness Authority Certification Basis
+
+                Refer to TCCA Type Certificate Data Sheet No. A-236.
+
+                5. EASA Airworthiness Requirements
+                Original Airworthiness Requirements (at time of Type Certificate TC):
+                EASA Certification Specification 25, Amendment 12.
+
+                EASA Certification Specification All Weather Operations (CS-AWO), Initial Issue.
+
+                Additional Airworthiness Requirements (added post TC):
+                The following requirements are additionally applicable.
+
+                For structural changes from 26th Feb 2026 on, particularly those that affect or introduce fatigue
+                critical structures CS 25.571 amendment 19 applies, plus:
+
+                        1. For structures susceptible to widespread fatigue damage (WFD):
+                           a. WFD evaluations must substantiate freedom from WFD up to the limit of validity (LOV).
+                           b. Inspections and other maintenance actions upon which the LOV is dependent must be
+                               established and submitted to EASA for approval.
+                        2. The list of fatigue critical modified structures (FCMS) must be developed or amended as
+                           necessary and made available to aircraft operators as part of the ICA of the change.
+                        3. The baseline corrosion prevention and control programme must be amended or
+                           supplemented to address the influence of the change on the effectiveness of the programme,
+                           as necessary.
+
+
+                        Note 1: Points 1 and 3 do not apply to changes introduced by STC.
+
+                        Note 2: Points 1, 2 and 3 do not apply to repairs.
+
+                        Note 3: CS 25.571 amdt 19 or later does not include the above exceptions for STC and repair
+                        applicants any longer.
+
+                        Note 4: This TCDS entry does not invalidate the 21.A.101 process by which a later CS 25.571
+                        amendment may become applicable.
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 19 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 2: MODEL BD-500-1A11 - continued
+
+                5.1 Special Conditions
+                          B-01       Flight in Icing Conditions
+                          B-02       Stalling and Scheduled Operating Speeds
+                          B-03       Motion and Effects of Cockpit Controls
+                          B-04       Static Directional, Lateral & Longitudinal Stability & Low Energy Awareness
+                          B-05       Flight Envelope Protection Design
+                          B-17       Normal Load Factor Limiting System
+                          B-26       Shorter Landing Distances on eligible Wet Grooved or PFC Runways
+                          C-02       Composite Fuel Tanks – Uncontained Engine Debris
+                          C-06       Design Dive Speed
+                          C-07       Design Manoeuvre Load
+                          C-08       Pilot Limit Forces & torques (Side Stick)
+                          C-12       Tyre Debris vs. Fuel Leakage for CFRP Fuel Tanks
+                          C-13       Automatic Braking System Loads
+                          D-04       Post-Crash Fire – Composite Construction
+                          D-07        Heat Release and Smoke Emission for Seat Installation
+                          D-08        In-Flight Fire – Composite and Unusual Construction
+                          D-14        Towbarless Towing
+                          D-16        Control Surface Position Awareness and EFCS
+                          E-01       Water/ Ice Fuel System
+                          E-11       Fire Withstand Capability of CFPR Wing Fuel Tanks
+                          F-01       HIRF Protection
+                          F-10       Data Link Services for the Single European Sky
+                          F-11       Flight Recorders, Data Link Recording
+                          F-14       Flight Instrument External Probes – Qualification in Icing Conditions
+                          F-21       Airborne Systems & Network Security
+                          F-29       Lithium Battery Installations
+                          F-32       Non Rechargeable Lithium Battery Installation
+
+
+
+                5.2. Deviations
+                None.
+                5.3. Equivalent Safety Findings
+
+                                  B-24       Out of Trim
+                                  D-09       Burnthrough Protection at Aft Pressure Bulkhead
+                                  D-13       Pack-off Dispatch
+                                  D-23       Burnthrough on WTBF (not applicable to a/c with ModSum 500T104747 embodied )
+                                  D-26       Burnthrough on Lower Deck Cargo Compartment
+                                  D-27       Increased Max Passenger Capacity (149 Max Pax)
+                                  D-30       APU Doors ESF
+                                  E-13       Fan Zone Non Fire Zone
+                                  E-14       Digital Only Displays of Power-Plant Instruments
+                                  E-15       Engine Ignition Switches
+                                  E-16       Automatic Take-Off Thrust Control System Indication
+                                  F-24       Passenger Cabin Minimum Mass Flow of Supplemental Oxygen
+                                  F-26       Crew Determination of Quantity of Oxygen in Passenger Oxygen System
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 20 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 2: MODEL BD-500-1A11 - continued
+
+                6. Environmental Protection Requirements
+
+                                  6.1 Noise
+
+                                  See TCDSN no. EASA.IM.A.570
+
+                                  6.2 Fuel Venting
+
+                                  ICAO Annex 16, Volume II, Amendment 7, Part II
+
+                                  6.3 Carbon Dioxide Emissions
+
+                                  ICAO Annex 16, Volume III, Amendment 1, implemented in Art. 9 of Regulation (EU)
+                                  2018/1139 as amended by Regulation (EU) 2021/1087.
+
+                                  CO2 standard in accordance with ICAO Annex 16, Volume III, Part II, Chapter 2, § 2.4.2 f).
+                                  Note: corresponds to CAEP/10 In-Production standard.
+
+                                  For CO2 metric values see EASA Aeroplane CO2 Emissions Database.
+
+                7. Operational Suitability Requirements
+
+                                  7.1 Flight Crew Data
+
+                                  Certification Specifications for Operational Suitability Data (OSD), Flight Crew Data (CS-FCD),
+                                  Initial Issue, 31 January 2014
+
+
+
+
+                                  7.2. Cabin Crew Data
+
+                                  Certification Specifications and Guidance Material for Cabin Crew Data (CS-CCD), Initial Issue
+                                  - 31 January 2014.
+
+                                  7.3. Master Minimum Equipment List
+
+                                  Certification Specifications for Master Minimum Equipment List CS-MMEL Initial Issue dated
+                                  31 January 2014 (Book 1 only)
+                                  Bombardier MMEL development and approval plan Ref. EASA – BD-500 – ORI 4 Issue 2 – 13
+                                  February 2014 (as AMC/GM)
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 21 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 2: MODEL BD-500-1A11 - continued
+
+                III. Technical Characteristics and Operational Limitations
+
+                1. Type Design Definition
+
+                Type design definition applicable to this TCDS for the BD-500-1A11 is defined in RAZ-BA503-027 at
+                Rev. A or later approved revisions.
+
+
+                2. Description
+
+                The BD-500-1A11 model airplane is a swept-wing monoplane with a pressurized single-aisle cabin.
+                The airplane is fitted with two (2) Pratt & Whitney PW1500G ultra-high bypass geared turbofan
+                engines.
+
+                The Airplane structure, in general, is fabricated from advanced weight-saving materials (Carbon Fibre
+                Reinforced Plastic (CFRP) and advanced aluminium alloys). Steel alloys and titanium are also used.
+
+                3. Equipment
+
+                The basic required equipment as prescribed in the applicable airworthiness regulations (see
+                Certification Basis) and defined in the Type Certificate Type Design Definition (RAZ-BA503-027 Rev A
+                or later approved revisions) must be installed in the airplane.
+
+                4. Dimensions
+
+                Wingspan                        35.1 m (115 ft 1 in)
+                Overall Length                  38.7 m (127 ft)
+                Height                          11.5 m (37 ft 9 in)
+
+                5. Engines
+
+                Two (2) Pratt & Whitney PW1521G-3 (EASA TCDS EASA.IM.E.090)
+                Two (2) Pratt & Whitney PW1524G-3 (EASA TCDS EASA.IM.E.090)
+
+
+
+
+                6. Auxiliary Power Unit
+
+                One (1) Honeywell 131-9(C)
+                For operating limits, see applicable AFM as listed in Section IV of this TCDS.
+
+                7. Propellers
+
+                N/A
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 22 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 2: MODEL BD-500-1A11 - continued
+
+
+                8. Fluids (Fuel, Oil, Additives, Hydraulics)
+
+                                  8.1 Fuel
+                                  For approved fuel grades, fuel additives, fuel temperature limitations and fuel quantity
+                                  gauging inaccuracy, see applicable AFM as listed in Section IV of this TCDS.
+
+
+                                  8.2 Oil
+                                  For approved oils, see applicable Aircraft Maintenance Publication (AMP) BD500-3AB48-
+                                  10200-00.
+
+                                  8.3 Hydraulics
+                                  For approved hydraulic fluids, see applicable Aircraft Maintenance Publication (AMP) BD500-
+                                  3AB48-10200-00.
+
+
+                9. Fluid Capacities
+
+                                  9.1 Fuel
+
+                                  See applicable AFM as listed in Section IV of this TCDS.
+
+                                  9.2 Oil
+
+                                  See applicable Aircraft Maintenance Publication (AMP) BD500-3AB48-10200-00.
+
+                10. Airspeed Limits
+
+                Unless otherwise specified, speeds are indicated airspeeds
+
+                                                                                                                 knots            Mach
+                  VMO and MMO                                                                                      -                -
+                                                                     Sea Level to 8,000 ft.                       300               -
+                                                                     10,000 ft. to 27,500 ft.                     330               -
+                                                                     Above 27,500 ft.                              -              0.82
+
+                For additional approved speeds, see applicable AFM as listed in Section IV of this TCDS.
+
+
+                11. Flight Envelope
+
+                Maximum Operating Altitude:
+                      Take-off and Landing: 8,000 ft (2,438 m) - 10,000 ft (3,050 m) for aircraft fitted with post SB
+                      BD500-314004 or Mod 314004
+                      Enroute: 41,000 ft (12,497 m)
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                           BD-500                                      Page 23 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 2: MODEL BD-500-1A11 - continued
+
+
+                12. Operating Limitations
+
+                See applicable AFM as listed in Section IV of this TCDS.
+
+                        12.1 Approved Operations
+
+                                  - Visual (VFR)
+                                  - Instrument (IFR)
+                                  - Icing Conditions
+                                  - Low weather minima (CAT I, CAT II, CAT III with decision height 50ft and CAT III with no decision height)
+                                  - Ditching
+
+                        12.2 Other Limitations
+
+                                  Maximum Ambient Temperature for Takeoff and Landing                      +52.5°C
+                                  Minimum Ambient Temperature for Takeoff                                  -54°C
+                                  Minimum Ambient Temperature for Landing                                  -54°C
+                                  Runway slope                                                             +/- 2%
+
+
+                13. Maximum Certified Weights
+
+                                                 Weight                                kg               lb
+                                  Maximum Ramp Weight (MRW)                          71214            157000
+                                  Maximum Takeoff Weight (MTOW)                      70896            156300
+                                  Maximum Landing Weight (MLW)                       61008            134500
+                                  Maximum Zero Fuel Weight (MZFW)                    58060            128000
+                         For additional approved weight variants see applicable AFM as listed in Section IV of this TCDS.
+
+                14. Centre of Gravity Range
+
+                See applicable AFM as listed in Section IV of this TCDS.
+
+
+                15. Datum
+
+                FS 0.0 is located 427 cm (168.0 in) forward of the aircraft nose.
+
+                16. Levelling Means
+
+                Aircraft is levelled in the longitudinal and lateral axis by means of a plumb bob and target plate in the
+                rear fuselage/aft equipment bay at FS 1453.83.
+
+                17. Minimum Flight Crew
+
+                Two (2) – Pilot and Co-Pilot
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                          BD-500                                       Page 24 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 2: MODEL BD-500-1A11 - continued
+
+                18. Minimum Cabin Crew
+                (in accordance with the emergency evacuation test)
+
+
+                Three (3)
+
+
+                19. Maximum Aircraft Occupants
+
+                153 (including 1 Pilot, 1 Co-pilot, 1 Observer, a maximum of 5 Cabin Crew and a maximum of 145
+                Passengers), OR
+
+                157 (including 1 Pilot, 1 Co-pilot, 1 Observer, a maximum of 5 Cabin Crew, and 149 Passengers)
+
+                The table below provides the certified Maximum Passenger Seating Capacities (MPSC), the
+                corresponding cabin configuration (emergency exit arrangement and installed option(s)) and the
+                associated minimum number of cabin crew (CC) members required to demonstrate compliance with
+                the certification requirements.
+
+                      MPSC             Cabin Configuration           Installed Option(s)      Minimum CC          Maximum CC
+                       145                  C – III - C                       ---                  3                   5
+                       149                  C – III* - C             Option C25631002              3                   5
+
+                III* is the over-performing Type III pair of over the wing emergency exits as defined by Option
+                C25631002.
+                Note:
+                      - The original baseline aircraft maximum passenger seating capacity is 145, and
+                      - Option C25631002 enables the MPSC to be increased from 145 up to 149 (demonstrated
+                          through EASA equivalent safety finding D-27), replacing the single-lane-off-wing slide with a
+                          dual-lane-off-wing slide, and
+                      - A separate airworthiness approval is needed for the installation of the individual customized
+                          cabin layout and the necessary cabin adaptations up to 149 passenger seats.
+
+                20. Baggage/ Cargo Compartment
+
+                                                                             Maximum Loading
+                                                                             lb          kg
+                                  Fwd Cargo Compartment                     5393        2446
+                                  Aft Cargo Compartment                     5746        2606
+
+                         See applicable Weight and Balance Manual as listed in Section IV of this TCDS.
+
+
+                21. Wheels and Tyres
+
+                                  21.1 Wheels
+                                        Nose Landing Gear:                     12”
+                                        Main Landing Gear:                     21”
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 25 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 2: MODEL BD-500-1A11 - continued
+
+                                  21.2 Tyres
+
+                                           Nose Landing Gear:      27x8.5R12 - 16PR - 225 MPH
+                                           Main Landing Gear:      H42x15.0R21- 26PR - 225 MPH
+
+
+                22. ETOPS
+
+                The Type Design, system reliability and performance of the following BD-500-1A11 configurations were
+                found capable for Extended Range Operations (ETOPS) when configured, maintained and operated in
+                accordance with the current revision of the ETOPS Configuration, Maintenance and Procedures (CMP)
+                document, BD500-3AB48-11200-00 Issue 7 or later EASA approved revisions.
+
+                This finding does not constitute an approval to conduct Extended Range Operations (operational
+                approval must be obtained from the responsible Authority).
+                The following table provides details on the ETOPS approvals.
+
+                                                                                      Up to 120 min.                 Up to 180 min.
+                                   Model                 Engine Type
+                                                                                      Approval date                  Approval date
+                                                         PW1521G-3                    04 March 2021                  04 March 2021
+                            BD-500-1A11
+                                                         PW1524G-3                    04 March 2021                  04 March 2021
+
+
+
+                IV. Operating and Service Instructions
+
+                1. Airplane Flight Manual (AFM)
+
+
+                Airplane Flight Manual (AFM), BD500-3AB48-32200-00, Issue 004, or later approved revisions.
+
+
+                2. Instructions for Continued Airworthiness and Airworthiness Limitations
+
+                The Instructions for Continued Airworthiness (ICA) consist of the publications listed in the Aircraft
+                Maintenance Publication (AMP) BD500-3AB48-10200-00
+                (Instructions for Continued Airworthiness, Data Module BD500-A-J00-00-00-00AAA-00VA-A).
+
+                Airworthiness Limitations (AWL), BD500-3AB48-11400-02, Issue 002 or later approved revisions.
+
+                Maintenance Review Board Report BD500-3AB48-11400-01 Issue 03 or later approved revisions
+
+                3. Weight and Balance Manual (WBM)
+
+                Weight and Balance Manual, BD500-3AB48-32100-00-xxx, where xxx denotes the customer-specific
+                code.
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 26 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 2: MODEL BD-500-1A11 - continued
+
+
+                V. Operational Suitability Data (OSD)
+
+                1. Master Minimum Equipment List
+
+                a. The MMEL is defined in BD500-3AB48-12701-00, Issue 002, dated September 14 th 2016, or later
+                approved revisions.
+
+                2. Flight Crew Data
+
+                a. The Flight Crew Data is defined in BAT-BD500-OSD-FC, Revision 1, dated 28 Oct 2016 or later
+                approved revisions.
+
+                3. Cabin Crew Data
+
+                a. The Cabin Crew Data has been approved as per the defined Operational Suitability Data
+                Certification Basis (see Chapter 2) and as demonstrated by the Airbus Canada (ACLP)’s Operational
+                Suitability Data (OSD) Cabin Crew Report A220-100/300 (BD-500-1A10/-1A11) Document Reference
+                S25D24017727 Issue 3 or later EASA approved revisions, which replaces and supersedes previous
+                Bombardier CSCCD, Doc#CC-E-BD500-100/300 EASA Operational Suitability Data (OSD), Cabin Crew
+                Data (CCD) for Bombardier C Series Family (CS100; CS300), BD-500-1A10 (CS100) Report, BD-500-
+                1A11 (CS300) Report, Issue 2, dated August 5th, 2016.
+
+                b. For cabin crew, the BD-500-1A11 aircraft model is determined to be the same type as the BD-500-
+                1A10 model.
+
+
+                VI. PART-26 Compliance Information
+                For all aircraft models in this section, compliance with point 26.300(a) of Part 26 is demonstrated by
+                complying with points:
+
+                - 26.301 Compliance Plan for (R)TC holders
+                - 26.302 Fatigue and damage tolerance evaluation
+                - 26.303 Limit of Validity
+                - 26.304 Corrosion prevention and control program
+                - 26.305 Validity of the continuing structural integrity program
+                - 26.306 Fatigue critical baseline structure
+                - 26.307 Damage tolerance data for existing changes to fatigue critical structure
+                - 26.308 Damage tolerance data for existing repairs to fatigue critical structure
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 27 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION 2: MODEL BD-500-1A11 - continued
+
+
+                VII. Notes
+
+                        1. Import Requirements:
+
+                                  a. The Export Certificate of Airworthiness to EU country issued by TCCA should contain the
+                                      following statement (in the English language):
+
+                                     “The aircraft covered by this certificate has been examined, tested, and found to
+                                     conform to the Type Design approved under EASA Type Certificate No. EASA.IM.A.570
+                                     as defined in TCDS EASA.IM.A.570 issue 1 (or later revision) and to be in condition for
+                                     safe operation.”
+
+                        2. Model airplane BD-500-1A11 receives the commercial designation A220-300.
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 28 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+
+
+
+                SECTION: ADMINISTRATIVE
+
+                I. Acronyms and Abbreviations
+
+                AFM    Airplane Flight Manual
+                ALI    Airworthiness Limitation Items
+                AMC    Acceptable Means of Compliance
+                APU    Auxiliary Power Unit
+                AWO All Weather Operations
+                CCD    Cabin Crew Data
+                CG     Center of Gravity
+                CRI    Certification Review Item
+                CS     Certification Specification
+                EASA   European Union Aviation Safety Agency
+                ESF    Equivalent Safety Finding
+                ETOPS Extended Range Operations with Two-Engine Aeroplanes
+                EU     European Union
+                EWIS   Enhanced Wiring Interconnection System
+                FCD    Flight Crew Data
+                ICA    Instructions for Continued Airworthiness
+                ICAO   International Civil Aviation Organization
+                IFR    Instrument Flight Rules
+                OSD Operational Suitability Data
+                PW     Pratt and Whitney
+                SC     Special Condition
+                TC     type Certificate
+                TCCA Transport Canada Civil Aviation
+                TCDS   Type Certificate Data Sheet
+                TCDSN Type Certificate Data Sheet for Noise
+                VFR     Visual Flight Rules
+
+
+
+
+                II. Type Certificate Holder Record
+
+                Airbus Canada Limited Partnership
+                13100 Henri-Fabre Blvd.
+                Mirabel, Québec, Canada
+                J7N 3C6
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 29 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION: ADMINISTRATIVE
+
+
+                III. Change Record
+
+                 Issue             Date                     Changes                                                        TC issue
+                 Issue 01          16 June 2016             Initial Issue                                                  Initial Issue,
+                                                                                                                           15 June 2016
+                 Issue 02          30 June 2016             Header correction and chapter 21 Baggage/ Cargo                30 June 2016
+                                                            Compartment values corrected.
+                 Issue 03          20 July 2016             Removal of manufacturer information.                           20 July 2016
+                 Issue 04          07 October 2016          CS300 introduced in Section 2.                                 07 October 2016
+                 Issue 05          18 Nov 2016              CS300 additional weights introduced.                           07 October 2016
+                                                            CS300 FCD introduced.
+                 Issue 06          28 Nov 2016              MRB report added.                                              07 October 2016
+                 Issue 07          07 Dec 2016              Cargo Compartment values corrected.                            07 October 2016
+                                                            CS300 CCD OSD statement corrected.
+                 Issue 08          26 Apr 2017              Added CRI B-14, Steep Approach SC.                             07 October 2016
+                                                            CS100/CS300 Fuel Loads tables revised.
+                                                            Introduced engine PW1524G-3 for CS300.
+                                                            Removed engine variants in CS300 maximum
+                                                            certified weights tables.
+                                                            Introduced new weights in CS300 maximum
+                                                            certified weights tables.
+                                                            OSD FCD updated to cover Steep Approach.
+                                                            CS300 AFM updated to the Issue 6.
+                 Issue 09          02 Oct 2017              Transfer of TC to C Series Aircraft Limited Partnership        07 October 2016
+
+
+
+                 Issue 10          29 Jan 2018              Various editorial changes.                                     07 October 2016
+
+
+
+                 Issue 11          30 Nov 2018              Commercial designations revised from CS100 & CS300 07 October 2016
+                                                            to A220-100 & A220-300.
+                                                            CAT IIIa, & b auto-land operations introduced.
+                                                            Corrected Minimum Ambient Temperature for Landing,
+                                                            on BD-500-1A11 only.
+                                                            Various editorial changes.
+                 Issue 12          01 Jun 2019              Re-Naming of C Series Aircraft Limited Partnership to 07 October 2016
+                                                            Airbus Canada Limited Partnership.
+
+
+                 Issue 13          04 Mar 2021              Technical Characteristics and Operational Limitations          04 Mar 2021 for
+                                                            updates:                                                       ETOPS design
+                                                            Maximum operating altitude for TO and landing                  approval
+                                                            EASA ETOPS design approval
+                 Issue 14          12 Mar 2021              Maximum Ramp and Maximum Takeoff Weights                       07 October 2016
+                                                            updated for BD-500-1A11 model
+                                                            Editorial correction introduced on maximum diversion
+                                                            times for ETOPS as introduced in issue 13, to highlight
+                                                            that EASA approvals cover “up to” 120 minutes and
+                                                            “up to” 180 minutes
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 30 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION: ADMINISTRATIVE
+                 Issue 15          23 July 2021             BD-500-1A10:                                                   23 July 2021
+                                                                 Page 12: Maximum aircraft occupants
+                                                                     information updated: table for MPSC added.
+                                                            BD-500-1A11 Max Pax increase from 145 to 149:
+                                                                 Page 18: ESF D-27 added
+                                                                 Pages 22 and 23: Maximum aircraft occupants
+                                                                     information updated: Option for Max Pax
+                                                                     Increase from 145 to 149 and table for MPSC
+                                                                     added.
+                 Issue 16          18 October 2021          BD-500-1A10:                                                   18 October 2021
+                                                                 Page 9: Two Pratt & Whitney PW1521G
+                                                                     engines added as valid aircraft engine option
+                                                                 Page 13: ETOPS airworthiness approval
+                                                                     extended to airframe/engine combination BD-
+                                                                     500-1A10 with P&W PW1521G
+                 Issue 17          09 December 2021         BD-500-1A10:                                                   09 December 2021
+                                                                 Page 9 Type design definition content updated
+                                                                     by adding references to Basic Airbus Corporate
+                                                                     Jet (ACJ) modifications.
+                                                                 Page 11 Ditching: Reference to a new Note 2
+                                                                     added
+                                                                 Pages 12 and 13: references to Basic Airbus
+                                                                     Corporate Jet (ACJ) modifications added for
+                                                                     minimum cabin crew, maximum aircraft
+                                                                     occupants and MPSC.
+                                                                 Page 15: Note 2 for ACJ and Ditching added.
+                                                                 Page 15: Note 3 added for ACJ and RAZ-
+                                                                     BA500—027 Appendix A
+                 Issue 18          09 September 2022        BD-500-1A10:                                                   09 September 2022
+                                                            Page 12:
+                                                                 Other Limitations: Minimum ambient
+                                                                     temperature for landing updated for post SB-
+                                                                     BD500-278001 aircraft.
+                                                                 Maximum aircraft certified weights updated
+                                                                     (MRW/MTOW/MLW/MZFW)
+                 Issue 19          01 February 2023         BD-500-1A10 and BD-500-1A11:                                   01 February 2023
+                                                                 Mentions to commercial designations A220-
+                                                                     100 and A220-300 removed from cover sheet
+                                                                     and from pages 6, 14 and 16.
+                                                                 New notes for commercial designations A220-
+                                                                     100 and A220-300 added in pages 15 and 24,
+                                                                     respectively.
+                                                                 EASA Special Condition B-26 “Shorter Landing
+                                                                     Distances on eligible Wet Grooved or PFC
+                                                                     Runways“ added to Certification Basis in pages
+                                                                     7 and 17.
+                                                                 Technical Characteristics and Operational
+                                                                     Limitations. Information on Fluids and Fluids
+                                                                     Capacities reworded to refer to AFM and
+                                                                     applicable publications. Pages 10 and 20.
+
+                 Issue 20          09 May 2023              BD-500-1A10:                                                   09 May 2023
+                                                                 Page 9: Two Pratt & Whitney PW1519G
+                                                                    engines added as valid aircraft engine option.
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+                 TCDS No.: EASA.IM.A.570                                         BD-500                                        Page 31 of 31
+                 Issue: 25                                                                                             Date: 21 August 2026
+
+                SECTION: ADMINISTRATIVE
+                 Issue 21          11 April 2024            BD-500-1A10:                                                   11 April 2024
+                                                            Page 13: ETOPS airworthiness approval extended to
+                                                            airframe/engine combination BD-500-1A10 with P&W
+                                                            PW1519G.
+                 Issue 22          25 April 2025            BD-500-1A10 and BD-500-1A11:                                   25 April 2025
+                                                            Pages 14 and 24: reference to demonstration
+                                                            document for OSD Cabin Crew Data updated.
+                 Issue 23          30 September 2025        BD-500-1A10 and BD-500-1A11:                           30 September 2025
+                                                            Pages 8 and 18: Equivalent Level of Safety ESF D-23
+                                                            “Burnthrough on WTBF” not applicable for aircraft with
+                                                            ModSum 500T104747 embodied.
+                 Issue 24          20 February 2026         BD-500-1A11:                                           20 February 2026
+                                                            Page 22: MLW and MZFW values increased.
+                                                            BD-500-1A10 and BD-500-1A11
+                                                            Pages 8 and 18: Environmental Protection
+                                                            Requirements content grouped under New Subsection
+                                                            6 and content updated. CO2 new EASA certification
+                                                            content added.
+                 Issue 25          21 August 2026           Sections 1 (BD-500-1A10) and 2 (BD-500-1A11):          21 August 2026
+
+                                                            Pages 7 and 18: EASA Airworthiness requirements
+                                                            updated for fatigue critical structures / widespread
+                                                            fatigue damage / limit of validity.
+                                                            Pages 15 and 26: VI - Part 26 compliance information
+                                                            added.
+
+
+                                                                             -END-
+
+
+
+
+                         TE.TC.00065-001 © European Union Aviation Safety Agency, 2026. All rights reserved. ISO9001 Certified.
+                         Proprietary document. Printed copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+

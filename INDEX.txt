@@ -1,0 +1,8 @@
+OK   ukcaa-A320-family 12612 lines
+FAIL faa-A28NM-A320-family https://downloads.regulations.gov/FAA-2021-0799-0001/attachment_3.pdf
+OK   easa-A004-A330 5825 lines
+OK   ukcaa-A340 3077 lines
+OK   easa-A151-A350 1709 lines
+OK   ukcaa-A380 1035 lines
+OK   easa-A172-A300-A310 3372 lines
+OK   easa-IMA570-A220 1636 lines
