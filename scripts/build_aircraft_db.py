@@ -4,7 +4,7 @@
 Run from the project folder:   python3 scripts/build_aircraft_db.py
 (GitHub Actions also runs it monthly: .github/workflows/build-aircraft-db.yml)
 
-It combines two free databases, matched by the aircraft's 24-bit hex code:
+It combines three free databases, matched by the aircraft's 24-bit hex code:
 
 1. tar1090-db (github.com/wiedehopf/tar1090-db, csv branch): registration, type code,
    type description, year, owner/operator. No header, ';'-separated. Column order confirmed
@@ -14,8 +14,13 @@ It combines two free databases, matched by the aircraft's 24-bit hex code:
    This file HAS a header row, and columns are looked up BY NAME. If a needed column is missing,
    the script stops instead of guessing. If OpenSky can't be downloaded, the build carries on
    with tar1090-db only.
+3. Virtual Radar Server standing data, aircraft files (github.com/vradarserver/standing-data, CC0):
+   operator, serial number, year built and model for aircraft corrected by VRS users since 2022.
+   Header (confirmed from the real files): ICAO,Registration,ModelICAO,Manufacturer,Model,
+   ManufacturerAndModel,IsPrivateOperator,Operator,AirlineCode,SerialNumber,YearBuilt
 
-Only aircraft whose type is in data/aircraft_types.json are kept (Boeing/Airbus airliners).
+Kept: aircraft whose type is in data/aircraft_types.json (Boeing/Airbus airliners), plus every
+Singapore-registered (9V-) aircraft of any type, since those are the ones seen most around Changi.
 They're split into 16 files by the first hex character, so the page downloads one small
 file per click.
 
@@ -29,11 +34,15 @@ import json
 import re
 import sys
 import urllib.request
+import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
 TAR1090_URL = "https://raw.githubusercontent.com/wiedehopf/tar1090-db/csv/aircraft.csv.gz"
 OPENSKY_BUCKET = "https://s3.opensky-network.org/data-samples"
+VRS_ZIP_URL = "https://github.com/vradarserver/standing-data/archive/refs/heads/main.zip"
+VRS_COLUMNS = ["ICAO", "Registration", "ModelICAO", "Model", "Operator", "SerialNumber", "YearBuilt"]
+LOCAL_PREFIX = "9V-"  # keep every aircraft with this registration prefix, whatever its type
 USER_AGENT = "SpottersCompanion-build/1.0 (+https://github.com/Themagicianleo/spotter-companion)"
 ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = ROOT / "data" / "aircraft_db"
@@ -45,6 +54,7 @@ OPENSKY_COLUMNS = ["icao24", "model", "typecode", "serialNumber", "built", "engi
 FIELDS = [
     "registration", "typeCode", "typeDescription", "yearBuilt", "operator",  # from tar1090-db
     "osModel", "osSerialNumber", "osBuilt", "osEngines", "osTypeCode",  # from OpenSky
+    "vrsModel", "vrsSerialNumber", "vrsYearBuilt", "vrsOperator",  # from VRS standing data
 ]
 
 
@@ -65,7 +75,7 @@ def load_tar1090(wanted_types):
         if len(row) < 7:
             continue
         hex_code, reg, type_code, _flags, type_long, year, own_op = (field.strip() for field in row[:7])
-        if type_code in wanted_types:
+        if type_code in wanted_types or reg.startswith(LOCAL_PREFIX):
             rows[hex_code.lower()] = [reg or None, type_code, type_long or None, year or None, own_op or None]
     return rows, {"url": TAR1090_URL, "lastModified": last_modified, "rowsInSource": total}
 
@@ -107,8 +117,9 @@ def load_opensky(wanted_types, tar_rows):
         if not re.fullmatch(r"[0-9a-f]{6}", hex_code):
             continue
         typecode = (r.get("typecode") or "").strip().upper()
-        # Keep it if either database says it's one of our types.
-        if typecode not in wanted_types and hex_code not in tar_rows:
+        # Keep it if it's one of our types, already in tar1090-db, or Singapore-registered.
+        registration = (r.get("registration") or "").strip().upper()
+        if typecode not in wanted_types and hex_code not in tar_rows and not registration.startswith(LOCAL_PREFIX):
             continue
         values = {c: (r.get(c) or "").strip() or None for c in OPENSKY_COLUMNS}
         for c, v in values.items():
@@ -120,6 +131,31 @@ def load_opensky(wanted_types, tar_rows):
     return rows, info
 
 
+def load_vrs(wanted_types, known_hexes):
+    """Aircraft files from the VRS standing data (CC0). Columns are read by name from the header."""
+    raw, _ = download(VRS_ZIP_URL)
+    archive = zipfile.ZipFile(io.BytesIO(raw))
+    rows, files = {}, 0
+    for name in archive.namelist():
+        if "/aircraft/schema-01/" not in name or not name.endswith(".csv"):
+            continue
+        files += 1
+        reader = csv.DictReader(io.StringIO(archive.read(name).decode("utf-8-sig")))
+        missing = [c for c in VRS_COLUMNS if c not in (reader.fieldnames or [])]
+        if missing:
+            raise RuntimeError(f"VRS file {name} is missing columns {missing}; not guessing. Header: {reader.fieldnames}")
+        for r in reader:
+            hex_code = (r["ICAO"] or "").strip().lower()
+            if not re.fullmatch(r"[0-9a-f]{6}", hex_code):
+                continue
+            reg = (r["Registration"] or "").strip().upper()
+            if r["ModelICAO"] not in wanted_types and hex_code not in known_hexes and not reg.startswith(LOCAL_PREFIX):
+                continue
+            clean = lambda v: (v or "").strip() or None
+            rows[hex_code] = [clean(r["Model"]), clean(r["SerialNumber"]), clean(r["YearBuilt"]), clean(r["Operator"])]
+    return rows, {"url": VRS_ZIP_URL, "files": files, "rowsKept": len(rows)}
+
+
 def main():
     wanted_types = {t["icao"] for t in json.loads((ROOT / "data" / "aircraft_types.json").read_text())["types"]}
     tar_rows, tar_info = load_tar1090(wanted_types)
@@ -129,13 +165,18 @@ def main():
         print(f"WARNING: OpenSky database not used: {err}")
         os_rows, os_info = {}, {"error": str(err)}
 
+    try:
+        vrs_rows, vrs_info = load_vrs(wanted_types, set(tar_rows) | set(os_rows))
+    except Exception as err:  # carry on without it, and say so
+        print(f"WARNING: VRS aircraft data not used: {err}")
+        vrs_rows, vrs_info = {}, {"error": str(err)}
+
     shards = {c: {} for c in "0123456789abcdef"}
-    for hex_code in set(tar_rows) | set(os_rows):
+    for hex_code in set(tar_rows) | set(os_rows) | set(vrs_rows):
         tar = tar_rows.get(hex_code, [None, None, None, None, None])
         osk = os_rows.get(hex_code, [None, None, None, None, None])
-        if tar[1] not in wanted_types and osk[4] not in wanted_types:
-            continue
-        shards[hex_code[0]][hex_code] = tar + osk
+        vrs = vrs_rows.get(hex_code, [None, None, None, None])
+        shards[hex_code[0]][hex_code] = tar + osk + vrs
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     for first_char, aircraft in shards.items():
@@ -143,12 +184,13 @@ def main():
         (OUT_DIR / f"{first_char}.json").write_text(json.dumps(payload, separators=(",", ":")))
 
     meta = {
-        "source": "tar1090-db (from the Mictronics database) + OpenSky Network aircraft database",
+        "source": "tar1090-db (from the Mictronics database) + OpenSky Network aircraft database + VRS standing data",
         "sourceUrl": "https://github.com/wiedehopf/tar1090-db",
         "openskyUrl": "https://opensky-network.org/data/aircraft",
         "builtAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),
         "tar1090": tar_info,
         "opensky": os_info,
+        "vrs": vrs_info,
         "rowsKept": sum(len(s) for s in shards.values()),
         "typesKept": sorted(wanted_types),
         "note": "Community-maintained data. Entries can be outdated or wrong.",
