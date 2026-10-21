@@ -6,6 +6,7 @@ free, open data. It gives you some features that paid flight trackers charge for
 - **Live map** (Phase 1): aircraft around a point (default: Singapore, 1.35, 103.82), with plane icons
   rotated to their direction of travel. Click a plane for callsign, registration, type, altitude,
   speed, vertical speed and squawk.
+- **Satellite view:** switch between the street map and Sentinel-2 satellite imagery (top-right of the map).
 - **Flight tracks:** select a plane (on the map or in the list) to see where it has flown, coloured
   by altitude. Click empty map to hide it.
 - **Filters, list and CSV** (Phase 2): filter by type codes, altitude range, or callsign/airline prefix.
@@ -111,6 +112,7 @@ before you publish.**
 | [adsb.lol](https://adsb.lol) `api.adsb.lol/v2/point` (default) | Live positions | No (a feeder-earned key is "planned") | "Dynamic based on load". The app polls every 10 s, never faster than 1/s, and backs off on 429 | Data under [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). The docs mark the open API "deprecated" in favour of a feeders-only API; the public endpoint still worked in Oct 2026 reports | Shown on the map, in the footer and in CSV exports |
 | [airplanes.live](https://airplanes.live) (optional, in `api.js`) | Live positions | No | 1 request/s | Non-commercial. ⚠ An Oct 2026 report says feeders-only since Aug 2026 | Shown when selected |
 | [OpenStreetMap](https://www.openstreetmap.org/copyright) tiles | Map background | No | [Tile usage policy](https://operations.osmfoundation.org/policies/tiles/) | ODbL | "© OpenStreetMap contributors" |
+| [EOX Sentinel-2 cloudless 2024](https://s2maps.eu) tiles | Satellite background (Map/Satellite switch) | No | Not published | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/): free for non-commercial use with attribution; commercial use needs an EOX licence | "Sentinel-2 cloudless by EOX IT Services GmbH (contains modified Copernicus Sentinel data 2024)" shown on the map |
 | [tar1090-db](https://github.com/wiedehopf/tar1090-db) (from the [Mictronics](https://www.mictronics.de/aircraft-database/) database) | Registration, type, year, operator | No | Static file | ⚠ **No license file found**; terms unclear (see Limitations) | Shown in the info panel |
 | [Planespotters.net](https://www.planespotters.net) photo API `api.planespotters.net/pub/photos/hex/{hex}` | Aircraft photo in the info panel | No | Not published. One lookup per aircraft per visit, cached in memory | [Terms of use](https://www.planespotters.net/legal/termsofuse): photos belong to the photographers; must show "© photographer" and link to the photo page; hotlink only, never re-host | "© name · via Planespotters.net" under each photo, and the photo links to its page |
 | `data/aircraft_types.json` (my own table) | Model names, engine options | – | – | Built from EASA/FAA type certificate data sheets, regulator notices and manufacturer pages, each cited per row | Sources listed in the panel |
@@ -162,6 +164,10 @@ Remember that a static site can't keep any key secret.
 - **Tracks only cover the time since you opened the page** (up to 2 hours), built from the app's own
   10-second updates. adsb.lol's API has no documented track/history endpoint, so there's no
   full-flight history, and a plane that leaves the search radius stops being tracked.
+- **Satellite imagery is about 10 m per pixel** (Sentinel-2), so you'll see airports and runways but not
+  individual aircraft. Sharper imagery (Esri, Google, Mapbox) needs an account or key, or doesn't
+  allow this use. The EOX tile URL comes from third-party listings, so check that the Satellite
+  view loads.
 - **Engine options are per type, never per aircraft.** The app never claims which engine a specific airframe has.
 - **Simplifications:** positions refresh every 10 s, so markers jump instead of gliding.
   Aircraft without a position are listed but not drawn. Polling pauses while the tab is hidden.

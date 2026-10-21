@@ -72,11 +72,28 @@ export function initMap(elementId, center, radiusNm, attributionHtml, selectHand
   onSelect = selectHandler;
   map = L.map(elementId).setView([center.lat, center.lon], 9);
 
-  // OpenStreetMap's standard tiles. Their tile policy requires this attribution.
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
-  }).addTo(map);
+  // Two backgrounds. Each carries the attribution its licence requires; Leaflet shows the
+  // attribution of whichever layer is currently on the map.
+  const baseLayers = {
+    // OpenStreetMap's standard tiles. Their tile policy requires this attribution.
+    Map: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+    }),
+    // EOX Sentinel-2 cloudless 2024: free for non-commercial use with attribution
+    // (CC BY-NC-SA 4.0). About 10 m per pixel, so airports are visible but not parked planes.
+    // Tiles exist up to zoom 16; beyond that Leaflet enlarges the zoom-16 tiles.
+    Satellite: L.tileLayer('https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2024_3857/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg', {
+      maxZoom: 18,
+      maxNativeZoom: 16,
+      attribution: '<a href="https://s2maps.eu" target="_blank" rel="noopener">Sentinel-2 cloudless</a> by EOX IT Services GmbH ' +
+        '(contains modified Copernicus Sentinel data 2024), ' +
+        '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>',
+    }),
+  };
+  baseLayers[loadBaseLayerName()].addTo(map);
+  L.control.layers(baseLayers, null, { position: 'topright' }).addTo(map);
+  map.on('baselayerchange', (e) => saveBaseLayerName(e.name)); // remember the choice
   map.attributionControl.addAttribution(attributionHtml);
 
   radiusCircle = L.circle([center.lat, center.lon], {
@@ -125,6 +142,23 @@ export function showTrack(points) {
     L.polyline([[a.lat, a.lon], [b.lat, b.lon]], { color: altColor(b.alt), weight: 3, opacity: 0.9, interactive: false }).addTo(trackLayer);
   }
   trackLegend.addTo(map);
+}
+
+// Remember Map/Satellite between visits (if this browser allows storage).
+const BASE_LAYER_KEY = 'spotters-companion:base-layer';
+function loadBaseLayerName() {
+  try {
+    return localStorage.getItem(BASE_LAYER_KEY) === 'Satellite' ? 'Satellite' : 'Map';
+  } catch {
+    return 'Map';
+  }
+}
+function saveBaseLayerName(name) {
+  try {
+    localStorage.setItem(BASE_LAYER_KEY, name);
+  } catch {
+    // not important
+  }
 }
 
 export function setSearchArea(center, radiusNm) {

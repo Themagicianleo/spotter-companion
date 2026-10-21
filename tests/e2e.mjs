@@ -253,7 +253,28 @@ async function tracks(browser) {
   await page.close();
 }
 
-export const extraScenarios = [phase2, phase4, tracks];
+// Map / Satellite switch.
+async function satellite(browser) {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  page.on('pageerror', (e) => check('[satellite] no JavaScript errors', false, e.message));
+  const tileHosts = new Set();
+  await page.route(/tile\.openstreetmap\.org|tiles\.maps\.eox\.at/, (r) => { tileHosts.add(new URL(r.request().url()).hostname); r.fulfill({ status: 204 }); });
+  await page.route('**/relay?**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: fixture }));
+  await page.goto(BASE);
+  await page.waitForSelector('.plane');
+  check('[satellite] starts on the street map', tileHosts.has('tile.openstreetmap.org') && !tileHosts.has('tiles.maps.eox.at'));
+  await page.hover('.leaflet-control-layers');
+  await page.getByLabel('Satellite').check();
+  await page.waitForTimeout(300);
+  check('[satellite] switching loads EOX tiles', tileHosts.has('tiles.maps.eox.at'));
+  check('[satellite] EOX attribution shown', (await page.textContent('.leaflet-control-attribution')).includes('EOX'));
+  await page.reload();
+  await page.waitForSelector('.plane');
+  check('[satellite] choice remembered after reload', await page.getByLabel('Satellite').isChecked());
+  await page.close();
+}
+
+export const extraScenarios = [phase2, phase4, tracks, satellite];
 
 const server = await startServer();
 const browser = await chromium.launch();
