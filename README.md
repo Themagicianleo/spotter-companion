@@ -1,6 +1,6 @@
 # ✈ Spotter's Companion
 
-A personal, non-commercial portfolio project: a live map of nearby aircraft built only on
+A personal, non-commercial hobby project by an aviation enthusiast: a live map of nearby aircraft built only on
 free, open data. It gives you some features that paid flight trackers charge for:
 
 - **Live map** (Phase 1): aircraft around a point (default: Singapore, 1.35, 103.82), with plane icons
