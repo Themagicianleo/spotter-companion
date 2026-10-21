@@ -37,6 +37,18 @@ free, open data. It gives you some features that paid flight trackers charge for
 - **Aircraft info panel** (Phase 4): a photo from Planespotters.net (credited to its photographer), registration, type, exact model, manufacturer and
   engines. Every value is tagged with where it came from (LIVE / DB / OSN / VRS / TCDS / TYPE), and
   missing values show "Unknown".
+- **Spotting: watchlist, alerts and your log.** Add registrations, types, callsign prefixes or hex codes to a
+  watchlist, and get a pop-up (and a pulsing ring on the map) when one turns up. Alerts can also fire for
+  types on your own "rare" list, aircraft the community database flags as military or "interesting", and
+  emergency squawks (7500 hijack, 7600 radio failure, 7700 emergency, shown in red). Press **Log as seen** on a
+  flight card to keep a spotting log (with dates and how many times you've seen it), and export it as CSV.
+  Everything stays in your browser; nothing is uploaded.
+- **Stats:** what's flying right now (types, airlines, in the air vs on the ground), everything seen since you
+  opened the page, the last 24 hours from your recorder (aircraft per hour, top types and airlines), and
+  totals for your log.
+- **Weather:** the latest METAR for any airport (default Changi, WSSS), decoded into wind, visibility, cloud,
+  temperature and QNH, plus the raw report and the TAF forecast. For Changi it also says which runway direction
+  the wind favours. The top-bar button shows a summary (e.g. `WSSS 28° 4 kt`).
 
 ## Screenshots
 
@@ -48,12 +60,19 @@ free, open data. It gives you some features that paid flight trackers charge for
 |---|---|
 | ![Map and list (synthetic data)](docs/screenshots/synthetic-test-data.png) | ![Info panel (synthetic data)](docs/screenshots/info-panel-synthetic.png) |
 
+| Alerts and Weather (real Changi METAR from 21 Oct 2026) | Stats |
+|---|---|
+| ![Alert pop-ups and the Weather panel (synthetic aircraft)](docs/screenshots/weather-synthetic.png) | ![Stats panel (synthetic data)](docs/screenshots/stats-synthetic.png) |
+
 ## How to use it
 
 - **Click a plane** (or a row in the list) to open its flight card; click empty map to close it and hide its track.
 - **Hover** over a plane for a quick label: callsign, type, route, altitude.
 - **Search** (top bar) matches callsign, registration, type code or airport code, e.g. `SIA`, `9V-`, `A359` or `SIN`.
 - **List**, **Filters** and **Area** (top right) open the aircraft list, the filters and the search-area settings.
+- **Spotting** holds the alert switches, watchlist, rare-type list and your log. Click a pop-up (or a name under
+  "Matching right now") to jump to that plane.
+- **Stats** and **Weather** open those panels.
 
 ## How to run it
 
@@ -124,11 +143,19 @@ js/routes.js       flight routes by callsign, with a plausibility check
 js/airlines.js     airline name and code from the callsign
 js/shapes.js       aircraft silhouettes for the map icons
 js/format.js       turns values into text, with "Unknown" for anything missing
+js/spotting.js     watchlist, alert rules and seen log (pure functions, saved in localStorage)
+js/spottingUI.js   the Spotting drawer, alert pop-ups and the card's "Log as seen" bar
+js/flags.js        military / "interesting" flags (data/aircraft_flags.json)
+js/stats.js        counting for the Stats panel (pure functions)
+js/statsUI.js      the Stats drawer and its bar charts
+js/weather.js      METAR/TAF fetching and decoding (aviationweather.gov, via the relay)
+js/weatherUI.js    the Weather drawer and top-bar summary
 js/main.js         wires everything together
 data/aircraft_types.json   type + engine table (Phase 3)
 data/aircraft_variants.json exact model -> certified engines, parsed from official TCDS
 data/routes.json           routes near Singapore (scripts/build_routes.py)
 data/aircraft_db/          airliner-only extract of tar1090-db (Phase 4)
+data/aircraft_flags.json   hex codes tar1090-db flags as military or "interesting" (scripts/build_aircraft_db.py)
 scripts/dev_server.py      local server + relay
 scripts/build_aircraft_db.py
 proxy/                     Cloudflare worker: relay + flight recorder (setup steps in proxy/README.md)
@@ -157,6 +184,8 @@ before you publish.**
 | [OpenStreetMap](https://www.openstreetmap.org/copyright) tiles | Map background | No | [Tile usage policy](https://operations.osmfoundation.org/policies/tiles/) | ODbL | "© OpenStreetMap contributors" |
 | [EOX Sentinel-2 cloudless 2024](https://s2maps.eu) tiles | Satellite background (Map/Satellite switch) | No | Not published | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/): free for non-commercial use with attribution; commercial use needs an EOX licence | "Sentinel-2 cloudless by EOX IT Services GmbH (contains modified Copernicus Sentinel data 2024)" shown on the map |
 | [tar1090-db](https://github.com/wiedehopf/tar1090-db) (from the [Mictronics](https://www.mictronics.de/aircraft-database/) database) | Registration, type, year, operator | No | Static file | ⚠ **No license file found**; terms unclear (see Limitations) | Shown in the info panel |
+| [NOAA Aviation Weather Center data API](https://aviationweather.gov/data/api/) `/api/data/metar`, `/api/data/taf` | METAR and TAF in the Weather panel | No | Docs: "maximum 100 requests per minute", set a custom User-Agent. The app asks once per 10 minutes per airport, and the worker caches answers for 5 minutes | [NWS disclaimer](https://www.weather.gov/disclaimer): public domain; don't present modified data as official, don't imply endorsement. The docs say CORS isn't permitted, so it goes through the relay | "Weather: NOAA Aviation Weather Center … Not for flight planning" in the panel |
+| [tar1090-db](https://github.com/wiedehopf/tar1090-db) flags column | Military / "interesting" alerts (`data/aircraft_flags.json`) | No | Static file (rebuilt monthly) | Same as tar1090-db below (licence unclear) | Named in the Spotting panel |
 | [Planespotters.net](https://www.planespotters.net) photo API `api.planespotters.net/pub/photos/hex/{hex}` | Aircraft photo in the info panel | No | Not published. One lookup per aircraft per visit, cached in memory | [Terms of use](https://www.planespotters.net/legal/termsofuse): photos belong to the photographers; must show "© photographer" and link to the photo page; hotlink only, never re-host | "© name · via Planespotters.net" under each photo, and the photo links to its page |
 | [OpenSky Network aircraft database](https://opensky-network.org/data/aircraft) (monthly snapshot, merged by the build) | Exact model (e.g. A320-251N), serial number, build year, engine as recorded | No | Static file | OpenSky says the aircraft database is not covered by its terms of use (search summary; page not reachable from the build environment) | "OSN" tag on each value |
 | Official type certificate data sheets (EASA, UK CAA), as text on the `tcds-text` branch | `data/aircraft_variants.json`: engines certified for each exact Airbus/A220 model | No | – | Public regulatory documents | "TCDS" tag; document name and text line number shown in the panel |
@@ -239,6 +268,25 @@ Remember that a static site can't keep any key secret.
 - **Engine options are per type, never per aircraft.** The app never claims which engine a specific airframe has.
 - **Simplifications:** positions refresh every 10 s, so markers jump instead of gliding.
   Aircraft without a position are listed but not drawn. Polling pauses while the tab is hidden.
+- **Military and "interesting" alerts come from a community flag list** (tar1090-db: 23,084 military and 42
+  "interesting" hex codes in Oct 2026). Many military aircraft aren't in it, and some entries can be wrong.
+  The database's privacy flags (PIA, LADD) aren't copied or used.
+- **The "rare types" starter list is my own choice, not data.** What's rare depends on where you spot; edit it.
+- **Emergency alerts use the squawk code and the `emergency` field the aircraft sends.** A 7700 can be a
+  test or a mistake; check real news before assuming anything.
+- **Your watchlist and log live in this browser only** (localStorage). Clearing site data, private browsing
+  or another device means an empty log; export it as CSV now and then to keep a copy.
+- **Background notifications** only work while the page is open in a tab, and only if you allow them.
+  Some phones only allow notifications from installed apps; the in-page pop-ups still work.
+- **Weather goes through the relay.** aviationweather.gov doesn't allow browser requests from other sites
+  (CORS), so the worker must include it in `ALLOWED_HOSTS` (update the worker, see `proxy/README.md`).
+  Reports are cached for 10 minutes. The JSON fields were checked against a real response (21 Oct 2026);
+  gusts, weather (e.g. `-TSRA`) and CB clouds are read from the raw report. **Not for flight planning.**
+- **The runway hint is only the wind's preference** for Changi's runway 02 or 20 direction. Air traffic
+  control decides, and in light winds the wind doesn't settle it. Other airports get no hint, because I
+  haven't added their runway directions.
+- **24-hour stats need the updated worker.** Snapshots taken by the old worker have positions only, so types
+  and airlines appear from the moment the new worker starts recording them.
 - **Not for navigation or safety use.** Data is crowd-sourced and can be missing, late or wrong.
 
 ## How AI was used
