@@ -69,14 +69,24 @@ function show(i) {
   cap.replaceChildren(`© ${p.photographer ?? 'Unknown photographer'}`);
   if (p.source === 'commons') {
     cap.append(' · ', p.licenseUrl ? link(p.licenseUrl, p.license) : p.license, ' · ', link(p.pageUrl, 'Wikimedia Commons'));
+    cap.append(h('span', 'gallery__date', p.taken ? `Taken ${takenText(p.taken)}` : 'Date taken unknown'));
     cap.append(h('small', null, 'Matched by registration. Registrations are sometimes reused, so an older photo may show another aircraft.'));
   } else {
     cap.append(' · ', link(p.pageUrl, 'via Planespotters.net'));
+    cap.append(h('span', 'gallery__date', 'Date not given by Planespotters'));
   }
   root.querySelector('.gallery__count').textContent = `${index + 1} / ${photos.length}`;
   const many = photos.length > 1;
   root.querySelectorAll('.gallery__nav').forEach((b) => { b.hidden = !many; });
   root.querySelectorAll('.gallery__thumbs button').forEach((b, k) => b.setAttribute('aria-current', String(k === index)));
+}
+
+// "26 Oct 2025", "Oct 2025" or "2025": never more precise than the source.
+export function takenText(taken) {
+  const opts = { timeZone: 'UTC', year: 'numeric' };
+  if (taken.precision !== 'year') opts.month = 'short';
+  if (taken.precision === 'day') opts.day = 'numeric';
+  return new Date(taken.ms).toLocaleDateString('en-GB', opts);
 }
 
 // photos: [{ src, pageUrl, photographer, source: 'planespotters' | 'commons', license?, licenseUrl?, title? }]

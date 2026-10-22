@@ -79,3 +79,27 @@ test('Commons: real response shape, licence and author as plain text, title filt
   noLicence.query.pages[1].imageinfo[0].extmetadata.LicenseShortName.value = '';
   assert.deepEqual(parseCommons(noLicence, '9V-SMA'), []);
 });
+
+test('Commons dates: every format seen in real responses, never more precise than given, newest first', async () => {
+  const { parseTaken, newestFirst } = await import('../js/commons.js');
+  const { takenText } = await import('../js/gallery.js').catch(() => ({}));
+  const d = (s) => parseTaken(s);
+  assert.deepEqual(d('2025-10-26 17:47:23'), { ms: Date.UTC(2025, 9, 26), precision: 'day' });
+  assert.deepEqual(d('2017-10-24'), { ms: Date.UTC(2017, 9, 24), precision: 'day' });
+  assert.deepEqual(d('Taken on 1 August 2024'), { ms: Date.UTC(2024, 7, 1), precision: 'day' });
+  assert.deepEqual(d('<span>August 2024</span>'), { ms: Date.UTC(2024, 7, 1), precision: 'month' });
+  assert.deepEqual(d('circa 2019'), { ms: Date.UTC(2019, 0, 1), precision: 'year' });
+  assert.equal(d(''), null);
+  assert.equal(d('unknown'), null);
+  const sorted = newestFirst([
+    { title: 'a', taken: d('2016-10-14 15:50:34') }, { title: 'b', taken: null }, { title: 'c', taken: d('2025-10-26 17:47:23') }, { title: 'd', taken: d('Taken on 1 August 2024') }, { title: 'e', taken: null },
+  ]);
+  assert.deepEqual(sorted.map((p) => p.title), ['c', 'd', 'a', 'b', 'e'], 'undated photos last, in their original order');
+});
+
+test('date text is never more precise than the source', async () => {
+  const { takenText } = await import('../js/gallery.js');
+  assert.equal(takenText({ ms: Date.UTC(2025, 9, 26), precision: 'day' }), '26 Oct 2025');
+  assert.equal(takenText({ ms: Date.UTC(2024, 7, 1), precision: 'month' }), 'Aug 2024');
+  assert.equal(takenText({ ms: Date.UTC(2019, 0, 1), precision: 'year' }), '2019');
+});

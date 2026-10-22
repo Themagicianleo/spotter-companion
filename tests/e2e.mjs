@@ -217,11 +217,11 @@ async function phase4(browser) {
   await page.route(/commons\.wikimedia\.org\/w\/api\.php/, (r) => {
     const u = new URL(r.request().url());
     commonsCalls.push({ cat: u.searchParams.get('gcmtitle'), search: u.searchParams.get('gsrsearch'), agent: r.request().headers()['api-user-agent'] });
-    const photo = (n, title, artist, license) => ({ pageid: n, ns: 6, title, index: n, imageinfo: [{ thumburl: `https://upload.wikimedia.org/test/${n}.png`, thumbwidth: 640, thumbheight: 427,
+    const photo = (n, title, artist, license, taken) => ({ pageid: n, ns: 6, title, index: n, imageinfo: [{ thumburl: `https://upload.wikimedia.org/test/${n}.png`, thumbwidth: 640, thumbheight: 427,
       descriptionurl: `https://commons.wikimedia.org/wiki/${encodeURIComponent(title)}`, mime: 'image/png',
-      extmetadata: { Artist: { value: `<a href="//commons.wikimedia.org/wiki/User:${artist}">${artist}</a>` }, LicenseShortName: { value: license }, LicenseUrl: { value: 'https://creativecommons.org/licenses/by-sa/4.0' } } }] });
+      extmetadata: { Artist: { value: `<a href="//commons.wikimedia.org/wiki/User:${artist}">${artist}</a>` }, LicenseShortName: { value: license }, LicenseUrl: { value: 'https://creativecommons.org/licenses/by-sa/4.0' }, DateTimeOriginal: { value: taken } } }] });
     const body = u.searchParams.get('gcmtitle') === 'Category:N11206 (aircraft)'
-      ? { batchcomplete: '', query: { pages: { 11: photo(1, 'File:N11206 at SIN.jpg', 'Spotter One', 'CC BY-SA 4.0'), 12: photo(2, 'File:N11206 landing.jpg', 'Spotter Two', 'CC BY 2.0') } } }
+      ? { batchcomplete: '', query: { pages: { 11: photo(1, 'File:N11206 at SIN.jpg', 'Spotter One', 'CC BY-SA 4.0', '2019-03-04 10:47:10'), 12: photo(2, 'File:N11206 landing.jpg', 'Spotter Two', 'CC BY 2.0', 'Taken on 26 October 2025') } } }
       : { batchcomplete: '' };
     r.fulfill({ status: 200, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify(body) });
   });
@@ -270,18 +270,20 @@ async function phase4(browser) {
   check('[photo] photographer credit shown', (await page.textContent('.info__credit')).includes('© Test Photographer'));
   // More photos: Commons strip in the full card, "+2" on the preview, full-screen viewer
   await page.waitForSelector('#info-panel .strip__item');
-  check('[photos] "More photos" strip with the 2 Commons photos', (await page.locator('#info-panel .strip__item').count()) === 2 && (await page.textContent('#info-panel .info__strip h3')).includes('More photos (2)'));
+  check('[photos] "More photos" strip, newest first, with dates', (await page.locator('#info-panel .strip__item').count()) === 2 && (await page.textContent('#info-panel .info__strip h3')).includes('More photos (2), newest first') &&
+    (await page.locator('#info-panel .strip__date').allTextContents()).join('|') === '26 Oct 2025|4 Mar 2019');
+  check('[photos] Commons asked twice: airframe category, then a search', commonsCalls.length === 2 && commonsCalls[1].search === '"N11206"');
   check('[photos] Commons asked for the airframe category, with an Api-User-Agent', commonsCalls[0]?.cat === 'Category:N11206 (aircraft)' && /SkyWatchSG/.test(commonsCalls[0]?.agent ?? ''), JSON.stringify(commonsCalls[0]));
   await page.screenshot({ path: 'docs/screenshots/info-panel-synthetic.png' });
   await page.click('#info-panel [data-act="more"]'); // back to the preview
   check('[photos] preview shows "+2" on the photo', (await page.textContent('#info-panel .pv__morephotos')) === '+2');
   await page.click('#info-panel .pv__morephotos');
   await page.waitForSelector('.gallery:not([hidden])');
-  check('[gallery] opens on the Planespotters photo: 1 / 3 with its credit', (await page.textContent('.gallery__count')) === '1 / 3' && (await page.textContent('.gallery__cap')).includes('© Test Photographer · via Planespotters.net'));
+  check('[gallery] opens on the Planespotters photo: 1 / 3 with its credit (no date given)', (await page.textContent('.gallery__count')) === '1 / 3' && (await page.textContent('.gallery__cap')).includes('© Test Photographer · via Planespotters.net') && (await page.textContent('.gallery__cap')).includes('Date not given by Planespotters'));
   check('[gallery] the photo links to its Planespotters page', (await page.getAttribute('.gallery__imglink', 'href')) === 'https://www.planespotters.net/photo/1/test');
   await page.click('.gallery__nav--next');
   const cap = await page.textContent('.gallery__cap');
-  check('[gallery] Commons photo: author, licence and source', (await page.textContent('.gallery__count')) === '2 / 3' && cap.includes('© Spotter One · CC BY-SA 4.0 · Wikimedia Commons'), cap);
+  check('[gallery] newest Commons photo comes first, with author, licence, source and date taken', (await page.textContent('.gallery__count')) === '2 / 3' && cap.includes('© Spotter Two · CC BY 2.0 · Wikimedia Commons') && cap.includes('Taken 26 Oct 2025'), cap);
   check('[gallery] licence links to its text, photo to its file page', (await page.getAttribute('.gallery__cap a', 'href')) === 'https://creativecommons.org/licenses/by-sa/4.0' && (await page.getAttribute('.gallery__imglink', 'href')).startsWith('https://commons.wikimedia.org/wiki/File'));
   await page.keyboard.press('ArrowRight');
   await page.keyboard.press('ArrowRight');

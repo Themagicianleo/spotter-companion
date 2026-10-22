@@ -10,7 +10,7 @@ import * as fmt from './format.js';
 import { lookupAircraft, lookupType, getDbMeta, lookupVariant } from './aircraftDb.js';
 import { getPhoto } from './photos.js';
 import { getCommonsPhotos } from './commons.js';
-import { openGallery } from './gallery.js';
+import { openGallery, takenText } from './gallery.js';
 import { getTrack } from './track.js';
 import { lookupRoute, routeProgress, routeLengthNm, remainingNm, estimateArrival, findTakeoff, distanceNm, currentLegEnd } from './routes.js';
 
@@ -715,16 +715,16 @@ function renderStrip() {
   extra.forEach((p, k) => {
     const b = h('button', 'strip__item');
     b.type = 'button';
-    b.title = `© ${p.photographer ?? 'Unknown'} · ${p.license}`;
+    b.title = `© ${p.photographer ?? 'Unknown'} · ${p.license} · ${p.taken ? 'taken ' + takenText(p.taken) : 'date unknown'}`;
     const img = h('img');
     img.src = p.src;
     img.alt = `Photo ${k + 1 + offset}`;
     img.loading = 'lazy';
-    b.append(img);
+    b.append(img, h('span', 'strip__date', p.taken ? takenText(p.taken) : 'Date ?'));
     b.addEventListener('click', () => openGallery(allPhotos(), k + offset));
     row.append(b);
   });
   const head = h('h3');
-  head.append(`More photos (${extra.length}) `, sourceTag('COMMONS', 'Wikimedia Commons: free-licence photos; credit and licence shown in the viewer'));
-  stripEl.replaceChildren(head, row, h('p', 'info__note', 'From Wikimedia Commons, matched by registration. Tap a photo for its photographer and licence.'));
+  head.append(`More photos (${extra.length}), newest first `, sourceTag('COMMONS', 'Wikimedia Commons: free-licence photos; credit and licence shown in the viewer'));
+  stripEl.replaceChildren(head, row, h('p', 'info__note', 'From Wikimedia Commons, matched by registration, sorted by the date each photo was taken. Tap a photo for its photographer and licence.'));
 }
