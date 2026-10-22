@@ -1,4 +1,8 @@
-# ✈ Spotter's Companion
+<img src="icons/icon-192.png" width="96" height="96" alt="SkyWatch SG icon" align="right">
+
+# SkyWatch SG
+
+(Formerly "Spotter's Companion".)
 
 A personal, non-commercial hobby project by an aviation enthusiast: a live map of nearby aircraft built only on
 free, open data. It gives you some features that paid flight trackers charge for:
@@ -63,6 +67,20 @@ free, open data. It gives you some features that paid flight trackers charge for
 | Alerts and Weather (real Changi METAR from 21 Oct 2026) | Stats |
 |---|---|
 | ![Alert pop-ups and the Weather panel (synthetic aircraft)](docs/screenshots/weather-synthetic.png) | ![Stats panel (synthetic data)](docs/screenshots/stats-synthetic.png) |
+
+## Install it as an app
+
+It's a web app, so there's nothing to download from an app store. Open
+https://themagicianleo.github.io/spotter-companion/ and:
+
+- **iPhone / iPad (Safari):** tap the **Share** button, then **Add to Home Screen**, then **Add**.
+- **Android (Chrome):** tap the **⋮** menu, then **Add to Home screen** or **Install app**.
+- **Mac / PC (Chrome or Edge):** click the install icon at the right end of the address bar.
+
+It then opens full-screen from its own icon, called "SkyWatch". It still needs the internet (it shows live
+data), and updates arrive by themselves, because nothing is cached for offline use. Your watchlist and log are
+kept separately for the installed app and the browser tab, so on an iPhone, start your log in the one you'll use.
+The icon (`icons/icon.svg`) is an original drawing made from the app's own map plane.
 
 ## How to use it
 

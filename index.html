@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Spotter's Companion</title>
+  <!-- viewport-fit=cover lets the installed app use the whole screen; the CSS keeps clear of the notch -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SkyWatch SG</title>
   <meta name="description" content="A live map of nearby aircraft built on free, open ADS-B data.">
+  <!-- Installing as a web app ("Add to Home Screen"): name, icons and colours -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#172231">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="SkyWatch">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <!-- Leaflet (map library), stored in vendor/ so the site needs no CDN -->
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
   <!-- MapLibre draws the sharp vector maps (OpenFreeMap); the bridge lets Leaflet use it as a layer -->
@@ -15,8 +26,8 @@
   <!-- Top bar: name, search, status and the buttons that open the panels -->
   <header class="topbar">
     <div class="brand">
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2c.8 0 1.3.9 1.3 2v5.2l7.7 4.6v2l-7.7-2.3v4.6l2.2 1.7v1.6L12 20.4l-3.5 1.2V20l2.2-1.7v-4.6L3 16v-2l7.7-4.6V4c0-1.1.5-2 1.3-2z"/></svg>
-      <span>Spotter's Companion</span>
+      <img src="icons/icon.svg" width="28" height="28" alt="">
+      <span>SkyWatch SG</span>
     </div>
     <input id="search" class="search" type="search" autocomplete="off"
            placeholder="Search callsign, registration, type or airport" aria-label="Search aircraft">

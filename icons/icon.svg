@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- SkyWatch SG app icon: the map's yellow plane (js/shapes.js) climbing, with a contrail from each engine.
+       Everything important sits inside the central safe zone, so the same art also works as a maskable icon. -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2d5079"/>
+      <stop offset="1" stop-color="#0e1724"/>
+    </linearGradient>
+    <linearGradient id="trailL" gradientUnits="userSpaceOnUse" x1="497" y1="371" x2="147" y2="721">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="trailR" gradientUnits="userSpaceOnUse" x1="650" y1="524" x2="300" y2="874">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#sky)"/>
+  <!-- contrails, starting just behind each engine and fading towards the bottom left -->
+  <g stroke-width="22" stroke-linecap="round" fill="none">
+    <path d="M497 371 L147 721" stroke="url(#trailL)"/>
+    <path d="M650 524 L300 874" stroke="url(#trailR)"/>
+  </g>
+  <!-- the plane: 64x64 drawing scaled x8, centred at (600, 420), turned 45 degrees to climb to the top right -->
+  <g filter="url(#shadow)">
+    <g transform="translate(600 420) rotate(45) scale(8) translate(-32 -32)" fill="#ffc400">
+      <path d="M32 3 L30.44 5.08 L29.4 8.72 L29.4 53.2 L31.09 61 L32.91 61 L34.6 53.2 L34.6 8.72 L33.56 5.08 L32 3Z"/>
+      <path d="M32 25 L6 37 L6 40.5 L32 33.5 L32 33.5 L58 40.5 L58 37 L32 25Z"/>
+      <rect x="16.8" y="27.5" width="3.4" height="8" rx="1.7"/>
+      <rect x="43.8" y="27.5" width="3.4" height="8" rx="1.7"/>
+      <path d="M32 50 L21 57 L21 59.5 L32 57 L32 57 L43 59.5 L43 57 L32 50Z"/>
+    </g>
+  </g>
+</svg>

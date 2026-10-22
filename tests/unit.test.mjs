@@ -81,3 +81,15 @@ test('airfleets.net link: search URL for the registration, nothing when unknown'
   assert.equal(airfleetsUrl(null), null);
   assert.equal(airfleetsUrl(''), null);
 });
+
+test('web-app manifest: name, start URL and every icon file exists', async () => {
+  const { existsSync } = await import('node:fs');
+  const manifest = JSON.parse(readFileSync(new URL('../manifest.webmanifest', import.meta.url)));
+  assert.equal(manifest.name, 'SkyWatch SG');
+  assert.ok(manifest.short_name.length <= 12, 'fits under a home-screen icon');
+  assert.equal(manifest.start_url, './'); // relative, so it works under /spotter-companion/ on GitHub Pages
+  for (const icon of manifest.icons) assert.ok(existsSync(new URL(`../${icon.src}`, import.meta.url)), icon.src);
+  assert.ok(manifest.icons.some((i) => i.purpose === 'maskable'));
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  for (const ref of ['manifest.webmanifest', 'icons/apple-touch-icon.png', 'apple-mobile-web-app-title']) assert.ok(html.includes(ref), ref);
+});

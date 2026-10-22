@@ -65,7 +65,7 @@ function toast(ac, reasons) {
   // Optional system notification (phone/desktop), only if the user switched it on and allowed it.
   if (settings.notify && 'Notification' in window && Notification.permission === 'granted' && document.hidden) {
     try {
-      new Notification(`${label(ac)}: ${reasons[0].text}`, { body: detail || 'Spotter\'s Companion', tag: ac.hex });
+      new Notification(`${label(ac)}: ${reasons[0].text}`, { body: detail || 'SkyWatch SG', tag: ac.hex });
     } catch {
       // Some phones only allow notifications from an installed app; the pop-up still shows.
     }
