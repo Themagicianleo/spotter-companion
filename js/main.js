@@ -8,7 +8,7 @@ import * as mapView from './map.js';
 import { parseFilterInputs, applyFilters } from './filters.js';
 import { initList, renderList, highlightRow, getShownInOrder } from './list.js';
 import { downloadCsv } from './csv.js';
-import { initInfoPanel, openInfoPanel, updateLive, isOpenFor, closeInfoPanel } from './infoPanel.js';
+import { initInfoPanel, openInfoPanel, updateLive, isOpenFor, closeInfoPanel, setFollowing } from './infoPanel.js';
 import { getTrack, loadRecordedTrack } from './track.js';
 import { lookupRoute, isPlausible, shortRoute } from './routes.js';
 import { loadAirlines, airlineFor } from './airlines.js';
@@ -48,6 +48,17 @@ function attachRoutes(aircraft) {
 }
 
 let selectedHex = null; // the aircraft whose track is drawn (null = none)
+
+// A shared link (?hex=76cd41) opens that aircraft's card once it shows up in the live data.
+let sharedHex = new URLSearchParams(location.search).get('hex')?.toLowerCase().replace(/[^0-9a-f]/g, '') || null;
+function openSharedAircraft() {
+  if (!sharedHex) return;
+  if (state.aircraft.some((a) => a.hex === sharedHex)) {
+    const hex = sharedHex;
+    sharedHex = null;
+    select(hex, { fromList: true });
+  }
+}
 
 // ---- Phase 2: filters, list and CSV export ----
 const filterForm = document.getElementById('filters');
@@ -94,6 +105,7 @@ function render() {
   // Keep the info panel's "Live" numbers fresh.
   const selected = state.aircraft.find((a) => isOpenFor(a.hex));
   if (selected) updateLive(selected);
+  openSharedAircraft();
 }
 
 // Selecting a plane (from the map or the list) highlights it in both places.
@@ -179,7 +191,13 @@ badgeBox.addEventListener('change', () => {
 loadAirlines().then(render); // once the airline list arrives, redraw with names and badges
 loadFlags().then(render); // military / "interesting" flags for alerts
 
-initInfoPanel(document.getElementById('info-panel'), PROVIDERS[CONFIG.provider].name);
+const infoPanelEl = document.getElementById('info-panel');
+initInfoPanel(infoPanelEl, PROVIDERS[CONFIG.provider].name);
+// Buttons on the preview card: close, and follow (keeps the plane centred until you drag the map).
+infoPanelEl.addEventListener('aircraft-close', () => select(null));
+infoPanelEl.addEventListener('aircraft-follow', (e) => mapView.setFollow(e.detail.hex, () => setFollowing(false)));
+// The phone bottom sheet changes height (preview vs more info): keep the map buttons above it.
+new ResizeObserver(() => document.body.style.setProperty('--sheet-h', `${infoPanelEl.offsetHeight}px`)).observe(infoPanelEl);
 setCardBar(renderCardBar);
 initSpotting({ select, changed: render });
 initStats(document.getElementById('stats-panel'), { aircraft: () => state.aircraft, log: () => getSpotting().log });

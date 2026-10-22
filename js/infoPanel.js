@@ -20,6 +20,12 @@ let routeSection;
 let currentRoute = null; // the route shown on the card (for the live times), or null
 let routeTimesEl = null; // where the departure / arrival lines go
 let currentHex = null;
+// Preview (the compact card, like flight-tracker apps): what it shows is filled in as lookups finish.
+let previewEl;
+let lastAc = null; // the aircraft as of the latest update
+let pv = {}; // { route (undefined = loading, null = none), photo, photoEl, model, reg }
+let mode = 'preview'; // 'preview' or 'full' ("More info")
+let following = false;
 let liveSourceName = 'live feed';
 let spotBar; // alert chips + "Log as seen" (filled in by spottingUI.js)
 let cardBarRenderer = null;
@@ -79,19 +85,23 @@ export function initInfoPanel(element, providerName) {
   close.setAttribute('aria-label', 'Close aircraft info');
   close.addEventListener('click', closeInfoPanel);
   header.append(close);
+  previewEl = h('section', 'pv');
   spotBar = h('div', 'info__spotbar');
   liveSection = h('section', 'info__section');
   detailsSection = h('section', 'info__section');
   photoSection = h('section', 'info__photo');
   routeSection = h('section', 'info__section');
-  // Card order: header, spotting bar, photo, route, live tiles, aircraft + engine details.
-  panel.append(header, spotBar, photoSection, routeSection, liveSection, detailsSection);
+  // Card order: preview (always), then with "More info": spotting bar, photo, route, live tiles, details.
+  // The old header stays for screen readers' title only; the preview shows the same things.
+  panel.append(header, previewEl, spotBar, photoSection, routeSection, liveSection, detailsSection);
+  setMode('preview');
 }
 
 export function closeInfoPanel() {
   panel.hidden = true;
   currentHex = null;
-  document.body.classList.remove('card-open'); // lets the CSS move map controls back
+  if (following) toggleFollow(false);
+  document.body.classList.remove('card-open', 'card-full'); // lets the CSS move map controls back
 }
 
 export function isOpenFor(hex) {
@@ -100,7 +110,11 @@ export function isOpenFor(hex) {
 
 // Open the panel for one aircraft (the normalized object from api.js).
 export async function openInfoPanel(ac) {
+  if (currentHex !== ac.hex && following) toggleFollow(false);
   currentHex = ac.hex;
+  lastAc = ac;
+  pv = { route: undefined, photo: undefined, photoEl: null, model: null, reg: ac.registration };
+  setMode('preview'); // a new plane always starts as the short preview
   panel.hidden = false;
   panel.scrollTop = 0;
   document.body.classList.add('card-open');
@@ -127,6 +141,10 @@ export async function openInfoPanel(ac) {
   // Fill in the subtitle from the database if the live feed didn't have it.
   const subtitle = [ac.airline?.name, db?.registration ?? ac.registration, type?.model ?? db?.typeCode ?? ac.typeCode].filter(Boolean).join(' · ');
   if (subtitle) panel.querySelector('.info__subtitle').textContent = subtitle;
+  // Preview: the most exact model name we have, and the registration (database first).
+  pv.model = db?.osModel ?? db?.vrsModel ?? type?.model ?? db?.typeDescription ?? ac.typeDescription ?? null;
+  pv.reg = db?.registration ?? ac.registration ?? null;
+  renderPreview(lastAc ?? ac);
   renderDetails(ac, db, dbResult.status === 'rejected', metaResult.value, type, typeResult.status === 'rejected', variant);
 }
 
@@ -276,11 +294,15 @@ async function showRoute(ac) {
   try {
     route = await lookupRoute(ac.callsign, ac.lat === null ? null : ac);
   } catch {
-    return; // routes file unavailable: leave the section empty
+    pv.route = null; // routes file unavailable: no route in the preview either
+    renderPreview(lastAc ?? ac);
+    return; // and leave the section empty
   }
   if (currentHex !== ac.hex) return;
   const ROUTE = () => sourceTag('ROUTE', 'Virtual Radar Server standing data (crowd-sourced, CC0)');
   const parts = [h('h3', null, 'Route')];
+  pv.route = route ?? null;
+  renderPreview(lastAc ?? ac);
   if (!route) {
     parts.push(h('p', 'info__note', `No route on record for ${ac.callsign} (only routes passing near Singapore are included).`));
     routeSection.replaceChildren(...parts);
@@ -386,10 +408,16 @@ async function showPhoto(hex) {
   try {
     photo = await getPhoto(hex);
   } catch {
-    if (currentHex === hex) photoSection.replaceChildren(h('p', 'info__note', 'Photo service could not be reached.'));
+    if (currentHex === hex) {
+      photoSection.replaceChildren(h('p', 'info__note', 'Photo service could not be reached.'));
+      pv.photo = null;
+      renderPreview(lastAc);
+    }
     return;
   }
   if (currentHex !== hex) return; // another plane was clicked meanwhile
+  pv.photo = photo ?? null;
+  renderPreview(lastAc);
   if (!photo) {
     photoSection.replaceChildren(h('p', 'info__note', 'No photo of this aircraft on Planespotters.net.'));
     return;
@@ -412,6 +440,8 @@ async function showPhoto(hex) {
 // The live section is refreshed on every poll while the panel is open.
 export function updateLive(ac) {
   if (!ac || ac.hex !== currentHex) return;
+  lastAc = ac;
+  renderPreview(ac);
   const tiles = h('div', 'tiles');
   const tile = (label, value) => {
     const t = h('div', 'tile');
@@ -441,4 +471,188 @@ export function updateLive(ac) {
   liveSection.replaceChildren(heading, tiles, facts);
   cardBarRenderer?.(ac, spotBar); // alerts can change (e.g. a new squawk)
   renderRouteTimes(ac); // the arrival estimate changes as the plane flies
+}
+
+// ---------------------------------------------------------------------------------------------
+// Preview card: the short version shown first (like flight-tracker apps). "More info" shows the rest.
+// ---------------------------------------------------------------------------------------------
+
+function setMode(m) {
+  mode = m;
+  panel.classList.toggle('info--full', m === 'full');
+  panel.classList.toggle('info--preview', m !== 'full');
+  document.body.classList.toggle('card-full', m === 'full'); // CSS hides the zoom buttons behind a tall sheet
+  const btn = previewEl?.querySelector('[data-act="more"]');
+  if (btn) {
+    btn.querySelector('span').textContent = m === 'full' ? 'Less info' : 'More info';
+    btn.setAttribute('aria-expanded', String(m === 'full'));
+  }
+  if (m === 'preview') panel.scrollTop = 0;
+}
+
+function toggleFollow(on = !following) {
+  following = on;
+  previewEl.querySelector('[data-act="follow"]')?.setAttribute('aria-pressed', String(on));
+  // main.js listens and keeps the map centred on the plane (until you drag the map)
+  panel.dispatchEvent(new CustomEvent('aircraft-follow', { detail: { hex: on ? currentHex : null } }));
+}
+// main.js calls this when following stops by itself (you dragged the map).
+export function setFollowing(on) {
+  following = on;
+  previewEl.querySelector('[data-act="follow"]')?.setAttribute('aria-pressed', String(on));
+}
+
+// Flight number with the airline's IATA code, worked out from the callsign: SIA321 -> SQ321.
+// Only for airline-style callsigns whose airline we know; otherwise null (never guessed).
+export function flightNumber(callsign, airline) {
+  const m = /^[A-Z]{3}(\d[0-9A-Z]{0,4})$/.exec(callsign ?? '');
+  return m && airline?.iata ? airline.iata + m[1] : null;
+}
+
+async function share(ac) {
+  const url = `${location.origin}${location.pathname}?hex=${encodeURIComponent(ac.hex)}`;
+  const title = ac.callsign ?? ac.registration ?? ac.hex;
+  try {
+    if (navigator.share) await navigator.share({ title, text: `${title} on SkyWatch SG`, url });
+    else {
+      await navigator.clipboard.writeText(url);
+      const btn = previewEl.querySelector('[data-act="share"] span');
+      btn.textContent = 'Link copied';
+      setTimeout(() => { btn.textContent = 'Share'; }, 2000);
+    }
+  } catch {
+    // cancelled, or the browser refused: nothing to do
+  }
+}
+
+const SVG = {
+  // fixed icons (no data inside)
+  plane: '<path d="M12 2c.8 0 1.3.9 1.3 2v5.2l7.7 4.6v2l-7.7-2.3v4.6l2.2 1.7v1.6L12 20.4l-3.5 1.2V20l2.2-1.7v-4.6L3 16v-2l7.7-4.6V4c0-1.1.5-2 1.3-2z"/>',
+  more: '<path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+  follow: '<circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  share: '<path d="M12 3v12M7.5 7.5L12 3l4.5 4.5M5 13v6h14v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+};
+function icon(name, size = 20) {
+  const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  s.setAttribute('viewBox', '0 0 24 24');
+  s.setAttribute('width', size);
+  s.setAttribute('height', size);
+  s.setAttribute('aria-hidden', 'true');
+  s.innerHTML = SVG[name];
+  return s;
+}
+
+const clockShort = (ms) => new Date(ms).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+
+function renderPreview(ac) {
+  if (!ac || ac.hex !== currentHex || !previewEl) return;
+  const route = pv.route;
+  const code = (a) => a.iata ?? a.icao ?? a.code;
+
+  // --- top: callsign, badges, airline, photo, close ---
+  const top = h('div', 'pv__top');
+  const id = h('div', 'pv__id');
+  id.append(h('div', 'pv__call', ac.callsign ?? pv.reg ?? ac.hex));
+  const badges = h('div', 'pv__badges');
+  const fn = flightNumber(ac.callsign, ac.airline);
+  if (fn) { const b = h('span', 'pv__badge', fn); b.title = 'Flight number, worked out from the callsign'; badges.append(b); }
+  if (ac.typeCode) badges.append(h('span', 'pv__badge pv__badge--type', ac.typeCode));
+  if (badges.childElementCount) id.append(badges);
+  id.append(h('div', 'pv__airline', ac.airline?.name ?? (ac.callsign ? '' : 'Unknown operator')));
+  top.append(id);
+  // Photo thumbnail: the whole photo (no cropping), linked to its page with the photographer's credit.
+  const photoBox = h('div', 'pv__photo');
+  if (pv.photo) {
+    if (!pv.photoEl) {
+      const link = safeLink(pv.photo.pageUrl, '');
+      link.rel = 'noopener noreferrer';
+      const img = h('img');
+      img.src = pv.photo.src;
+      img.alt = 'Photo of this aircraft';
+      link.append(img, h('span', 'pv__credit', `© ${pv.photo.photographer ?? 'Unknown'} · Planespotters`));
+      pv.photoEl = link;
+    }
+    photoBox.append(pv.photoEl);
+  } else {
+    photoBox.classList.add('pv__photo--empty');
+    photoBox.append(icon('plane', 34), h('span', 'pv__credit', pv.photo === undefined ? 'Looking for a photo…' : 'No photo'));
+  }
+  top.append(photoBox);
+  const close = h('button', 'pv__close', '✕');
+  close.type = 'button';
+  close.setAttribute('aria-label', 'Close');
+  close.addEventListener('click', () => panel.dispatchEvent(new CustomEvent('aircraft-close')));
+  top.append(close);
+
+  // --- route box ---
+  const routeBox = h('div', 'pv__box pv__route');
+  if (route === undefined) {
+    routeBox.append(h('div', 'pv__muted', ac.callsign ? 'Looking up the route…' : 'No callsign, so no route'));
+  } else if (!route) {
+    routeBox.append(h('div', 'pv__muted', 'Route not on record'));
+  } else {
+    const from = route.airports[0], to = route.airports.at(-1);
+    const ends = h('div', 'pv__ends');
+    const end = (a, cls) => { const e = h('div', 'pv__end ' + cls); e.append(h('div', 'pv__code', code(a)), h('div', 'pv__city', a.city ?? a.name ?? '')); return e; };
+    const mid = h('div', 'pv__mid');
+    mid.append(icon('plane', 22));
+    ends.append(end(from, 'pv__end--from'), mid, end(to, 'pv__end--to'));
+    routeBox.append(ends);
+    if (route.airports.length > 2) routeBox.append(h('div', 'pv__via', 'via ' + route.airports.slice(1, -1).map(code).join(', ')));
+    // Route records can be outdated: only show progress and times if the plane is near the route.
+    const plausible = route.plausible !== false && ac.lat !== null;
+    const progress = plausible ? routeProgress(ac, route.airports) : null;
+    if (progress !== null) {
+      const bar = h('div', 'progress');
+      const fill = h('div', 'progress__bar');
+      fill.style.width = `${Math.round(progress * 100)}%`;
+      bar.append(fill);
+      routeBox.append(bar);
+    }
+    const times = h('div', 'pv__times');
+    if (!plausible) {
+      times.append(h('span', 'pv__warn', 'Route on record doesn’t match where it is'));
+    } else {
+      const takeoff = findTakeoff(getTrack(ac.hex), from);
+      const eta = estimateArrival(ac, route.airports);
+      times.append(h('span', null, takeoff ? `Dep. ${clockShort(takeoff)}` : ac.onGround ? 'On the ground' : 'Dep. not seen'));
+      times.append(h('span', null, eta ? `Arr. ~${clockShort(eta)}` : ''));
+      if (eta) times.lastChild.title = 'Estimated arrival: distance to go ÷ current ground speed';
+      if (!takeoff && !ac.onGround) times.firstChild.title = 'Shown only if the app saw the takeoff (no schedule data)';
+    }
+    routeBox.append(times);
+  }
+
+  // --- live numbers ---
+  const live = h('div', 'pv__box pv__live');
+  const stat = (label, value) => { const d = h('div', 'pv__stat'); d.append(h('div', 'pv__label', label), h('div', 'pv__value', value)); return d; };
+  live.append(stat(ac.onGround ? 'Status' : 'Altitude', fmt.altitude(ac)), stat('Ground speed', fmt.speed(ac.groundSpeedKt)));
+
+  // --- model and registration ---
+  const model = h('div', 'pv__box pv__model', pv.model ?? ac.typeDescription ?? ac.typeCode ?? 'Aircraft type unknown');
+  const reg = h('div', 'pv__box pv__reg');
+  reg.append(h('span', 'pv__label', 'Reg.'), h('span', 'pv__regval', pv.reg ?? '—'));
+
+  const grid = h('div', 'pv__grid');
+  grid.append(routeBox, live, model, reg);
+
+  // --- actions ---
+  const actions = h('div', 'pv__actions');
+  const action = (act, ico, text, attrs = {}) => {
+    const b = h('button', 'pv__act');
+    b.type = 'button';
+    b.dataset.act = act;
+    b.append(icon(ico), h('span', null, text));
+    for (const [k, v] of Object.entries(attrs)) b.setAttribute(k, v);
+    return b;
+  };
+  const more = action('more', 'more', mode === 'full' ? 'Less info' : 'More info', { 'aria-expanded': String(mode === 'full') });
+  more.addEventListener('click', () => setMode(mode === 'full' ? 'preview' : 'full'));
+  const follow = action('follow', 'follow', 'Follow', { 'aria-pressed': String(following) });
+  follow.addEventListener('click', () => toggleFollow());
+  const sh = action('share', 'share', 'Share');
+  sh.addEventListener('click', () => share(ac));
+  actions.append(more, follow, sh);
+
+  previewEl.replaceChildren(top, grid, actions);
 }

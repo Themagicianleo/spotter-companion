@@ -149,8 +149,20 @@ export function initMap(elementId, center, radiusNm, attributionHtml, selectHand
       ALT_BANDS.map((b) => `<span><i style="background:${b.color}"></i>${b.label}</span>`).join('');
     return box;
   };
-  // Clicking empty map (not a plane) clears the selection.
-  map.on('click', () => onSelect(null, { openPanel: false }));
+  // Clicking empty map (not a plane) clears the selection. Some browsers also send a "click" at the
+  // end of a drag; ignore that one, so moving the map never closes the flight card.
+  let lastDrag = 0;
+  map.on('dragend', () => { lastDrag = Date.now(); });
+  map.on('click', () => {
+    if (Date.now() - lastDrag < 500) return;
+    onSelect(null, { openPanel: false });
+  });
+  // Moving the map yourself stops "Follow".
+  map.on('dragstart', () => {
+    if (!followHex) return;
+    followHex = null;
+    onFollowStop?.();
+  });
   return map;
 }
 
@@ -215,6 +227,20 @@ export function getMapCenter() {
   return { lat: c.lat, lon: c.lng };
 }
 
+// Follow mode: keep one aircraft in the middle of the map. Dragging the map stops it.
+let followHex = null;
+let onFollowStop = null;
+export function setFollow(hex, onStop) {
+  followHex = hex;
+  onFollowStop = onStop ?? null;
+  const m = hex && markers.get(hex);
+  if (m) map.setView(m.getLatLng(), Math.max(map.getZoom(), 10));
+}
+function keepFollowing() {
+  const m = followHex && markers.get(followHex);
+  if (m) map.panTo(m.getLatLng(), { animate: true, duration: 0.8 });
+}
+
 // Draw the given aircraft. Markers for aircraft not in the list are removed.
 export function updateAircraft(aircraftList) {
   const seen = new Set();
@@ -242,6 +268,7 @@ export function updateAircraft(aircraftList) {
       markers.delete(hex);
     }
   }
+  keepFollowing();
 }
 
 // Highlight one aircraft and (optionally) pan the map to it.

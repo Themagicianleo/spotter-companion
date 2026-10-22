@@ -22,6 +22,13 @@ const BASE = 'http://localhost:8000';
 const fixture = readFileSync(new URL('./fixtures/point_response.synthetic.json', import.meta.url), 'utf8');
 const results = [];
 
+// The flight card opens as a short preview; "More info" shows the full card.
+async function moreInfo(page) {
+  const btn = page.locator('#info-panel [data-act="more"]');
+  await btn.waitFor();
+  if ((await btn.getAttribute('aria-expanded')) !== 'true') await btn.click();
+}
+
 function check(name, condition, detail = '') {
   results.push({ name, ok: !!condition });
   console.log(`${condition ? 'PASS' : 'FAIL'}  ${name}${detail ? '  (' + detail + ')' : ''}`);
@@ -76,7 +83,45 @@ export const scenarios = {
     check('[fixture] no error banner', await page.isHidden('#banner'));
     // Click the first plane's icon directly (big icons can overlap each other or the list drawer).
     await page.locator('.leaflet-marker-icon').first().dispatchEvent('click');
+    await page.waitForSelector('#info-panel:not([hidden]) .pv__call');
+    // Preview first: the short card, like flight-tracker apps
+    const pvText = await page.textContent('#info-panel .pv');
+    check('[preview] clicking a plane shows a short preview: callsign, type, altitude, speed, registration',
+      ['TST101', 'A359', '12,000 ft', '310 kt', 'TEST-A'].every((s) => pvText.includes(s)) && await page.isVisible('#info-panel .pv__call'), pvText.slice(0, 200));
+    check('[preview] the full details stay hidden until "More info"', !(await page.isVisible('#info-panel .tiles')) && (await page.textContent('#info-panel [data-act="more"]')).includes('More info'));
+    check('[preview] Follow and Share buttons', await page.isVisible('#info-panel [data-act="follow"]') && await page.isVisible('#info-panel [data-act="share"]'));
+    // Follow: pressed state; dragging the map stops it
+    await page.click('#info-panel [data-act="follow"]');
+    check('[preview] Follow is switched on', (await page.getAttribute('#info-panel [data-act="follow"]', 'aria-pressed')) === 'true');
+    await page.waitForTimeout(800); // Follow zooms in with an animation; Leaflet ignores drags until it ends
+    // Find a spot of empty map (no plane, card, drawer or button under it) and drag from there.
+    const spot = await page.evaluate(() => {
+      for (let y = 200; y < innerHeight - 80; y += 40) {
+        for (let x = 420; x < innerWidth - 700; x += 40) {
+          const el = document.elementFromPoint(x, y);
+          if (el && el.closest('#map') && !el.closest('.leaflet-marker-icon, .leaflet-control, .track-legend')) return { x, y };
+        }
+      }
+      return null;
+    });
+    await page.mouse.move(spot.x, spot.y);
+    await page.mouse.down();
+    await page.mouse.move(spot.x - 60, spot.y - 50, { steps: 5 });
+    await page.mouse.up();
+    await page.waitForTimeout(300);
+    const afterDrag = { open: await page.isVisible('#info-panel .pv__call'), follow: await page.getAttribute('#info-panel [data-act="follow"]', 'aria-pressed') };
+    check('[preview] dragging the map stops Follow (and keeps the card open)', afterDrag.open && afterDrag.follow === 'false', JSON.stringify({ ...afterDrag, spot }));
+    // Share: copies a link to this plane (the browser's share sheet on phones)
+    await page.context().grantPermissions(['clipboard-read', 'clipboard-write']);
+    const hasShare = await page.evaluate(() => !!navigator.share);
+    if (!hasShare) {
+      await page.click('#info-panel [data-act="share"]');
+      const copied = await page.evaluate(() => navigator.clipboard.readText());
+      check('[preview] Share copies a link that opens this plane', copied.endsWith('/?hex=7fff01') && (await page.textContent('#info-panel [data-act="share"]')).includes('Link copied'), copied);
+    }
+    await moreInfo(page);
     await page.waitForSelector('#info-panel:not([hidden]) .tiles');
+    check('[preview] "More info" shows the full card and becomes "Less info"', await page.isVisible('#info-panel .tiles') && (await page.textContent('#info-panel [data-act="more"]')).includes('Less info'));
     const card = await page.textContent('#info-panel');
     check('[fixture] clicking a plane opens its card: callsign, registration, type, altitude, speed, VS, squawk',
       ['TST101', 'TEST-A', 'A359', '12,000 ft', '310 kt', '-1,280 ft/min', '2301'].every((s) => card.includes(s)), card.slice(0, 160));
@@ -87,6 +132,10 @@ export const scenarios = {
     mkdirSync('docs/screenshots', { recursive: true });
     await page.waitForTimeout(500); // let the popup finish fading in
     await page.screenshot({ path: 'docs/screenshots/synthetic-test-data.png' });
+    // A shared link opens that plane's preview by itself
+    await page.goto(BASE + '?hex=7fff02');
+    await page.waitForSelector('#info-panel:not([hidden]) .pv__call');
+    check('[preview] a shared link (?hex=) opens that aircraft', (await page.textContent('#info-panel .pv__call')) === 'TST202');
     await page.close();
   },
 
@@ -138,7 +187,7 @@ async function phase2(browser) {
 
   await rows().first().click();
   check('[select] clicking a row highlights it and opens its flight card',
-    (await page.locator('tr.selected').count()) === 1 && (await page.locator('.plane--selected').count()) === 1 && (await page.isVisible('#info-panel .tiles')));
+    (await page.locator('tr.selected').count()) === 1 && (await page.locator('.plane--selected').count()) === 1 && (await page.isVisible('#info-panel .pv__call')));
 
   const [download] = await Promise.all([page.waitForEvent('download'), page.click('#export-csv')]);
   const csv = readFileSync(await download.path(), 'utf8').trim().split('\r\n');
@@ -179,6 +228,7 @@ async function phase4(browser) {
 
   const openPanelFor = async (callsign) => {
     await page.locator('#aircraft-list tbody tr', { hasText: callsign }).click();
+    await moreInfo(page);
     await page.waitForFunction((cs) => {
       const panel = document.getElementById('info-panel');
       return !panel.hidden && panel.querySelector('.info__title').textContent === cs && panel.querySelector('.info__legend');
@@ -205,7 +255,7 @@ async function phase4(browser) {
   check('[photo] photo is not cropped', (await page.locator('.info__photo img').evaluate((img) => getComputedStyle(img).objectFit)) !== 'cover');
   check('[photo] photographer credit shown', (await page.textContent('.info__credit')).includes('© Test Photographer'));
   await page.screenshot({ path: 'docs/screenshots/info-panel-synthetic.png' });
-  await page.click('.info__close');
+  await page.click('.pv__close');
 
   text = await openPanelFor('TST101');
   check('[panel] A320-251N gets its certified engine LEAP-1A26 from the TCDS',
@@ -214,7 +264,7 @@ async function phase4(browser) {
   check('[panel] certificate source cited with line number', text.includes('UK CAA TCDS UK.TC.A.00010') && /text line \d+/.test(text));
   await page.waitForFunction(() => document.querySelector('.info__photo')?.textContent.includes('No photo'));
   check('[photo] aircraft without a photo says so', true);
-  await page.click('.info__close');
+  await page.click('.pv__close');
 
   const routeCell = await page.locator('#aircraft-list tbody tr', { hasText: 'CXA865' }).locator('td').nth(3).textContent();
   check('[route] list shows the route', routeCell === 'FOC → SIN', routeCell);
@@ -235,7 +285,7 @@ async function phase4(browser) {
   check('[panel] aircraft not in database says so, falls back to live type', text.includes('Not in our database') && (await rowText('ICAO type code')) === 'ICAO type codeB77WLIVE');
   check('[panel] database shard downloaded once (cached)', new Set(shardRequests).size === shardRequests.length, shardRequests.join(' '));
   check('[panel] unconfirmed badge only where verified=false', !text.includes('unconfirmed'));
-  await page.click('.info__close');
+  await page.click('.pv__close');
   await page.click('#filters-btn');
   await page.uncheck('#show-badges');
   check('[airline] badges can be switched off', (await page.locator('.plane-badge').count()) === 0);
@@ -292,9 +342,10 @@ async function tracks(browser) {
   check('[track] segments above 25,000 ft are blue', colors >= 1);
   check('[track] legend appears', await page.isVisible('.track-legend'));
   await page.waitForSelector('#info-panel:not([hidden])'); // the row click above opened the card
+  await moreInfo(page);
   const recorded = await page.locator('#info-panel .facts').textContent();
   check('[track] info panel says how much track is recorded, incl. recorder', recorded.includes('min of track') && recorded.includes('from your recorder'), recorded);
-  await page.click('.info__close');
+  await page.click('.pv__close');
   if (process.env.SHOT) await page.screenshot({ path: process.env.SHOT });
 
   // Same again, but by clicking the plane ON THE MAP (how people actually use it).
