@@ -1,0 +1,22 @@
+{
+  "errors": [],
+  "net": [
+    "200 https://themagicianleo.github.io/light-scout/planner/sources/relay.js",
+    "200 https://api.open-meteo.com/v1/forecast?latitude=37.7456&longitude=-119.5936&hourly=temperature_2m,relative_humidity_2m,dew_point_2m,precipit",
+    "200 https://air-quality-api.open-meteo.com/v1/air-quality?latitude=37.7456&longitude=-119.5936&hourly=us_aqi,pm2_5,pm10,aerosol_optical_depth,du",
+    "200 https://themagicianleo.github.io/light-scout/data/airports.json",
+    "200 https://api.open-meteo.com/v1/forecast?latitude=1.35019&longitude=103.994003&hourly=temperature_2m,relative_humidity_2m,dew_point_2m,precipi",
+    "200 https://spotters-relay.maotianze.workers.dev/?url=https://aviationweather.gov/api/data/metar?ids=WSSS&format=json",
+    "200 https://themagicianleo.github.io/light-scout/planner/sources/relay.js",
+    "200 https://themagicianleo.github.io/light-scout/data/airports.json",
+    "200 https://air-quality-api.open-meteo.com/v1/air-quality?latitude=37.7456&longitude=-119.5936&hourly=us_aqi,pm2_5,pm10,aerosol_optical_depth,du",
+    "200 https://api.open-meteo.com/v1/forecast?latitude=37.7456&longitude=-119.5936&hourly=temperature_2m,relative_humidity_2m,dew_point_2m,precipit",
+    "200 https://spotters-relay.maotianze.workers.dev/?url=https://aviationweather.gov/api/data/metar?ids=WSSS&format=json",
+    "200 https://spotters-relay.maotianze.workers.dev/?url=https://api.adsb.lol/v2/point/1.3502/103.9940/25",
+    "200 https://api.open-meteo.com/v1/forecast?latitude=1.35019&longitude=103.994003&hourly=temperature_2m,relative_humidity_2m,dew_point_2m,precipi"
+  ],
+  "airport": "Singapore Changi Airport\nWSSS / SIN\nSingapore, SG\n3 × Runway\n1.3502, 103.9940",
+  "light": "Light on aircraft, by hour\nESTIMATE\n‹\nToday\nThursday, October 22\n›\n\nBest: 4:00 PM–6:00 PM, good, up to 100\n\n12 AM\n3 AM\n6 AM\n9 AM\n12 PM\n3 PM\n6 PM\n9 PM\ngood\nfair\npoor\nno sun\nPlanes moving 02C → 23°\nyou see the aircraft's left side; it moves right → left\n02C likely in use\nPlanes moving 20C → 203°\nyou see the aircraft's right side; it moves left → right\n\nBoth directions get the same light (it depends on which side of the runway you stand); what changes is which side of the aircraft you see, or nose versus tail if you are beyond a runway end.\n\nSun position and angles are calculated. The score is an",
+  "wind": "Wind and runway in use\nESTIMATE\n\nMETAR WSSS, observed 8:30 PM (6 min ago)\n\nMETAR WSSS 221230Z 05006KT 010V090 9999 FEW018 BKN300 29/24 Q1010 NOSIG\n\nWIND\n050° at 6 kt\n02C/20C\n02C likely in use\nRunway end\tHeading\tHeadwind\tCrosswind\n02C ✓\t23°\t5 kt\t3 kt from right\n20C\t203°\t5 kt tailwind\t3 kt from left\n02L ✓\t23°\t5 kt\t3 kt from right\n20R\t203°\t5 kt tailwind\t3 kt from left\n02R ✓\t23°\t5 kt\t3 kt from right\n20L\t203°\t5 kt tailwind\t3 kt from left\n\nheadwind = speed × cos(wind − heading); crosswind = speed × sin(wind − heading). Planes take off and land into the wind, so the end with the most headwind is the likely one. Air traffic control decides; noise rules and traffic can override the wind.\n\nFetched through the SkyWatch relay (aviationweather.gov does not allow web pages to read it directly).",
+  "traffic": "Live traffic\nESTIMATE\n\nAircraft lined up with a runway within 25 nm. Time to the runway = distance ÷ ground speed: an estimate.\n\nRBA423 B788\n9.7 nm · 2,575 ft · 195 kt\nArriving 02L\n~3 min to the threshold\nSIA818 B38M\n3.0 nm · 2,775 ft · 194 kt\nDeparting 02C\n\n4 other aircraft nearby (not lined up with a runway).\n\nUpdated 8:36 PM · adsb.lol"
+}
