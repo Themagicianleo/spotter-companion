@@ -1,4 +1,4 @@
-name: Probe Wikimedia Commons aircraft photos
+name: Probe Commons photo dates
 on:
   push:
     branches: [probe-metar]
@@ -9,38 +9,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Commons search per registration
-        continue-on-error: true
+      - continue-on-error: true
         run: |
           set +e
           mkdir -p probe
-          python3 - > probe/commons.txt 2>&1 <<'PY'
-          import json, urllib.request, urllib.parse, time
+          python3 - > probe/dates.txt 2>&1 <<'PY'
+          import json, urllib.request, urllib.parse
           UA = {'User-Agent': 'SkyWatchSG/1.0 (https://github.com/Themagicianleo/spotter-companion; hobby project)'}
-          def get(url):
-              r = urllib.request.urlopen(urllib.request.Request(url, headers={**UA, 'Origin': 'https://themagicianleo.github.io'}), timeout=30)
-              return r.headers.get('Access-Control-Allow-Origin'), json.load(r)
-          regs = ['9V-SJA', 'A6-EOW', '9V-SCT', '9V-SKA', '9M-LND', 'VT-TVD', 'PK-TLD', '9V-TNG', 'B-207H', '9V-SMA']
-          for reg in regs:
-              # 1) a file search for the registration in quotes (file namespace = 6)
-              q = urllib.parse.urlencode({'action': 'query', 'format': 'json', 'origin': '*', 'generator': 'search', 'gsrsearch': f'"{reg}"', 'gsrnamespace': 6, 'gsrlimit': 8,
-                  'prop': 'imageinfo', 'iiprop': 'url|extmetadata|size', 'iiurlwidth': 640, 'iiextmetadatafilter': 'Artist|LicenseShortName|LicenseUrl|ImageDescription|ObjectName'})
-              acao, d = get('https://commons.wikimedia.org/w/api.php?' + q)
-              pages = list((d.get('query') or {}).get('pages', {}).values())
-              print(f'== {reg}: {len(pages)} files (ACAO: {acao})')
-              for p in pages[:3]:
-                  ii = p['imageinfo'][0]; md = ii.get('extmetadata', {})
-                  print('  ', p['title'][:80], '|', md.get('LicenseShortName', {}).get('value'), '|', (md.get('Artist', {}).get('value') or '')[:80], '|', ii.get('thumburl', '')[:90])
-              # 2) the category for that airframe, if it exists (Commons names them "<reg> (aircraft)")
-              q2 = urllib.parse.urlencode({'action': 'query', 'format': 'json', 'origin': '*', 'list': 'categorymembers', 'cmtitle': f'Category:{reg} (aircraft)', 'cmtype': 'file', 'cmlimit': 50})
-              _, d2 = get('https://commons.wikimedia.org/w/api.php?' + q2)
-              print('   category files:', len(d2.get('query', {}).get('categorymembers', [])))
-              time.sleep(1)
-          print('\nRAW SAMPLE:')
-          print(json.dumps(pages[0] if pages else d, indent=1)[:2500])
+          for reg in ['A6-EOW', '9V-SCT', '9V-SJA', '9M-LND']:
+              for mode in ['cat', 'search']:
+                  p = {'action': 'query', 'format': 'json', 'origin': '*', 'prop': 'imageinfo', 'iiprop': 'url|extmetadata|mime|timestamp',
+                       'iiurlwidth': 960, 'iiextmetadatafilter': 'Artist|LicenseShortName|LicenseUrl|DateTimeOriginal|DateTime'}
+                  if mode == 'cat': p.update(generator='categorymembers', gcmtitle=f'Category:{reg} (aircraft)', gcmtype='file', gcmlimit=12)
+                  else: p.update(generator='search', gsrsearch=f'"{reg}"', gsrnamespace=6, gsrlimit=12)
+                  d = json.load(urllib.request.urlopen(urllib.request.Request('https://commons.wikimedia.org/w/api.php?' + urllib.parse.urlencode(p), headers=UA), timeout=30))
+                  pages = list((d.get('query') or {}).get('pages', {}).values())
+                  print(f'== {reg} {mode}: {len(pages)} files')
+                  for pg in pages:
+                      ii = pg['imageinfo'][0]; md = ii.get('extmetadata', {})
+                      print('  ', pg['title'][:60], '| DateTimeOriginal:', repr(md.get('DateTimeOriginal', {}).get('value'))[:90], '| DateTime:', repr(md.get('DateTime', {}).get('value'))[:40], '| upload:', ii.get('timestamp'))
           PY
-          curl -sSL -A "SkyWatchSG/1.0" "https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_User-Agent_Policy" | python3 -c "import sys,re,html; t=sys.stdin.read(); t=re.sub(r'(?s)<(script|style)[^>]*>.*?</\1>',' ',t); t=re.sub(r'<[^>]+>',' ',t); t=html.unescape(re.sub(r'\s+',' ',t)); i=t.find('User-Agent'); print(t[i:i+2500])" > probe/ua-policy.txt
-          curl -sSL -A "SkyWatchSG/1.0" "https://www.mediawiki.org/wiki/API:Etiquette" | python3 -c "import sys,re,html; t=sys.stdin.read(); t=re.sub(r'(?s)<(script|style)[^>]*>.*?</\1>',' ',t); t=re.sub(r'<[^>]+>',' ',t); t=html.unescape(re.sub(r'\s+',' ',t)); i=t.find('Request limit'); print(t[i-200:i+2500])" > probe/etiquette.txt
       - run: |
           git config user.name "github-actions[bot]"; git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
-          git add -A probe; git commit -m "probe commons"; git push
+          git add -A probe; git commit -m "probe dates"; git push
