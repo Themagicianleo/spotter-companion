@@ -9,6 +9,8 @@
 import * as fmt from './format.js';
 import { lookupAircraft, lookupType, getDbMeta, lookupVariant } from './aircraftDb.js';
 import { getPhoto } from './photos.js';
+import { getCommonsPhotos } from './commons.js';
+import { openGallery } from './gallery.js';
 import { getTrack } from './track.js';
 import { lookupRoute, routeProgress, routeLengthNm, remainingNm, estimateArrival, findTakeoff, distanceNm, currentLegEnd } from './routes.js';
 
@@ -23,7 +25,8 @@ let currentHex = null;
 // Preview (the compact card, like flight-tracker apps): what it shows is filled in as lookups finish.
 let previewEl;
 let lastAc = null; // the aircraft as of the latest update
-let pv = {}; // { route (undefined = loading, null = none), photo, photoEl, model, reg }
+let pv = {}; // { route (undefined = loading, null = none), photo, photoEl, commons, model, reg }
+let stripEl; // "More photos" strip in the full card
 let mode = 'preview'; // 'preview' or 'full' ("More info")
 let following = false;
 let liveSourceName = 'live feed';
@@ -86,6 +89,7 @@ export function initInfoPanel(element, providerName) {
   close.addEventListener('click', closeInfoPanel);
   header.append(close);
   previewEl = h('section', 'pv');
+  stripEl = h('section', 'info__strip');
   spotBar = h('div', 'info__spotbar');
   liveSection = h('section', 'info__section');
   detailsSection = h('section', 'info__section');
@@ -93,7 +97,7 @@ export function initInfoPanel(element, providerName) {
   routeSection = h('section', 'info__section');
   // Card order: preview (always), then with "More info": spotting bar, photo, route, live tiles, details.
   // The old header stays for screen readers' title only; the preview shows the same things.
-  panel.append(header, previewEl, spotBar, photoSection, routeSection, liveSection, detailsSection);
+  panel.append(header, previewEl, spotBar, photoSection, stripEl, routeSection, liveSection, detailsSection);
   setMode('preview');
 }
 
@@ -113,7 +117,8 @@ export async function openInfoPanel(ac) {
   if (currentHex !== ac.hex && following) toggleFollow(false);
   currentHex = ac.hex;
   lastAc = ac;
-  pv = { route: undefined, photo: undefined, photoEl: null, model: null, reg: ac.registration };
+  pv = { route: undefined, photo: undefined, photoEl: null, commons: undefined, model: null, reg: ac.registration };
+  stripEl.replaceChildren();
   setMode('preview'); // a new plane always starts as the short preview
   panel.hidden = false;
   panel.scrollTop = 0;
@@ -145,6 +150,7 @@ export async function openInfoPanel(ac) {
   pv.model = db?.osModel ?? db?.vrsModel ?? type?.model ?? db?.typeDescription ?? ac.typeDescription ?? null;
   pv.reg = db?.registration ?? ac.registration ?? null;
   renderPreview(lastAc ?? ac);
+  loadMorePhotos(ac.hex, pv.reg);
   renderDetails(ac, db, dbResult.status === 'rejected', metaResult.value, type, typeResult.status === 'rejected', variant);
 }
 
@@ -562,7 +568,20 @@ function renderPreview(ac) {
   top.append(id);
   // Photo thumbnail: the whole photo (no cropping), linked to its page with the photographer's credit.
   const photoBox = h('div', 'pv__photo');
-  if (pv.photo) {
+  const photos = allPhotos();
+  if (!pv.photo && pv.commons?.length) {
+    // No Planespotters photo: show the first Commons photo (tap opens the viewer with its licence).
+    const first = pv.commons[0];
+    const b = h('button', 'pv__photobtn');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Open photos');
+    const img = h('img');
+    img.src = first.src;
+    img.alt = 'Photo of this aircraft';
+    b.append(img, h('span', 'pv__credit', `© ${first.photographer ?? 'Unknown'} · ${first.license}`));
+    b.addEventListener('click', () => openGallery(photos, 0));
+    photoBox.append(b);
+  } else if (pv.photo) {
     if (!pv.photoEl) {
       const link = safeLink(pv.photo.pageUrl, '');
       link.rel = 'noopener noreferrer';
@@ -576,6 +595,14 @@ function renderPreview(ac) {
   } else {
     photoBox.classList.add('pv__photo--empty');
     photoBox.append(icon('plane', 34), h('span', 'pv__credit', pv.photo === undefined ? 'Looking for a photo…' : 'No photo'));
+  }
+  if (photos.length > 1) {
+    const more = h('button', 'pv__morephotos', `+${photos.length - 1}`);
+    more.type = 'button';
+    more.title = `${photos.length} photos`;
+    more.setAttribute('aria-label', `See all ${photos.length} photos`);
+    more.addEventListener('click', () => openGallery(photos, 0));
+    photoBox.append(more);
   }
   top.append(photoBox);
   const close = h('button', 'pv__close', '✕');
@@ -655,4 +682,49 @@ function renderPreview(ac) {
   actions.append(more, follow, sh);
 
   previewEl.replaceChildren(top, grid, actions);
+}
+
+// ---------------------------------------------------------------------------------------------
+// More photos (Wikimedia Commons), shown as "+N" on the preview photo and a strip in the full card.
+// ---------------------------------------------------------------------------------------------
+
+async function loadMorePhotos(hex, reg) {
+  let list = [];
+  try {
+    list = await getCommonsPhotos(reg);
+  } catch {
+    list = []; // Commons unreachable: just no extra photos
+  }
+  if (currentHex !== hex) return;
+  pv.commons = list;
+  renderPreview(lastAc);
+  renderStrip();
+}
+
+// Planespotters' photo first (if any), then Commons.
+function allPhotos() {
+  const first = pv.photo ? [{ ...pv.photo, source: 'planespotters' }] : [];
+  return [...first, ...(pv.commons ?? [])];
+}
+
+function renderStrip() {
+  const extra = pv.commons ?? [];
+  if (!extra.length) { stripEl.replaceChildren(); return; }
+  const offset = pv.photo ? 1 : 0;
+  const row = h('div', 'strip');
+  extra.forEach((p, k) => {
+    const b = h('button', 'strip__item');
+    b.type = 'button';
+    b.title = `© ${p.photographer ?? 'Unknown'} · ${p.license}`;
+    const img = h('img');
+    img.src = p.src;
+    img.alt = `Photo ${k + 1 + offset}`;
+    img.loading = 'lazy';
+    b.append(img);
+    b.addEventListener('click', () => openGallery(allPhotos(), k + offset));
+    row.append(b);
+  });
+  const head = h('h3');
+  head.append(`More photos (${extra.length}) `, sourceTag('COMMONS', 'Wikimedia Commons: free-licence photos; credit and licence shown in the viewer'));
+  stripEl.replaceChildren(head, row, h('p', 'info__note', 'From Wikimedia Commons, matched by registration. Tap a photo for its photographer and licence.'));
 }

@@ -212,6 +212,20 @@ async function phase4(browser) {
   await page.route('https://tile.openstreetmap.org/**', (r) => r.fulfill({ status: 204 }));
   await page.route('**/relay?**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(data) }));
   // Planespotters: a made-up photo for a03618, none for anything else. The image is a 1x1 PNG.
+  // Wikimedia Commons: two photos for N11206 (TST202's registration) in its airframe category; none for others.
+  const commonsCalls = [];
+  await page.route(/commons\.wikimedia\.org\/w\/api\.php/, (r) => {
+    const u = new URL(r.request().url());
+    commonsCalls.push({ cat: u.searchParams.get('gcmtitle'), search: u.searchParams.get('gsrsearch'), agent: r.request().headers()['api-user-agent'] });
+    const photo = (n, title, artist, license) => ({ pageid: n, ns: 6, title, index: n, imageinfo: [{ thumburl: `https://upload.wikimedia.org/test/${n}.png`, thumbwidth: 640, thumbheight: 427,
+      descriptionurl: `https://commons.wikimedia.org/wiki/${encodeURIComponent(title)}`, mime: 'image/png',
+      extmetadata: { Artist: { value: `<a href="//commons.wikimedia.org/wiki/User:${artist}">${artist}</a>` }, LicenseShortName: { value: license }, LicenseUrl: { value: 'https://creativecommons.org/licenses/by-sa/4.0' } } }] });
+    const body = u.searchParams.get('gcmtitle') === 'Category:N11206 (aircraft)'
+      ? { batchcomplete: '', query: { pages: { 11: photo(1, 'File:N11206 at SIN.jpg', 'Spotter One', 'CC BY-SA 4.0'), 12: photo(2, 'File:N11206 landing.jpg', 'Spotter Two', 'CC BY 2.0') } } }
+      : { batchcomplete: '' };
+    r.fulfill({ status: 200, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify(body) });
+  });
+  await page.route(/upload\.wikimedia\.org\/test/, (r) => r.fulfill({ status: 200, contentType: 'image/png', body: readFileSync(new URL('../icons/icon-192.png', import.meta.url)) }));
   await page.route('https://api.planespotters.net/**', (r) => r.fulfill({
     status: 200, contentType: 'application/json',
     body: JSON.stringify(r.request().url().endsWith('/a03618')
@@ -254,7 +268,26 @@ async function phase4(browser) {
   check('[photo] image links to its Planespotters page', (await photoLink.getAttribute('href')) === 'https://www.planespotters.net/photo/1/test');
   check('[photo] photo is not cropped', (await page.locator('.info__photo img').evaluate((img) => getComputedStyle(img).objectFit)) !== 'cover');
   check('[photo] photographer credit shown', (await page.textContent('.info__credit')).includes('© Test Photographer'));
+  // More photos: Commons strip in the full card, "+2" on the preview, full-screen viewer
+  await page.waitForSelector('#info-panel .strip__item');
+  check('[photos] "More photos" strip with the 2 Commons photos', (await page.locator('#info-panel .strip__item').count()) === 2 && (await page.textContent('#info-panel .info__strip h3')).includes('More photos (2)'));
+  check('[photos] Commons asked for the airframe category, with an Api-User-Agent', commonsCalls[0]?.cat === 'Category:N11206 (aircraft)' && /SkyWatchSG/.test(commonsCalls[0]?.agent ?? ''), JSON.stringify(commonsCalls[0]));
   await page.screenshot({ path: 'docs/screenshots/info-panel-synthetic.png' });
+  await page.click('#info-panel [data-act="more"]'); // back to the preview
+  check('[photos] preview shows "+2" on the photo', (await page.textContent('#info-panel .pv__morephotos')) === '+2');
+  await page.click('#info-panel .pv__morephotos');
+  await page.waitForSelector('.gallery:not([hidden])');
+  check('[gallery] opens on the Planespotters photo: 1 / 3 with its credit', (await page.textContent('.gallery__count')) === '1 / 3' && (await page.textContent('.gallery__cap')).includes('© Test Photographer · via Planespotters.net'));
+  check('[gallery] the photo links to its Planespotters page', (await page.getAttribute('.gallery__imglink', 'href')) === 'https://www.planespotters.net/photo/1/test');
+  await page.click('.gallery__nav--next');
+  const cap = await page.textContent('.gallery__cap');
+  check('[gallery] Commons photo: author, licence and source', (await page.textContent('.gallery__count')) === '2 / 3' && cap.includes('© Spotter One · CC BY-SA 4.0 · Wikimedia Commons'), cap);
+  check('[gallery] licence links to its text, photo to its file page', (await page.getAttribute('.gallery__cap a', 'href')) === 'https://creativecommons.org/licenses/by-sa/4.0' && (await page.getAttribute('.gallery__imglink', 'href')).startsWith('https://commons.wikimedia.org/wiki/File'));
+  await page.keyboard.press('ArrowRight');
+  await page.keyboard.press('ArrowRight');
+  check('[gallery] arrow keys wrap around', (await page.textContent('.gallery__count')) === '1 / 3');
+  await page.keyboard.press('Escape');
+  check('[gallery] Esc closes it', await page.isHidden('.gallery'));
   await page.click('.pv__close');
 
   text = await openPanelFor('TST101');
