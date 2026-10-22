@@ -76,6 +76,11 @@ test('METAR: real Changi response parses; runway hint from the wind', () => {
   assert.equal(favouredRunway('WSSS', { ...m, windDir: 200, windKt: 12 }).runway, '20');
   assert.equal(favouredRunway('WSSS', { ...m, windKt: 2 }), null, 'too light to say');
   assert.equal(favouredRunway('KJFK', m), null, 'unknown runways: no guess');
+  // Real response from 22 Oct 2026: visibility can come as text ("6+" miles) and the raw report has a
+  // variable-direction group (330V030). Visibility then comes from the raw "9999" (10 km or more).
+  const m2 = parseMetar([{ ...REAL_METAR[0], visib: '6+', wdir: 360, wspd: 7, rawOb: 'METAR WSSS 220630Z 36007KT 330V030 9999 FEW020 BKN280 31/25 Q1010 NOSIG' }]);
+  assert.equal(m2.visibilityM, 9999);
+  assert.deepEqual(m2.weather, []);
   assert.equal(parseMetar([]), null);
   assert.throws(() => parseMetar({}), /Unexpected/);
 });
