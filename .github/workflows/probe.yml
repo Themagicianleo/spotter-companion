@@ -1,4 +1,4 @@
-name: Probe Light Scout planner live
+name: Probe Planespotters photo counts
 on:
   push:
     branches: [probe-metar]
@@ -9,36 +9,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - name: Live check in a real browser
+      - name: Count photos per aircraft
         continue-on-error: true
         run: |
           set +e
           mkdir -p probe
-          sleep 60   # give GitHub Pages time to publish the new version
-          npm install --no-save playwright@1.56.1 && npx playwright install --with-deps chromium
-          cat > live.mjs <<'JS'
-          import { chromium } from 'playwright';
-          const b = await chromium.launch();
-          const p = await b.newPage({ viewport: { width: 390, height: 844 } });
-          const errors = []; p.on('pageerror', (e) => errors.push(e.message));
-          const net = []; p.on('response', (r) => { const u = r.url(); if (/relay|open-meteo|airports\.json/.test(u)) net.push(r.status() + ' ' + decodeURIComponent(u).slice(0, 140)); });
-          await p.goto('https://themagicianleo.github.io/light-scout/?v=' + Date.now());
-          await p.waitForSelector('#tabs:not([hidden])', { timeout: 30000 });
-          await p.click('#tabPlanner');
-          await p.waitForSelector('#plAirportInfo .pl-airport-name', { timeout: 30000 });
-          await p.evaluate(() => { localStorage.setItem('ls:planner:positions', JSON.stringify({ WSSS: [{ id: 'a', name: 'Test position', lat: 1.36219, lon: 103.993297 }] })); });
-          await p.reload();
-          await p.waitForSelector('.pl-pos', { timeout: 30000 });
-          await p.waitForFunction(() => /METAR|unavailable/.test(document.querySelector('#plWind')?.textContent || ''), null, { timeout: 30000 }).catch(() => {});
-          await p.waitForFunction(() => /Updated|could not load|No aircraft/.test(document.querySelector('#plTraffic')?.textContent || ''), null, { timeout: 40000 }).catch(() => {});
-          const text = (id) => p.evaluate((i) => document.getElementById(i)?.innerText ?? '(missing)', id);
-          console.log(JSON.stringify({ errors, net, airport: await text('plAirportInfo'), light: (await text('plLight')).slice(0, 600), wind: await text('plWind'), traffic: await text('plTraffic') }, null, 2));
-          await p.screenshot({ path: 'probe/live.png', fullPage: true });
-          await b.close();
-          JS
-          node live.mjs > probe/live.json 2>&1
+          R="https://spotters-relay.maotianze.workers.dev/?url="
+          UA="SpottersCompanion/1.0 (+https://github.com/Themagicianleo/spotter-companion)"
+          curl -sS -A "$UA" "${R}https%3A%2F%2Fapi.adsb.lol%2Fv2%2Fpoint%2F1.35%2F103.99%2F60" > /tmp/ac.json
+          python3 - > probe/photos.txt <<'PY'
+          import json, urllib.request, urllib.parse, time
+          ac = json.load(open('/tmp/ac.json'))['ac']
+          hexes = [a['hex'] for a in ac if a.get('r')][:10] + ['76cd41']
+          R = "https://spotters-relay.maotianze.workers.dev/?url="
+          for path in ['hex/%s', 'reg/%s']:
+              for a in [x for x in ac if x.get('r')][:10]:
+                  key = a['hex'] if path.startswith('hex') else a['r']
+                  url = 'https://api.planespotters.net/pub/photos/' + path % key
+                  try:
+                      req = urllib.request.Request(R + urllib.parse.quote(url, safe=''), headers={'User-Agent': 'SpottersCompanion-probe/1.0'})
+                      d = json.load(urllib.request.urlopen(req, timeout=20))
+                      print(path % key, a.get('r'), a.get('t'), 'photos:', len(d.get('photos', [])), 'keys:', sorted(d.keys()))
+                  except Exception as e:
+                      print(path % key, 'ERROR', e)
+                  time.sleep(1.2)
+          PY
       - run: |
           git config user.name "github-actions[bot]"; git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
-          git add -A probe; git commit -m "live probe output"; git push
+          git add -A probe; git commit -m "probe photos"; git push
