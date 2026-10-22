@@ -1,0 +1,41 @@
+{
+  "origin": "https://themagicianleo.github.io",
+  "results": [
+    {
+      "u": "https://aviationweather.gov/api/data/metar?ids=WSSS&format=json",
+      "error": "TypeError: Failed to fetch",
+      "ms": 51
+    },
+    {
+      "u": "https://api.airplanes.live/v2/point/1.3644/103.9915/25",
+      "error": "TypeError: Failed to fetch",
+      "ms": 22
+    },
+    {
+      "u": "https://api.adsb.lol/v2/point/1.3644/103.9915/25",
+      "error": "TypeError: Failed to fetch",
+      "ms": 343
+    },
+    {
+      "u": "https://opensky-network.org/api/states/all?lamin=0.9&lomin=103.5&lamax=1.8&lomax=104.5",
+      "error": "TypeError: Failed to fetch",
+      "ms": 316
+    },
+    {
+      "u": "https://davidmegginson.github.io/ourairports-data/runways.csv",
+      "ok": true,
+      "status": 200,
+      "bytes": 3969588,
+      "ms": 47,
+      "start": "\"id\",\"airport_ref\",\"airport_ident\",\"length_ft\",\"width_ft\",\"surface\",\"lighted\",\"closed\",\"le_ident\",\"le_latitude_deg\",\"le_"
+    },
+    {
+      "u": "https://api.open-meteo.com/v1/forecast?latitude=1.36&longitude=103.99&hourly=cloud_cover&forecast_days=1",
+      "ok": true,
+      "status": 200,
+      "bytes": 787,
+      "ms": 106,
+      "start": "{\"latitude\":1.3708259,\"longitude\":103.94466,\"generationtime_ms\":0.033974647521972656,\"utc_offset_seconds\":0,\"timezone\":\""
+    }
+  ]
+}

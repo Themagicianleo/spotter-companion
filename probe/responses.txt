@@ -1,0 +1,111 @@
+=== https://aviationweather.gov/api/data/metar?ids=WSSS&format=json
+HTTP/2 200 
+date: Thu, 22 Oct 2026 11:45:55 GMT
+content-type: application/json; charset=utf-8
+content-length: 473
+cache-control: max-age=60
+etag: W/"1d9-uR73pjTsBVTr1CNtx6QbLxdrHkc"
+x-frame-options: SAMEORIGIN
+content-security-policy: frame-ancestors 'self' *.weather.gov
+strict-transport-security: max-age=63072000; includeSubDomains
+x-azure-ref: 20261022T114555Z-15bf8d86d46h575lhC1BL1zv7000000013sg000000002ea6
+x-cache: CONFIG_NOCACHE
+accept-ranges: bytes
+
+[{"icaoId":"WSSS","receiptTime":"2026-10-22T11:31:06.344Z","obsTime":1792668600,"reportTime":"2026-10-22T11:30:00.000Z","temp":30,"dewp":24,"wdir":100,"wspd":5,"visib":"6+","altim":1009,"qcField":16,"metarType":"METAR","rawOb":"METAR WSSS 221130Z 10005KT 020V140 9999 FEW018 BKN300 30/24 Q1009 NOSIG","lat":1.368,"lon":103.982,"elev":17,"name":"Singapore/Changi Intl, 4, SG","cover":"BKN","clouds":[{"cover":"FEW","base":1800},{"cover":"BKN","base":30000}],"fltCat":"VFR"}]
+
+=== https://aviationweather.gov/api/data/metar?ids=WSSS&format=json&hours=3
+HTTP/2 200 
+date: Thu, 22 Oct 2026 11:45:59 GMT
+content-type: application/json; charset=utf-8
+content-length: 2821
+vary: Accept-Encoding
+cache-control: max-age=60
+etag: W/"b05-ey3hwxNjjK2Z1bMJMeZnUu7ZzVk"
+x-frame-options: SAMEORIGIN
+content-security-policy: frame-ancestors 'self' *.weather.gov
+strict-transport-security: max-age=63072000; includeSubDomains
+x-azure-ref: 20261022T114556Z-1698bf49694s7rx5hC1IADwm4400000001bg000000009xeq
+x-fd-int-roxy-purgeid: 66959009
+x-cache: TCP_MISS
+accept-ranges: bytes
+
+[{"icaoId":"WSSS","receiptTime":"2026-10-22T11:31:06.344Z","obsTime":1792668600,"reportTime":"2026-10-22T11:30:00.000Z","temp":30,"dewp":24,"wdir":100,"wspd":5,"visib":"6+","altim":1009,"qcField":16,"metarType":"METAR","rawOb":"METAR WSSS 221130Z 10005KT 020V140 9999 FEW018 BKN300 30/24 Q1009 NOSIG","lat":1.368,"lon":103.982,"elev":17,"name":"Singapore/Changi Intl, 4, SG","cover":"BKN","clouds":[{"cover":"FEW","base":1800},{"cover":"BKN","base":30000}],"fltCat":"VFR"},{"icaoId":"WSSS","receiptTime":"2026-10-22T11:01:01.464Z","obsTime":1792666800,"reportTime":"2026-10-22T11:00:00.000Z","temp":30,"dewp":25,"wdir":100,"wspd":7,"visib":5.59,"altim":1009,"qcField":16,"metarType":"METAR","rawOb":"METAR WSSS 221100Z 10007KT 9000 FEW018 BKN300 30/25 Q1009 NOSIG","lat":1.368,"lon":103.982,"elev":17,"name":"Singapore/Changi Intl, 4, SG","cover":"BKN","clouds":[{"cover":"FEW","base":1800},{"cover":"BKN","base":30000}],"fltCat":"VFR"},{"icaoId":"WSSS","receiptTime":"2026-10-22T10:31:03.041Z","obsTime":1792665000,"reportTime":"2026-10-22T10:30:00.000Z","temp":31,"dewp":25,"wdir":90,"wspd":7,"visib":5.59,"altim":1009,"qcField":16,"metarType":"METAR","rawOb":"METAR WSSS 221030Z 09007KT 040V120 9000 FEW020 BKN300 31/25 Q1009 NOSIG","lat":1.368,"lon":103.982,"elev":17,"name":"Singapore/Changi Intl, 4, SG","cover":"BKN","clouds":[{"cover":"FEW","base":2000},{"cover":"BKN","base":30000}],"fltCat":"VFR"},{"icaoId":"WSSS","receiptTime":"2026-10-22T10:00:56.985Z","obsTime":1792663200,"reportTime":"2026-10-22T10:00:00.000Z","temp":31,"dewp":25,"wdir":60,"wspd":5,"visib":5.59,"altim":1008,"qcField":16,"metarType":"METAR","rawOb":"METAR WSSS 221000Z 06005KT 010V110 9000 FEW020 SCT280 31/25 Q1008 NOSIG","lat":1.368,"lon":103.982,"elev":17,"name":"Singapore/Changi Intl, 4, SG","cover":"SCT","clouds":[{"cover":"FEW","base":2000},{"cover":"SCT","base":28000}],"fltCat":"VFR"},{"icaoId":"WSSS","receiptTime":"2026-10-22T09:30:57.523Z","obsTime":1792661400,"reportTime":"2026-10-22T09:30:00.000Z","temp":31,"dewp":25,"wdir":20,"wspd":4,"visib":"6+","altim":1008,"qcField":16,"metarType":"METAR","rawOb":"METAR WSSS 220930Z 02004KT 330V090 9999 FEW020 BKN280 31/25 Q1008 NOSIG","lat":1.368,"lon":103.982,"elev":17,"name":"Singapore/Changi Intl, 4, SG","cover":"BKN","clouds":[{"cover":"FEW","base":2000},{"cover":"BKN","base":28000}],"fltCat":"VFR"},{"icaoId":"WSSS","receiptTime":"2026-10-22T09:00:50.467Z","obsTime":1792659600,"reportTime":"2026-10-22T09:00:00.000Z","temp":31,"dewp":25,"wdir":70,"wspd":5,"visib":"6+","altim":1008,"qcField":16,"metarType":"METAR","rawOb":"METAR WSSS 220900Z 07005KT 030V160 9999 FEW020 BKN280 31/25 Q1008 NOSIG","lat":1.368,"lon":103.982,"elev":17,"name":"Singapore/Changi Intl, 4, SG","cover":"BKN","clouds":[{"cover":"FEW","base":2000},{"cover":"BKN","base":28000}],"fltCat":"VFR"}]
+
+=== https://api.airplanes.live/v2/point/1.3644/103.9915/25
+HTTP/2 403 
+date: Thu, 22 Oct 2026 11:45:59 GMT
+content-type: application/json
+content-length: 164
+cache-control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+expires: Thu, 01 Jan 1970 00:00:01 GMT
+referrer-policy: same-origin
+x-frame-options: SAMEORIGIN
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=m0RGS8TbKOy3Keszpjo4iGhnudg9rVNG7IiXDalKsIGlOHI%2FhhyXzoU6S6q%2BdZs1zkUgQVGZwY324Xet%2FDXHDx68666%2F03x5BxxYmmIwkrln70Jbcz92PJ4XjRRlHriAisCJhQ%3D%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+server: cloudflare
+cf-ray: a4e8424cfa86265c-IAD
+
+{"error": "Please contact us at contact@airplanes.live. Your email MUST include any links, a description of the project, and any information you deem appropriate."}
+
+=== https://api.adsb.lol/v2/point/1.3644/103.9915/25
+HTTP/2 200 
+server: istio-envoy
+content-type: application/json
+cache-control: no-store
+content-length: 6492
+x-envoy-upstream-service-time: 2
+set-cookie: globe-reapi-sticky3="d35dc45f694290c2"; Max-Age=600; HttpOnly
+strict-transport-security: max-age=31536000; includeSubDomains
+vary: Accept-Encoding
+x-ratelimit-limit: 4, 4;w=1, 60;w=60, 500;w=86400
+x-ratelimit-remaining: 3
+x-ratelimit-reset: 1
+date: Thu, 22 Oct 2026 11:46:00 GMT
+
+{"ac":[
+{"hex":"750596","type":"adsb_icao","flight":"MAS144  ","r":"9M-MNL","t":"A339","alt_baro":40000,"alt_geom":42700,"gs":464.8,"ias":246,"tas":466,"mach":0.808,"wd":59,"ws":21,"oat":-54,"tat":-25,"track":331.89,"track_rate":0.19,"roll":5.10,"mag_heading":334.34,"true_heading":334.55,"baro_rate":0,"geom_rate":0,"squawk":"0276","emergency":"none","category":"A5","nav_qnh":1013.6,"nav_altitude_mcp":30016,"nav_heading":0.00,"lat":1.385301,"lon":103.770983,"nic":8,"rc":186,"seen_pos":0.382,"version":2,"nic_baro":1,"nac_p":9,"nac_v":2,"sil":3,"sil_type":"perhour","gva":2,"sda":2,"alert":0,"spi":0,"mlat":[],"tisb":[],"messages":2399,"seen":0.1,"rssi":-20.7,"dst":13.266,"dir":275.4},
+{"hex":"76d102","type":"adsb_icao","flight":"TGW685  ","r":"9V-THB","t":"E290","alt_baro":3050,"alt_geom":3175,"gs":196.7,"ias":181,"tas":194,"mach":0.288,"wd":136,"ws":7,"track":23.05,"track_rate":-0.06,"roll":-0.18,"mag_heading":24.79,"true_heading":25.03,"baro_rate":-1024,"geom_rate":-1024,"squawk":"0757","emergency":"none","category":"A3","nav_qnh":1009.6,"nav_altitude_mcp":4000,"nav_altitude_fms":4000,"nav_modes":["autopilot","approach","tcas"],"lat":1.204446,"lon":103.916410,"nic":8,"rc":186,"seen_pos":0.241,"version":2,"nic_baro":1,"nac_p":9,"nac_v":4,"sil":3,"sil_type":"perhour","gva":2,"sda":2,"alert":0,"spi":0,"mlat":[],"tisb":[],"messages":25658,"seen":0.0,"rssi":-19.7,"dst":10.614,"dir":205.1},
+{"hex":"76cee8","type":"adsb_icao","flight":"SIA831  ","r":"9V-SWH","t":"B77W","alt_baro":3975,"alt_geom":4200,"gs":204.5,"ias":180,"mach":0.292,"track":302.21,"mag_heading":291.80,"true_heading":292.05,"baro_rate":-576,"geom_rate":-544,"squawk":"6362","emergency":"none","category":"A5","nav_qnh":1008.8,"nav_altitude_mcp":2496,"nav_heading":350.16,"lat":1.128525,"lon":103.917443,"nic":8,"rc":186,"seen_pos":0.240,"version":2,"nic_baro":1,"nac_p":9,"nac_v":1,"sil":3,"sil_type":"perhour","gva":1,"sda":2,"alert":0,"spi":0,"mlat":[],"tisb":[],"messages":5155,"seen":0.2,"rssi":-28.9,"dst":14.856,"dir":197.4},
+{"hex":"888224","type":"adsb_icao","flight":"VJC812  ","r":"VN-A200","t":"A21N","alt_baro":10950,"alt_geom":11600,"gs":342.2,"ias":286,"tas":344,"mach":0.524,"wd":47,"ws":11,"oat":11,"tat":26,"track":331.94,"track_rate":0.00,"roll":0.18,"mag_heading":333.63,"true_heading":333.85,"baro_rate":1856,"geom_rate":1856,"squawk":"0123","emergency":"none","category":"A3","nav_qnh":1008.8,"nav_altitude_mcp":24000,"lat":1.710143,"lon":103.936441,"nic":8,"rc":186,"seen_pos":5.746,"version":2,"nic_baro":1,"nac_p":9,"nac_v":2,"sil":3,"sil_type":"perhour","gva":2,"sda":3,"alert":0,"spi":0,"mlat":[],"tisb":[],"messages":524,"seen":1.3,"rssi":-28.3,"dst":21.042,"dir":351.0},
+{"hex":"76b449","type":"adsb_icao","flight":"SIA927  ","r":"9V-MBI","t":"B38M","alt_baro":950,"alt_geom":950,"gs":156.8,"ias":151,"tas":156,"mach":0.236,"track":23.29,"track_rate":0.12,"roll":0.53,"mag_heading":25.14,"true_heading":25.38,"baro_rate":-832,"geom_rate":-704,"squawk":"7007","emergency":"none","category":"A3","nav_qnh":1008.8,"nav_altitude_mcp":4000,"nav_heading":23.20,"lat":1.308537,"lon":103.960308,"nic":8,"rc":186,"seen_pos":3.605,"version":2,"nic_baro":1,"nac_p":9,"nac_v":2,"sil":3,"sil_type":"perhour","gva":2,"sda":2,"alert":0,"spi":0,"mlat":[],"tisb":[],"messages":5122,"seen":3.4,"rssi":-24.9,"dst":3.842,"dir":209.2},
+{"hex":"888164","type":"adsb_icao","flight":"HVN657  ","r":"VN-A616","t":"A21N","alt_baro":4850,"alt_geom":5100,"gs":205.0,"ias":179,"tas":198,"mach":0.296,"wd":72,"ws":7,"track":269.72,"track_rate":0.06,"roll":1.93,"mag_heading":269.82,"true_heading":270.08,"baro_rate":-576,"geom_rate":-576,"squawk":"5533","emergency":"none","category":"A3","nav_qnh":1008.8,"nav_altitude_mcp":2496,"nav_heading":270.00,"lat":1.110077,"lon":104.011479,"nic":8,"rc":186,"seen_pos":0.568,"version":2,"nic_baro":1,"nac_p":9,"nac_v":1,"sil":3,"sil_type":"perhour","gva":1,"sda":2,"alert":0,"spi":0,"mlat":[],"tisb":[],"messages":3840,"seen":0.0,"rssi":-27.7,"dst":15.334,"dir":175.5},
+{"hex
+
+=== https://api.adsb.lol/v2/lat/1.3644/lon/103.9915/dist/25
+HTTP/2 200 
+server: istio-envoy
+content-type: application/json
+cache-control: no-store
+content-length: 6492
+x-envoy-upstream-service-time: 2
+set-cookie: globe-reapi-sticky3="878b25776aa72ba9"; Max-Age=600; HttpOnly
+strict-transport-security: max-age=31536000; includeSubDomains
+vary: Accept-Encoding
+x-ratelimit-limit: 4, 4;w=1, 60;w=60, 500;w=86400
+x-ratelimit-remaining: 2
+x-ratelimit-reset: 1
+date: Thu, 22 Oct 2026 11:46:00 GMT
+
+{"ac":[
+{"hex":"750596","type":"adsb_icao","flight":"MAS144  ","r":"9M-MNL","t":"A339","alt_baro":40000,"alt_geom":42700,"gs":464.8,"ias":246,"tas":466,"mach":0.808,"wd":59,"ws":21,"oat":-54,"tat":-25,"track":332.17,"track_rate":0.19,"roll":5.10,"mag_heading":334.34,"true_heading":334.55,"baro_rate":0,"geom_rate":0,"squawk":"0276","emergency":"none","category":"A5","nav_qnh":1013.6,"nav_altitude_mcp":30016,"nav_heading":0.00,"lat":1.387024,"lon":103.770084,"nic":8,"rc":186,"seen_pos":0.000,"version":2,"nic_baro":1,"nac_p":9,"nac_v":2,"sil":3,"sil_type":"perhour","gva":2,"sda":2,"alert":0,"spi"
+
+=== https://opensky-network.org/api/states/all?lamin=0.9&lomin=103.5&lamax=1.8&lomax=104.5
+HTTP/2 200 
+date: Thu, 22 Oct 2026 11:46:00 GMT
+content-type: application/json
+vary: Origin
+vary: Access-Control-Request-Method
+vary: Access-Control-Request-Headers
+access-control-allow-origin: https://opensky-network.org
+x-rate-limit-remaining: 399
+x-content-type-options: nosniff
+x-xss-protection: 0
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+strict-transport-security: max-age=15724800; includeSubDomains
+
+{"time":1792669557,"states":[["50049d","T7RYM   ","San Marino",1792669514,1792669514,103.9423,1.5765,640.08,false,75.14,181.57,0,null,662.94,"2415",false,0],["76b86e","TGW498  ","Singapore",1792669554,1792669554,103.9892,1.3664,null,true,0,81.56,null,null,null,null,false,0],["8a0509","        ","Indonesia",1792669556,1792669556,103.9871,1.3598,null,true,0.51,112.5,null,null,null,"2304",false,0],["8017e5","","India",1792669539,1792669539,103.9874,1.3393,null,true,12.86,202.5,null,null,null,null,false,0],["750148","AXM6422 ","Malaysia",1792669549,1792669557,103.6684,1.6359,null,true,0.9,157.5,null,null,null,null,false,0],["750281","MAS607  ","Malaysia",1792669554,1792669554,103.6864,0.9967,2392.68,false,116.72,84.94,-5.53,null,2537.46,null,false,0],["76cd05","SIA121  ","Singapore",1792669548,1792669548,103.9879,1.3684,null,true,5.92,84.38,null,null,null,"2155",false,0],["76cd09","SIA247  ","Singapore",1792669546,1792669555,104.1372,1.3819,1356.36,false,134.59,100.79,5.2,null,1424.94,null,false,0],["76cd0b","SIA509  ","Singapore",1792669499,1792669499,103.9819,1.3497,null,true,0.26,109.69,null,null,null,"0642",false,0],["704020","MMA233  ","Myanmar",1792669557,1792669557,104.1118,1.1809,1821.18,false,128.59,212.42,-4.88,null,1935.48,"7410",false,0],["06a07a","QTR947  ","Qatar",1792669552,1792669552,103.9959,1.364,null,true,0.77,202.5,null,null,null,null,false,0],["76b449","SIA927  ","Singapore",1792669557,1792669557,103.9606,1.3093,281.94,false,80.65,23.29,-4.23,null,289.56,"7007",false,0],["76b450","SIA852  ","Singapore",1792669541,1792669550,103.9851,1.3563,null,true,1.8,191.25,null,null,null,null,false,0],["76ea0f","ATT74   ","Singapore",1792669521,1792669521,103.9935,1.3745,null,true,4.63,19.69,null,null,null,null,false,0],["a3b1a0","UPS169  ","United States",1792669555,1792669555,104.169,1.3522,2773.68,false,138.93,191.1,-3.25,null,2933.7,"5124",false,0],["76eb56","ER3     ","Singapore",1792669431,1792669431,103.9898,1.3651,null,true,3.34,210.94,null,null,null,null,false,0],["88510e","THA409  ","Thailand",1792669557,1792669557,104.2167,1.4425,3345.18,false,142.46,190.82,-4.88,null,3543.3,null,false,0],["7c146f","QFA72   ","Australia",1792669518,1792669518,103.9916,1.3492,null,true,11.83,202.5,null,null,null,null,false,0],["76d102","TGW685  ","Singapore",1792669557,1792669557,103.9156,1.2026,937.26,false,101.19,23.05,-5.2,null,982.98,"0757",false,0],["888164","HVN657  ","Viet Nam",1792669556,1792669556,104.0135,1.1101,1478.28,false,105.47,269.16,-2.93,null,1562.1,"5533",false,0],["76d1c7","TGW134  ","Singapore",1792669537,1792669549,103.9923,1.365,null,true,0,233.44,null,null,null,null,false,0],["888224","VJC812  ","Viet Nam",1792669557,1792669557,103.9339,1.715,3375.66,false,176.52,332.02,9.1,null,3566.16,null,false,0],["76cee8","SIA831  ","Singapore",1792669556,1792669556,103.9194,1.1272,1219.2,false,105.19,298.32,-2.93,null,1280.16,"6362",false,0],["750596","MAS144  ","Malaysia",1792669557,1792669557,103.7725,1.3825,12192,false,238.92,331.72,
+
