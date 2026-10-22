@@ -1,0 +1,86 @@
+name: Probe data sources
+on:
+  push:
+    branches: [probe-metar]
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Pages (terms and docs) as text
+        run: |
+          mkdir -p probe
+          UA="LightScout-research/1.0 (+https://github.com/Themagicianleo/light-scout)"
+          page() { curl -sSL -m 30 -A "$UA" "$1" | python3 -c "import sys,re,html; t=sys.stdin.read(); links=sorted(set(re.findall(r'href=[\"\\x27]([^\"\\x27]+)', t))); t=re.sub(r'(?s)<(script|style)[^>]*>.*?</\1>',' ',t); t=re.sub(r'<[^>]+>',' ',t); t=html.unescape(re.sub(r'\s+',' ',t)); print(t[:20000]); print('\nLINKS:', [l for l in links if re.search('term|licen|api|data|doc|polic|attrib|about|faq',l,re.I)][:80])" > "probe/$2.txt" 2>&1 || echo "FAILED $1" > "probe/$2.txt"; }
+          page https://ourairports.com/data/ ourairports-data
+          page https://ourairports.com/help/data-dictionary.html ourairports-dictionary
+          page https://ourairports.com/about.html ourairports-about
+          curl -sSL -m 30 https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/README.md > probe/ourairports-github-readme.txt
+          page https://airplanes.live/ airplaneslive-home
+          page https://airplanes.live/api-guide/ airplaneslive-api-guide
+          page https://airplanes.live/terms-of-service/ airplaneslive-terms
+          page https://adsb.lol/ adsblol-home
+          page https://api.adsb.lol/docs adsblol-docs
+          curl -sSL -m 30 https://api.adsb.lol/openapi.json > probe/adsblol-openapi.json || true
+          curl -sSL -m 30 https://api.adsb.lol/api/openapi.json > probe/adsblol-openapi2.json || true
+          page https://www.adsb.lol/docs/open-data/api/ adsblol-docs-api
+          page https://www.adsb.lol/docs/ adsblol-docs-index
+          page https://openskynetwork.github.io/opensky-api/rest.html opensky-rest
+          page https://opensky-network.org/about/terms-of-use opensky-terms
+          page https://aviationweather.gov/data/api/ awc-api
+          page https://www.weather.gov/disclaimer nws-disclaimer
+      - name: Real responses with headers (from a GitHub server, i.e. a cloud IP)
+        run: |
+          O="Origin: https://themagicianleo.github.io"
+          UA="LightScout-research/1.0 (+https://github.com/Themagicianleo/light-scout)"
+          get() { echo "=== $1" >> probe/responses.txt; curl -sS -m 30 -A "$UA" -H "$O" -D - "$1" -o /tmp/body >> probe/responses.txt 2>&1; head -c ${2:-2500} /tmp/body >> probe/responses.txt; printf '\n\n' >> probe/responses.txt; }
+          get "https://aviationweather.gov/api/data/metar?ids=WSSS&format=json"
+          get "https://aviationweather.gov/api/data/metar?ids=WSSS&format=json&hours=3" 4000
+          get "https://api.airplanes.live/v2/point/1.3644/103.9915/25" 4000
+          get "https://api.adsb.lol/v2/point/1.3644/103.9915/25" 4000
+          get "https://api.adsb.lol/v2/lat/1.3644/lon/103.9915/dist/25" 600
+          get "https://opensky-network.org/api/states/all?lamin=0.9&lomin=103.5&lamax=1.8&lomax=104.5" 3000
+          for f in airports runways; do
+            curl -sSL -m 120 -o /tmp/$f.csv "https://davidmegginson.github.io/ourairports-data/$f.csv"
+            echo "=== $f.csv (davidmegginson.github.io mirror): $(wc -c < /tmp/$f.csv) bytes, $(wc -l < /tmp/$f.csv) lines" >> probe/ourairports-sample.txt
+            head -1 /tmp/$f.csv >> probe/ourairports-sample.txt
+            grep -E '"WSSS"|,WSSS,' /tmp/$f.csv >> probe/ourairports-sample.txt
+          done
+          curl -sSI -m 60 https://ourairports.com/data/runways.csv >> probe/ourairports-sample.txt
+          curl -sSI -m 60 -H "$O" https://davidmegginson.github.io/ourairports-data/runways.csv >> probe/ourairports-sample.txt
+      - name: Real browser test from the live Light Scout page
+        run: |
+          npm install --no-save playwright@1.56.1 && npx playwright install --with-deps chromium
+          cat > browser.mjs <<'JS'
+          import { chromium } from 'playwright';
+          const b = await chromium.launch();
+          const p = await b.newPage();
+          await p.goto('https://themagicianleo.github.io/light-scout/');
+          const urls = [
+            'https://aviationweather.gov/api/data/metar?ids=WSSS&format=json',
+            'https://api.airplanes.live/v2/point/1.3644/103.9915/25',
+            'https://api.adsb.lol/v2/point/1.3644/103.9915/25',
+            'https://opensky-network.org/api/states/all?lamin=0.9&lomin=103.5&lamax=1.8&lomax=104.5',
+            'https://davidmegginson.github.io/ourairports-data/runways.csv',
+            'https://api.open-meteo.com/v1/forecast?latitude=1.36&longitude=103.99&hourly=cloud_cover&forecast_days=1',
+          ];
+          const out = await p.evaluate(async (urls) => {
+            const res = [];
+            for (const u of urls) {
+              const t0 = performance.now();
+              try { const r = await fetch(u); const txt = await r.text(); res.push({ u, ok: r.ok, status: r.status, bytes: txt.length, ms: Math.round(performance.now() - t0), start: txt.slice(0, 120) }); }
+              catch (e) { res.push({ u, error: String(e), ms: Math.round(performance.now() - t0) }); }
+            }
+            return res;
+          }, urls);
+          console.log(JSON.stringify({ origin: await p.evaluate(() => location.origin), results: out }, null, 2));
+          await b.close();
+          JS
+          node browser.mjs > probe/browser-test.json 2>&1 || true
+      - run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add probe; git commit -m "probe output"; git push
