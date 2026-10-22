@@ -12,7 +12,9 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - name: Pages (terms and docs) as text
+        continue-on-error: true
         run: |
+          set +e
           mkdir -p probe
           UA="LightScout-research/1.0 (+https://github.com/Themagicianleo/light-scout)"
           page() { curl -sSL -m 30 -A "$UA" "$1" | python3 -c "import sys,re,html; t=sys.stdin.read(); links=sorted(set(re.findall(r'href=[\"\\x27]([^\"\\x27]+)', t))); t=re.sub(r'(?s)<(script|style)[^>]*>.*?</\1>',' ',t); t=re.sub(r'<[^>]+>',' ',t); t=html.unescape(re.sub(r'\s+',' ',t)); print(t[:20000]); print('\nLINKS:', [l for l in links if re.search('term|licen|api|data|doc|polic|attrib|about|faq',l,re.I)][:80])" > "probe/$2.txt" 2>&1 || echo "FAILED $1" > "probe/$2.txt"; }
@@ -34,7 +36,9 @@ jobs:
           page https://aviationweather.gov/data/api/ awc-api
           page https://www.weather.gov/disclaimer nws-disclaimer
       - name: Real responses with headers (from a GitHub server, i.e. a cloud IP)
+        continue-on-error: true
         run: |
+          set +e
           O="Origin: https://themagicianleo.github.io"
           UA="LightScout-research/1.0 (+https://github.com/Themagicianleo/light-scout)"
           get() { echo "=== $1" >> probe/responses.txt; curl -sS -m 30 -A "$UA" -H "$O" -D - "$1" -o /tmp/body >> probe/responses.txt 2>&1; head -c ${2:-2500} /tmp/body >> probe/responses.txt; printf '\n\n' >> probe/responses.txt; }
@@ -53,7 +57,9 @@ jobs:
           curl -sSI -m 60 https://ourairports.com/data/runways.csv >> probe/ourairports-sample.txt
           curl -sSI -m 60 -H "$O" https://davidmegginson.github.io/ourairports-data/runways.csv >> probe/ourairports-sample.txt
       - name: Real browser test from the live Light Scout page
+        continue-on-error: true
         run: |
+          set +e
           npm install --no-save playwright@1.56.1 && npx playwright install --with-deps chromium
           cat > browser.mjs <<'JS'
           import { chromium } from 'playwright';
@@ -83,4 +89,4 @@ jobs:
           node browser.mjs > probe/browser-test.json 2>&1 || true
       - run: |
           git config user.name "github-actions[bot]"; git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
-          git add probe; git commit -m "probe output"; git push
+          git add -A probe; git commit -m "probe output"; git push
