@@ -17,6 +17,7 @@ free, open data. It gives you some features that paid flight trackers charge for
   schedule data, so scheduled/actual gate times aren't available.
 - **Flight routes:** origin, stops and destination for each callsign (e.g. CXA865 FOC → SIN) in the
   list, hover label, flight card and CSV. A "(?)" warns when the plane isn't near the route on record.
+- **Liquid-glass interface:** the map fills the screen and everything floats above it on translucent glass (`css/glass.css`), in dark or light to match your device (the map starts on Streets in light mode). On phones the panel buttons form a floating tab bar at the bottom, which steps aside when a flight card is open. Inspired by Apple's current design language; all icons are this project's own drawings.
 - **Dark, map-first interface** (inspired by flight-tracker apps like Plane Finder): full-screen map,
   yellow planes, a search box, and a flight card with a big route display, progress bar and live tiles.
   Works on phones too: the card becomes a bottom sheet.

@@ -11,7 +11,8 @@
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
   <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-  <meta name="theme-color" content="#172231">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="SkyWatch">
@@ -21,9 +22,12 @@
   <!-- MapLibre draws the sharp vector maps (OpenFreeMap); the bridge lets Leaflet use it as a layer -->
   <link rel="stylesheet" href="vendor/maplibre-gl/maplibre-gl.css">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Liquid-glass look (translucent floating panels); overrides colours and layout from style.css -->
+  <link rel="stylesheet" href="css/glass.css">
 </head>
 <body>
-  <!-- Top bar: name, search, status and the buttons that open the panels -->
+  <!-- Top bar: name, search, status and the buttons that open the panels.
+       On phones the buttons become a floating tab bar at the bottom (css/glass.css). -->
   <header class="topbar">
     <div class="brand">
       <img src="icons/icon.svg" width="28" height="28" alt="">
@@ -33,12 +37,12 @@
            placeholder="Search callsign, registration, type or airport" aria-label="Search aircraft">
     <span id="status" class="status">Starting…</span>
     <nav class="topbar__buttons">
-      <button type="button" class="tb-btn" id="filters-btn" aria-expanded="false">Filters</button>
-      <button type="button" class="tb-btn" data-toggle="list-panel" aria-expanded="false">List</button>
-      <button type="button" class="tb-btn" data-toggle="spotting-panel" aria-expanded="false">Spotting</button>
-      <button type="button" class="tb-btn" data-toggle="stats-panel" aria-expanded="false">Stats</button>
-      <button type="button" class="tb-btn" id="weather-btn" data-toggle="weather-panel" aria-expanded="false">Weather</button>
-      <button type="button" class="tb-btn" data-toggle="area-panel" aria-expanded="false">Area</button>
+      <button type="button" class="tb-btn" id="filters-btn" aria-expanded="false"><svg class="tb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4"/></svg><span class="tb-label">Filters</span></button>
+      <button type="button" class="tb-btn" data-toggle="list-panel" aria-expanded="false"><svg class="tb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7h11M9 12h11M9 17h11"/><circle cx="5" cy="7" r="1.2" class="fill"/><circle cx="5" cy="12" r="1.2" class="fill"/><circle cx="5" cy="17" r="1.2" class="fill"/></svg><span class="tb-label">List</span></button>
+      <button type="button" class="tb-btn" data-toggle="spotting-panel" aria-expanded="false"><svg class="tb-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="15.5" r="3.5"/><circle cx="17" cy="15.5" r="3.5"/><path d="M5.5 12.5 7 5.5h2.5L10.5 13M18.5 12.5 17 5.5h-2.5L13.5 13M10.5 14.5h3"/></svg><span class="tb-label">Spotting</span></button>
+      <button type="button" class="tb-btn" data-toggle="stats-panel" aria-expanded="false"><svg class="tb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20v-7M10 20V6M15 20v-9M20 20V4"/></svg><span class="tb-label">Stats</span></button>
+      <button type="button" class="tb-btn" id="weather-btn" data-toggle="weather-panel" aria-expanded="false"><svg class="tb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18.5h10a4 4 0 0 0 .4-7.98A5.5 5.5 0 0 0 6.8 11.6 3.5 3.5 0 0 0 7 18.5z"/></svg><span class="tb-label">Weather</span></button>
+      <button type="button" class="tb-btn" data-toggle="area-panel" aria-expanded="false"><svg class="tb-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2" class="fill"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><span class="tb-label">Area</span></button>
     </nav>
   </header>
 

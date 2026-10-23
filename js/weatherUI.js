@@ -43,17 +43,20 @@ function visibilityText(m) {
   return m.visibilityM < 5000 ? `${m.visibilityM} m` : `${(m.visibilityM / 1000).toFixed(m.visibilityM % 1000 ? 1 : 0)} km`;
 }
 
+// The button has an icon and a label; only the label's text changes.
+const setLabel = (text) => { (button.querySelector('.tb-label') ?? button).textContent = text; };
+
 function updateButton() {
   const m = latest?.metar;
   if (!m) {
-    button.textContent = 'Weather';
+    setLabel('Weather');
     return;
   }
   const bits = [];
   if (m.tempC !== null) bits.push(`${m.tempC}°`);
   if (m.windKt !== null) bits.push(m.windKt === 0 ? 'calm' : `${m.windKt}${m.gustKt ? `G${m.gustKt}` : ''} kt`);
   if (m.weather.some((w) => /TS/.test(w.code))) bits.push('⚡');
-  button.textContent = bits.length ? `${station} ${bits.join(' ')}` : 'Weather';
+  setLabel(bits.length ? `${station} ${bits.join(' ')}` : 'Weather');
   button.title = `Weather at ${station}: ${m.raw}`;
 }
 

@@ -475,6 +475,8 @@ async function spotting(browser, { width = 1280, height = 860 } = {}) {
   if (width < 700) {
     const overflow = await page.evaluate(() => document.querySelector('.topbar').scrollWidth - document.querySelector('.topbar').clientWidth);
     check(`${tag} top-bar buttons fit the phone screen`, overflow <= 0, `${overflow}px too wide`);
+    const bar = await page.locator('.topbar__buttons').boundingBox();
+    check(`${tag} panel buttons are a floating tab bar at the bottom`, bar.y + bar.height > height - 40 && bar.width > width - 40, JSON.stringify(bar));
   }
 
   // Emergency and military alerts pop up on their own.
@@ -512,7 +514,11 @@ async function spotting(browser, { width = 1280, height = 860 } = {}) {
   await page.click('#info-panel .log-btn');
   check(`${tag} logging again counts sightings`, (await page.textContent('#info-panel .log-note')).includes('seen 2×'));
   if (width < 700) check(`${tag} jumping to a plane closes the drawer so the card is visible`, await page.locator('#spotting-panel').isHidden());
-  if (await page.locator('#spotting-panel').isHidden()) await page.click('[data-toggle="spotting-panel"]');
+  if (await page.locator('#spotting-panel').isHidden()) {
+    // On a phone the tab bar steps aside while a flight card is open (like a maps app): close the card first.
+    if (width < 700) await page.click('#info-panel .pv__close');
+    await page.click('[data-toggle="spotting-panel"]');
+  }
   check(`${tag} log table in the Spotting panel`, (await page.textContent('#log-table')).includes('TEST-A') && (await page.textContent('#log-summary')).startsWith('1 aircraft'));
   const [download] = await Promise.all([page.waitForEvent('download'), page.click('#log-export')]);
   const csv = readFileSync(await download.path(), 'utf8');

@@ -207,6 +207,9 @@ function loadBaseLayerName(available) {
   }
   saved = renamed[saved] ?? saved;
   if (available.includes(saved)) return saved;
+  // No saved choice: follow the device's light/dark setting (Streets in light mode, Dark in dark mode).
+  const light = globalThis.matchMedia?.('(prefers-color-scheme: light)').matches;
+  if (light && available.includes('Streets')) return 'Streets';
   return available.includes('Dark') ? 'Dark' : 'Classic';
 }
 function saveBaseLayerName(name) {

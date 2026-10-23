@@ -1,0 +1,276 @@
+/* glass.css
+   A "liquid glass" look in the spirit of Apple's current design language: the map fills the whole
+   screen and everything else floats above it on translucent, blurred glass with soft highlights.
+   Loaded after style.css; it only changes looks and layout, never what the app does.
+
+   Pieces:
+   - tokens: colours for dark (default) and light mode (follows the device setting)
+   - .glass recipe: translucent fill + blur + a thin bright top edge + soft shadow
+   - layout: floating top bar; on phones the panel buttons become a floating tab bar at the bottom
+   - components: cards, flight card, buttons, inputs, map controls */
+
+/* ---------------- tokens ---------------- */
+:root {
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Inter", system-ui, sans-serif;
+  --tint: #0a84ff; /* controls and selection (planes stay yellow: --accent) */
+  --tint-text: #ffffff;
+  --glass: rgba(28, 30, 36, 0.55);
+  --glass-thick: rgba(28, 30, 36, 0.72);
+  --glass-edge: rgba(255, 255, 255, 0.14);
+  --glass-hi: rgba(255, 255, 255, 0.28);
+  --glass-sheen: rgba(255, 255, 255, 0.07);
+  --glass-shadow: 0 16px 48px rgba(0, 0, 0, 0.38), 0 2px 10px rgba(0, 0, 0, 0.22);
+  --fill: rgba(120, 120, 128, 0.32); /* buttons, inputs */
+  --fill-2: rgba(120, 120, 128, 0.2); /* boxes inside cards */
+  --sep: rgba(255, 255, 255, 0.1);
+  --text: #f5f5f7;
+  --muted: rgba(235, 235, 245, 0.6);
+  --link: #64d2ff;
+  --panel-2: var(--fill-2);
+  --border: var(--sep);
+  --radius: 26px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --bar-gap: 10px; /* space around floating bars */
+  --top-clear: calc(var(--safe-top) + 78px); /* where content under the top bar starts */
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --tint: #007aff;
+    --glass: rgba(255, 255, 255, 0.58);
+    --glass-thick: rgba(255, 255, 255, 0.8);
+    --glass-edge: rgba(255, 255, 255, 0.75);
+    --glass-hi: rgba(255, 255, 255, 0.95);
+    --glass-sheen: rgba(255, 255, 255, 0.35);
+    --glass-shadow: 0 16px 48px rgba(0, 0, 0, 0.14), 0 2px 10px rgba(0, 0, 0, 0.08);
+    --fill: rgba(120, 120, 128, 0.18);
+    --fill-2: rgba(120, 120, 128, 0.12);
+    --sep: rgba(60, 60, 67, 0.14);
+    --text: #1d1d1f;
+    --muted: rgba(60, 60, 67, 0.62);
+    --link: #0066cc;
+    --warn-bg: #ffe5e0;
+    --warn-text: #9f1d0c;
+    --info-bg: #e3f0ff;
+    --info-text: #0b3d75;
+    color-scheme: light;
+  }
+}
+
+/* ---------------- the glass recipe ---------------- */
+.topbar::before,
+.topbar__buttons,
+.card,
+.banner,
+.alert-toast,
+.track-legend,
+.leaflet-bar,
+.leaflet-control-layers,
+.leaflet-control-attribution {
+  background: linear-gradient(180deg, var(--glass-sheen), transparent 55%), var(--glass);
+  -webkit-backdrop-filter: blur(26px) saturate(190%);
+  backdrop-filter: blur(26px) saturate(190%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 0 var(--glass-hi), var(--glass-shadow);
+}
+/* Bigger reading surfaces (flight card, drawers) use slightly thicker glass so text stays crisp. */
+.card { background: linear-gradient(180deg, var(--glass-sheen), transparent 40%), var(--glass-thick); }
+@media (prefers-reduced-transparency: reduce) {
+  .topbar::before, .topbar__buttons, .card, .banner, .alert-toast, .track-legend, .leaflet-bar, .leaflet-control-layers { background: var(--glass-thick); }
+}
+
+/* ---------------- base ---------------- */
+html, body { background: #000; }
+body {
+  display: block;
+  font-family: var(--font);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+@media (prefers-color-scheme: light) { html, body { background: #f2f2f7; } }
+
+/* The map fills the screen; everything else floats on it. */
+.stage { position: fixed; inset: 0; }
+.map { background: #0b0f14; }
+@media (prefers-color-scheme: light) { .map { background: #e9eef2; } }
+
+/* Controls: pill buttons, filled inputs, no hard borders */
+input, select, button, textarea {
+  font-family: var(--font);
+  background: var(--fill);
+  border: none;
+  border-radius: 12px;
+  color: var(--text);
+}
+button { border-radius: 999px; padding: 7px 14px; font-weight: 500; transition: background 0.15s, transform 0.1s; }
+button:hover { border-color: transparent; filter: brightness(1.12); }
+button:active { transform: scale(0.97); }
+button.primary { background: var(--tint); color: var(--tint-text); border: none; }
+input:focus-visible, select:focus-visible, button:focus-visible, textarea:focus-visible { outline: 2px solid var(--tint); outline-offset: 2px; }
+a { color: var(--link); }
+
+/* ---------------- top bar (floating capsule) ---------------- */
+.topbar {
+  position: fixed;
+  z-index: 1100;
+  top: calc(var(--safe-top) + var(--bar-gap));
+  left: var(--bar-gap);
+  right: var(--bar-gap);
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 7px 7px 7px 12px;
+  gap: 10px;
+  border: none;
+  border-radius: 999px;
+  background: none;
+}
+/* The glass is drawn on a layer behind the bar. (A blur on the bar itself would trap the phone
+   tab bar inside it: fixed elements inside a blurred parent are positioned relative to that parent.) */
+.topbar::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; }
+.brand { font-weight: 650; font-size: 15px; letter-spacing: -0.02em; }
+.brand img { border-radius: 8px; }
+.search {
+  height: 36px;
+  border-radius: 999px;
+  padding: 0 14px 0 34px;
+  font-size: 15px;
+  background: var(--fill) no-repeat 12px 50% / 15px 15px
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238e8e93' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5 20 20'/%3E%3C/svg%3E");
+}
+.search::placeholder { color: var(--muted); }
+.status { font-size: 12px; color: var(--muted); }
+.topbar__buttons { gap: 2px; background: none; border: none; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.tb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 12px;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  white-space: nowrap;
+}
+.tb-btn:hover { background: var(--fill-2); filter: none; }
+.tb-btn[aria-expanded="true"] { background: var(--tint); color: var(--tint-text); }
+.tb-ico { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.tb-ico .fill { fill: currentColor; stroke: none; }
+
+/* ---------------- cards and drawers ---------------- */
+.card { border-radius: var(--radius); }
+.drawer { top: var(--top-clear); right: 12px; bottom: 12px; padding: 18px; }
+.drawer--small { bottom: auto; max-height: calc(100% - var(--top-clear) - 12px); }
+.card h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+.drawer--scroll h3, .info h3 { color: var(--muted); font-weight: 600; letter-spacing: 0.02em; text-transform: none; font-size: 13px; }
+.banner { top: var(--top-clear); border-radius: 999px; color: var(--text); }
+.banner--error { background: linear-gradient(180deg, var(--glass-sheen), transparent), rgba(255, 69, 58, 0.35); }
+.alerts { top: var(--top-clear); }
+.alert-toast { border-radius: 18px; border-left-width: 1px; }
+.alert-toast--emergency { box-shadow: inset 0 0 0 1.5px rgba(255, 69, 58, 0.8), var(--glass-shadow); }
+.tile, .pv__box { background: var(--fill-2); border-radius: 16px; }
+.aircraft-list th { background: transparent; color: var(--muted); font-weight: 600; }
+.aircraft-list tr.selected td { background: color-mix(in srgb, var(--tint) 22%, transparent); }
+.chip { background: var(--fill-2); border: none; }
+.filters-box summary, details summary { color: var(--muted); }
+
+/* ---------------- flight card ---------------- */
+.info { top: var(--top-clear); border-radius: 30px; }
+.info--full { bottom: 12px; }
+.pv__call { color: var(--text); font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
+.pv__badge { background: var(--fill); border-radius: 8px; font-weight: 600; }
+.pv__badge--type { background: color-mix(in srgb, var(--tint) 28%, transparent); color: var(--text); }
+.pv__airline { color: var(--muted); }
+.pv__photo { border-radius: 18px; }
+.pv__close { background: var(--fill); color: var(--text); width: 30px; height: 30px; line-height: 30px; }
+.pv__grid { gap: 8px; padding: 0 12px; }
+.pv__mid { background: var(--tint); }
+.pv__mid svg { fill: var(--tint-text); }
+.progress { background: var(--fill); height: 5px; }
+.progress__bar { background: var(--tint); }
+.pv__label { text-transform: none; letter-spacing: 0; font-size: 11.5px; }
+.pv__value { font-size: 19px; letter-spacing: -0.02em; }
+.pv__actions { padding: 10px 12px 12px; gap: 8px; }
+.pv__act { background: var(--fill-2); border-radius: 16px; padding: 9px 4px; color: var(--tint); font-weight: 600; font-size: 12px; }
+.pv__act:hover { background: var(--fill); }
+.pv__act[aria-pressed="true"], .pv__act[aria-expanded="true"] { background: var(--tint); color: var(--tint-text); }
+.info--full .pv__actions { border-bottom: none; }
+.log-btn { background: var(--fill-2); }
+.info__spotbar { padding: 0 14px 12px; }
+
+/* ---------------- map controls ---------------- */
+.leaflet-bar { border-radius: 14px !important; overflow: hidden; }
+.leaflet-bar a, .leaflet-bar a:hover { width: 40px; height: 40px; line-height: 40px; background: transparent; color: var(--text); border-bottom-color: var(--sep); font-weight: 400; }
+.leaflet-control-layers { border-radius: 14px !important; color: var(--text); }
+.leaflet-control-layers-toggle { width: 42px; height: 42px; }
+@media (prefers-color-scheme: dark) { .leaflet-control-layers-toggle { filter: invert(1) brightness(1.4); } }
+.leaflet-control-attribution { border-radius: 10px 0 0 0; color: var(--muted) !important; font-size: 10.5px; box-shadow: none; }
+.leaflet-top { top: calc(var(--top-clear) - 12px); }
+.track-legend { border-radius: 16px; }
+
+/* ---------------- phones: floating tab bar at the bottom ---------------- */
+@media (max-width: 760px) {
+  :root { --top-clear: calc(var(--safe-top) + 68px); --tab-h: 64px; }
+  .topbar { flex-wrap: nowrap; padding: 6px 6px 6px 8px; }
+  .brand { flex-basis: auto; }
+  .brand span { display: none; }
+  .search { order: 0; flex: 1; min-width: 0; height: 38px; }
+
+  /* The six panel buttons: a floating glass tab bar, icon above a short label */
+  .topbar__buttons {
+    position: fixed;
+    left: var(--bar-gap);
+    right: var(--bar-gap);
+    bottom: calc(var(--safe-bottom) + var(--bar-gap));
+    height: var(--tab-h);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    padding: 6px;
+    border-radius: 32px;
+    overflow: visible;
+    background: linear-gradient(180deg, var(--glass-sheen), transparent 55%), var(--glass);
+    -webkit-backdrop-filter: blur(26px) saturate(190%);
+    backdrop-filter: blur(26px) saturate(190%);
+    border: 1px solid var(--glass-edge);
+    box-shadow: inset 0 1px 0 var(--glass-hi), var(--glass-shadow);
+    transition: transform 0.25s ease, opacity 0.2s;
+  }
+  .tb-btn { flex-direction: column; justify-content: center; gap: 3px; height: 100%; padding: 0 2px; border-radius: 24px; font-size: 10.5px; font-weight: 500; min-width: 0; }
+  .tb-btn .tb-label { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+  .tb-ico { width: 21px; height: 21px; }
+  .tb-btn[aria-expanded="true"] { background: var(--fill); color: var(--tint); }
+  /* A flight card is open: the tab bar steps aside, like a sheet in a maps app */
+  body.card-open .topbar__buttons { transform: translateY(calc(100% + 30px)); opacity: 0; pointer-events: none; }
+
+  /* Map controls sit above the tab bar, or above the sheet when a card is open */
+  .leaflet-bottom { bottom: calc(var(--safe-bottom) + var(--tab-h) + 2 * var(--bar-gap)); }
+  body.card-open .leaflet-bottom { bottom: calc(var(--sheet-h, 62%) + 8px); }
+
+  /* Drawers float between the top bar and the tab bar */
+  .drawer, .drawer--small { left: var(--bar-gap); right: var(--bar-gap); top: var(--top-clear); bottom: calc(var(--safe-bottom) + var(--tab-h) + 2 * var(--bar-gap)); width: auto; border-radius: 28px; }
+  .drawer--small { bottom: auto; max-height: calc(100% - var(--top-clear) - var(--tab-h) - var(--safe-bottom) - 3 * var(--bar-gap)); }
+
+  /* Flight card: a floating sheet with rounded corners all round */
+  .info { top: auto; left: 8px; right: 8px; bottom: calc(var(--safe-bottom) + 8px); width: auto; border-radius: 32px; max-height: calc(78% - var(--safe-bottom)); padding-bottom: 0; }
+  .info--full { max-height: calc(100% - var(--top-clear) - var(--safe-bottom) - 8px); }
+  .pv__top::before { background: var(--sep); }
+  .alerts { top: var(--top-clear); }
+}
+
+/* style.css forces the credits strip dark with !important; let the glass through instead */
+.leaflet-control-attribution { background: linear-gradient(180deg, var(--glass-sheen), transparent 55%), var(--glass) !important; }
+
+/* Map labels keep their own dark look in both modes, so they read on any map style */
+.plane-badge { color: #f5f5f7; background: rgba(20, 22, 28, 0.88); border-radius: 6px; font-family: var(--font); }
+.leaflet-tooltip.plane-label { color: #f5f5f7; background: rgba(20, 22, 28, 0.82); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 12px; font-family: var(--font); }
+
+.search { min-width: 220px; }
+@media (max-width: 1240px) { .status { display: none; } }
+@media (max-width: 760px) {
+  .search { min-width: 0; }
+  /* leave room for the map credits between a drawer and the tab bar */
+  .drawer, .drawer--small { bottom: calc(var(--safe-bottom) + var(--tab-h) + 2 * var(--bar-gap) + 20px); }
+  .drawer--small { bottom: auto; }
+}
