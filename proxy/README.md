@@ -5,7 +5,7 @@
 1. **Relay** (`/?url=…`): fetches data for the website from adsb.lol, Planespotters and
    aviationweather.gov (METAR/TAF weather). Those
    services may not allow web pages on other sites to read their answers (CORS). It only relays
-   to the hosts in `ALLOWED_HOSTS`, and only answers your GitHub Pages site (`ALLOWED_ORIGIN`).
+   to the hosts in `ALLOWED_HOSTS`, and only answers SkyWatch's own sites (`ALLOWED_ORIGINS`).
 2. **Recorder**: once a minute, Cloudflare runs it automatically (a "Cron Trigger"). It asks
    adsb.lol once for all aircraft within 80 nm of Singapore and saves their positions in a D1
    database, keeping 24 hours. When you click a plane, the website asks `/track?hex=…` for its
@@ -46,6 +46,14 @@ aircraft's callsign and type, and adds `/stats`. Check afterwards:
 
 Storage after the update: each snapshot also holds callsigns and types, roughly doubling it to about 8 MB
 for 24 hours, still far below the free 5 GB.
+
+## Second address (Cloudflare Pages)
+
+SkyWatch is also published at its own address on Cloudflare Pages (so Safari's Favorites shows its own icon instead
+of the one for the shared github.io address). The worker accepts both `https://themagicianleo.github.io` and
+`https://skywatch.pages.dev` (`ALLOWED_ORIGINS`). If Cloudflare gives the project a different address, add it without
+editing code: **Workers & Pages → spotters-relay → Settings → Variables and Secrets → Add**, name `EXTRA_ORIGINS`,
+value e.g. `https://skywatch-abc.pages.dev` (several addresses: separate with commas), then **Deploy**.
 
 ## Data licence
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- viewport-fit=cover lets the installed app use the whole screen; the CSS keeps clear of the notch -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>SkyWatch SG</title>
+  <title>SkyWatch</title>
   <meta name="description" content="A live map of nearby aircraft built on free, open ADS-B data.">
   <!-- Installing as a web app ("Add to Home Screen"): name, icons and colours -->
   <link rel="manifest" href="manifest.webmanifest">
@@ -31,7 +31,7 @@
   <header class="topbar">
     <div class="brand">
       <img src="icons/icon.svg" width="28" height="28" alt="">
-      <span>SkyWatch SG</span>
+      <span>SkyWatch</span>
     </div>
     <input id="search" class="search" type="search" autocomplete="off"
            placeholder="Search callsign, registration, type or airport" aria-label="Search aircraft">
@@ -109,7 +109,12 @@
       <h3>My log</h3>
       <p id="log-summary" class="muted"></p>
       <div class="list-wrap"><table id="log-table" class="aircraft-list log-table"></table></div>
-      <div class="row"><button type="button" id="log-export">Export log (CSV)</button></div>
+      <div class="row">
+        <button type="button" id="log-export">Export log (CSV)</button>
+        <!-- Import a log exported from the app's other address (or a backup) -->
+        <button type="button" id="log-import">Import log (CSV)</button>
+        <input type="file" id="log-import-file" accept=".csv,text/csv" hidden>
+      </div>
       <p id="spot-note" class="info__warn" aria-live="polite"></p>
       <p class="credits">Saved in this browser only; nothing is uploaded. Military and "interesting" flags come
         from the community tar1090-db and miss many aircraft.</p>

@@ -102,3 +102,36 @@ test('flags file: real hex lists, no privacy flags copied', () => {
   assert.ok(doc.military.every((h) => /^[0-9a-f]{6}$/.test(h)));
   assert.deepEqual(Object.keys(doc).sort(), ['builtAt', 'interesting', 'military', 'note', 'source', 'sourceLastModified', 'sourceUrl']);
 });
+
+test('log import: reads our own export back (round trip), no duplicates, formulas un-escaped', async () => {
+  const { defaultSpotting, logSighting, logCsv, importLogCsv, parseCsv } = await import('../js/spotting.js');
+  const a = defaultSpotting();
+  logSighting(a, { hex: '76cd41', registration: '9V-SJA', typeCode: 'A359', typeDescription: 'AIRBUS A-350-900', callsign: 'SIA321', routeLabel: 'LHR → SIN', airline: { name: 'Singapore Airlines' } }, new Date(2026, 9, 21, 14, 5).getTime());
+  logSighting(a, { hex: '76cd41', callsign: '=SIA1' }, new Date(2026, 9, 22, 9, 30).getTime());
+  logSighting(a, { hex: '750596', registration: '9M-MNL', typeCode: 'A339', callsign: 'MAS144' }, new Date(2026, 9, 22, 10, 0).getTime());
+  const csv = logCsv(a.log);
+
+  const b = defaultSpotting();
+  const r = importLogCsv(b, csv);
+  assert.deepEqual(r, { added: 3, aircraft: 2, skipped: 0 });
+  assert.equal(b.log['76cd41'].reg, '9V-SJA');
+  assert.equal(b.log['76cd41'].airline, 'Singapore Airlines');
+  assert.equal(b.log['76cd41'].sightings.length, 2);
+  assert.equal(b.log['76cd41'].sightings[1].callsign, '=SIA1', 'the export\'s apostrophe is removed again');
+  assert.equal(b.log['76cd41'].sightings[0].route, 'LHR → SIN');
+  assert.equal(b.log['76cd41'].sightings[0].t, new Date(2026, 9, 21, 14, 5).getTime());
+  assert.deepEqual(importLogCsv(b, csv), { added: 0, aircraft: 0, skipped: 3 }, 'importing twice adds nothing');
+  assert.throws(() => importLogCsv(b, 'name,price\nx,1\n'), /not a SkyWatch log/);
+  assert.deepEqual(parseCsv('a,"b, ""c"""\r\n1,2\n'), [['a', 'b, "c"'], ['1', '2']]);
+});
+
+test('log import: two sightings in the same minute both come across, and only once', async () => {
+  const { defaultSpotting, logSighting, logCsv, importLogCsv } = await import('../js/spotting.js');
+  const a = defaultSpotting();
+  const t = new Date(2026, 9, 22, 9, 30, 5).getTime();
+  logSighting(a, { hex: '7fff01', registration: 'TEST-A' }, t);
+  logSighting(a, { hex: '7fff01' }, t + 20e3);
+  const b = defaultSpotting();
+  assert.equal(importLogCsv(b, logCsv(a.log)).added, 2);
+  assert.equal(importLogCsv(b, logCsv(a.log)).added, 0);
+});

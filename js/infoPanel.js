@@ -519,7 +519,7 @@ async function share(ac) {
   const url = `${location.origin}${location.pathname}?hex=${encodeURIComponent(ac.hex)}`;
   const title = ac.callsign ?? ac.registration ?? ac.hex;
   try {
-    if (navigator.share) await navigator.share({ title, text: `${title} on SkyWatch SG`, url });
+    if (navigator.share) await navigator.share({ title, text: `${title} on SkyWatch`, url });
     else {
       await navigator.clipboard.writeText(url);
       const btn = previewEl.querySelector('[data-act="share"] span');

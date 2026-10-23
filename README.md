@@ -1,6 +1,6 @@
-<img src="icons/icon-192.png" width="96" height="96" alt="SkyWatch SG icon" align="right">
+<img src="icons/icon-192.png" width="96" height="96" alt="SkyWatch icon" align="right">
 
-# SkyWatch SG
+# SkyWatch
 
 (Formerly "Spotter's Companion".)
 
@@ -68,6 +68,15 @@ free, open data. It gives you some features that paid flight trackers charge for
 | Alerts and Weather (real Changi METAR from 21 Oct 2026) | Stats |
 |---|---|
 | ![Alert pop-ups and the Weather panel (synthetic aircraft)](docs/screenshots/weather-synthetic.png) | ![Stats panel (synthetic data)](docs/screenshots/stats-synthetic.png) |
+
+## Where it lives
+
+The same code is published at two addresses, both updated automatically on every push to `main`:
+- **Cloudflare Pages:** its own address (e.g. https://skywatch.pages.dev), so Safari shows SkyWatch's own icon
+- **GitHub Pages:** https://themagicianleo.github.io/spotter-companion/
+
+Saved things (watchlist, spotting log, settings) are kept per address. To move your log: **Spotting → Export log**
+on one address, **Import log** on the other (sightings are merged; importing twice adds nothing).
 
 ## Install it as an app
 

@@ -20,7 +20,11 @@ const ALLOWED_HOSTS = ['api.adsb.lol', 'api.airplanes.live', 'api.planespotters.
 const CACHE_SECONDS = { 'aviationweather.gov': 300 };
 
 // Set this to your GitHub Pages address so only your site can use the relay and track API.
-const ALLOWED_ORIGIN = 'https://themagicianleo.github.io';
+// SkyWatch is published at two addresses: GitHub Pages and Cloudflare Pages (its own address, so
+// Safari shows its own icon). More can be added without editing this file: in the Cloudflare
+// dashboard, add a variable EXTRA_ORIGINS, e.g. "https://skywatch-abc.pages.dev" (comma-separated).
+const ALLOWED_ORIGINS = ['https://themagicianleo.github.io', 'https://skywatch.pages.dev'];
+const allowedOrigins = (env) => [...ALLOWED_ORIGINS, ...String(env?.EXTRA_ORIGINS ?? '').split(',').map((o) => o.trim()).filter(Boolean)];
 
 const USER_AGENT = 'SpottersCompanion/1.0 (personal non-commercial project; +https://github.com/Themagicianleo/spotter-companion)';
 
@@ -30,11 +34,9 @@ const RECORD_RADIUS_NM = 80; // a bit bigger than the website's default 40 nm
 const KEEP_HOURS = 24; // older snapshots are deleted
 const MAX_TRACK_MINUTES = 24 * 60;
 
-const corsHeaders = {
-  'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin': ALLOWED_ORIGIN,
-};
-const json = (data, status = 200) => new Response(JSON.stringify(data), { status, headers: corsHeaders });
+// Which site may read the answer (CORS) is added at the end of fetch(), per request.
+const jsonHeaders = { 'Content-Type': 'application/json' };
+const json = (data, status = 200) => new Response(JSON.stringify(data), { status, headers: jsonHeaders });
 
 // ---------------------------------------------------------------------------------------------
 // Recorder
@@ -142,60 +144,21 @@ async function relay(request) {
     // Ask Cloudflare to cache answers for 5 s, so many viewers = few provider requests.
     cf: { cacheTtl: CACHE_SECONDS[host] ?? 5, cacheEverything: true },
   });
-  const headers = new Headers(corsHeaders);
+  const headers = new Headers(jsonHeaders);
   const retryAfter = upstream.headers.get('Retry-After');
   if (retryAfter) headers.set('Retry-After', retryAfter);
   return new Response(upstream.body, { status: upstream.status, headers });
 }
 
 export default {
+  // Every answer gets Access-Control-Allow-Origin for the asking site, if it's one of ours.
+  // (Browsers allow only one origin in that header, so we echo the matching one.)
   async fetch(request, env) {
-    const url = new URL(request.url);
-
-    if (url.pathname === '/track') {
-      if (!env.DB) return json({ error: 'Recorder database not connected (add a D1 binding named DB)' }, 503);
-      const hex = (url.searchParams.get('hex') ?? '').toLowerCase();
-      if (!/^[0-9a-f]{6}$/.test(hex)) return json({ error: 'hex must be 6 hex characters' }, 400);
-      const minutes = Math.min(Math.max(Number(url.searchParams.get('minutes')) || 180, 1), MAX_TRACK_MINUTES);
-      try {
-        return json({ hex, minutes, points: await getTrack(env, hex, minutes) });
-      } catch (err) {
-        return json({ error: `Track lookup failed: ${err.message}` }, 500); // e.g. no snapshots yet
-      }
-    }
-
-    if (url.pathname === '/stats') {
-      if (!env.DB) return json({ error: 'Recorder database not connected (add a D1 binding named DB)' }, 503);
-      const hours = Math.min(Math.max(Math.round(Number(url.searchParams.get('hours')) || 24), 1), KEEP_HOURS);
-      if (statsCache && statsCache.hours === hours && Date.now() - statsCache.time < 5 * 60 * 1000) return json(statsCache.body);
-      try {
-        const body = await getStats(env, hours);
-        statsCache = { time: Date.now(), hours, body };
-        return json(body);
-      } catch (err) {
-        return json({ error: `Stats failed: ${err.message}` }, 500); // e.g. nothing recorded yet
-      }
-    }
-
-    if (url.pathname === '/recorder-status') {
-      if (!env.DB) return json({ connected: false, error: 'No D1 binding named DB' });
-      try {
-        const row = await env.DB.prepare('SELECT COUNT(*) AS snapshots, MIN(t) AS oldest, MAX(t) AS newest FROM snapshots').first();
-        const latest = await env.DB.prepare('SELECT data FROM snapshots ORDER BY t DESC LIMIT 1').first();
-        return json({
-          connected: true,
-          snapshots: row.snapshots,
-          oldest: row.oldest ? new Date(row.oldest * 1000).toISOString() : null,
-          newest: row.newest ? new Date(row.newest * 1000).toISOString() : null,
-          aircraftInLatest: latest ? Object.keys(JSON.parse(latest.data)).length : 0,
-          area: { ...RECORD_CENTER, radiusNm: RECORD_RADIUS_NM },
-        });
-      } catch (err) {
-        return json({ connected: true, snapshots: 0, note: `Nothing recorded yet (${err.message})` });
-      }
-    }
-
-    return relay(request);
+    const response = await handle(request, env);
+    const origin = request.headers.get('Origin');
+    if (origin && allowedOrigins(env).includes(origin)) response.headers.set('Access-Control-Allow-Origin', origin);
+    response.headers.append('Vary', 'Origin');
+    return response;
   },
 
   // Runs on the Cron Trigger (every minute).
@@ -207,3 +170,52 @@ export default {
     ctx.waitUntil(record(env));
   },
 };
+
+async function handle(request, env) {
+  const url = new URL(request.url);
+
+  if (url.pathname === '/track') {
+    if (!env.DB) return json({ error: 'Recorder database not connected (add a D1 binding named DB)' }, 503);
+    const hex = (url.searchParams.get('hex') ?? '').toLowerCase();
+    if (!/^[0-9a-f]{6}$/.test(hex)) return json({ error: 'hex must be 6 hex characters' }, 400);
+    const minutes = Math.min(Math.max(Number(url.searchParams.get('minutes')) || 180, 1), MAX_TRACK_MINUTES);
+    try {
+      return json({ hex, minutes, points: await getTrack(env, hex, minutes) });
+    } catch (err) {
+      return json({ error: `Track lookup failed: ${err.message}` }, 500); // e.g. no snapshots yet
+    }
+  }
+
+  if (url.pathname === '/stats') {
+    if (!env.DB) return json({ error: 'Recorder database not connected (add a D1 binding named DB)' }, 503);
+    const hours = Math.min(Math.max(Math.round(Number(url.searchParams.get('hours')) || 24), 1), KEEP_HOURS);
+    if (statsCache && statsCache.hours === hours && Date.now() - statsCache.time < 5 * 60 * 1000) return json(statsCache.body);
+    try {
+      const body = await getStats(env, hours);
+      statsCache = { time: Date.now(), hours, body };
+      return json(body);
+    } catch (err) {
+      return json({ error: `Stats failed: ${err.message}` }, 500); // e.g. nothing recorded yet
+    }
+  }
+
+  if (url.pathname === '/recorder-status') {
+    if (!env.DB) return json({ connected: false, error: 'No D1 binding named DB' });
+    try {
+      const row = await env.DB.prepare('SELECT COUNT(*) AS snapshots, MIN(t) AS oldest, MAX(t) AS newest FROM snapshots').first();
+      const latest = await env.DB.prepare('SELECT data FROM snapshots ORDER BY t DESC LIMIT 1').first();
+      return json({
+        connected: true,
+        snapshots: row.snapshots,
+        oldest: row.oldest ? new Date(row.oldest * 1000).toISOString() : null,
+        newest: row.newest ? new Date(row.newest * 1000).toISOString() : null,
+        aircraftInLatest: latest ? Object.keys(JSON.parse(latest.data)).length : 0,
+        area: { ...RECORD_CENTER, radiusNm: RECORD_RADIUS_NM },
+      });
+    } catch (err) {
+      return json({ connected: true, snapshots: 0, note: `Nothing recorded yet (${err.message})` });
+    }
+  }
+
+  return relay(request);
+}

@@ -85,7 +85,7 @@ test('airfleets.net link: search URL for the registration, nothing when unknown'
 test('web-app manifest: name, start URL and every icon file exists', async () => {
   const { existsSync } = await import('node:fs');
   const manifest = JSON.parse(readFileSync(new URL('../manifest.webmanifest', import.meta.url)));
-  assert.equal(manifest.name, 'SkyWatch SG');
+  assert.equal(manifest.name, 'SkyWatch');
   assert.ok(manifest.short_name.length <= 12, 'fits under a home-screen icon');
   assert.equal(manifest.start_url, './'); // relative, so it works under /spotter-companion/ on GitHub Pages
   for (const icon of manifest.icons) assert.ok(existsSync(new URL(`../${icon.src}`, import.meta.url)), icon.src);

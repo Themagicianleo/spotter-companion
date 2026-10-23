@@ -1,5 +1,5 @@
 {
-  "name": "SkyWatch SG",
+  "name": "SkyWatch",
   "short_name": "SkyWatch",
   "description": "Live map of aircraft around Singapore, built on free, open ADS-B data. A personal hobby project.",
   "start_url": "./",

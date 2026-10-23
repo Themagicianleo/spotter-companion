@@ -274,3 +274,5 @@ a { color: var(--link); }
   .drawer, .drawer--small { bottom: calc(var(--safe-bottom) + var(--tab-h) + 2 * var(--bar-gap) + 20px); }
   .drawer--small { bottom: auto; }
 }
+.spot-note { padding: 8px 12px; border-radius: 12px; font-size: 13px; }
+.spot-note:empty { display: none; }

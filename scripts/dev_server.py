@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Local development server for SkyWatch SG.
+"""Local development server for SkyWatch.
 
 Run from the project folder:   python3 scripts/dev_server.py
 Then open:                      http://localhost:8000

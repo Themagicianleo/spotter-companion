@@ -4,7 +4,7 @@
 // All text from the feed is inserted with textContent, never innerHTML.
 
 import {
-  loadSpotting, saveSpotting, alertReasons, cleanWatchValue, logSighting, logCsv, WATCH_KINDS, DEFAULT_RARE_TYPES,
+  loadSpotting, saveSpotting, alertReasons, cleanWatchValue, logSighting, logCsv, importLogCsv, WATCH_KINDS, DEFAULT_RARE_TYPES,
 } from './spotting.js';
 import { flagsFor } from './flags.js';
 
@@ -65,16 +65,19 @@ function toast(ac, reasons) {
   // Optional system notification (phone/desktop), only if the user switched it on and allowed it.
   if (settings.notify && 'Notification' in window && Notification.permission === 'granted' && document.hidden) {
     try {
-      new Notification(`${label(ac)}: ${reasons[0].text}`, { body: detail || 'SkyWatch SG', tag: ac.hex });
+      new Notification(`${label(ac)}: ${reasons[0].text}`, { body: detail || 'SkyWatch', tag: ac.hex });
     } catch {
       // Some phones only allow notifications from an installed app; the pop-up still shows.
     }
   }
 }
 
-function note(text) {
+// A message under the log: tone 'warn' (red) for problems, 'info' (calm) for good news.
+function note(text, tone = 'warn') {
   const p = document.getElementById('spot-note');
-  if (p) p.textContent = text;
+  if (!p) return;
+  p.textContent = text;
+  p.className = tone === 'info' ? 'banner--info spot-note' : 'info__warn spot-note';
 }
 
 // "Right now" list in the drawer: everything currently matching an alert rule.
@@ -266,6 +269,23 @@ export function initSpotting({ select, changed }) {
   });
 
   document.getElementById('log-export').addEventListener('click', downloadLog);
+  // Import: pick a CSV made by "Export log"; sightings are merged (nothing is replaced or duplicated).
+  const fileInput = document.getElementById('log-import-file');
+  document.getElementById('log-import').addEventListener('click', () => fileInput.click());
+  fileInput.addEventListener('change', async () => {
+    const file = fileInput.files?.[0];
+    fileInput.value = '';
+    if (!file) return;
+    try {
+      const r = importLogCsv(settings, await file.text());
+      save();
+      renderLog();
+      refreshCardBar();
+      note(r.added ? `Imported ${r.added} sighting(s) of ${r.aircraft} aircraft${r.skipped ? ` (${r.skipped} already in your log or unreadable)` : ''}.` : 'Nothing new to import: those sightings are already in your log.', 'info');
+    } catch (err) {
+      note(err.message);
+    }
+  });
   renderWatch();
   renderLog();
   renderNow();

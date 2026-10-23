@@ -138,3 +138,67 @@ export function saveSpotting(settings) {
     return false;
   }
 }
+
+// ---- Import: read a CSV made by logCsv() (e.g. exported from the other address of this app) ----
+
+// Split CSV text into rows of cells (handles "quoted, cells", doubled "" quotes and CRLF).
+export function parseCsv(text) {
+  const rows = [];
+  let row = [], cellText = '', quoted = false;
+  const s = String(text ?? '').replace(/^﻿/, '');
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (quoted) {
+      if (c === '"' && s[i + 1] === '"') { cellText += '"'; i++; }
+      else if (c === '"') quoted = false;
+      else cellText += c;
+    } else if (c === '"') quoted = true;
+    else if (c === ',') { row.push(cellText); cellText = ''; }
+    else if (c === '\n' || c === '\r') {
+      if (c === '\r' && s[i + 1] === '\n') i++;
+      row.push(cellText); rows.push(row); row = []; cellText = '';
+    } else cellText += c;
+  }
+  if (cellText !== '' || row.length) { row.push(cellText); rows.push(row); }
+  return rows.filter((r) => r.some((x) => x !== ''));
+}
+
+// Adds the sightings in `csvText` to settings.log. Sightings already in the log (same aircraft,
+// same minute) are skipped. Returns { added, aircraft, skipped } or throws if it isn't our format.
+export function importLogCsv(settings, csvText) {
+  const rows = parseCsv(csvText);
+  const header = rows.shift() ?? [];
+  const col = Object.fromEntries(header.map((name, i) => [name.trim(), i]));
+  for (const needed of ['date', 'time', 'registration', 'hex']) {
+    if (!(needed in col)) throw new Error('This file is not a SkyWatch log (missing a "' + needed + '" column).');
+  }
+  // Undo logCsv's spreadsheet safety: a leading ' was added before = + - @.
+  const get = (r, name) => {
+    const v = (col[name] === undefined ? '' : r[col[name]] ?? '').trim();
+    return (/^'[=+\-@]/.test(v) ? v.slice(1) : v) || null;
+  };
+  let added = 0, skipped = 0;
+  const touched = new Set();
+  // The export keeps times to the minute, so "already in the log" means: same aircraft, same minute,
+  // compared with what was in the log BEFORE this import (two rows of the file may share a minute).
+  const minute = (t) => Math.floor(t / 60e3);
+  const before = Object.fromEntries(Object.entries(settings.log).map(([hex, e]) => [hex, new Set(e.sightings.map((x) => minute(x.t)))]));
+  for (const r of rows) {
+    const hex = (get(r, 'hex') ?? '').toLowerCase();
+    const date = get(r, 'date'), time = get(r, 'time') ?? '00:00';
+    const t = new Date(`${date}T${time}`).getTime(); // local time, as exported
+    if (!/^[0-9a-f]{6}$/.test(hex) || !Number.isFinite(t)) { skipped++; continue; }
+    const entry = settings.log[hex] ?? { reg: null, type: null, typeName: null, airline: null, sightings: [] };
+    entry.reg ??= get(r, 'registration');
+    entry.type ??= get(r, 'type');
+    entry.typeName ??= get(r, 'type_description');
+    entry.airline ??= get(r, 'airline');
+    if (before[hex]?.has(minute(t))) { skipped++; continue; }
+    entry.sightings.push({ t, callsign: get(r, 'callsign'), route: get(r, 'route') });
+    entry.sightings.sort((a, b) => a.t - b.t);
+    settings.log[hex] = entry;
+    touched.add(hex);
+    added++;
+  }
+  return { added, aircraft: touched.size, skipped };
+}

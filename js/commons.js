@@ -19,7 +19,7 @@
 // Wikimedia asks browser apps to identify themselves with the Api-User-Agent header.
 
 const API = 'https://commons.wikimedia.org/w/api.php';
-const AGENT = 'SkyWatchSG/1.0 (https://github.com/Themagicianleo/spotter-companion; hobby project)';
+const AGENT = 'SkyWatch/1.0 (https://github.com/Themagicianleo/spotter-companion; hobby project)';
 const MAX = 12;
 const cache = new Map(); // registration -> Promise<photo[]>
 

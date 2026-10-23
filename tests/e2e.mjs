@@ -273,7 +273,7 @@ async function phase4(browser) {
   check('[photos] "More photos" strip, newest first, with dates', (await page.locator('#info-panel .strip__item').count()) === 2 && (await page.textContent('#info-panel .info__strip h3')).includes('More photos (2), newest first') &&
     (await page.locator('#info-panel .strip__date').allTextContents()).join('|') === '26 Oct 2025|4 Mar 2019');
   check('[photos] Commons asked twice: airframe category, then a search', commonsCalls.length === 2 && commonsCalls[1].search === '"N11206"');
-  check('[photos] Commons asked for the airframe category, with an Api-User-Agent', commonsCalls[0]?.cat === 'Category:N11206 (aircraft)' && /SkyWatchSG/.test(commonsCalls[0]?.agent ?? ''), JSON.stringify(commonsCalls[0]));
+  check('[photos] Commons asked for the airframe category, with an Api-User-Agent', commonsCalls[0]?.cat === 'Category:N11206 (aircraft)' && /SkyWatch\//.test(commonsCalls[0]?.agent ?? ''), JSON.stringify(commonsCalls[0]));
   await page.screenshot({ path: 'docs/screenshots/info-panel-synthetic.png' });
   await page.click('#info-panel [data-act="more"]'); // back to the preview
   check('[photos] preview shows "+2" on the photo', (await page.textContent('#info-panel .pv__morephotos')) === '+2');
@@ -523,6 +523,24 @@ async function spotting(browser, { width = 1280, height = 860 } = {}) {
   const [download] = await Promise.all([page.waitForEvent('download'), page.click('#log-export')]);
   const csv = readFileSync(await download.path(), 'utf8');
   check(`${tag} log exports as CSV`, csv.startsWith('date,time,registration') && csv.trim().split('\n').length === 3 && csv.includes('TEST-A,A359'));
+
+  // Import into a fresh browser (like the app's other address): the exported file brings the log across.
+  if (width >= 700) {
+    const fresh = await browser.newPage({ viewport: { width, height } });
+    await fresh.route(/tiles\.openfreemap\.org|tile\.openstreetmap\.org|tiles\.maps\.eox\.at|commons\.wikimedia|planespotters/, (r) => r.fulfill({ status: 204 }));
+    await fresh.route('**/relay?**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(data) }));
+    await fresh.goto(BASE);
+    await fresh.click('[data-toggle="spotting-panel"]');
+    check('[import] a fresh browser starts with an empty log', (await fresh.textContent('#log-summary')).startsWith('Nothing logged yet'));
+    await fresh.setInputFiles('#log-import-file', await download.path());
+    await fresh.waitForFunction(() => document.getElementById('spot-note').textContent.startsWith('Imported'));
+    const got = [await fresh.textContent('#spot-note'), await fresh.textContent('#log-summary')];
+    check('[import] importing the exported CSV restores the log', got[0] === 'Imported 2 sighting(s) of 1 aircraft.' && got[1].startsWith('1 aircraft') && (await fresh.textContent('#log-table')).includes('TEST-A'), got.join(' | '));
+    await fresh.setInputFiles('#log-import-file', await download.path());
+    await fresh.waitForFunction(() => document.getElementById('spot-note').textContent.startsWith('Nothing new'));
+    check('[import] importing again adds nothing', (await fresh.textContent('#log-summary')).includes('2 sightings'), await fresh.textContent('#log-summary'));
+    await fresh.close();
+  }
 
   // Reload: watchlist and log are remembered.
   await page.reload();
