@@ -2,11 +2,11 @@
   "source": "tar1090-db (from the Mictronics database) + OpenSky Network aircraft database + VRS standing data",
   "sourceUrl": "https://github.com/wiedehopf/tar1090-db",
   "openskyUrl": "https://opensky-network.org/data/aircraft",
-  "builtAt": "2026-10-21T14:19Z",
+  "builtAt": "2026-11-02T11:22Z",
   "tar1090": {
     "url": "https://raw.githubusercontent.com/wiedehopf/tar1090-db/csv/aircraft.csv.gz",
     "lastModified": null,
-    "rowsInSource": 622506
+    "rowsInSource": 623847
   },
   "opensky": {
     "url": "https://s3.opensky-network.org/data-samples/metadata/aircraft-database-complete-2025-08.csv",
@@ -47,12 +47,12 @@
       "vdl"
     ],
     "filledCountsForKeptRows": {
-      "icao24": 39660,
-      "model": 31310,
-      "typecode": 38929,
-      "serialNumber": 24803,
-      "built": 4468,
-      "engines": 8523
+      "icao24": 39665,
+      "model": 31314,
+      "typecode": 38930,
+      "serialNumber": 24807,
+      "built": 4469,
+      "engines": 8526
     },
     "quoteChar": "'"
   },
@@ -61,7 +61,7 @@
     "files": 669,
     "rowsKept": 8700
   },
-  "rowsKept": 42816,
+  "rowsKept": 42897,
   "typesKept": [
     "A19N",
     "A20N",
