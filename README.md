@@ -18,6 +18,8 @@ free, open data. It gives you some features that paid flight trackers charge for
 - **Flight routes:** origin, stops and destination for each callsign (e.g. CXA865 FOC → SIN) in the
   list, hover label, flight card and CSV. A "(?)" warns when the plane isn't near the route on record.
 - **Liquid-glass interface:** the map fills the screen and everything floats above it on translucent glass (`css/glass.css`), in dark or light to match your device (the map starts on Streets in light mode). On phones the panel buttons form a floating tab bar at the bottom, which steps aside when a flight card is open. Inspired by Apple's current design language; all icons are this project's own drawings.
+- **Seat maps:** a **Seat map** button on the flight card opens the airline's fleet page on [aeroLOPA](https://www.aerolopa.com) (to-scale cabin layouts), or the aircraft type's page when the airline isn't known. The full card lists both links. We only link to aeroLOPA's pages (`js/seatmap.js`); nothing is fetched or copied from the site, and its layouts are its own work. The per-airline layout pages carry a layout letter we can't know, so we never link to those directly.
+- **Same look as the other apps:** the design language of the MSFS Buddy EFB / SimPlanner (iOS grouped layout, Liquid Glass, Apple system colours, same token names in `css/glass.css`), with an Automatic / Light / Dark **Appearance** setting in the Search area panel.
 - **Dark, map-first interface** (inspired by flight-tracker apps like Plane Finder): full-screen map,
   yellow planes, a search box, and a flight card with a big route display, progress bar and live tiles.
   Works on phones too: the card becomes a bottom sheet.

@@ -17,6 +17,7 @@ import { initSpotting, checkAlerts, renderCardBar, getSpotting } from './spottin
 import { initStats, updateStats, showStats } from './statsUI.js';
 import { initWeather, showWeather } from './weatherUI.js';
 import { setCardBar } from './infoPanel.js';
+import { initTheme } from './theme.js';
 
 // ---- Routes: callsign -> airports (data/routes.json) ----
 const routeCache = new Map(); // callsign -> route object, or null if none on record
@@ -69,6 +70,7 @@ const inputs = {
   maxAlt: document.getElementById('filter-max-alt'),
   ground: document.getElementById('filter-ground'),
 };
+initTheme(document.getElementById('appearance')); // Automatic / Light / Dark
 const searchBox = document.getElementById('search');
 const listCount = document.getElementById('list-count');
 const seenTypes = document.getElementById('seen-types');

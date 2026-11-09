@@ -12,6 +12,7 @@ import { getPhoto } from './photos.js';
 import { getCommonsPhotos } from './commons.js';
 import { openGallery, takenText } from './gallery.js';
 import { getTrack } from './track.js';
+import { aerolopaUrl, aerolopaAirlineUrl, aerolopaTypeUrl } from './seatmap.js';
 import { lookupRoute, routeProgress, routeLengthNm, remainingNm, estimateArrival, findTakeoff, distanceNm, currentLegEnd } from './routes.js';
 
 let panel;
@@ -117,7 +118,7 @@ export async function openInfoPanel(ac) {
   if (currentHex !== ac.hex && following) toggleFollow(false);
   currentHex = ac.hex;
   lastAc = ac;
-  pv = { route: undefined, photo: undefined, photoEl: null, commons: undefined, model: null, reg: ac.registration };
+  pv = { route: undefined, photo: undefined, photoEl: null, commons: undefined, model: null, reg: ac.registration, type: null };
   stripEl.replaceChildren();
   setMode('preview'); // a new plane always starts as the short preview
   panel.hidden = false;
@@ -149,6 +150,7 @@ export async function openInfoPanel(ac) {
   // Preview: the most exact model name we have, and the registration (database first).
   pv.model = db?.osModel ?? db?.vrsModel ?? type?.model ?? db?.typeDescription ?? ac.typeDescription ?? null;
   pv.reg = db?.registration ?? ac.registration ?? null;
+  pv.type = type;
   renderPreview(lastAc ?? ac);
   loadMorePhotos(ac.hex, pv.reg);
   renderDetails(ac, db, dbResult.status === 'rejected', metaResult.value, type, typeResult.status === 'rejected', variant);
@@ -204,6 +206,24 @@ function renderDetails(ac, db, dbFailed, meta, type, typeFailed, variant) {
     a.className = 'info__more-link';
     more.append(a);
     parts.push(more);
+  }
+  // Seat maps live on aeroLOPA; we only link to its pages (see js/seatmap.js).
+  const airlineSeats = aerolopaAirlineUrl(ac.airline?.iata);
+  const typeSeats = aerolopaTypeUrl(type);
+  if (airlineSeats || typeSeats) {
+    const seats = h('p', 'info__more info__seats');
+    if (airlineSeats) {
+      const a = safeLink(airlineSeats, `${ac.airline.name ?? ac.airline.iata} seat maps ↗`);
+      a.className = 'info__more-link';
+      seats.append(a);
+    }
+    if (typeSeats) {
+      const a = safeLink(typeSeats, `${type.model.replace(/\s*\(.*$/, '')} seat maps ↗`);
+      a.className = 'info__more-link';
+      seats.append(a);
+    }
+    seats.append(h('span', 'info__note', 'on aeroLOPA'));
+    parts.push(seats);
   }
   if (missing.length) parts.push(h('p', 'info__note', `Unknown (not in our databases): ${missing.join(', ')}.`));
   // Crowd-sourced databases sometimes disagree; say so rather than silently picking one.
@@ -536,6 +556,7 @@ const SVG = {
   plane: '<path d="M12 2c.8 0 1.3.9 1.3 2v5.2l7.7 4.6v2l-7.7-2.3v4.6l2.2 1.7v1.6L12 20.4l-3.5 1.2V20l2.2-1.7v-4.6L3 16v-2l7.7-4.6V4c0-1.1.5-2 1.3-2z"/>',
   more: '<path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
   follow: '<circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  seat: '<path d="M7 4h5a2 2 0 0 1 2 2v7H8V6a2 2 0 0 1 2-2zM6 13h12l1 5H5zM8 18v2M16 18v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
   share: '<path d="M12 3v12M7.5 7.5L12 3l4.5 4.5M5 13v6h14v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
 };
 function icon(name, size = 20) {
@@ -680,6 +701,17 @@ function renderPreview(ac) {
   const sh = action('share', 'share', 'Share');
   sh.addEventListener('click', () => share(ac));
   actions.append(more, follow, sh);
+  // Seat map: the airline's fleet page on aeroLOPA when we know the airline, else the aircraft type's page.
+  const seatUrl = aerolopaUrl({ airlineIata: ac.airline?.iata, type: pv.type });
+  if (seatUrl) {
+    const a = safeLink(seatUrl, '');
+    a.className = 'pv__act';
+    a.title = 'Seat map on aeroLOPA (opens in a new tab)';
+    a.dataset.act = 'seatmap';
+    a.append(icon('seat'), h('span', null, 'Seat map'));
+    actions.append(a);
+    actions.classList.add('pv__actions--4');
+  }
 
   previewEl.replaceChildren(top, grid, actions);
 }

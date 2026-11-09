@@ -13,6 +13,8 @@
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+  <!-- Apply the saved appearance before the first paint so the page never flashes the wrong theme -->
+  <script>try{var a=localStorage.getItem('skywatch.appearance');if(a==='light'||a==='dark')document.documentElement.dataset.theme=a}catch(e){}</script>
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="SkyWatch">
@@ -71,6 +73,15 @@
           <button type="button" id="reset-center" title="Back to Singapore">Reset</button>
         </div>
       </form>
+      <!-- Appearance, same setting as in the MSFS Buddy EFB (js/theme.js) -->
+      <div class="display-box">
+        <span class="field-label" id="appearance-label">Appearance</span>
+        <div class="seg" id="appearance" role="group" aria-labelledby="appearance-label">
+          <button type="button" data-appearance="system" aria-pressed="true">Automatic</button>
+          <button type="button" data-appearance="light" aria-pressed="false">Light</button>
+          <button type="button" data-appearance="dark" aria-pressed="false">Dark</button>
+        </div>
+      </div>
     </section>
 
     <!-- Spotting: alerts, watchlist, rare types and your log (saved in this browser only; js/spottingUI.js) -->

@@ -1,100 +1,114 @@
 /* glass.css
-   A "liquid glass" look in the spirit of Apple's current design language: the map fills the whole
-   screen and everything else floats above it on translucent, blurred glass with soft highlights.
-   Loaded after style.css; it only changes looks and layout, never what the app does.
+   SkyWatch's look. This is the same design language as the MSFS Buddy EFB and SimPlanner (itself taken
+   from Light Scout): an iOS grouped layout with Liquid Glass, Apple's system colours (light and dark)
+   and the system font. Names of the colour tokens match src/shared/glass.css in msfs-buddy, so a
+   component from one app drops into the other.
 
-   Pieces:
-   - tokens: colours for dark (default) and light mode (follows the device setting)
-   - .glass recipe: translucent fill + blur + a thin bright top edge + soft shadow
-   - layout: floating top bar; on phones the panel buttons become a floating tab bar at the bottom
-   - components: cards, flight card, buttons, inputs, map controls */
+   SkyWatch is map-first, so the map fills the screen and the glass floats over it: content cards are
+   frosted glass; navigation and controls are clearer glass capsules with a bright rim that spring when
+   pressed. Loaded after style.css; it only changes looks and layout, never what the app does.
+
+   Theme: follows the device unless <html data-theme="light|dark"> is set (Search area panel > Display). */
 
 /* ---------------- tokens ---------------- */
 :root {
-  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Inter", system-ui, sans-serif;
-  --tint: #0a84ff; /* controls and selection (planes stay yellow: --accent) */
-  --tint-text: #ffffff;
-  --glass: rgba(28, 30, 36, 0.55);
-  --glass-thick: rgba(28, 30, 36, 0.72);
-  --glass-edge: rgba(255, 255, 255, 0.14);
-  --glass-hi: rgba(255, 255, 255, 0.28);
-  --glass-sheen: rgba(255, 255, 255, 0.07);
-  --glass-shadow: 0 16px 48px rgba(0, 0, 0, 0.38), 0 2px 10px rgba(0, 0, 0, 0.22);
-  --fill: rgba(120, 120, 128, 0.32); /* buttons, inputs */
-  --fill-2: rgba(120, 120, 128, 0.2); /* boxes inside cards */
-  --sep: rgba(255, 255, 255, 0.1);
-  --text: #f5f5f7;
-  --muted: rgba(235, 235, 245, 0.6);
-  --link: #64d2ff;
-  --panel-2: var(--fill-2);
-  --border: var(--sep);
-  --radius: 26px;
+  --bg: #f2f2f7; --surface: #ffffff; --raised: #f2f2f7; --fill: rgba(118,118,128,.12); --line: rgba(60,60,67,.18);
+  --fg: #000000; --muted: rgba(60,60,67,.6); --faint: rgba(60,60,67,.32);
+  --blue: #007aff; --blue-soft: rgba(0,122,255,.12); --gold: #ff9500; --gold-soft: rgba(255,149,0,.15);
+  --green: #248a3d; --orange: #c77c02; --red: #d70015; --purple: #8944ab; --yellow: #b25000;
+  --glass: rgba(255,255,255,.56); --glass-rim: rgba(255,255,255,.95); --glass-edge: rgba(255,255,255,.55);
+  --ctl: rgba(250,250,252,.72); --lens: rgba(255,255,255,.95); --sheet: rgba(250,250,252,.86);
+  --glass-shadow: 0 10px 30px rgba(40,50,120,.10), 0 1px 3px rgba(0,0,0,.06);
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "PingFang SC", "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "PingFang SC", system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --radius: 24px;
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --bar-gap: 10px; /* space around floating bars */
   --top-clear: calc(var(--safe-top) + 78px); /* where content under the top bar starts */
-  color-scheme: dark;
+  color-scheme: light;
+
+  /* Names used by style.css and the scripts. Plane yellow (--accent) and the selected orange stay as
+     they are: they are data on the map, not chrome. */
+  --tint: var(--blue); --tint-text: #ffffff;
+  --text: var(--fg); --link: var(--blue); --sep: var(--line); --border: var(--line);
+  --fill-2: var(--fill); --panel: var(--surface); --panel-2: var(--fill); --bar: var(--bg);
+  --glass-thick: var(--sheet); --glass-hi: var(--glass-rim); --glass-sheen: rgba(255,255,255,.28);
+  --warn-bg: color-mix(in srgb, var(--red) 14%, var(--surface)); --warn-text: var(--red);
+  --info-bg: var(--blue-soft); --info-text: var(--blue);
 }
-@media (prefers-color-scheme: light) {
-  :root {
-    --tint: #007aff;
-    --glass: rgba(255, 255, 255, 0.58);
-    --glass-thick: rgba(255, 255, 255, 0.8);
-    --glass-edge: rgba(255, 255, 255, 0.75);
-    --glass-hi: rgba(255, 255, 255, 0.95);
-    --glass-sheen: rgba(255, 255, 255, 0.35);
-    --glass-shadow: 0 16px 48px rgba(0, 0, 0, 0.14), 0 2px 10px rgba(0, 0, 0, 0.08);
-    --fill: rgba(120, 120, 128, 0.18);
-    --fill-2: rgba(120, 120, 128, 0.12);
-    --sep: rgba(60, 60, 67, 0.14);
-    --text: #1d1d1f;
-    --muted: rgba(60, 60, 67, 0.62);
-    --link: #0066cc;
-    --warn-bg: #ffe5e0;
-    --warn-text: #9f1d0c;
-    --info-bg: #e3f0ff;
-    --info-text: #0b3d75;
-    color-scheme: light;
-  }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #000000; --surface: #1c1c1e; --raised: #2c2c2e; --fill: rgba(118,118,128,.24); --line: rgba(84,84,88,.65);
+  --fg: #ffffff; --muted: rgba(235,235,245,.6); --faint: rgba(235,235,245,.3);
+  --blue: #0a84ff; --blue-soft: rgba(10,132,255,.22); --gold: #ff9f0a; --gold-soft: rgba(255,159,10,.2);
+  --green: #30d158; --orange: #ff9f0a; --red: #ff453a; --purple: #bf5af2; --yellow: #ffd60a;
+  --glass: rgba(40,40,44,.46); --glass-rim: rgba(255,255,255,.26); --glass-edge: rgba(255,255,255,.09);
+  --ctl: rgba(44,44,50,.72); --lens: rgba(255,255,255,.16); --sheet: rgba(36,36,40,.86);
+  --glass-shadow: 0 10px 34px rgba(0,0,0,.5); --glass-sheen: rgba(255,255,255,.07); color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --bg: #000000; --surface: #1c1c1e; --raised: #2c2c2e; --fill: rgba(118,118,128,.24); --line: rgba(84,84,88,.65);
+  --fg: #ffffff; --muted: rgba(235,235,245,.6); --faint: rgba(235,235,245,.3);
+  --blue: #0a84ff; --blue-soft: rgba(10,132,255,.22); --gold: #ff9f0a; --gold-soft: rgba(255,159,10,.2);
+  --green: #30d158; --orange: #ff9f0a; --red: #ff453a; --purple: #bf5af2; --yellow: #ffd60a;
+  --glass: rgba(40,40,44,.46); --glass-rim: rgba(255,255,255,.26); --glass-edge: rgba(255,255,255,.09);
+  --ctl: rgba(44,44,50,.72); --lens: rgba(255,255,255,.16); --sheet: rgba(36,36,40,.86);
+  --glass-shadow: 0 10px 34px rgba(0,0,0,.5); --glass-sheen: rgba(255,255,255,.07); color-scheme: dark;
 }
 
-/* ---------------- the glass recipe ---------------- */
-.topbar::before,
-.topbar__buttons,
-.card,
-.banner,
-.alert-toast,
-.track-legend,
-.leaflet-bar,
-.leaflet-control-layers,
-.leaflet-control-attribution {
-  background: linear-gradient(180deg, var(--glass-sheen), transparent 55%), var(--glass);
-  -webkit-backdrop-filter: blur(26px) saturate(190%);
-  backdrop-filter: blur(26px) saturate(190%);
-  border: 1px solid var(--glass-edge);
-  box-shadow: inset 0 1px 0 var(--glass-hi), var(--glass-shadow);
+/* ---------------- the glass recipe (same two materials as msfs-buddy) ---------------- */
+/* Content: frosted glass. Over a busy map it is thicker (--sheet) than in the EFB so text stays crisp. */
+.card, .banner, .alert-toast, .track-legend {
+  background: var(--sheet);
+  -webkit-backdrop-filter: blur(30px) saturate(180%); backdrop-filter: blur(30px) saturate(180%);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-rim), inset 0 0 0 1px var(--glass-edge);
+  border: 0;
 }
-/* Bigger reading surfaces (flight card, drawers) use slightly thicker glass so text stays crisp. */
-.card { background: linear-gradient(180deg, var(--glass-sheen), transparent 40%), var(--glass-thick); }
+/* Controls: clearer glass capsules with a bright rim. */
+.topbar::before, .topbar__buttons, .leaflet-bar, .leaflet-control-layers, .leaflet-control-attribution {
+  background: var(--ctl) linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0) 55%);
+  -webkit-backdrop-filter: blur(26px) saturate(190%); backdrop-filter: blur(26px) saturate(190%);
+  box-shadow: 0 6px 18px rgba(0,0,0,.10), inset 0 1px 0 var(--glass-rim), inset 0 0 0 1px var(--glass-edge), inset 0 -1px 1px rgba(255,255,255,.12);
+  border: 0;
+}
+/* Reduce transparency (device setting, or no backdrop blur): solid surfaces, same shapes. */
 @media (prefers-reduced-transparency: reduce) {
-  .topbar::before, .topbar__buttons, .card, .banner, .alert-toast, .track-legend, .leaflet-bar, .leaflet-control-layers { background: var(--glass-thick); }
+  .card, .banner, .alert-toast, .track-legend { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .topbar::before, .topbar__buttons, .leaflet-bar, .leaflet-control-layers { background: var(--raised); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .card, .banner, .alert-toast, .track-legend { background: var(--surface); }
+  .topbar::before, .topbar__buttons, .leaflet-bar, .leaflet-control-layers { background: var(--raised); }
 }
 
 /* ---------------- base ---------------- */
-html, body { background: #000; }
+html, body { background: var(--bg); }
 body {
   display: block;
   font-family: var(--font);
-  color: var(--text);
+  font-size: 15px;
+  color: var(--fg);
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
   letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  -webkit-tap-highlight-color: transparent;
 }
-@media (prefers-color-scheme: light) { html, body { background: #f2f2f7; } }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
+code { font-family: var(--mono); font-size: .85em; background: var(--fill); padding: 1px 5px; border-radius: 6px; }
+::placeholder { color: var(--faint); }
+/* Scroll edge: content softens as it slides under the status bar (phones / installed app). */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: calc(var(--safe-top) + 14px); z-index: 1040; pointer-events: none;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  -webkit-mask-image: linear-gradient(#000 55%, transparent); mask-image: linear-gradient(#000 55%, transparent); }
 
 /* The map fills the screen; everything else floats on it. */
 .stage { position: fixed; inset: 0; }
-.map { background: #0b0f14; }
-@media (prefers-color-scheme: light) { .map { background: #e9eef2; } }
+.map { background: #e9eef2; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .map { background: #0b0f14; } }
+:root[data-theme="dark"] .map { background: #0b0f14; }
 
 /* Controls: pill buttons, filled inputs, no hard borders */
 input, select, button, textarea {
@@ -104,12 +118,25 @@ input, select, button, textarea {
   border-radius: 12px;
   color: var(--text);
 }
-button { border-radius: 999px; padding: 7px 14px; font-weight: 500; transition: background 0.15s, transform 0.1s; }
-button:hover { border-color: transparent; filter: brightness(1.12); }
-button:active { transform: scale(0.97); }
-button.primary { background: var(--tint); color: var(--tint-text); border: none; }
-input:focus-visible, select:focus-visible, button:focus-visible, textarea:focus-visible { outline: 2px solid var(--tint); outline-offset: 2px; }
-a { color: var(--link); }
+input, select, textarea { min-height: 38px; padding: 8px 12px; outline: none; caret-color: var(--blue); }
+input:focus, select:focus, textarea:focus { box-shadow: 0 0 0 3px var(--blue-soft); }
+/* Buttons: capsules like msfs-buddy's .btn (blue text on glass); .primary is the filled blue one. */
+button {
+  border-radius: 999px; padding: 7px 16px; font-weight: 600; letter-spacing: 0;
+  background: var(--ctl) linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0) 55%); color: var(--blue);
+  box-shadow: inset 0 1px 0 var(--glass-rim), inset 0 0 0 1px var(--glass-edge);
+  transition: transform .45s var(--spring), background-color .25s, box-shadow .25s, color .2s;
+}
+button:hover { border-color: transparent; filter: none; }
+button:active { transform: scale(.94); }
+button:disabled { color: var(--faint); cursor: default; }
+button.primary {
+  background: var(--blue) linear-gradient(180deg, rgba(255,255,255,.3), rgba(255,255,255,0) 60%); color: #fff;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--blue) 35%, transparent), inset 0 1px 0 rgba(255,255,255,.45);
+}
+input:focus-visible, select:focus-visible, button:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px solid var(--blue-soft); outline-offset: 1px; }
+a { color: var(--blue); }
+.muted { color: var(--muted); }
 
 /* ---------------- top bar (floating capsule) ---------------- */
 .topbar {
@@ -129,8 +156,8 @@ a { color: var(--link); }
 /* The glass is drawn on a layer behind the bar. (A blur on the bar itself would trap the phone
    tab bar inside it: fixed elements inside a blurred parent are positioned relative to that parent.) */
 .topbar::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; }
-.brand { font-weight: 650; font-size: 15px; letter-spacing: -0.02em; }
-.brand img { border-radius: 8px; }
+.brand { font-weight: 600; font-size: 17px; letter-spacing: -0.01em; color: var(--fg); }
+.brand img { border-radius: 7px; }
 .search {
   height: 36px;
   border-radius: 999px;
@@ -142,6 +169,7 @@ a { color: var(--link); }
 .search::placeholder { color: var(--muted); }
 .status { font-size: 12px; color: var(--muted); }
 .topbar__buttons { gap: 2px; background: none; border: none; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+@media (min-width: 761px) { .topbar__buttons { padding: 0; } }
 .tb-btn {
   display: inline-flex;
   align-items: center;
@@ -149,12 +177,15 @@ a { color: var(--link); }
   height: 36px;
   padding: 0 12px;
   background: transparent;
-  color: var(--text);
+  box-shadow: none;
+  color: var(--fg);
   font-size: 14px;
+  font-weight: 500;
   white-space: nowrap;
 }
-.tb-btn:hover { background: var(--fill-2); filter: none; }
-.tb-btn[aria-expanded="true"] { background: var(--tint); color: var(--tint-text); }
+.tb-btn:hover { background: var(--fill); filter: none; }
+/* The open panel's button sits on a lens, like the selected tab in msfs-buddy's tab bar. */
+.tb-btn[aria-expanded="true"] { background: var(--lens); color: var(--blue); font-weight: 600; box-shadow: 0 2px 10px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.7); }
 .tb-ico { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 .tb-ico .fill { fill: currentColor; stroke: none; }
 
@@ -163,48 +194,72 @@ a { color: var(--link); }
 .drawer { top: var(--top-clear); right: 12px; bottom: 12px; padding: 18px; }
 .drawer--small { bottom: auto; max-height: calc(100% - var(--top-clear) - 12px); }
 .card h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
-.drawer--scroll h3, .info h3 { color: var(--muted); font-weight: 600; letter-spacing: 0.02em; text-transform: none; font-size: 13px; }
+.card h2, .card h3, .card h4 { margin-top: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .card:not([hidden]) { animation: rise .45s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes rise { from { transform: translateY(8px) scale(.99); opacity: .6; } to { transform: none; opacity: 1; } }
+}
+.drawer--scroll h3, .info h3 { color: var(--muted); font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; font-size: 12px; }
 .banner { top: var(--top-clear); border-radius: 999px; color: var(--text); }
-.banner--error { background: linear-gradient(180deg, var(--glass-sheen), transparent), rgba(255, 69, 58, 0.35); }
+.banner::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); margin-right: 8px; vertical-align: 1px; }
+.banner--error { background: color-mix(in srgb, var(--red) 14%, var(--sheet)); }
+.banner--error::before { background: var(--red); }
 .alerts { top: var(--top-clear); }
 .alert-toast { border-radius: 18px; border-left-width: 1px; }
 .alert-toast--emergency { box-shadow: inset 0 0 0 1.5px rgba(255, 69, 58, 0.8), var(--glass-shadow); }
-.tile, .pv__box { background: var(--fill-2); border-radius: 16px; }
+.tile, .pv__box { background: var(--fill); border-radius: 16px; }
 .aircraft-list th { background: transparent; color: var(--muted); font-weight: 600; }
-.aircraft-list tr.selected td { background: color-mix(in srgb, var(--tint) 22%, transparent); }
-.chip { background: var(--fill-2); border: none; }
+.aircraft-list tr.selected td { background: var(--blue-soft); }
+.aircraft-list td, .aircraft-list th { border-bottom: .5px solid var(--line); }
+.chip { background: var(--fill); border: none; }
 .filters-box summary, details summary { color: var(--muted); }
 
 /* ---------------- flight card ---------------- */
 .info { top: var(--top-clear); border-radius: 30px; }
 .info--full { bottom: 12px; }
-.pv__call { color: var(--text); font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
-.pv__badge { background: var(--fill); border-radius: 8px; font-weight: 600; }
-.pv__badge--type { background: color-mix(in srgb, var(--tint) 28%, transparent); color: var(--text); }
+.pv__call { color: var(--fg); font-size: 28px; font-weight: 700; letter-spacing: -0.02em; font-family: var(--font-display); }
+.pv__badge { background: var(--fill); border-radius: 999px; font-weight: 600; padding: 2px 10px; }
+.pv__badge--type { background: var(--blue-soft); color: var(--blue); }
 .pv__airline { color: var(--muted); }
 .pv__photo { border-radius: 18px; }
-.pv__close { background: var(--fill); color: var(--text); width: 30px; height: 30px; line-height: 30px; }
+.pv__close { background: var(--ctl); color: var(--fg); width: 30px; height: 30px; line-height: 30px; padding: 0; }
 .pv__grid { gap: 8px; padding: 0 12px; }
-.pv__mid { background: var(--tint); }
-.pv__mid svg { fill: var(--tint-text); }
+.pv__mid { background: rgba(255,255,255,.22); box-shadow: inset 0 1px 0 rgba(255,255,255,.45); }
+.pv__mid svg { fill: #fff; }
 .progress { background: var(--fill); height: 5px; }
-.progress__bar { background: var(--tint); }
-.pv__label { text-transform: none; letter-spacing: 0; font-size: 11.5px; }
+.progress__bar { background: var(--blue); }
+/* The route box is the card's lit pane, like msfs-buddy's .hero-tile (Light Scout's "next light"). */
+.pv__route { position: relative; overflow: hidden; color: #fff; border-radius: 22px;
+  background: linear-gradient(155deg, #4f8dff 0%, #2f4fd0 55%, #1b1f6b 100%);
+  box-shadow: 0 10px 30px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.55), inset 0 0 0 1px rgba(255,255,255,.18); }
+.pv__route::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background: linear-gradient(160deg, rgba(255,255,255,.30), rgba(255,255,255,0) 38%), radial-gradient(60% 50% at 100% 0%, rgba(255,255,255,.22), transparent 70%); }
+.pv__route, .pv__route * { color: #fff; }
+.pv__route .pv__label, .pv__route small, .pv__route .muted { color: rgba(255,255,255,.82); }
+.pv__route .progress { background: rgba(255,255,255,.28); }
+.pv__route .progress__bar { background: #fff; }
+.pv__label { text-transform: uppercase; letter-spacing: .02em; font-size: 11px; font-weight: 600; }
 .pv__value { font-size: 19px; letter-spacing: -0.02em; }
 .pv__actions { padding: 10px 12px 12px; gap: 8px; }
-.pv__act { background: var(--fill-2); border-radius: 16px; padding: 9px 4px; color: var(--tint); font-weight: 600; font-size: 12px; }
-.pv__act:hover { background: var(--fill); }
-.pv__act[aria-pressed="true"], .pv__act[aria-expanded="true"] { background: var(--tint); color: var(--tint-text); }
+.pv__actions--4 { grid-template-columns: repeat(4, 1fr); }
+.pv__act { background: var(--ctl); border-radius: 18px; padding: 9px 4px; color: var(--blue); font-weight: 600; font-size: 12px; text-decoration: none; letter-spacing: 0;
+  box-shadow: inset 0 1px 0 var(--glass-rim), inset 0 0 0 1px var(--glass-edge); transition: transform .45s var(--spring), background-color .25s; }
+.pv__act:active { transform: scale(.94); }
+.pv__act:hover { background: var(--lens); }
+.pv__act[aria-pressed="true"], .pv__act[aria-expanded="true"] { background: var(--blue); color: #fff; }
 .info--full .pv__actions { border-bottom: none; }
-.log-btn { background: var(--fill-2); }
+.log-btn { background: var(--ctl); }
+.info__seats { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.info__seats .info__note { margin: 0; }
 .info__spotbar { padding: 0 14px 12px; }
 
 /* ---------------- map controls ---------------- */
 .leaflet-bar { border-radius: 14px !important; overflow: hidden; }
-.leaflet-bar a, .leaflet-bar a:hover { width: 40px; height: 40px; line-height: 40px; background: transparent; color: var(--text); border-bottom-color: var(--sep); font-weight: 400; }
-.leaflet-control-layers { border-radius: 14px !important; color: var(--text); }
+.leaflet-bar a, .leaflet-bar a:hover { width: 40px; height: 40px; line-height: 40px; background: transparent; color: var(--fg); border-bottom-color: var(--line); font-weight: 400; }
+.leaflet-control-layers { border-radius: 14px !important; color: var(--fg); }
 .leaflet-control-layers-toggle { width: 42px; height: 42px; }
-@media (prefers-color-scheme: dark) { .leaflet-control-layers-toggle { filter: invert(1) brightness(1.4); } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .leaflet-control-layers-toggle { filter: invert(1) brightness(1.4); } }
+:root[data-theme="dark"] .leaflet-control-layers-toggle { filter: invert(1) brightness(1.4); }
 .leaflet-control-attribution { border-radius: 10px 0 0 0; color: var(--muted) !important; font-size: 10.5px; box-shadow: none; }
 .leaflet-top { top: calc(var(--top-clear) - 12px); }
 .track-legend { border-radius: 16px; }
@@ -230,17 +285,17 @@ a { color: var(--link); }
     padding: 6px;
     border-radius: 32px;
     overflow: visible;
-    background: linear-gradient(180deg, var(--glass-sheen), transparent 55%), var(--glass);
+    background: var(--ctl) linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0) 55%);
     -webkit-backdrop-filter: blur(26px) saturate(190%);
     backdrop-filter: blur(26px) saturate(190%);
-    border: 1px solid var(--glass-edge);
-    box-shadow: inset 0 1px 0 var(--glass-hi), var(--glass-shadow);
+    border: 0;
+    box-shadow: 0 6px 18px rgba(0,0,0,.10), inset 0 1px 0 var(--glass-rim), inset 0 0 0 1px var(--glass-edge);
     transition: transform 0.25s ease, opacity 0.2s;
   }
   .tb-btn { flex-direction: column; justify-content: center; gap: 3px; height: 100%; padding: 0 2px; border-radius: 24px; font-size: 10.5px; font-weight: 500; min-width: 0; }
   .tb-btn .tb-label { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
   .tb-ico { width: 21px; height: 21px; }
-  .tb-btn[aria-expanded="true"] { background: var(--fill); color: var(--tint); }
+  .tb-btn[aria-expanded="true"] { background: var(--lens); color: var(--blue); }
   /* A flight card is open: the tab bar steps aside, like a sheet in a maps app */
   body.card-open .topbar__buttons { transform: translateY(calc(100% + 30px)); opacity: 0; pointer-events: none; }
 
@@ -255,19 +310,20 @@ a { color: var(--link); }
   /* Flight card: a floating sheet with rounded corners all round */
   .info { top: auto; left: 8px; right: 8px; bottom: calc(var(--safe-bottom) + 8px); width: auto; border-radius: 32px; max-height: calc(78% - var(--safe-bottom)); padding-bottom: 0; }
   .info--full { max-height: calc(100% - var(--top-clear) - var(--safe-bottom) - 8px); }
-  .pv__top::before { background: var(--sep); }
+  .pv__top::before { background: var(--line); }
   .alerts { top: var(--top-clear); }
 }
 
 /* style.css forces the credits strip dark with !important; let the glass through instead */
-.leaflet-control-attribution { background: linear-gradient(180deg, var(--glass-sheen), transparent 55%), var(--glass) !important; }
+.leaflet-control-attribution { background: var(--ctl) !important; }
+.leaflet-control-attribution a { color: var(--blue) !important; }
 
 /* Map labels keep their own dark look in both modes, so they read on any map style */
 .plane-badge { color: #f5f5f7; background: rgba(20, 22, 28, 0.88); border-radius: 6px; font-family: var(--font); }
 .leaflet-tooltip.plane-label { color: #f5f5f7; background: rgba(20, 22, 28, 0.82); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 12px; font-family: var(--font); }
 
-.search { min-width: 220px; }
-@media (max-width: 1240px) { .status { display: none; } }
+.search { min-width: 140px; }
+@media (max-width: 1520px) { .status { display: none; } }
 @media (max-width: 760px) {
   .search { min-width: 0; }
   /* leave room for the map credits between a drawer and the tab bar */
@@ -276,3 +332,30 @@ a { color: var(--link); }
 }
 .spot-note { padding: 8px 12px; border-radius: 12px; font-size: 13px; }
 .spot-note:empty { display: none; }
+
+/* ---------------- display setting: segmented control (Search area panel) ---------------- */
+.seg { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; max-width: 100%;
+  background: var(--ctl) linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0) 55%);
+  box-shadow: inset 0 1px 0 var(--glass-rim), inset 0 0 0 1px var(--glass-edge); }
+.seg button { flex: 1 0 auto; padding: 6px 14px; background: none; box-shadow: none; color: var(--fg); font-size: 14px; font-weight: 500; }
+.seg button[aria-pressed="true"] { background: var(--lens); font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.8); }
+.display-box { display: grid; gap: 6px; margin-top: 14px; padding-top: 12px; border-top: .5px solid var(--line); }
+.display-box .field-label { font-size: 12px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Keep every button inside the top bar: the status text gives way first, then the search box. */
+.topbar__buttons { flex: none; }
+.status { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; margin-left: auto; }
+.search { flex: 1 1 140px; min-width: 140px; }
+@media (max-width: 760px) { .search { min-width: 0; } }
+
+/* External "more about…" links: glass capsules like msfs-buddy's .btn, not the old yellow outline. */
+.info__more-link { display: inline-flex; align-items: center; min-height: 32px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--ctl);
+  color: var(--blue); font-size: 13px; font-weight: 600; text-decoration: none;
+  box-shadow: inset 0 1px 0 var(--glass-rim), inset 0 0 0 1px var(--glass-edge); transition: transform .45s var(--spring), background-color .25s; }
+.info__more-link:hover { background: var(--lens); color: var(--blue); }
+.info__more-link:active { transform: scale(.94); }
+.info__more { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; }

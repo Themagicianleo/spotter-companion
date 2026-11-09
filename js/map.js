@@ -11,6 +11,7 @@ let onSelect = () => {}; // set by app.js: what to do when a plane is clicked
 let selectedHex = null;
 
 import { SHAPES } from './shapes.js';
+import { resolvedTheme } from './theme.js';
 
 // Which silhouette to draw (js/shapes.js). Chosen from the ICAO type code the live feed sends,
 // then from the ADS-B emitter category. These are only drawing choices for the icon.
@@ -208,7 +209,7 @@ function loadBaseLayerName(available) {
   saved = renamed[saved] ?? saved;
   if (available.includes(saved)) return saved;
   // No saved choice: follow the device's light/dark setting (Streets in light mode, Dark in dark mode).
-  const light = globalThis.matchMedia?.('(prefers-color-scheme: light)').matches;
+  const light = resolvedTheme() === 'light'; // the Appearance setting, else the device (js/theme.js)
   if (light && available.includes('Streets')) return 'Streets';
   return available.includes('Dark') ? 'Dark' : 'Classic';
 }
